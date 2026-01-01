@@ -31,9 +31,9 @@ function Step({
         <div className="grid h-9 w-9 place-items-center rounded-2xl bg-amber-300 text-neutral-900 font-bold">
           {n}
         </div>
-        <div className="text-base font-semibold text-white">{title}</div>
+        <div className="text-base font-semibold text-slate-100">{title}</div>
       </div>
-      <p className="mt-3 text-sm leading-6 text-white/85">{text}</p>
+      <p className="mt-3 text-sm leading-6 text-slate-200/90">{text}</p>
     </div>
   );
 }
@@ -49,8 +49,8 @@ export default function RegisterPage() {
         <div className="absolute inset-0 bg-black/35 sm:bg-black/25" />
 
         <Container>
-          <section className="relative py-10 sm:py-14 text-white">
-            <div className="inline-flex items-center gap-2 rounded-full bg-black/35 px-4 py-2 text-xs text-white/90 ring-1 ring-white/15">
+          <section className="relative py-10 sm:py-14 text-slate-100">
+            <div className="inline-flex items-center gap-2 rounded-full bg-black/35 px-4 py-2 text-xs text-slate-100/90 ring-1 ring-white/15">
               <span className="h-2 w-2 rounded-full bg-amber-300" />
               Enrollment • Contract • Support
             </div>
@@ -59,7 +59,7 @@ export default function RegisterPage() {
               How to enroll (No registration form)
             </h1>
 
-            <p className="mt-3 max-w-2xl text-white/85 text-sm sm:text-base leading-7">
+            <p className="mt-3 max-w-2xl text-slate-200/90 text-sm sm:text-base leading-7">
               Register inside Falowen. You will see class dates and prices before you pay.
               After payment, you get automatic access and we contact you inside the app (and by email if needed).
             </p>
@@ -78,7 +78,7 @@ export default function RegisterPage() {
                 href={LINKS.register}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15 ring-1 ring-white/25"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-white/15 ring-1 ring-white/25"
               >
                 Register / Contract
               </a>
@@ -87,7 +87,7 @@ export default function RegisterPage() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-black/25 px-6 py-3 text-sm font-semibold text-white hover:bg-black/35 ring-1 ring-white/20"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-black/25 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-black/35 ring-1 ring-white/20"
               >
                 WhatsApp help
               </a>

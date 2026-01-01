@@ -29,14 +29,14 @@ export default function ClassesPage() {
         />
 
         {/* HOW TO REGISTER (Top block) */}
-        <div className="mt-6 rounded-[28px] bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-900 p-6 sm:p-8 text-white shadow-sm ring-1 ring-black/10">
-          <div className="text-sm text-white/80">How to enroll (No registration form)</div>
-          <div className="mt-1 text-2xl font-semibold">Register inside Falowen</div>
-          <div className="mt-2 text-sm text-white/85 leading-6 max-w-2xl">
+        <div className="mt-6 rounded-[28px] bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-900 p-6 sm:p-8 text-slate-100 shadow-sm ring-1 ring-black/10">
+          <div className="text-sm text-slate-200/90">How to enroll (No registration form)</div>
+          <div className="mt-1 text-2xl font-semibold text-slate-100">Register inside Falowen</div>
+          <div className="mt-2 text-sm text-slate-200/90 leading-6 max-w-2xl">
             Everything happens inside the Falowen app. You will see class dates and prices before you pay.
           </div>
 
-          <ol className="mt-4 space-y-3 text-sm text-white/90 leading-6">
+          <ol className="mt-4 space-y-3 text-sm text-slate-100/90 leading-6">
             <li>
               <span className="font-semibold">1) Create an account:</span>{" "}
               Go to <span className="font-semibold">www.falowen.app</span> and tap <span className="font-semibold">Sign up</span>.
@@ -63,7 +63,7 @@ export default function ClassesPage() {
 
             <a
               href="/register"
-              className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15"
+              className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-white/15"
             >
               Full instructions
             </a>
@@ -72,13 +72,13 @@ export default function ClassesPage() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/20 px-6 py-3 text-sm font-semibold text-white hover:bg-black/30"
+              className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-black/20 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-black/30"
             >
               WhatsApp help
             </a>
           </div>
 
-          <div className="mt-4 text-xs text-white/70">
+          <div className="mt-4 text-xs text-slate-200/80">
             Need help? Email <span className="font-semibold">{SITE.email}</span> or use WhatsApp support.
           </div>
         </div>
