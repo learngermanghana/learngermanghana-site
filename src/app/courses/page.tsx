@@ -1,9 +1,17 @@
 ﻿import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { courses, feeNotes, goetheExamLinks, tuitionFeesGHS } from "@/data/content";
+import { courses, feeNotes, goetheExamFeesGHS, goetheExamLinks, tuitionFeesGHS } from "@/data/content";
 import { CTA } from "@/lib/site";
 
 export default function CoursesPage() {
+  const formatExamFee = (level: keyof typeof goetheExamFeesGHS) => {
+    const fee = goetheExamFeesGHS[level];
+
+    if (!fee) return "Contact Goethe-Institut";
+
+    return `${fee.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} GHS`;
+  };
+
   return (
     <Container>
       <section className="py-12 sm:py-16">
@@ -40,6 +48,13 @@ export default function CoursesPage() {
                   <span className="font-semibold">Tuition fee:</span>{" "}
                   {fee ? `GHS ${fee.toLocaleString("en-GH")}` : "Contact us for pricing"}
                 </div>
+                {examLink && (
+                  <div className="mt-2 text-sm text-neutral-700">
+                    <span className="font-semibold">Exam fee:</span>{" "}
+                    <span className="text-brand-950">{formatExamFee(course.level)}</span>
+                    <span className="text-neutral-500"> (paid directly to Goethe-Institut)</span>
+                  </div>
+                )}
                 {examLink ? (
                   <a
                     href={examLink.href}

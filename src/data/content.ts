@@ -15,9 +15,15 @@ export const tuitionFeesGHS: Record<ClassLevel, number | null> = {
 };
 
 export const feeNotes = [
-  "Goethe exam fees are paid directly to Goethe Institute.",
+  "Goethe exam fees are paid directly to Goethe-Institut.",
   "School tuition fee is separate from Goethe exam fees.",
 ];
+
+export const goetheExamFeesGHS: Partial<Record<ClassLevel, number>> = {
+  A1: 3000,
+  A2: 2550,
+  B1: 2900,
+};
 
 export const goetheExamLinks: Partial<Record<ClassLevel, { label: string; href: string }>> = {
   A1: {
