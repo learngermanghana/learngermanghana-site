@@ -11,7 +11,6 @@ const staticRoutes = [
   "contact",
   "courses",
   "faq",
-  "register",
   "reviews",
   "tutors",
 ];
