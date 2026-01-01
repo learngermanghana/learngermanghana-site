@@ -107,7 +107,7 @@ export default function ClassesPage() {
               </div>
 
               <div className="mt-2 text-sm text-neutral-700">
-                {formatTuition(c.level)}
+                Tuition covers classes only. Goethe exam fees are paid separately when you are ready to sit the exam.
               </div>
 
               <div className="mt-4 rounded-2xl border border-black/10 bg-neutral-50 p-4">
