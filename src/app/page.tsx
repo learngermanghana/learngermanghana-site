@@ -237,7 +237,7 @@ export default async function HomePage() {
                         href="/classes"
                         className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50 w-full sm:w-auto"
                       >
-                        Full instructions
+                        View more classes
                       </Link>
                     </div>
 
