@@ -59,12 +59,12 @@ export default async function HomePage() {
             <div className="mt-6 sm:mt-8 grid gap-8 lg:grid-cols-2 lg:items-center">
               {/* Left text */}
               <div>
-                <h1 className="text-2xl sm:text-6xl font-semibold leading-tight sm:leading-[1.05]">
+                <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.1] sm:leading-[1.05]">
                   Learn German the smart way —
                   <span className="text-gold-200"> class + app practice</span>.
                 </h1>
 
-                <p className="mt-4 max-w-lg text-white/85 text-sm sm:text-lg leading-6 sm:leading-7">
+                <p className="mt-4 max-w-xl text-white/85 text-sm sm:text-lg leading-7">
                   {SITE.brand} helps you build speaking confidence, writing skills, and exam readiness.
                   Registration is done on our official portal:
                   <span className="font-semibold"> register.falowen.app</span>.
@@ -75,14 +75,14 @@ export default async function HomePage() {
     href="https://register.falowen.app"
     target="_blank"
     rel="noreferrer"
-    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-6 py-3 text-[13px] sm:text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
+    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
   >
     Register / Contract
   </a>
 
   <a
     href="/register"
-    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/50 bg-black/20 px-6 py-3 text-[13px] sm:text-sm font-semibold text-white shadow-sm hover:bg-black/30"
+    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/50 bg-black/20 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/30"
   >
     How to register (steps)
   </a>
@@ -311,6 +311,7 @@ export default async function HomePage() {
     </div>
   );
 }
+
 
 
 
