@@ -56,9 +56,9 @@ export function Navbar() {
             </nav>
 
             <Link
-              href="/register"
+              href="/classes"
               className="hidden md:inline-flex rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-900 shadow-sm"
-              title="Contract & Registration"
+              title="Enrollment & Class Details"
             >
               Register
             </Link>
@@ -118,9 +118,9 @@ export function Navbar() {
                 );
               })}
               <Link
-                href="/register"
+                href="/classes"
                 className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white shadow-sm"
-                title="Contract & Registration"
+                title="Enrollment & Class Details"
               >
                 Register
               </Link>

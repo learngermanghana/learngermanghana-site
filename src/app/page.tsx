@@ -86,7 +86,7 @@ export default async function HomePage() {
                   </a>
 
                   <Link
-                    href="/register"
+                    href="/classes"
                     className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/40 bg-black/25 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/35"
                   >
                     How to enroll (steps)
@@ -234,7 +234,7 @@ export default async function HomePage() {
                       </a>
 
                       <Link
-                        href="/register"
+                        href="/classes"
                         className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50 w-full sm:w-auto"
                       >
                         Full instructions
