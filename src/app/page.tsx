@@ -1,17 +1,16 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/Container";
-import { Button } from "@/components/Button";
 import { RandomReviews } from "@/components/RandomReviews";
-import { CTA, LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
+import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
 import { upcomingClasses, tutors, reviews } from "@/data/content";
 import { getBlogPosts } from "@/lib/blog";
 import { formatDatePretty } from "@/lib/date";
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs text-white ring-1 ring-white/20">
-      <span className="h-2 w-2 rounded-full bg-gold-400" />
+    <span className="inline-flex items-center gap-2 rounded-full bg-black/35 px-3 py-1 text-xs text-white/90 ring-1 ring-white/15">
+      <span className="h-2 w-2 rounded-full bg-amber-300" />
       {children}
     </span>
   );
@@ -44,9 +43,15 @@ export default async function HomePage() {
     <div>
       {/* HERO BAND */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-900" />
-        <div className="absolute -left-40 -top-40 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-gold-400/20 blur-3xl" />
-        <div className="absolute -right-40 top-10 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-emerald-400/15 blur-3xl" />
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-950" />
+
+        {/* Glow blobs */}
+        <div className="absolute -left-40 -top-40 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-amber-300/20 blur-3xl" />
+        <div className="absolute -right-40 top-10 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-emerald-300/15 blur-3xl" />
+
+        {/* IMPORTANT: darker overlay on mobile so text isn't washed out */}
+        <div className="absolute inset-0 bg-black/45 sm:bg-black/35" />
 
         <Container>
           <div className="relative py-12 sm:py-20 text-white">
@@ -59,9 +64,9 @@ export default async function HomePage() {
             <div className="mt-6 sm:mt-8 grid gap-8 lg:grid-cols-2 lg:items-center">
               {/* Left text */}
               <div>
-                <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.1] sm:leading-[1.05]">
+                <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.12] sm:leading-[1.05] text-white">
                   Learn German the smart way —
-                  <span className="text-gold-200"> class + app practice</span>.
+                  <span className="text-amber-200"> class + app practice</span>.
                 </h1>
 
                 <p className="mt-4 max-w-xl text-white/85 text-sm sm:text-lg leading-7">
@@ -71,37 +76,48 @@ export default async function HomePage() {
                 </p>
 
                 <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
-  <a
-    href="https://register.falowen.app"
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
-  >
-    Register / Contract
-  </a>
+                  <a
+                    href="https://register.falowen.app"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
+                  >
+                    Register / Contract
+                  </a>
 
-  <a
-    href="/register"
-    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/50 bg-black/20 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/30"
-  >
-    How to register (steps)
-  </a>
-</div>
+                  <Link
+                    href="/register"
+                    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/40 bg-black/25 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/35"
+                  >
+                    How to enroll (steps)
+                  </Link>
+
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/15"
+                  >
+                    WhatsApp help
+                  </a>
+                </div>
 
                 <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
-                  <div className="rounded-3xl bg-white/10 ring-1 ring-white/15 p-4">
+                  <div className="rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
                     <div className="text-xs text-white/70">Next start date</div>
-                    <div className="mt-1 font-semibold">{formatDatePretty(nextClass.startDate)}</div>
+                    <div className="mt-1 font-semibold text-white">
+                      {formatDatePretty(nextClass.startDate)}
+                    </div>
                   </div>
-                  <div className="rounded-3xl bg-white/10 ring-1 ring-white/15 p-4">
+                  <div className="rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
                     <div className="text-xs text-white/70">Schedule</div>
-                    <div className="mt-1 font-semibold">{nextClass.scheduleSummary}</div>
+                    <div className="mt-1 font-semibold text-white">{nextClass.scheduleSummary}</div>
                   </div>
                 </div>
 
                 {/* Quick help */}
-                <div className="mt-6 rounded-3xl bg-white/10 ring-1 ring-white/15 p-4">
-                  <div className="text-sm font-semibold">Need help?</div>
+                <div className="mt-6 rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
+                  <div className="text-sm font-semibold text-white">Need help?</div>
                   <div className="mt-1 text-sm text-white/85">
                     If you have any questions, chat our team on WhatsApp.
                   </div>
@@ -110,7 +126,7 @@ export default async function HomePage() {
                       href={WHATSAPP_LINK}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center justify-center rounded-2xl bg-black/30 px-4 py-2 text-sm font-semibold text-white hover:bg-black/40 ring-1 ring-white/15"
+                      className="inline-flex items-center justify-center rounded-2xl bg-black/40 px-4 py-2 text-sm font-semibold text-white hover:bg-black/55 ring-1 ring-white/15"
                     >
                       Chat on WhatsApp
                     </a>
@@ -118,20 +134,21 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* Right: hero image + upcoming class card */}  <div className="flex flex-col gap-6">
+              {/* Right: hero image + upcoming class card */}
+              <div className="flex flex-col gap-6">
                 <div className="relative overflow-hidden rounded-[28px] ring-1 ring-white/20 shadow-2xl">
                   <Image
                     src="/hero/hero.jpg"
-                    alt="Learn German Ghana class"
+                    alt="Learn Language Education Academy class"
                     width={1200}
                     height={900}
                     priority
                     className="h-[260px] sm:h-[420px] w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                  {/* Darken image bottom more so card doesn't “fight” */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
 
-                  {/* Small label on image */}
-                  <div className="absolute left-5 top-5 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/20">
+                  <div className="absolute left-5 top-5 rounded-full bg-black/45 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/20">
                     Upcoming class • {nextClass.level}
                   </div>
                 </div>
@@ -144,12 +161,13 @@ export default async function HomePage() {
                         <div className="text-sm text-neutral-600">Next class</div>
                         <div className="mt-1 text-xl font-semibold">{nextClass.title}</div>
                         <div className="mt-2 text-sm text-neutral-700">
-                          <span className="font-semibold">Starts:</span> {formatDatePretty(nextClass.startDate)}
+                          <span className="font-semibold">Starts:</span>{" "}
+                          {formatDatePretty(nextClass.startDate)}
                         </div>
                       </div>
 
                       {isTBA ? (
-                        <span className="shrink-0 rounded-full bg-gold-200 px-3 py-1 text-xs font-semibold text-neutral-900 ring-1 ring-black/10">
+                        <span className="shrink-0 rounded-full bg-amber-200 px-3 py-1 text-xs font-semibold text-neutral-900 ring-1 ring-black/10">
                           TBA
                         </span>
                       ) : (
@@ -173,19 +191,19 @@ export default async function HomePage() {
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
                       <div className="rounded-2xl border border-black/10 bg-white p-4">
-                        <div className="text-sm font-semibold">How to register</div>
+                        <div className="text-sm font-semibold">How to enroll</div>
                         <ol className="mt-2 space-y-1 text-sm text-neutral-700">
-                          <li>1) Open portal</li>
-                          <li>2) Create account + verify email</li>
-                          <li>3) Accept contract + submit</li>
+                          <li>1) Go to Falowen and Sign up</li>
+                          <li>2) Open Upcoming Classes</li>
+                          <li>3) Choose class and pay</li>
                         </ol>
                         <a
-                          href={LINKS.register}
+                          href={LINKS.falowen}
                           target="_blank"
                           rel="noreferrer"
                           className="mt-3 inline-flex text-sm font-semibold text-brand-800 hover:underline"
                         >
-                          register.falowen.app →
+                          www.falowen.app →
                         </a>
                       </div>
 
@@ -206,29 +224,30 @@ export default async function HomePage() {
                     </div>
 
                     <div className="mt-4 flex flex-col sm:flex-row gap-2">
-  <a
-    href="https://register.falowen.app"
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900 w-full sm:w-auto"
-  >
-    Register / Contract
-  </a>
+                      <a
+                        href={LINKS.falowen}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900 w-full sm:w-auto"
+                      >
+                        Go to Falowen (Sign up)
+                      </a>
 
-  <a
-    href="/register"
-    className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50 w-full sm:w-auto"
-  >
-    Full instructions
-  </a>
-</div>
+                      <Link
+                        href="/register"
+                        className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50 w-full sm:w-auto"
+                      >
+                        Full instructions
+                      </Link>
+                    </div>
 
-<div className="mt-3 text-xs text-neutral-500">
+                    <div className="mt-3 text-xs text-neutral-500">
                       Bonus: Free exam preparation + access to Falowen App
                     </div>
                   </div>
                 </div>
-</div>
+              </div>
+              {/* end right */}
             </div>
           </div>
         </Container>
@@ -311,8 +330,3 @@ export default async function HomePage() {
     </div>
   );
 }
-
-
-
-
-
