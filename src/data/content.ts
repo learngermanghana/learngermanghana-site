@@ -1,0 +1,154 @@
+﻿export const courses = [
+  { level: "A1", title: "A1 (Beginner)", desc: "Start from basics: greetings, daily life, simple conversations." },
+  { level: "A2", title: "A2 (Elementary)", desc: "Build confidence: shopping, travel, work, short letters." },
+  { level: "B1", title: "B1 (Intermediate)", desc: "Speak more freely: opinions, stories, exams preparation." },
+  { level: "B2", title: "B2 (Upper-Intermediate)", desc: "Advanced conversation, writing, and exam readiness." },
+];
+
+export type ClassLevel = "A1" | "A2" | "B1" | "B2";
+
+export const tuitionFeesGHS: Record<ClassLevel, number | null> = {
+  A1: 2800,
+  A2: 3000,
+  B1: 3000,
+  B2: null,
+};
+
+export const feeNotes = [
+  "Goethe exam fees are paid directly to Goethe Institute.",
+  "School tuition fee is separate from Goethe exam fees.",
+];
+
+export const goetheExamLinks: Partial<Record<ClassLevel, { label: string; href: string }>> = {
+  A1: {
+    label: "Goethe A1 Exam (Start Deutsch 1)",
+    href: "https://www.goethe.de/ins/gh/en/spr/prf/gzsd1.cfm?srsltid=AfmBOoqVG2AyqVfQvzf15jL663WXhee1NLZ5m3gUfQgbsMw9o_E4VZHH",
+  },
+  A2: {
+    label: "Goethe A2 Exam (Start Deutsch 2)",
+    href: "https://www.goethe.de/ins/gh/en/spr/prf/gzsd2.cfm?srsltid=AfmBOooS10gzCil6OW1NO9zPUI9q8PXn00WaK7OB9BucVYf35jPlR13_",
+  },
+  B1: {
+    label: "Goethe B1 Exam",
+    href: "https://www.goethe.de/ins/gh/en/spr/prf/gzb1.cfm?srsltid=AfmBOooXArPPndrn2-6OE0zKP_Dk78Z7yqiC3cgo4p8Sol8Ph95hW0cW",
+  },
+};
+
+export type ClassItem = {
+  id: string;
+  title: string;
+  level: ClassLevel;
+  location: string;
+  startDate: string; // ISO date or "TBA"
+  format: string;
+  duration: string;
+  scheduleSummary: string;
+  meetingDays: { day: string; time: string }[];
+  bonus: string[];
+  brochureUrl?: string;
+  tutor?: string;
+};
+
+export const upcomingClasses: ClassItem[] = [
+  {
+    id: "A1-stuttgart-2026-01-08",
+    title: "A1 Stuttgart – Hybrid Class 2026",
+    level: "A1",
+    location: "Stuttgart",
+    startDate: "2026-01-08",
+    format: "Both In-Person & Online",
+    duration: "10 weeks",
+    scheduleSummary: "3x per week",
+    meetingDays: [
+      { day: "Wednesday", time: "2:00 pm – 3:00 pm" },
+      { day: "Thursday", time: "11:00 am – 12:00 pm" },
+      { day: "Friday", time: "11:00 am – 12:00 pm" },
+    ],
+    bonus: ["Free exam preparation", "Access to the Falowen App"],
+  },
+  {
+    id: "A1-hamburg-2026-01-23",
+    title: "A1 Hamburg – Hybrid Class 2026",
+    level: "A1",
+    location: "Hamburg",
+    startDate: "2026-01-23",
+    format: "Both In-Person & Online",
+    duration: "3 months",
+    scheduleSummary: "3x per week",
+    meetingDays: [
+      { day: "Thursday", time: "6:00 pm – 7:00 pm" },
+      { day: "Friday", time: "6:00 pm – 7:00 pm" },
+      { day: "Saturday", time: "8:00 am – 9:00 am" },
+    ],
+    bonus: ["Free exam preparation", "Access to the Falowen App"],
+  },
+  {
+    id: "A2-stuttgart-2026-02-20",
+    title: "A2 Stuttgart – Hybrid Class 2026",
+    level: "A2",
+    location: "Stuttgart",
+    startDate: "2026-02-20",
+    format: "Both In-Person & Online",
+    duration: "3 months",
+    scheduleSummary: "3x per week",
+    meetingDays: [
+      { day: "Monday", time: "7:30 pm – 9:00 pm" },
+      { day: "Tuesday", time: "7:30 pm – 9:00 pm" },
+      { day: "Wednesday", time: "7:30 pm – 9:00 pm" },
+    ],
+    bonus: ["Free exam preparation", "Access to the Falowen App"],
+  },
+  {
+    id: "B1-stuttgart-tba",
+    title: "B1 Stuttgart – Hybrid Class 2026",
+    level: "B1",
+    location: "Stuttgart",
+    startDate: "TBA",
+    format: "Both In-Person & Online",
+    duration: "3 months",
+    scheduleSummary: "2x per week",
+    meetingDays: [
+      { day: "Thursday", time: "7:30 pm – 9:00 pm" },
+      { day: "Friday", time: "7:30 pm – 9:00 pm" },
+    ],
+    bonus: ["Free exam preparation", "Access to the Falowen App"],
+  },
+];
+
+export type Tutor = {
+  name: string;
+  role: string;
+  specialties: string[];
+  bio: string;
+  photo?: string;
+};
+
+export const tutors: Tutor[] = [
+  {
+    name: "Felix Asadu",
+    role: "German Tutor • Founder (Falowen & Learn Language Education Academy)",
+    specialties: ["A1–B2", "Speaking & Writing", "Exam Preparation", "Practical learning methods"],
+    bio:
+      "I’m a multilingual tutor, software developer, and founder of Falowen App and Learn Language Education Academy—created to help students learn German independently and effectively. I’m a certified language trainer with a B.A. in International Management (IU, Germany), a TEFL certification, and a Goethe Institute diploma. I teach German using practical, engaging methods, and I’ve authored a German workbook and developed custom software tools used by my students. I’m passionate about business, technology, and languages, and I enjoy building solutions that empower learners and support cross-cultural growth.",
+  },
+  {
+    name: "Sabine Michel",
+    role: "German Tutor",
+    specialties: ["A1–B1", "Conversation practice", "Pronunciation", "Student-friendly coaching"],
+    bio:
+      "I’m a multilingual German tutor focused on practical, engaging lessons that build confidence step-by-step. My goal is to help students speak naturally, improve pronunciation, and stay consistent with supportive guidance throughout the learning journey.",
+  },
+];
+
+export type Review = {
+  name: string;
+  level: string;
+  text: string;
+  source?: string;
+};
+
+export const reviews: Review[] = [
+  { name: "Student A", level: "A1", text: "The classes are clear and the practice helped me speak with confidence.", source: "WhatsApp" },
+  { name: "Student B", level: "A2", text: "I love the exercises on Falowen and the tutor feedback is very helpful.", source: "Instagram" },
+  { name: "Student C", level: "B1", text: "Great environment and consistent learning. I improved my writing a lot.", source: "WhatsApp" },
+];

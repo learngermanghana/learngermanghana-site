@@ -1,0 +1,18 @@
+﻿@import "tailwindcss";
+
+/* Warm background like premium school sites */
+:root{
+  --paper: #fbfbf6;
+}
+
+html, body { height: 100%; }
+body{
+  background: var(--paper);
+}
+
+/* Smooth typography */
+h1,h2,h3{
+  letter-spacing: -0.03em;
+}
+
+a{ text-underline-offset: 3px; }
