@@ -128,6 +128,7 @@ export const tutors: Tutor[] = [
     name: "Felix Asadu",
     role: "German Tutor • Founder (Falowen & Learn Language Education Academy)",
     specialties: ["A1–B2", "Speaking & Writing", "Exam Preparation", "Practical learning methods"],
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/photo",
     bio:
       "I’m a multilingual tutor, software developer, and founder of Falowen App and Learn Language Education Academy—created to help students learn German independently and effectively. I’m a certified language trainer with a B.A. in International Management (IU, Germany), a TEFL certification, and a Goethe Institute diploma. I teach German using practical, engaging methods, and I’ve authored a German workbook and developed custom software tools used by my students. I’m passionate about business, technology, and languages, and I enjoy building solutions that empower learners and support cross-cultural growth.",
   },
@@ -135,6 +136,7 @@ export const tutors: Tutor[] = [
     name: "Sabine Michel",
     role: "German Tutor",
     specialties: ["A1–B1", "Conversation practice", "Pronunciation", "Student-friendly coaching"],
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/sab.jpg",
     bio:
       "I’m a multilingual German tutor focused on practical, engaging lessons that build confidence step-by-step. My goal is to help students speak naturally, improve pronunciation, and stay consistent with supportive guidance throughout the learning journey.",
   },

@@ -11,6 +11,16 @@ export default function TutorsPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {tutors.map((t) => (
             <div key={t.name} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+              {t.photo ? (
+                <div className="mb-4 overflow-hidden rounded-2xl bg-neutral-100">
+                  <img
+                    src={t.photo}
+                    alt={`${t.name} portrait`}
+                    className="h-60 w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ) : null}
               <div className="text-lg font-semibold">{t.name}</div>
               <div className="text-sm text-neutral-600">{t.role}</div>
               <p className="mt-3 text-sm text-neutral-700 leading-6">{t.bio}</p>
