@@ -55,14 +55,16 @@ export default function RegisterPage() {
               Enrollment • Contract • Support
             </div>
 
-            <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight">
-              How to enroll (No registration form)
-            </h1>
+            <div className="mt-6 rounded-[28px] bg-white/12 ring-1 ring-white/20 p-5 sm:p-7 backdrop-blur">
+              <h1 className="text-2xl sm:text-4xl font-semibold text-white drop-shadow">
+                How to enroll (No registration form)
+              </h1>
 
-            <p className="mt-3 max-w-2xl text-slate-200/90 text-sm sm:text-base leading-7">
-              Register inside Falowen. You will see class dates and prices before you pay.
-              After payment, you get automatic access and we contact you inside the app (and by email if needed).
-            </p>
+              <p className="mt-2 text-sm sm:text-base text-white/95 leading-7 drop-shadow">
+                <span className="font-semibold">Register inside Falowen.</span> Everything happens inside the
+                Falowen app. You will see class dates and prices before you pay.
+              </p>
+            </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
