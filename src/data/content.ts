@@ -1,11 +1,11 @@
-﻿export const courses = [
+﻿export type ClassLevel = "A1" | "A2" | "B1" | "B2";
+
+export const courses: { level: ClassLevel; title: string; desc: string }[] = [
   { level: "A1", title: "A1 (Beginner)", desc: "Start from basics: greetings, daily life, simple conversations." },
   { level: "A2", title: "A2 (Elementary)", desc: "Build confidence: shopping, travel, work, short letters." },
   { level: "B1", title: "B1 (Intermediate)", desc: "Speak more freely: opinions, stories, exams preparation." },
   { level: "B2", title: "B2 (Upper-Intermediate)", desc: "Advanced conversation, writing, and exam readiness." },
 ];
-
-export type ClassLevel = "A1" | "A2" | "B1" | "B2";
 
 export const tuitionFeesGHS: Record<ClassLevel, number | null> = {
   A1: 2800,
