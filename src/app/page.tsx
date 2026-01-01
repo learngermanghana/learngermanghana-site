@@ -45,50 +45,50 @@ export default async function HomePage() {
       {/* HERO BAND */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-900" />
-        <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-gold-400/20 blur-3xl" />
-        <div className="absolute -right-40 top-10 h-96 w-96 rounded-full bg-emerald-400/15 blur-3xl" />
+        <div className="absolute -left-40 -top-40 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-gold-400/20 blur-3xl" />
+        <div className="absolute -right-40 top-10 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-emerald-400/15 blur-3xl" />
 
         <Container>
-          <div className="relative py-14 sm:py-20 text-white">
-            <div className="flex flex-wrap items-center gap-2">
+          <div className="relative py-12 sm:py-20 text-white">
+            <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
               <Badge>German School • Ghana</Badge>
               <Badge>Online & In-Person</Badge>
               <Badge>Powered by Falowen</Badge>
             </div>
 
-            <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="mt-6 sm:mt-8 grid gap-8 lg:grid-cols-2 lg:items-center">
               {/* Left text */}
               <div>
-                <h1 className="text-4xl sm:text-6xl font-semibold leading-[1.05]">
+                <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.1] sm:leading-[1.05]">
                   Learn German the smart way —
                   <span className="text-gold-200"> class + app practice</span>.
                 </h1>
 
-                <p className="mt-4 max-w-xl text-white/85 text-base sm:text-lg leading-7">
+                <p className="mt-4 max-w-xl text-white/85 text-sm sm:text-lg leading-7">
                   {SITE.brand} helps you build speaking confidence, writing skills, and exam readiness.
                   Registration is done on our official portal:
                   <span className="font-semibold"> register.falowen.app</span>.
                 </p>
 
-                <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
   <a
     href="https://register.falowen.app"
     target="_blank"
     rel="noreferrer"
-    className="inline-flex items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
+    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
   >
     Register / Contract
   </a>
 
   <a
     href="/register"
-    className="inline-flex items-center justify-center rounded-2xl border border-white/50 bg-black/20 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/30"
+    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/50 bg-black/20 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/30"
   >
     How to register (steps)
   </a>
 </div>
 
-                <div className="mt-8 grid grid-cols-2 gap-3 max-w-xl">
+                <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
                   <div className="rounded-3xl bg-white/10 ring-1 ring-white/15 p-4">
                     <div className="text-xs text-white/70">Next start date</div>
                     <div className="mt-1 font-semibold">{formatDatePretty(nextClass.startDate)}</div>
@@ -126,7 +126,7 @@ export default async function HomePage() {
                     width={1200}
                     height={900}
                     priority
-                    className="h-[420px] w-full object-cover"
+                    className="h-[260px] sm:h-[420px] w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
@@ -311,7 +311,6 @@ export default async function HomePage() {
     </div>
   );
 }
-
 
 
 
