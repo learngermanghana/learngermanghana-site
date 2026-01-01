@@ -102,8 +102,8 @@ export default function ClassesPage() {
                 Start Date: <span className="font-semibold">{c.startDate}</span>
               </div>
 
-              <div className="mt-2 text-sm text-neutral-700">
-                Tutor: <span className="font-semibold">{c.tutor}</span>
+              <div className="mt-2 text-sm font-semibold text-neutral-900">
+                {formatTuition(c.level)}
               </div>
 
               <div className="mt-2 text-sm text-neutral-700">
