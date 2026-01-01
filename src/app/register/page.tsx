@@ -16,7 +16,7 @@ export default function RegisterPage() {
       <section className="py-12 sm:py-16">
         <SectionTitle
           title="Enroll on Falowen"
-          subtitle="No registration form needed. Create an account in Falowen, choose a class, and pay to get access."
+          subtitle="No registration form needed. Create an account in Falowen, choose a class, review the price, and pay to get access."
         />
 
         {/* Primary CTA */}
@@ -26,7 +26,7 @@ export default function RegisterPage() {
               <div className="text-white/80 text-sm">Enrollment portal</div>
               <div className="mt-1 text-2xl sm:text-3xl font-semibold">Go to Falowen (Sign up)</div>
               <div className="mt-3 text-white/85 max-w-2xl text-sm sm:text-base leading-7">
-                Enrollment happens inside Falowen. After payment, you get automatic access (or as soon as payment is confirmed).
+                Enrollment happens inside Falowen. You will see the class price and start dates before you pay, and access is granted after payment confirmation.
               </div>
             </div>
 
@@ -60,12 +60,30 @@ export default function RegisterPage() {
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           <Card>
             <div className="text-sm font-semibold">How to enroll (No registration form)</div>
-            <ol className="mt-3 space-y-2 text-sm text-neutral-700 leading-6">
-              <li><span className="font-semibold">1) Create your account:</span> Visit <span className="font-semibold">www.falowen.app</span> and click <span className="font-semibold">Sign up</span>.</li>
-              <li><span className="font-semibold">2) Choose a class:</span> Open <span className="font-semibold">Upcoming Classes</span> inside Falowen and select your class.</li>
-              <li><span className="font-semibold">3) Make payment:</span> Pay online for the selected class.</li>
-              <li><span className="font-semibold">4) Get automatic access:</span> Access is granted immediately (or once payment confirms).</li>
-              <li><span className="font-semibold">5) We contact you:</span> The Academy will contact you in the app (and by email if needed).</li>
+            <div className="mt-2 text-sm text-neutral-600 leading-6">
+              This is the fastest way on mobile—everything happens inside Falowen.
+            </div>
+            <ol className="mt-3 space-y-3 text-sm text-neutral-700 leading-6">
+              <li>
+                <span className="font-semibold">1) Create your account:</span>{" "}
+                Visit <span className="font-semibold">www.falowen.app</span> and tap <span className="font-semibold">Sign up</span>.
+              </li>
+              <li>
+                <span className="font-semibold">2) Choose a class:</span>{" "}
+                Open <span className="font-semibold">Upcoming Classes</span> to see dates and prices, then select your class.
+              </li>
+              <li>
+                <span className="font-semibold">3) Make payment:</span>{" "}
+                Pay online for the selected class.
+              </li>
+              <li>
+                <span className="font-semibold">4) Get automatic access:</span>{" "}
+                Access is granted immediately (or once payment confirms).
+              </li>
+              <li>
+                <span className="font-semibold">5) We contact you:</span>{" "}
+                The Academy will contact you in the app (and by email if needed).
+              </li>
             </ol>
 
             <div className="mt-4 flex flex-col gap-2">
