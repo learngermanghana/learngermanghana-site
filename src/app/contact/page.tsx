@@ -30,7 +30,7 @@ export default function ContactPage() {
             <div className="text-lg font-semibold">Contact details</div>
             <div className="mt-4 space-y-3 text-sm text-neutral-700">
               <div><span className="text-neutral-500">Email:</span> {SITE.email}</div>
-              <div><span className="text-neutral-500">WhatsApp:</span> +{SITE.whatsapp}</div>
+              <div><span className="text-neutral-500">WhatsApp:</span> +{SITE.phoneIntl}</div>
               <div><span className="text-neutral-500">Location:</span> {SITE.location}</div>
             </div>
           </div>
