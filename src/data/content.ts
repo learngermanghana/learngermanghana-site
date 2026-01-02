@@ -74,7 +74,7 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "A1-hamburg-2026-01-23",
-    title: "A1 Hamburg – Hybrid Class 2026",
+    title: "A1 Hamburg Klasse (Class name) – Hybrid Class 2026",
     level: "A1",
     location: "Hamburg",
     startDate: "2026-01-23",
@@ -90,7 +90,7 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "A2-stuttgart-2026-02-20",
-    title: "A2 Stuttgart – Hybrid Class 2026",
+    title: "A2 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "A2",
     location: "Stuttgart",
     startDate: "2026-02-20",
@@ -106,7 +106,7 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "B1-stuttgart-tba",
-    title: "B1 Stuttgart – Hybrid Class 2026",
+    title: "B1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "B1",
     location: "Stuttgart",
     startDate: "TBA",
