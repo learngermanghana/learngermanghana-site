@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     default: `${SITE.brand} | Learn German`,
     template: `%s | ${SITE.brand}`,
   },
-  description: "German school in Ghana (online & in-person). Register via Falowen.",
+  description:
+    "German school in Ghana offering A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
   alternates: {
     canonical: "/",
   },
@@ -21,12 +22,14 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: SITE.brand,
     title: `${SITE.brand} | Learn German`,
-    description: "German school in Ghana (online & in-person). Register via Falowen.",
+    description:
+      "German school in Ghana offering A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
   },
   twitter: {
     card: "summary",
     title: `${SITE.brand} | Learn German`,
-    description: "German school in Ghana (online & in-person). Register via Falowen.",
+    description:
+      "German school in Ghana offering A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
   },
   robots: {
     index: true,
@@ -38,6 +41,13 @@ export const metadata: Metadata = {
     "German language school",
     "Online German lessons",
     "In-person German classes",
+    "Hybrid German classes",
+    "Self-paced German",
+    "AI German learning",
+    "A1 German",
+    "B1 German",
+    "B2 German",
+    "C1 German",
     "Falowen registration",
   ],
 };
