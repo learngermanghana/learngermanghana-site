@@ -62,7 +62,7 @@ export const upcomingClasses: ClassItem[] = [
     level: "A1",
     location: "Stuttgart",
     startDate: "2026-01-08",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "10 weeks",
     scheduleSummary: "3x per week",
     meetingDays: [
@@ -78,7 +78,7 @@ export const upcomingClasses: ClassItem[] = [
     level: "A1",
     location: "Hamburg",
     startDate: "2026-01-23",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "3x per week",
     meetingDays: [
@@ -94,7 +94,7 @@ export const upcomingClasses: ClassItem[] = [
     level: "A2",
     location: "Stuttgart",
     startDate: "2026-02-20",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "3x per week",
     meetingDays: [
@@ -110,7 +110,7 @@ export const upcomingClasses: ClassItem[] = [
     level: "B1",
     location: "Stuttgart",
     startDate: "TBA",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "2x per week",
     meetingDays: [
