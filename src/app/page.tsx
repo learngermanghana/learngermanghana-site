@@ -57,7 +57,7 @@ export default async function HomePage() {
           <div className="relative py-12 sm:py-20 text-white">
             <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
               <Badge>German School • Ghana</Badge>
-              <Badge>Online & In-Person</Badge>
+              <Badge>A1–C1 Programs</Badge>
               <Badge>Powered by Falowen</Badge>
             </div>
 
@@ -74,6 +74,20 @@ export default async function HomePage() {
                   Registration is done on our official portal:
                   <span className="font-semibold"> register.falowen.app</span>.
                 </p>
+
+                <div className="mt-5 max-w-xl rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
+                  <div className="text-sm font-semibold text-white">Levels & study modes</div>
+                  <ul className="mt-2 space-y-2 text-sm text-white/85">
+                    <li>
+                      <span className="font-semibold text-white">A1–B1:</span> Hybrid (online + in-person)
+                      with daily options, or use recorded lectures for self-learning.
+                    </li>
+                    <li>
+                      <span className="font-semibold text-white">B2–C1:</span> Self-paced with AI
+                      integration, no physical classes — students learn independently.
+                    </li>
+                  </ul>
+                </div>
 
                 <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
                   <a
