@@ -58,11 +58,11 @@ export type ClassItem = {
 export const upcomingClasses: ClassItem[] = [
   {
     id: "A1-stuttgart-2026-01-08",
-    title: "A1 Stuttgart – Hybrid Class 2026",
+    title: "A1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "A1",
     location: "Stuttgart",
     startDate: "2026-01-08",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "10 weeks",
     scheduleSummary: "3x per week",
     meetingDays: [
@@ -74,11 +74,11 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "A1-hamburg-2026-01-23",
-    title: "A1 Hamburg – Hybrid Class 2026",
+    title: "A1 Hamburg Klasse (Class name) – Hybrid Class 2026",
     level: "A1",
     location: "Hamburg",
     startDate: "2026-01-23",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "3x per week",
     meetingDays: [
@@ -90,11 +90,11 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "A2-stuttgart-2026-02-20",
-    title: "A2 Stuttgart – Hybrid Class 2026",
+    title: "A2 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "A2",
     location: "Stuttgart",
     startDate: "2026-02-20",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "3x per week",
     meetingDays: [
@@ -106,11 +106,11 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "B1-stuttgart-tba",
-    title: "B1 Stuttgart – Hybrid Class 2026",
+    title: "B1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "B1",
     location: "Stuttgart",
     startDate: "TBA",
-    format: "Both In-Person & Online",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "2x per week",
     meetingDays: [
