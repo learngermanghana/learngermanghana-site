@@ -126,7 +126,7 @@ export const upcomingClasses: ClassItem[] = [
     title: "B2 Self-Learning (Falowen App) – AI + Email Tutor Support",
     level: "B2",
     location: "Online",
-    startDate: "TBA",
+    startDate: "Always open",
     format:
       "Self-learning with AI assistant + tutor support by email when needed. Students should be ready to use AI tools and the Falowen schedule. No in-person classes.",
     duration: "6 months contract access",
@@ -139,7 +139,7 @@ export const upcomingClasses: ClassItem[] = [
     title: "C1 Self-Learning (Falowen App) – AI + Email Tutor Support",
     level: "C1",
     location: "Online",
-    startDate: "TBA",
+    startDate: "Always open",
     format:
       "Self-learning with AI assistant + tutor support by email when needed. Students should be ready to use AI tools and the Falowen schedule. No in-person classes.",
     duration: "6 months contract access",
