@@ -1,17 +1,19 @@
-﻿export type ClassLevel = "A1" | "A2" | "B1" | "B2";
+﻿export type ClassLevel = "A1" | "A2" | "B1" | "B2" | "C1";
 
 export const courses: { level: ClassLevel; title: string; desc: string }[] = [
   { level: "A1", title: "A1 (Beginner)", desc: "Start from basics: greetings, daily life, simple conversations." },
   { level: "A2", title: "A2 (Elementary)", desc: "Build confidence: shopping, travel, work, short letters." },
   { level: "B1", title: "B1 (Intermediate)", desc: "Speak more freely: opinions, stories, exams preparation." },
   { level: "B2", title: "B2 (Upper-Intermediate)", desc: "Advanced conversation, writing, and exam readiness." },
+  { level: "C1", title: "C1 (Advanced)", desc: "High-level fluency for academic, professional, and exam success." },
 ];
 
 export const tuitionFeesGHS: Record<ClassLevel, number | null> = {
   A1: 2800,
   A2: 3000,
   B1: 3000,
-  B2: null,
+  B2: 3000,
+  C1: 3000,
 };
 
 export const feeNotes = [
@@ -118,6 +120,32 @@ export const upcomingClasses: ClassItem[] = [
       { day: "Friday", time: "7:30 pm – 9:00 pm" },
     ],
     bonus: ["Free exam preparation", "Access to the Falowen App"],
+  },
+  {
+    id: "B2-self-learning-2026",
+    title: "B2 Self-Learning (Falowen App) – AI + Email Tutor Support",
+    level: "B2",
+    location: "Online",
+    startDate: "TBA",
+    format:
+      "Self-learning with AI assistant + tutor support by email when needed. Students should be ready to use AI tools and the Falowen schedule. No in-person classes.",
+    duration: "6 months contract access",
+    scheduleSummary: "Self-paced",
+    meetingDays: [{ day: "Self-learning", time: "Follow the Falowen schedule with AI tools" }],
+    bonus: ["AI assistant in Falowen", "Email tutor support when needed", "Structured self-study plan"],
+  },
+  {
+    id: "C1-self-learning-2026",
+    title: "C1 Self-Learning (Falowen App) – AI + Email Tutor Support",
+    level: "C1",
+    location: "Online",
+    startDate: "TBA",
+    format:
+      "Self-learning with AI assistant + tutor support by email when needed. Students should be ready to use AI tools and the Falowen schedule. No in-person classes.",
+    duration: "6 months contract access",
+    scheduleSummary: "Self-paced",
+    meetingDays: [{ day: "Self-learning", time: "Follow the Falowen schedule with AI tools" }],
+    bonus: ["AI assistant in Falowen", "Email tutor support when needed", "Structured self-study plan"],
   },
 ];
 
