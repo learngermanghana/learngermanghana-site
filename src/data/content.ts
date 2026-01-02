@@ -58,7 +58,7 @@ export type ClassItem = {
 export const upcomingClasses: ClassItem[] = [
   {
     id: "A1-stuttgart-2026-01-08",
-    title: "A1 Stuttgart – Hybrid Class 2026",
+    title: "A1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "A1",
     location: "Stuttgart",
     startDate: "2026-01-08",
