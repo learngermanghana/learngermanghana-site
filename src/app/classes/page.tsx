@@ -1,3 +1,8 @@
+
+"use client";
+
+import { useMemo, useState } from "react";
+
 import { Container } from "@/components/Container";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { formatDatePretty } from "@/lib/date";
@@ -29,7 +34,45 @@ function Step({
   );
 }
 
+function getFormatLabel(format: string) {
+  const normalized = format.toLowerCase();
+
+  if (normalized.includes("self-learning")) {
+    return "Self-learning";
+  }
+
+  if (normalized.includes("hybrid")) {
+    return "Hybrid";
+  }
+
+  return "Other";
+}
+
 export default function ClassesPage() {
+  const [selectedLevel, setSelectedLevel] = useState("All");
+  const [selectedFormat, setSelectedFormat] = useState("All");
+
+  const levels = useMemo(
+    () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => item.level)))],
+    []
+  );
+
+  const formats = useMemo(
+    () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => getFormatLabel(item.format))))],
+    []
+  );
+
+  const filteredClasses = useMemo(
+    () =>
+      upcomingClasses.filter((item) => {
+        const levelMatch = selectedLevel === "All" || item.level === selectedLevel;
+        const formatMatch = selectedFormat === "All" || getFormatLabel(item.format) === selectedFormat;
+
+        return levelMatch && formatMatch;
+      }),
+    [selectedLevel, selectedFormat]
+  );
+
   return (
     <div className="bg-neutral-50">
       <div className="relative overflow-hidden">
@@ -54,6 +97,10 @@ export default function ClassesPage() {
                 <span className="font-semibold">Register inside Falowen.</span> Everything happens inside the
                 Falowen app. You will see class dates, tuition, and Goethe exam fees before you pay.
               </p>
+
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs text-white/90 ring-1 ring-white/15">
+                <span className="font-semibold">Location:</span> Awoshie - Accra
+              </div>
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -117,10 +164,46 @@ export default function ClassesPage() {
             to sit the exam.
           </p>
 
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
+                Level
+                <select
+                  value={selectedLevel}
+                  onChange={(event) => setSelectedLevel(event.target.value)}
+                  className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+                >
+                  {levels.map((level) => (
+                    <option key={level} value={level}>
+                      {level}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
+                Format
+                <select
+                  value={selectedFormat}
+                  onChange={(event) => setSelectedFormat(event.target.value)}
+                  className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+                >
+                  {formats.map((format) => (
+                    <option key={format} value={format}>
+                      {format}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
+
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
-            {upcomingClasses.map((c) => {
+            {filteredClasses.map((c) => {
               const tuition = tuitionFeesGHS[c.level];
               const examFee = goetheExamFeesGHS[c.level];
+              const formatLabel = getFormatLabel(c.format);
+              const isAlwaysOpen = c.startDate === "Always open";
 
               return (
                 <div key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
@@ -129,11 +212,16 @@ export default function ClassesPage() {
                       Level: {c.level}
                     </span>
                     <span className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs text-neutral-700">
-                      {c.format}
+                      {formatLabel}
                     </span>
                     <span className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs text-neutral-700">
                       {c.duration}
                     </span>
+                    {isAlwaysOpen ? (
+                      <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                        Self-paced / Always open
+                      </span>
+                    ) : null}
                     <span className="rounded-full border border-black/10 bg-amber-100 px-3 py-1 text-xs font-semibold text-neutral-900">
                       Tuition: {tuition ? money(tuition) : "Check in Falowen"}
                     </span>
@@ -149,7 +237,24 @@ export default function ClassesPage() {
                   </div>
 
                   <div className="mt-2 text-sm text-neutral-700">
+                    <span className="font-semibold">Location:</span> {c.location}
+                  </div>
+
+                  <div className="mt-2 text-sm text-neutral-700">
+                    <span className="font-semibold">Format:</span> {c.format}
+                  </div>
+
+                  <div className="mt-2 text-sm text-neutral-700">
                     Tuition covers classes only. Exams are paid directly to Goethe-Institut.
+                  </div>
+
+                  <div className="mt-4 rounded-2xl border border-black/10 bg-white p-4">
+                    <div className="text-sm font-semibold text-neutral-900">What&apos;s included</div>
+                    <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-neutral-700">
+                      {c.bonus.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
 
                   <div className="mt-4 rounded-2xl border border-black/10 bg-neutral-50 p-4">
@@ -187,6 +292,12 @@ export default function ClassesPage() {
               );
             })}
           </div>
+
+          {filteredClasses.length === 0 ? (
+            <div className="mt-6 rounded-3xl border border-dashed border-black/10 bg-white p-6 text-sm text-neutral-700">
+              No classes match this filter right now. Try another level or format to see available options.
+            </div>
+          ) : null}
 
           <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
             <div className="text-sm font-semibold text-neutral-900">Still have questions?</div>
