@@ -107,11 +107,11 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "B1-stuttgart-tba",
+    id: "B1-stuttgart-2026-03-12",
     title: "B1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
     level: "B1",
     location: "Stuttgart",
-    startDate: "TBA",
+    startDate: "2026-03-12",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "2x per week",
