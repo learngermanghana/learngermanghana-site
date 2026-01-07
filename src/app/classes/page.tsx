@@ -82,25 +82,23 @@ export default function ClassesPage() {
         <div className="absolute inset-0 bg-black/35 sm:bg-black/25" />
 
         <Container>
-          <section className="relative py-10 sm:py-14 text-slate-100">
+          <section className="relative py-8 sm:py-10 text-slate-100">
             <div className="inline-flex items-center gap-2 rounded-full bg-black/35 px-4 py-2 text-xs text-slate-100/90 ring-1 ring-white/15">
               <span className="h-2 w-2 rounded-full bg-amber-300" />
               Enrollment • Contract • Support
             </div>
 
-            <div className="mt-6 rounded-[28px] bg-white/12 ring-1 ring-white/20 p-5 sm:p-7 backdrop-blur">
-              <h1 className="text-2xl sm:text-4xl font-semibold text-white drop-shadow">
-                Upcoming Classes & Enrollment
-              </h1>
+            <h1 className="mt-5 text-2xl sm:text-4xl font-semibold text-white drop-shadow">
+              Upcoming Classes & Enrollment
+            </h1>
 
-              <p className="mt-2 text-sm sm:text-base text-white/95 leading-7 drop-shadow">
-                <span className="font-semibold">Register inside Falowen.</span> Everything happens inside the
-                Falowen app. You will see class dates, tuition, and Goethe exam fees before you pay.
-              </p>
+            <p className="mt-2 text-sm sm:text-base text-white/95 leading-7 drop-shadow max-w-3xl">
+              <span className="font-semibold">Register inside Falowen.</span> Everything happens inside the Falowen
+              app. You will see class dates, tuition, and Goethe exam fees before you pay.
+            </p>
 
-              <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs text-white/90 ring-1 ring-white/15">
-                <span className="font-semibold">Location:</span> Awoshie - Accra
-              </div>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs text-white/90 ring-1 ring-white/15">
+              <span className="font-semibold">Location:</span> Awoshie - Accra
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -130,24 +128,6 @@ export default function ClassesPage() {
               >
                 WhatsApp help
               </a>
-            </div>
-
-            <div className="mt-7 grid gap-4 lg:grid-cols-3">
-              <Step
-                n={1}
-                title="Create an account"
-                text="Go to www.falowen.app and tap Sign up."
-              />
-              <Step
-                n={2}
-                title="Pick your class"
-                text="Open Upcoming Classes to view dates, locations, and prices."
-              />
-              <Step
-                n={3}
-                title="Pay online → get access"
-                text="Complete payment to receive automatic access right away."
-              />
             </div>
           </section>
         </Container>
@@ -298,6 +278,30 @@ export default function ClassesPage() {
               No classes match this filter right now. Try another level or format to see available options.
             </div>
           ) : null}
+
+          <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
+            <div className="text-lg font-semibold text-neutral-900">How enrollment works</div>
+            <p className="mt-1 text-sm text-neutral-700">
+              Register inside Falowen to see dates, locations, and prices before you pay.
+            </p>
+            <div className="mt-4 grid gap-4 lg:grid-cols-3">
+              <Step
+                n={1}
+                title="Create an account"
+                text="Go to www.falowen.app and tap Sign up."
+              />
+              <Step
+                n={2}
+                title="Pick your class"
+                text="Open Upcoming Classes to view dates, locations, and prices."
+              />
+              <Step
+                n={3}
+                title="Pay online → get access"
+                text="Complete payment to receive automatic access right away."
+              />
+            </div>
+          </div>
 
           <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
             <div className="text-sm font-semibold text-neutral-900">Still have questions?</div>
