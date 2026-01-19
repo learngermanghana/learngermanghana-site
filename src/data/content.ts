@@ -75,11 +75,11 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "A1-hamburg-2026-01-23",
+    id: "A1-hamburg-2026-01-29",
     title: "A1 Hamburg Klasse (Class name) – Hybrid Class 2026",
     level: "A1",
     location: "Awoshie - Accra",
-    startDate: "2026-01-23",
+    startDate: "2026-01-29",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "3x per week",
