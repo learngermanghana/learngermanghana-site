@@ -22,14 +22,14 @@ function Step({
   text: string;
 }) {
   return (
-    <div className="rounded-3xl bg-white/10 ring-1 ring-white/15 p-5 backdrop-blur">
+    <div className="rounded-3xl border border-black/10 bg-neutral-50 p-5">
       <div className="flex items-center gap-3">
         <div className="grid h-9 w-9 place-items-center rounded-2xl bg-amber-300 text-neutral-900 font-bold">
           {n}
         </div>
-        <div className="text-base font-semibold text-slate-100">{title}</div>
+        <div className="text-base font-semibold text-neutral-900">{title}</div>
       </div>
-      <p className="mt-3 text-sm leading-6 text-slate-200/90">{text}</p>
+      <p className="mt-3 text-sm leading-6 text-neutral-700">{text}</p>
     </div>
   );
 }
