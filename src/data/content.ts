@@ -59,18 +59,18 @@ export type ClassItem = {
 
 export const upcomingClasses: ClassItem[] = [
   {
-    id: "A1-stuttgart-2026-01-08",
-    title: "A1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
+    id: "A1-berlin-2026-02-17",
+    title: "A1 Berlin Klasse – Hybrid Class 2026",
     level: "A1",
     location: "Awoshie - Accra",
-    startDate: "2026-01-08",
+    startDate: "2026-02-17",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "10 weeks",
     scheduleSummary: "3x per week",
     meetingDays: [
+      { day: "Monday", time: "11:00 am – 12:00 pm" },
+      { day: "Tuesday", time: "11:00 am – 12:00 pm" },
       { day: "Wednesday", time: "2:00 pm – 3:00 pm" },
-      { day: "Thursday", time: "11:00 am – 12:00 pm" },
-      { day: "Friday", time: "11:00 am – 12:00 pm" },
     ],
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
