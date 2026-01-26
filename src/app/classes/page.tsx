@@ -143,6 +143,13 @@ export default function ClassesPage() {
             Tuition covers classes only. Goethe exam fees are paid directly to Goethe-Institut when you are ready
             to sit the exam.
           </p>
+          <div className="mt-4 rounded-3xl border border-amber-200 bg-amber-50/60 p-4 text-sm text-neutral-800">
+            <div className="text-sm font-semibold text-neutral-900">Class session length & assignments</div>
+            <p className="mt-1 text-sm text-neutral-700 leading-6">
+              Each live class is <span className="font-semibold">1 hour</span>. After every session, students receive
+              assignments to complete at their own pace before the next class.
+            </p>
+          </div>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
