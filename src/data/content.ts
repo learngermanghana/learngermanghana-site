@@ -45,6 +45,7 @@ export const goetheExamLinks: Partial<Record<ClassLevel, { label: string; href: 
 export type ClassItem = {
   id: string;
   title: string;
+  language: "German" | "French";
   level: ClassLevel;
   location: string;
   startDate: string; // ISO date or "TBA"
@@ -53,6 +54,8 @@ export type ClassItem = {
   scheduleSummary: string;
   meetingDays: { day: string; time: string }[];
   bonus: string[];
+  tuitionFee?: number;
+  examFee?: number;
   brochureUrl?: string;
   tutor?: string;
 };
@@ -61,6 +64,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "A1-berlin-2026-02-17",
     title: "A1 Berlin Klasse – Hybrid Class 2026",
+    language: "German",
     level: "A1",
     location: "Awoshie - Accra",
     startDate: "2026-02-17",
@@ -77,6 +81,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "A1-hamburg-2026-01-29",
     title: "A1 Hamburg Klasse (Class name) – Hybrid Class 2026",
+    language: "German",
     level: "A1",
     location: "Awoshie - Accra",
     startDate: "2026-01-29",
@@ -91,8 +96,27 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
+    id: "A1-paris-2026-tba",
+    title: "A1 Paris Class – Hybrid Class 2026",
+    language: "French",
+    level: "A1",
+    location: "Paris",
+    startDate: "TBA",
+    format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
+    duration: "14 weeks (28 chapters, 2 per week)",
+    scheduleSummary: "2x per week",
+    meetingDays: [
+      { day: "Saturday", time: "6:00 pm – 7:00 pm" },
+      { day: "Sunday", time: "6:00 pm – 7:00 pm" },
+    ],
+    bonus: ["Free exam preparation", "Access to the Falowen App"],
+    tuitionFee: 2800,
+    examFee: 945,
+  },
+  {
     id: "A2-stuttgart-2026-02-20",
     title: "A2 Stuttgart Klasse (Class name) – Hybrid Class 2026",
+    language: "German",
     level: "A2",
     location: "Awoshie - Accra",
     startDate: "2026-02-20",
@@ -109,6 +133,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "B1-stuttgart-2026-03-12",
     title: "B1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
+    language: "German",
     level: "B1",
     location: "Awoshie - Accra",
     startDate: "2026-03-12",
@@ -124,6 +149,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "B2-self-learning-2026",
     title: "B2 Self-Learning (Falowen App) – AI + Email Tutor Support",
+    language: "German",
     level: "B2",
     location: "Online",
     startDate: "Always open",
@@ -137,6 +163,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "C1-self-learning-2026",
     title: "C1 Self-Learning (Falowen App) – AI + Email Tutor Support",
+    language: "German",
     level: "C1",
     location: "Online",
     startDate: "Always open",
