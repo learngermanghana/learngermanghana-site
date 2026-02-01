@@ -110,8 +110,6 @@ export const upcomingClasses: ClassItem[] = [
       { day: "Sunday", time: "6:00 pm – 7:00 pm" },
     ],
     bonus: ["Free exam preparation", "Access to the Falowen App"],
-    tuitionFee: 1500,
-    examFee: 945,
   },
   {
     id: "A2-stuttgart-2026-02-20",
