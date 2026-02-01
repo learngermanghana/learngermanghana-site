@@ -56,7 +56,7 @@ export default async function HomePage() {
         <Container>
           <div className="relative py-12 sm:py-20 text-white">
             <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-              <Badge>German School • Ghana</Badge>
+              <Badge>Language School • Ghana</Badge>
               <Badge>A1–C1 Programs</Badge>
               <Badge>Powered by Falowen</Badge>
             </div>
@@ -65,7 +65,7 @@ export default async function HomePage() {
               {/* Left text */}
               <div>
                 <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.12] sm:leading-[1.05] text-white">
-                  Learn German the smart way —
+                  Learn German & French the smart way —
                   <span className="text-amber-200"> class + app practice</span>.
                 </h1>
 

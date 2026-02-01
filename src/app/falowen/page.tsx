@@ -5,13 +5,13 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { LINKS, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Falowen | Learn German in Ghana & Nigeria",
+  title: "Falowen | Learn German & French in Ghana & Nigeria",
   description:
-    "Discover Falowen, the modern German learning platform trusted in Ghana and Nigeria. Study online or in-person, practice with the app, and prepare for Goethe exams with expert tutors.",
+    "Discover Falowen, the modern language-learning platform (German & French) trusted in Ghana and Nigeria. Study online or in-person, practice with the app, and prepare for Goethe and DELF exams with expert tutors.",
   openGraph: {
-    title: "Falowen | Learn German in Ghana & Nigeria",
+    title: "Falowen | Learn German & French in Ghana & Nigeria",
     description:
-      "Discover Falowen, the modern German learning platform trusted in Ghana and Nigeria. Study online or in-person, practice with the app, and prepare for Goethe exams with expert tutors.",
+      "Discover Falowen, the modern language-learning platform (German & French) trusted in Ghana and Nigeria. Study online or in-person, practice with the app, and prepare for Goethe and DELF exams with expert tutors.",
   },
 };
 
@@ -20,8 +20,8 @@ export default function FalowenPage() {
     <Container>
       <section className="py-12 sm:py-16">
         <SectionTitle
-          title="Falowen: The right place to learn German in Ghana & Nigeria"
-          subtitle="A modern German learning platform backed by the Learn Language Education Academy — with structured classes, app practice, and real exam readiness."
+          title="Falowen: The right place to learn German & French in Ghana & Nigeria"
+          subtitle="A modern language-learning platform (German & French) backed by the Learn Language Education Academy — with structured classes, app practice, and real exam readiness."
         />
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -29,10 +29,10 @@ export default function FalowenPage() {
             <div className="rounded-3xl border border-black/10 bg-white p-6 sm:p-8 shadow-sm">
               <h2 className="text-xl font-semibold">Why Falowen works for Ghana & Nigeria</h2>
               <p className="mt-3 text-neutral-700 leading-7">
-                Falowen is built for learners in West Africa who want a clear path to German fluency. We combine
-                structured lessons, guided assignments, and community support with the flexibility of a
+                Falowen is built for learners in West Africa who want a clear path to German or French fluency. We
+                combine structured lessons, guided assignments, and community support with the flexibility of a
                 mobile-friendly learning app. Whether you are studying in Accra, Kumasi, Lagos, or Abuja, you can
-                access the same quality German instruction, live classes, and practice tools.
+                access the same quality language instruction, live classes, and practice tools.
               </p>
               <p className="mt-4 text-neutral-700 leading-7">
                 The platform is trusted by students of the <span className="font-semibold">{SITE.brand}</span>, a
@@ -46,8 +46,8 @@ export default function FalowenPage() {
                 {[
                   "Online + in-person classes that fit busy schedules.",
                   "Grammar, speaking, listening, and writing practice in one place.",
-                  "Structured A1, A2, B1, and B2 learning paths.",
-                  "Goethe exam preparation with feedback from tutors.",
+                  "Structured learning paths (A1–B2 for German; A1 for French).",
+                  "Goethe and DELF exam preparation with feedback from tutors.",
                   "Progress tracking to keep you motivated and consistent.",
                   "Easy enrollment, tuition visibility, and class reminders.",
                 ].map((item) => (
@@ -60,16 +60,17 @@ export default function FalowenPage() {
             </div>
 
             <div className="rounded-3xl border border-black/10 bg-white p-6 sm:p-8 shadow-sm">
-              <h2 className="text-xl font-semibold">Learning German in Ghana & Nigeria</h2>
+              <h2 className="text-xl font-semibold">Learning German & French in Ghana & Nigeria</h2>
               <p className="mt-3 text-neutral-700 leading-7">
-                Demand for German language skills is growing across Ghana and Nigeria. Falowen connects you with
-                qualified tutors, clear study plans, and the support you need to pass German proficiency exams. You can
-                join from anywhere, attend live lessons, and practice daily in the app for steady progress.
+                Demand for German and French language skills is growing across Ghana and Nigeria. Falowen connects you
+                with qualified tutors, clear study plans, and the support you need to prepare for language proficiency
+                exams. You can join from anywhere, attend live lessons, and practice daily in the app for steady
+                progress.
               </p>
               <div className="mt-4 rounded-2xl bg-neutral-50 p-4 ring-1 ring-black/5">
                 <div className="text-sm font-semibold">Ideal for learners who want:</div>
                 <ul className="mt-2 space-y-2 text-sm text-neutral-700">
-                  <li>• German for study abroad, visas, or relocation planning.</li>
+                  <li>• German or French for study abroad, visas or relocation planning.</li>
                   <li>• A structured path from beginner to intermediate levels.</li>
                   <li>• A supportive learning community with real accountability.</li>
                 </ul>
@@ -91,6 +92,14 @@ export default function FalowenPage() {
                   className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
                 >
                   Go to Falowen
+                </a>
+                <a
+                  href="https://register.falowen.app/french"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+                >
+                  Sign up for French A1
                 </a>
                 <Link
                   href="/classes"

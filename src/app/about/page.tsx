@@ -8,7 +8,7 @@ export default function AboutPage() {
       <section className="py-12 sm:py-16">
         <SectionTitle
           title="About Learn Language Education Academy"
-          subtitle="German language tutoring in Awoshie, Accra — onsite & online. Powered by Falowen."
+          subtitle="German and French language tutoring in Awoshie, Accra — onsite & online. Powered by Falowen."
         />
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -16,10 +16,12 @@ export default function AboutPage() {
           <div className="lg:col-span-2 rounded-3xl border border-black/10 bg-white p-6 sm:p-8 shadow-sm">
             <h2 className="text-xl font-semibold">Who we are</h2>
             <p className="mt-3 text-neutral-700 leading-7">
-              <span className="font-semibold">Learn Language Education Academy</span> is a German language school in
-              Awoshie, Accra, founded by the creators of the <span className="font-semibold">Falowen German Learning App</span>.
-              We help learners of all ages build real speaking confidence through structured lessons, consistent practice,
-              and strong tutor guidance — both <span className="font-semibold">onsite</span> and <span className="font-semibold">online</span>.
+              <span className="font-semibold">Learn Language Education Academy</span> is a German and French language
+              school in Awoshie, Accra, founded by the creators of the{" "}
+              <span className="font-semibold">Falowen German & French learning app</span>. We help learners of all ages
+              build real speaking confidence through structured lessons, consistent practice, and strong tutor guidance
+              — both <span className="font-semibold">onsite</span> and{" "}
+              <span className="font-semibold">online</span>.
             </p>
 
             <p className="mt-4 text-neutral-700 leading-7">
