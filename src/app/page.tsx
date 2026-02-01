@@ -163,7 +163,7 @@ export default async function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
 
                   <div className="absolute left-5 top-5 rounded-full bg-black/45 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/20">
-                    Upcoming class • {nextClass.level}
+                    Upcoming class • {nextClass.language} • {nextClass.level}
                   </div>
                 </div>
 
