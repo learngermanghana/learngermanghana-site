@@ -147,8 +147,8 @@ export default function ClassesPage() {
           </div>
 
           <p className="mt-2 text-sm text-neutral-700">
-            Tuition covers classes only. Goethe exam fees are paid directly to Goethe-Institut when you are ready
-            to sit the exam.
+            Tuition covers classes only. Exam fees are paid directly to the exam provider when you are ready to sit
+            the exam.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
@@ -201,9 +201,12 @@ export default function ClassesPage() {
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {filteredClasses.map((c) => {
               const tuition = tuitionFeesGHS[c.level];
-              const examFee = goetheExamFeesGHS[c.level];
+              const examFee = c.examFee ?? goetheExamFeesGHS[c.level];
               const formatLabel = getFormatLabel(c.format);
               const isAlwaysOpen = c.startDate === "Always open";
+              const effectiveTuition = c.tuitionFee ?? tuition;
+              const examFeeLabel = c.language === "German" ? "Goethe exam fee" : "Exam fee";
+              const examFeeDisplay = examFee ? money(examFee) : c.language === "German" ? "Check Goethe" : "Check exam";
 
               return (
                 <div key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
@@ -226,7 +229,7 @@ export default function ClassesPage() {
                       </span>
                     ) : null}
                     <span className="rounded-full border border-black/10 bg-amber-100 px-3 py-1 text-xs font-semibold text-neutral-900">
-                      Tuition: {tuition ? money(tuition) : "Check in Falowen"}
+                      Tuition: {effectiveTuition ? money(effectiveTuition) : "Check in Falowen"}
                     </span>
                     {c.language === "German" ? (
                       <span className="rounded-full border border-black/10 bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900">

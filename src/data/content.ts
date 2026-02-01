@@ -54,6 +54,8 @@ export type ClassItem = {
   scheduleSummary: string;
   meetingDays: { day: string; time: string }[];
   bonus: string[];
+  tuitionFee?: number;
+  examFee?: number;
   brochureUrl?: string;
   tutor?: string;
 };
