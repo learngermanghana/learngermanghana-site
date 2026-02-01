@@ -231,9 +231,11 @@ export default function ClassesPage() {
                     <span className="rounded-full border border-black/10 bg-amber-100 px-3 py-1 text-xs font-semibold text-neutral-900">
                       Tuition: {effectiveTuition ? money(effectiveTuition) : "Check in Falowen"}
                     </span>
-                    <span className="rounded-full border border-black/10 bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900">
-                      {examFeeLabel}: {examFeeDisplay}
-                    </span>
+                    {c.language === "German" ? (
+                      <span className="rounded-full border border-black/10 bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900">
+                        Goethe exam fee: {examFee ? money(examFee) : "Check Goethe"}
+                      </span>
+                    ) : null}
                   </div>
 
                   <div className="mt-3 text-lg font-semibold text-neutral-900">{c.title}</div>
@@ -250,12 +252,11 @@ export default function ClassesPage() {
                     <span className="font-semibold">Format:</span> {c.format}
                   </div>
 
-                  <div className="mt-2 text-sm text-neutral-700">
-                    Tuition covers classes only.{" "}
-                    {c.language === "German"
-                      ? "Exams are paid directly to Goethe-Institut."
-                      : "Exam fees are paid directly to the exam provider."}
-                  </div>
+                  {c.language === "German" ? (
+                    <div className="mt-2 text-sm text-neutral-700">
+                      Tuition covers classes only. Exams are paid directly to Goethe-Institut.
+                    </div>
+                  ) : null}
 
                   <div className="mt-4 rounded-2xl border border-black/10 bg-white p-4">
                     <div className="text-sm font-semibold text-neutral-900">What&apos;s included</div>
