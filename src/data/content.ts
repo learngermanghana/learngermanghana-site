@@ -80,7 +80,7 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "A1-dortmund-2026-02-25",
-    title: "A1 Dortmund Klasse - 2800 cedis",
+    title: "A1 Dortmund Klasse - Hybrid Class 2026",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
