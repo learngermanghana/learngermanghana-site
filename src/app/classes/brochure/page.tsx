@@ -27,12 +27,6 @@ export default function ClassesBrochurePage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <BrochurePrintButton />
                 <a
-                  href="/brochures/classes-brochure.pdf"
-                  className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition hover:bg-brand-900"
-                >
-                  Download brochure
-                </a>
-                <a
                   href="/classes"
                   className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
                 >
@@ -47,6 +41,7 @@ export default function ClassesBrochurePage() {
               </h2>
               <p className="mt-2 text-sm text-neutral-700">
                 For the latest seat availability, visit learngermanghana.com/classes or register inside Falowen.
+                Use the print button to save this brochure as a PDF.
               </p>
             </div>
 
