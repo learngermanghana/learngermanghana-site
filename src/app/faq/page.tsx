@@ -47,6 +47,17 @@ export default function FAQPage() {
           />
 
           <FAQItem
+            q="Can I enroll directly in B2, and do I pay for each level?"
+            a={
+              <>
+                To reach B2, you must complete the full learning path: A1 → A2 → B1 → B2. Each level takes about 10 weeks and includes lessons and assessments.
+                If your goal is B2, you do not need to write the A1 and A2 exams; we focus on building your skills until B1, and then you can attempt the official exams.
+                Students pay per level. Please confirm the current fees when you are ready to enroll, and we will share the latest brochure and schedule.
+              </>
+            }
+          />
+
+          <FAQItem
             q="Do I receive a certificate upon completion?"
             a={
               <>
