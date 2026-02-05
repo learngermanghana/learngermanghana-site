@@ -60,8 +60,8 @@ export default function TravelPage() {
       <Container>
         <section className="py-12 sm:py-16">
           <SectionTitle
-            title="Travel Services"
-            subtitle="Applying for Ausbildung, tourist visa, or university admission? Complete this Visa Assessment / Booking Form and send it directly to us on WhatsApp."
+            title="Visa Assessment & Booking"
+            subtitle="Are you applying for Ausbildung, a tourist visa, or university admission? Complete this Visa Assessment / Booking Form and send it directly to us on WhatsApp so we can understand your plans, review your timeline, and guide you on the next steps."
           />
 
           <div className="mx-auto max-w-3xl rounded-3xl border border-black/10 bg-white p-6 shadow-sm sm:p-8">
@@ -168,7 +168,7 @@ export default function TravelPage() {
 
               <button
                 type="submit"
-                className="sm:col-span-2 inline-flex w-full items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-brand-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+                className="sm:col-span-2 inline-flex w-full items-center justify-center rounded-2xl bg-neutral-900 bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-neutral-800 hover:bg-brand-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 focus-visible:ring-brand-300"
               >
                 Send to WhatsApp
               </button>
