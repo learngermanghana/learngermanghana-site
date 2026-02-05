@@ -13,6 +13,7 @@ const nav = [
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/travel", label: "Travel" },
 ];
 
 export function Navbar() {
