@@ -4,7 +4,7 @@
 import { useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
-import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { classUpdates, upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { formatDatePretty } from "@/lib/date";
 import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
 
@@ -179,6 +179,23 @@ export default function ClassesPage() {
             Tuition covers classes only. Exam fees are paid directly to the exam provider when you are ready to sit
             the exam.
           </p>
+
+          <div className="mt-6 rounded-3xl border border-black/10 bg-white p-5 shadow-sm">
+            <div className="text-sm font-semibold text-neutral-900">Class updates</div>
+            <p className="mt-1 text-sm text-neutral-700">
+              Quick reminders on what is new or changing this term.
+            </p>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {classUpdates.map((update) => (
+                <div key={update.title} className="rounded-2xl border border-black/10 bg-neutral-50 p-4">
+                  <div className="text-xs font-semibold uppercase text-neutral-500">{update.tag}</div>
+                  <div className="mt-2 text-sm font-semibold text-neutral-900">{update.title}</div>
+                  <p className="mt-2 text-sm text-neutral-700">{update.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -233,7 +250,8 @@ export default function ClassesPage() {
             </p>
             <div className="mt-4 flex flex-col sm:flex-row gap-3">
               <a
-                href="/classes/brochure"
+                href="/brochures/classes-brochure.pdf"
+                download
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"

@@ -42,6 +42,30 @@ export const goetheExamLinks: Partial<Record<ClassLevel, { label: string; href: 
   },
 };
 
+export type ClassUpdate = {
+  title: string;
+  tag: string;
+  detail: string;
+};
+
+export const classUpdates: ClassUpdate[] = [
+  {
+    title: "New evening options",
+    tag: "Updated schedule",
+    detail: "Weekday evening classes are open for A1–A2 learners. Check Falowen for seat availability.",
+  },
+  {
+    title: "Weekend French cohort",
+    tag: "French A1",
+    detail: "French A1 runs on Saturdays and Sundays for learners who need weekday flexibility.",
+  },
+  {
+    title: "Self-learning tracks",
+    tag: "Always open",
+    detail: "B2–C1 self-learning stays open year-round with AI support in the Falowen app.",
+  },
+];
+
 export type ClassItem = {
   id: string;
   title: string;
