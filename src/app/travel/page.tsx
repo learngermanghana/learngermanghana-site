@@ -63,15 +63,11 @@ export default function TravelPage() {
           subtitle="Applying for Ausbildung, tourist visa, or university admission? Complete this Visa Assessment / Booking Form and send it directly to us on WhatsApp."
         />
 
-        <div className="mx-auto mb-6 max-w-3xl rounded-3xl border border-brand-100 bg-brand-50/60 p-6 shadow-sm sm:p-8">
-          <h2 className="text-lg font-semibold text-brand-950">Looking for professional travel advice?</h2>
-          <p className="mt-2 text-sm leading-6 text-neutral-700">
-            Our team helps you choose the right visa pathway, prepare documents, and avoid common mistakes.
-            Fill this short assessment and send directly to WhatsApp. We&apos;ll reply with requirements and your next steps.
-          </p>
-        </div>
-
         <div className="mx-auto max-w-3xl rounded-3xl border border-black/10 bg-white p-6 shadow-sm sm:p-8">
+          <p className="mb-6 text-sm leading-6 text-neutral-700">
+            Fill this form and send directly to WhatsApp. We&apos;ll respond with requirements and next steps.
+          </p>
+
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="flex flex-col gap-2 sm:col-span-2">
               <span className="text-sm font-medium text-neutral-800">Full Name</span>
@@ -169,14 +165,12 @@ export default function TravelPage() {
               />
             </label>
 
-            <div className="sm:col-span-2 sticky bottom-3">
-              <button
-                type="submit"
-                className="inline-flex w-full items-center justify-center rounded-2xl bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-md hover:brightness-95"
-              >
-                Send Assessment to WhatsApp
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="sm:col-span-2 inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-900"
+            >
+              Send to WhatsApp
+            </button>
           </form>
         </div>
       </section>
