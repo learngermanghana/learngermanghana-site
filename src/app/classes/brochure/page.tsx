@@ -28,9 +28,9 @@ export default function ClassesBrochurePage() {
                 <BrochurePrintButton />
                 <a
                   href="/brochures/classes-brochure.pdf"
-                  className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
+                  className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50"
                 >
-                  Download PDF
+                  Download brochure
                 </a>
                 <a
                   href="/classes"

@@ -243,7 +243,7 @@ export default function ClassesPage() {
               </label>
             </div>
           </div>
-          <div className="mt-6 rounded-3xl border border-black/10 bg-white p-5 shadow-sm">
+          <div className="mt-6 rounded-3xl border border-emerald-100/80 bg-gradient-to-br from-white via-white to-emerald-50 p-5 shadow-sm">
             <div className="text-sm font-semibold text-neutral-900">Download &amp; share</div>
             <p className="mt-2 text-sm text-neutral-700">
               Send class information to family or clients in one tap, or download a printable brochure.
@@ -254,14 +254,14 @@ export default function ClassesPage() {
                 download
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50"
               >
-                Download class brochure (PDF)
+                Download brochure
               </a>
               <button
                 type="button"
                 onClick={handleShare}
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold shadow-sm transition hover:bg-neutral-50"
               >
                 Share this page
               </button>
@@ -424,9 +424,9 @@ export default function ClassesPage() {
                 download
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50"
               >
-                Download class brochure (PDF)
+                Download brochure
               </a>
             </div>
           </div>
