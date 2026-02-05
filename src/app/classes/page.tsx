@@ -256,7 +256,7 @@ export default function ClassesPage() {
                 rel="noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition hover:bg-brand-900"
               >
-                Download class brochure (PDF)
+                Download brochure
               </a>
               <button
                 type="button"
@@ -426,7 +426,7 @@ export default function ClassesPage() {
                 rel="noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition hover:bg-brand-900"
               >
-                Download class brochure (PDF)
+                Download brochure
               </a>
             </div>
           </div>

@@ -30,7 +30,7 @@ export default function ClassesBrochurePage() {
                   href="/brochures/classes-brochure.pdf"
                   className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition hover:bg-brand-900"
                 >
-                  Download PDF
+                  Download brochure
                 </a>
                 <a
                   href="/classes"
