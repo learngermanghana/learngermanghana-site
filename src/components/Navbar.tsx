@@ -12,8 +12,8 @@ const nav = [
   { href: "/tutors", label: "Tutors" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
   { href: "/travel", label: "Travel" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {

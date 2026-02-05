@@ -414,6 +414,24 @@ export default function ClassesPage() {
           </div>
 
           <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
+            <div className="text-lg font-semibold text-neutral-900">Download the class brochure</div>
+            <p className="mt-1 text-sm text-neutral-700">
+              Need a printable summary? Download the PDF brochure to share class details offline.
+            </p>
+            <div className="mt-4">
+              <a
+                href="/brochures/classes-brochure.pdf"
+                download
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
+              >
+                Download class brochure (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
             <div className="text-sm font-semibold text-neutral-900">Still have questions?</div>
             <div className="mt-2 text-sm text-neutral-700 leading-6">
               Email <span className="font-semibold">{SITE.email}</span> or use WhatsApp support. Most information
