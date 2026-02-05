@@ -60,8 +60,8 @@ export default function TravelPage() {
       <Container>
         <section className="py-12 sm:py-16">
           <SectionTitle
-            title="Travel Services"
-            subtitle="Applying for Ausbildung, tourist visa, or university admission? Complete this Visa Assessment / Booking Form and send it directly to us on WhatsApp."
+            title="Visa Assessment & Booking"
+            subtitle="Are you applying for Ausbildung, a tourist visa, or university admission? Complete this Visa Assessment / Booking Form and send it directly to us on WhatsApp so we can understand your plans, review your timeline, and guide you on the next steps."
           />
 
           <div className="mx-auto max-w-3xl rounded-3xl border border-black/10 bg-white p-6 shadow-sm sm:p-8">
