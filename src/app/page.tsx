@@ -89,6 +89,21 @@ export default async function HomePage() {
                   </ul>
                 </div>
 
+                <div className="mt-4 max-w-xl rounded-3xl bg-white/10 ring-1 ring-white/20 p-4">
+                  <div className="text-sm font-semibold text-white">Not sure your level?</div>
+                  <p className="mt-2 text-sm text-white/85">
+                    Take the Falowen placement test to find the right class for you.
+                  </p>
+                  <a
+                    href="https://www.falowen.app/placement-test"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
+                  >
+                    Start placement test →
+                  </a>
+                </div>
+
                 <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
                   <a
                     href="https://register.falowen.app"
