@@ -1,5 +1,4 @@
 import { Container } from "@/components/Container";
-import { BrochureAutoPrint } from "@/components/BrochureAutoPrint";
 import { BrochurePrintButton } from "@/components/BrochurePrintButton";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { formatDatePretty } from "@/lib/date";
@@ -14,7 +13,6 @@ export default function ClassesBrochurePage() {
     <div className="bg-neutral-50 print:bg-white">
       <Container>
         <section className="py-8 sm:py-12">
-          <BrochureAutoPrint />
           <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm print:border-none print:shadow-none">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between print:hidden">
               <div>

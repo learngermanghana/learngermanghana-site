@@ -233,7 +233,7 @@ export default function ClassesPage() {
             </p>
             <div className="mt-4 flex flex-col sm:flex-row gap-3">
               <a
-                href="/classes/brochure?download=1"
+                href="/classes/brochure"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
