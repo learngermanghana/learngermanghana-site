@@ -52,6 +52,7 @@ export default function ClassesPage() {
   const [selectedLanguage, setSelectedLanguage] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
   const [selectedFormat, setSelectedFormat] = useState("All");
+  const [shareStatus, setShareStatus] = useState("");
 
   const languages = useMemo(
     () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => item.language)))],
@@ -79,6 +80,34 @@ export default function ClassesPage() {
       }),
     [selectedLanguage, selectedLevel, selectedFormat]
   );
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const data = {
+      title: "Learn Language Education Academy classes",
+      text: "See upcoming classes, schedules, and enrollment details.",
+      url,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(data);
+        setShareStatus("Thanks! Your share has been sent.");
+        return;
+      } catch (error) {
+        setShareStatus("Share canceled. You can copy the link instead.");
+        return;
+      }
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(url);
+      setShareStatus("Link copied. Share it with family or friends.");
+      return;
+    }
+
+    setShareStatus("Copy this link: " + url);
+  };
 
   return (
     <div className="bg-neutral-50">
@@ -196,6 +225,30 @@ export default function ClassesPage() {
                 </select>
               </label>
             </div>
+          </div>
+          <div className="mt-6 rounded-3xl border border-black/10 bg-white p-5 shadow-sm">
+            <div className="text-sm font-semibold text-neutral-900">Download &amp; share</div>
+            <p className="mt-2 text-sm text-neutral-700">
+              Send class information to family or clients in one tap, or download a printable brochure.
+            </p>
+            <div className="mt-4 flex flex-col sm:flex-row gap-3">
+              <a
+                href="/classes/brochure"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
+              >
+                Download class brochure (PDF)
+              </a>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+              >
+                Share this page
+              </button>
+            </div>
+            {shareStatus ? <div className="mt-3 text-xs text-neutral-500">{shareStatus}</div> : null}
           </div>
 
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
