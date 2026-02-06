@@ -9,11 +9,11 @@ const baseUrl = new URL(`https://${SITE.primaryDomain}`);
 export const metadata: Metadata = {
   metadataBase: baseUrl,
   title: {
-    default: `${SITE.brand} | Learn German`,
+    default: `${SITE.brand} | Learn German & French`,
     template: `%s | ${SITE.brand}`,
   },
   description:
-    "German school in Ghana offering A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+    "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
   alternates: {
     canonical: "/",
   },
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     type: "website",
     url: baseUrl,
     siteName: SITE.brand,
-    title: `${SITE.brand} | Learn German`,
+    title: `${SITE.brand} | Learn German & French`,
     description:
-      "German school in Ghana offering A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+      "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
   },
   twitter: {
     card: "summary",
-    title: `${SITE.brand} | Learn German`,
+    title: `${SITE.brand} | Learn German & French`,
     description:
-      "German school in Ghana offering A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+      "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
   },
   robots: {
     index: true,
@@ -37,17 +37,29 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Learn German",
+    "Learn French",
     "German classes Ghana",
+    "French classes Ghana",
     "German language school",
+    "French language school",
     "Online German lessons",
+    "Online French lessons",
     "In-person German classes",
+    "In-person French classes",
     "Hybrid German classes",
+    "Hybrid French classes",
     "Self-paced German",
+    "Self-paced French",
     "AI German learning",
+    "AI French learning",
     "A1 German",
     "B1 German",
     "B2 German",
     "C1 German",
+    "A1 French",
+    "B1 French",
+    "B2 French",
+    "C1 French",
     "Falowen registration",
   ],
 };
