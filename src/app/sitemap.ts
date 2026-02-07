@@ -21,7 +21,11 @@ const staticRoutes = [
   { path: "faq", changeFrequency: "monthly", priority: 0.6 },
   { path: "contact", changeFrequency: "monthly", priority: 0.6 },
   { path: "blog", changeFrequency: "weekly", priority: 0.6 },
-];
+] satisfies Array<{
+  path: string;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  priority: number;
+}>;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
