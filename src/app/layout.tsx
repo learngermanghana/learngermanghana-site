@@ -24,16 +24,30 @@ export const metadata: Metadata = {
     title: `${SITE.brand} | Learn German & French`,
     description:
       "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+    images: [
+      {
+        url: new URL("/hero/hero.jpg", baseUrl),
+        alt: "Learn Language Education Academy students studying German and French",
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: `${SITE.brand} | Learn German & French`,
     description:
       "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+    images: [new URL("/hero/hero.jpg", baseUrl)],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   keywords: [
     "Learn German",

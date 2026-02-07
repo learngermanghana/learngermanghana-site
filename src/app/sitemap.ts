@@ -4,26 +4,26 @@ import { SITE } from "@/lib/site";
 const baseUrl = `https://${SITE.primaryDomain}`;
 
 const staticRoutes = [
-  "",
-  "about",
-  "blog",
-  "classes",
-  "contact",
-  "courses",
-  "faq",
-  "falowen",
-  "reviews",
-  "tutors",
-  "travel",
+  { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "about", changeFrequency: "monthly", priority: 0.7 },
+  { path: "classes", changeFrequency: "weekly", priority: 0.85 },
+  { path: "courses", changeFrequency: "weekly", priority: 0.8 },
+  { path: "falowen", changeFrequency: "monthly", priority: 0.7 },
+  { path: "reviews", changeFrequency: "monthly", priority: 0.65 },
+  { path: "tutors", changeFrequency: "monthly", priority: 0.65 },
+  { path: "travel", changeFrequency: "monthly", priority: 0.6 },
+  { path: "faq", changeFrequency: "monthly", priority: 0.6 },
+  { path: "contact", changeFrequency: "monthly", priority: 0.6 },
+  { path: "blog", changeFrequency: "weekly", priority: 0.6 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   return staticRoutes.map((route) => ({
-    url: `${baseUrl}/${route}`.replace(/\/$/, ""),
+    url: `${baseUrl}/${route.path}`.replace(/\/$/, ""),
     lastModified: now,
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.7,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }));
 }
