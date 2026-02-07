@@ -196,51 +196,64 @@ export default function ClassesPage() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
-                Language
-                <select
-                  value={selectedLanguage}
-                  onChange={(event) => setSelectedLanguage(event.target.value)}
-                  className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  {languages.map((language) => (
-                    <option key={language} value={language}>
+          <div className="mt-6 flex flex-col gap-4">
+            <div>
+              <div className="text-xs font-semibold uppercase text-neutral-500">Browse by language</div>
+              <div className="mt-2 flex flex-wrap gap-2" role="tablist" aria-label="Class languages">
+                {languages.map((language) => {
+                  const isActive = selectedLanguage === language;
+                  return (
+                    <button
+                      key={language}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setSelectedLanguage(language)}
+                      className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                        isActive
+                          ? "border-brand-900 bg-brand-950 text-white shadow-sm"
+                          : "border-black/10 bg-white text-neutral-700 hover:bg-neutral-50"
+                      }`}
+                    >
                       {language}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
-                Level
-                <select
-                  value={selectedLevel}
-                  onChange={(event) => setSelectedLevel(event.target.value)}
-                  className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  {levels.map((level) => (
-                    <option key={level} value={level}>
-                      {level}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
-                Format
-                <select
-                  value={selectedFormat}
-                  onChange={(event) => setSelectedFormat(event.target.value)}
-                  className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  {formats.map((format) => (
-                    <option key={format} value={format}>
-                      {format}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
+                  Level
+                  <select
+                    value={selectedLevel}
+                    onChange={(event) => setSelectedLevel(event.target.value)}
+                    className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+                  >
+                    {levels.map((level) => (
+                      <option key={level} value={level}>
+                        {level}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
+                  Format
+                  <select
+                    value={selectedFormat}
+                    onChange={(event) => setSelectedFormat(event.target.value)}
+                    className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+                  >
+                    {formats.map((format) => (
+                      <option key={format} value={format}>
+                        {format}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
             </div>
           </div>
           <div className="mt-6 rounded-3xl border border-emerald-100/80 bg-gradient-to-br from-white via-white to-emerald-50 p-5 shadow-sm">
