@@ -10,6 +10,8 @@ const defaultPrompts = [
   "Do all learning modes cost the same?",
   "Can I start at B2?",
   "Where are my receipts?",
+  "When do classes start?",
+  "How long is each class level?",
 ];
 
 type BotMessage = {
