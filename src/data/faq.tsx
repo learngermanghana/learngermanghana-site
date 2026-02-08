@@ -102,4 +102,30 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     ),
     keywords: ["payment", "access", "issues", "problem", "failed", "support"],
   },
+  {
+    question: "Where can I see upcoming classes and start dates?",
+    answer: (
+      <>
+        Upcoming classes, start dates, and seats are listed in Falowen under{" "}
+        <span className="font-semibold">Upcoming Classes</span>. You can also browse the public class schedule at{" "}
+        <span className="font-semibold">www.learngermanghana.com/classes</span>.
+      </>
+    ),
+    keywords: ["upcoming", "class", "classes", "start date", "start dates", "schedule", "cohort", "seats"],
+  },
+  {
+    question: "How long is each class level?",
+    answer: <>Each level runs for about 10 weeks (roughly 3 months).</>,
+    keywords: ["how long", "duration", "weeks", "months", "length", "class length", "course length"],
+  },
+  {
+    question: "Do classes meet online or in person?",
+    answer: (
+      <>
+        A1–B1 classes are hybrid, so you can join in person or online. B2–C1 is self-paced with AI support and no
+        physical classes.
+      </>
+    ),
+    keywords: ["online", "in person", "in-person", "hybrid", "self-paced", "format", "meet", "class format"],
+  },
 ];
