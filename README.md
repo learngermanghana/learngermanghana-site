@@ -26,6 +26,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 * Update the main navigation links in `src/components/Navbar.tsx`.
 * Update external links (Falowen, WhatsApp, register portal) in `src/lib/site.ts`.
 
+## Chat widget setup (cheap bot option)
+
+Add any hosted chat widget script (for example, Tawk.to, Crisp, Intercom) by setting the environment variable below:
+
+```bash
+NEXT_PUBLIC_CHAT_WIDGET_SRC="https://embed.tawk.to/your-property-id/your-widget-id"
+```
+
+The script is injected globally via the RootLayout (`src/app/layout.tsx`). Remove the environment variable to disable the widget.
+
 ## Deployment
 
 Deploy using the standard Next.js build commands (for example on Vercel or another Node hosting provider).
