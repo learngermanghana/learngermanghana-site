@@ -215,8 +215,12 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     question: "Do you help with German study visa, Ausbildung, or embassy interview preparation?",
     answer: (
       <>
-        We focus on language classes and exam preparation. If you need visa, Ausbildung, or embassy interview guidance,
-        please contact us to discuss your situation.
+        We focus on language classes and exam preparation. For visa, Ausbildung, or embassy interview guidance, please
+        visit our{" "}
+        <a className="font-semibold hover:underline" href="/travel">
+          travel page
+        </a>{" "}
+        for the latest support options.
       </>
     ),
     keywords: ["visa", "ausbildung", "embassy", "interview", "support", "help"],
