@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
-import { findFaqAnswer, openHumanChat } from "@/lib/faqBot";
+import { findFaqAnswer } from "@/lib/faqBot";
 import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
 
 const defaultPrompts = [
@@ -48,13 +48,8 @@ export function FAQChatBot() {
           answer?.answer ?? (
             <>
               <div>
-                Sorry — I didn’t catch that. Try: <b>fees</b>, <b>intake</b>, <b>location</b>, <b>online</b>, or{" "}
-                <b>register</b>.
-              </div>
-              <div className="mt-2">
-                <button type="button" onClick={openHumanChat} className="font-semibold underline">
-                  Talk to a human
-                </button>
+                Automated reply: no match found. Try keywords like <b>fees</b>, <b>intake</b>, <b>location</b>,{" "}
+                <b>online</b>, or <b>register</b>.
               </div>
             </>
           ),
@@ -69,9 +64,9 @@ export function FAQChatBot() {
     <Container>
       <section className="my-8 rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
         <div className="flex flex-col gap-2">
-          <h2 className="text-lg font-semibold text-neutral-900">Quick Answers Bot</h2>
+          <h2 className="text-lg font-semibold text-neutral-900">Automated Quick Answers</h2>
           <p className="text-sm text-neutral-600">
-            Ask a quick question about enrollment, class formats, payments, or certificates. For full support, visit{" "}
+            Automated replies for enrollment, class formats, payments, or certificates. For full support, visit{" "}
             <a
               className="font-semibold text-brand-950 hover:underline"
               href={LINKS.falowen}
@@ -97,7 +92,7 @@ export function FAQChatBot() {
           <div className="rounded-2xl bg-neutral-50 p-4 text-sm text-neutral-700">
             {history.length === 0 ? (
               <div>
-                Hi! I’m here to help with quick questions. Try one of the prompts below or type your own.
+                Automated help for quick questions. Choose a prompt below or type your own.
               </div>
             ) : (
               <ul className="space-y-3">
@@ -107,7 +102,7 @@ export function FAQChatBot() {
                     className={item.role === "user" ? "text-neutral-900" : "text-neutral-700"}
                   >
                     <span className="block text-xs uppercase tracking-wide text-neutral-500">
-                      {item.role === "user" ? "You" : "Bot"}
+                      {item.role === "user" ? "You" : "Automated reply"}
                     </span>
                     <span className="block">{item.content}</span>
                   </li>
