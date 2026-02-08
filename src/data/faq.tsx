@@ -24,6 +24,10 @@ export const FAQ_ENTRIES: FAQEntry[] = [
           </div>
         </div>
         <div className="mt-2">Online and physical classes cost the same.</div>
+        <div className="mt-2">
+          Tuition covers classes only. Exam fees are paid directly to the exam provider when you are ready to sit the
+          exam.
+        </div>
       </>
     ),
     keywords: [
@@ -112,7 +116,8 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     answer: (
       <>
         Physical classes are in <span className="font-semibold">Awoshie (Accra)</span>. Yes, we offer online classes via{" "}
-        <span className="font-semibold">Zoom</span>, and A1–B1 classes are hybrid.
+        <span className="font-semibold">Zoom</span>, and A1–B1 classes are hybrid. Hybrid means you can come to class or
+        join online—decide each day or watch the recordings.
       </>
     ),
     keywords: [
