@@ -151,6 +151,17 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["certificate", "goethe", "exam", "exams", "alliance francaise", "french exams", "preparation"],
   },
   {
+    question: "Where can I see Goethe exam prices and how do I register?",
+    answer: (
+      <>
+        Please visit <span className="font-semibold">www.learngermanghana.com/classes</span>. The Goethe exam prices are
+        listed there. After you complete your class, you register directly with{" "}
+        <span className="font-semibold">Goethe-Institut</span> for the exam.
+      </>
+    ),
+    keywords: ["goethe", "exam price", "exam prices", "pricing", "fees", "register", "registration", "goethe exam"],
+  },
+  {
     question: "Can absolute beginners join and do you place students by level test?",
     answer: (
       <>
