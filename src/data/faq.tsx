@@ -169,6 +169,18 @@ export const FAQ_ENTRIES: FAQEntry[] = [
   },
   {
     category: "Exams & Certificates",
+    question: "Do I need to write exams for each stage?",
+    answer: (
+      <>
+        No. You do not have to write exams at every stage. We focus on building your skills through each level, and you
+        only sit the official exam when you are ready for the target level (for example, B1 or B2). Earlier exams are
+        optional.
+      </>
+    ),
+    keywords: ["exams", "exam", "each stage", "every stage", "must write exam", "a1 exam", "a2 exam", "b1 exam", "b2 exam"],
+  },
+  {
+    category: "Exams & Certificates",
     question: "Where can I see Goethe exam prices and how do I register?",
     answer: (
       <>
@@ -198,8 +210,12 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     question: "Do you help with German study visa, Ausbildung, or embassy interview preparation?",
     answer: (
       <>
-        We focus on language classes and exam preparation. If you need visa, Ausbildung, or embassy interview guidance,
-        please contact us to discuss your situation.
+        We focus on language classes and exam preparation. For visa, Ausbildung, or embassy interview guidance, please
+        visit our{" "}
+        <a className="font-semibold hover:underline" href="/travel">
+          travel page
+        </a>{" "}
+        for the latest support options.
       </>
     ),
     keywords: ["visa", "ausbildung", "embassy", "interview", "support", "help"],
@@ -254,13 +270,111 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     question: "Can I enroll directly in B2, and do I pay for each level?",
     answer: (
       <>
-        To reach B2, you must complete the full learning path: A1 → A2 → B1 → B2. Each level takes about 10 weeks and
-        includes lessons and assessments. If your goal is B2, you do not need to write the A1 and A2 exams; we focus on
-        building your skills until B1, and then you can attempt the official exams. Students pay per level. Please
-        confirm the current fees when you are ready to enroll, and we will share the latest brochure and schedule.
+        <div className="space-y-3">
+          <p>Thank you for your message.</p>
+          <p>
+            To enroll in the B2 course, you must first go through the full learning path: A1 → A2 → B1 → B2. Each level
+            takes approximately 10 weeks and includes both lessons and assessments.
+          </p>
+          <div>
+            <div className="font-semibold">Please note:</div>
+            <ul className="mt-2 list-disc space-y-2 pl-5">
+              <li>
+                If your goal is to reach B2, you won’t need to write the A1 and A2 exams. Instead, we focus on building
+                your skills continuously until B1, after which you can attempt the official exams.
+              </li>
+              <li>
+                You will begin with A1, which costs <span className="font-semibold">2,800 Ghana cedis</span>.
+              </li>
+              <li>
+                The estimated cost for the later stages (A2, B1, B2) is around{" "}
+                <span className="font-semibold">3,000 cedis each</span>, but we do not collect fees for these stages
+                right away.
+              </li>
+            </ul>
+          </div>
+          <p>
+            If you’re ready to start with A1, kindly confirm, and I’ll send you the brochure and schedule for the next
+            class.
+          </p>
+          <p>Feel free to ask any questions if anything is unclear. Thank you.</p>
+        </div>
       </>
     ),
     keywords: ["b2", "level", "levels", "pay", "per level", "path", "a1", "a2", "b1"],
+  },
+  {
+    category: "Enrollment",
+    question: "Can I enroll directly in B1, and do I need to complete A1 and A2 first?",
+    answer: (
+      <>
+        <div className="space-y-3">
+          <p>Thank you for your message.</p>
+          <p>
+            To join the B1 course, you must first complete the earlier levels: A1 → A2 → B1. Each level takes
+            approximately 10 weeks and includes both lessons and assessments.
+          </p>
+          <div>
+            <div className="font-semibold">Please note:</div>
+            <ul className="mt-2 list-disc space-y-2 pl-5">
+              <li>
+                If your goal is to reach B1, you will not be required to write the A1 and A2 exams. Instead, we will
+                focus on helping you build your skills gradually until you are ready for the B1 exam.
+              </li>
+              <li>
+                You will begin with A1, which costs <span className="font-semibold">2,800 Ghana cedis</span>.
+              </li>
+              <li>
+                The estimated cost for the following stages (A2 and B1) is around{" "}
+                <span className="font-semibold">3,000 cedis each</span>, but we do not collect fees for those stages
+                immediately.
+              </li>
+            </ul>
+          </div>
+          <p>
+            If you’re ready to begin with A1, kindly confirm, and I will send you the brochure and class schedule.
+          </p>
+          <p>If you have any questions, feel free to ask. Thank you.</p>
+        </div>
+      </>
+    ),
+    keywords: ["b1", "level", "levels", "pay", "per level", "path", "a1", "a2"],
+  },
+  {
+    category: "Enrollment",
+    question: "Can I enroll directly in A2, and do I need to complete A1 first?",
+    answer: (
+      <>
+        <div className="space-y-3">
+          <p>Thank you for your message.</p>
+          <p>
+            To join the A2 course, you need to start from A1 and continue to A2. Each level takes approximately 10
+            weeks and includes both lessons and assessments.
+          </p>
+          <div>
+            <div className="font-semibold">Please note:</div>
+            <ul className="mt-2 list-disc space-y-2 pl-5">
+              <li>
+                You have the option to write the A1 exam if you prefer, or you can save your money and continue
+                learning directly to A2 without taking the A1 exam.
+              </li>
+              <li>
+                The course begins with A1, which costs <span className="font-semibold">2,800 Ghana cedis</span>.
+              </li>
+              <li>
+                The estimated cost for A2 is around <span className="font-semibold">3,000 cedis</span>, but we do not
+                collect fees for the next stage right away.
+              </li>
+            </ul>
+          </div>
+          <p>
+            If you’re ready to begin with A1, kindly confirm, and I will send you the brochure and class schedule.
+          </p>
+          <p>Feel free to ask if anything is unclear. Thank you.</p>
+        </div>
+      </>
+    ),
+    keywords: ["a2", "level", "levels", "pay", "per level", "path", "a1"],
   },
   {
     category: "Support",
