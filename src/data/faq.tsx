@@ -1,4 +1,4 @@
-import { LINKS, SITE } from "@/lib/site";
+import { LINKS, SITE, SOCIAL_LINKS } from "@/lib/site";
 
 export type FAQEntry = {
   category: string;
@@ -203,6 +203,28 @@ export const FAQ_ENTRIES: FAQEntry[] = [
       </>
     ),
     keywords: ["visa", "ausbildung", "embassy", "interview", "support", "help"],
+  },
+  {
+    category: "Support",
+    question: "Do you have social media pages?",
+    answer: (
+      <>
+        Yes! Follow us on{" "}
+        <a className="font-semibold hover:underline" href={SOCIAL_LINKS.instagram}>
+          Instagram
+        </a>
+        ,{" "}
+        <a className="font-semibold hover:underline" href={SOCIAL_LINKS.youtube}>
+          YouTube
+        </a>
+        , and{" "}
+        <a className="font-semibold hover:underline" href={SOCIAL_LINKS.tiktok}>
+          TikTok
+        </a>
+        .
+      </>
+    ),
+    keywords: ["social", "social media", "instagram", "youtube", "tiktok", "ig", "tik tok", "yt", "socials"],
   },
   {
     category: "Classes & Format",

@@ -16,6 +16,12 @@ export const LINKS = {
   blog: "https://blog.falowen.app",
 };
 
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/lleaghana/",
+  youtube: "https://www.youtube.com/@LLEAGhana",
+  tiktok: "https://www.tiktok.com/@lleaghana",
+};
+
 // WhatsApp support link
 export const WHATSAPP_LINK =
   `https://api.whatsapp.com/send?phone=${SITE.phoneIntl}&text=` +
@@ -32,4 +38,3 @@ export const CTA = {
 };
 
 export const BLOG_RSS_URL = "https://blog.falowen.app/feed.xml";
-
