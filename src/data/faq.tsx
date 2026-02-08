@@ -1,13 +1,17 @@
-import { SITE } from "@/lib/site";
+import { LINKS, SITE } from "@/lib/site";
 
 export type FAQEntry = {
+  category: string;
   question: string;
   answer: React.ReactNode;
   keywords: string[];
 };
 
+const CLASS_SCHEDULE_URL = `${LINKS.mainWebsite}/classes`;
+
 export const FAQ_ENTRIES: FAQEntry[] = [
   {
+    category: "Pricing",
     question: "How much are your fees?",
     answer: (
       <>
@@ -47,11 +51,11 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     ],
   },
   {
+    category: "Pricing",
     question: "How can students pay?",
     answer: (
       <>
-        Pay inside your Falowen account after choosing a class in{" "}
-        <span className="font-semibold">Upcoming Classes</span>. If you need help with payment, contact{" "}
+        Pay inside your Falowen account after choosing a class. If you need help with payment, contact{" "}
         <a className="font-semibold hover:underline" href={`mailto:${SITE.email}`}>
           {SITE.email}
         </a>{" "}
@@ -61,12 +65,15 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["payment", "pay", "falowen", "online payment", "tuition", "installment", "bank", "mobile money"],
   },
   {
+    category: "Schedule",
     question: "When is the next intake or start date?",
     answer: (
       <>
-        The next listed start date is <span className="font-semibold">February 17, 2026</span> for A1. For the latest
-        cohorts and seats, check Falowen under <span className="font-semibold">Upcoming Classes</span> or visit{" "}
-        <span className="font-semibold">www.learngermanghana.com/classes</span>.
+        Start dates change by cohort. For the latest intakes, seats, and timing, view the{" "}
+        <a className="font-semibold hover:underline" href={CLASS_SCHEDULE_URL}>
+          class schedule
+        </a>
+        .
       </>
     ),
     keywords: [
@@ -83,6 +90,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     ],
   },
   {
+    category: "Schedule",
     question: "What are your class days and hours per week?",
     answer: (
       <>
@@ -90,12 +98,16 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         options (Sat–Sun for French A1). Each live class is{" "}
         <span className="font-semibold">1 hour</span>, typically{" "}
         <span className="font-semibold">2–3 sessions per week</span>. See the live schedule at{" "}
-        <span className="font-semibold">www.learngermanghana.com/classes</span>.
+        <a className="font-semibold hover:underline" href={CLASS_SCHEDULE_URL}>
+          class schedule
+        </a>
+        .
       </>
     ),
     keywords: ["class days", "weekdays", "weekends", "hours", "per week", "schedule", "times"],
   },
   {
+    category: "Classes & Format",
     question: "Where are your physical classes and do you offer online classes?",
     answer: (
       <>
@@ -119,11 +131,13 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     ],
   },
   {
-    question: "How do I register?",
+    category: "Enrollment",
+    question: "How do I enroll and get access to Falowen?",
     answer: (
       <>
-        No registration form is needed. Go to <span className="font-semibold">www.falowen.app</span>, sign up, open{" "}
-        <span className="font-semibold">Upcoming Classes</span>, choose your class, and pay to get access.
+        No separate registration form is needed. Go to <span className="font-semibold">www.falowen.app</span>, sign up,
+        choose a class, and pay to get access. After payment, you get automatic access and the school will contact you
+        in the app.
       </>
     ),
     keywords: [
@@ -140,28 +154,36 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     ],
   },
   {
-    question: "Do you give certificates and prepare students for exams?",
+    category: "Exams & Certificates",
+    question: "Do you offer completion certificates and prepare students for exams?",
     answer: (
       <>
-        Yes, we issue certificates of completion after you finish the course. We also prepare students for{" "}
-        <span className="font-semibold">Goethe</span> exams and French exams from{" "}
-        <span className="font-semibold">Alliance Française</span>.
+        Yes. We issue a <span className="font-semibold">Certificate of Completion</span> when you finish the course and
+        submit required assignments. We also prepare students for{" "}
+        <span className="font-semibold">Goethe-Institut</span> exams and French exams from{" "}
+        <span className="font-semibold">Alliance Française</span>. The completion certificate is not a Goethe
+        certificate and does not replace official exam requirements.
       </>
     ),
     keywords: ["certificate", "goethe", "exam", "exams", "alliance francaise", "french exams", "preparation"],
   },
   {
+    category: "Exams & Certificates",
     question: "Where can I see Goethe exam prices and how do I register?",
     answer: (
       <>
-        Please visit <span className="font-semibold">www.learngermanghana.com/classes</span>. The Goethe exam prices are
-        listed there. After you complete your class, you register directly with{" "}
+        Please visit the{" "}
+        <a className="font-semibold hover:underline" href={CLASS_SCHEDULE_URL}>
+          class schedule
+        </a>
+        . Goethe exam prices are listed there. After you complete your class, you register directly with{" "}
         <span className="font-semibold">Goethe-Institut</span> for the exam.
       </>
     ),
     keywords: ["goethe", "exam price", "exam prices", "pricing", "fees", "register", "registration", "goethe exam"],
   },
   {
+    category: "Enrollment",
     question: "Can absolute beginners join and do you place students by level test?",
     answer: (
       <>
@@ -172,6 +194,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["beginner", "absolute beginner", "level test", "placement", "a1", "start"],
   },
   {
+    category: "Support",
     question: "Do you help with German study visa, Ausbildung, or embassy interview preparation?",
     answer: (
       <>
@@ -182,30 +205,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["visa", "ausbildung", "embassy", "interview", "support", "help"],
   },
   {
-    question: "How do I enroll and get access to Falowen?",
-    answer: (
-      <>
-        Go to <span className="font-semibold">www.falowen.app</span>, click{" "}
-        <span className="font-semibold">Sign up</span> and create an account. Then open{" "}
-        <span className="font-semibold">Upcoming Classes</span>, choose your class, and pay. After payment, you get
-        automatic access and the school will contact you in the app.
-      </>
-    ),
-    keywords: [
-      "enroll",
-      "enrol",
-      "signup",
-      "sign up",
-      "sign-up",
-      "join",
-      "admission",
-      "create account",
-      "register",
-      "falowen",
-      "access",
-    ],
-  },
-  {
+    category: "Classes & Format",
     question: "Do online, in-person, self-learning, or recorded lectures cost the same?",
     answer: (
       <>
@@ -228,6 +228,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["price", "pricing", "fees", "cost", "same", "online", "in-person", "recorded", "self-learning"],
   },
   {
+    category: "Enrollment",
     question: "Can I enroll directly in B2, and do I pay for each level?",
     answer: (
       <>
@@ -240,21 +241,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["b2", "level", "levels", "pay", "per level", "path", "a1", "a2", "b1"],
   },
   {
-    question: "Do I receive a certificate upon completion?",
-    answer: <>Yes. Certificates are awarded when you successfully complete the course and submit all required assignments.</>,
-    keywords: ["certificate", "completion", "finish", "award"],
-  },
-  {
-    question: "Does the Falowen certificate replace a Goethe certificate?",
-    answer: (
-      <>
-        No. Falowen issues a <span className="font-semibold">Certificate of Completion</span>. It is not an official
-        Goethe-Institut certificate and does not replace embassy or university requirements.
-      </>
-    ),
-    keywords: ["goethe", "certificate", "replace", "official"],
-  },
-  {
+    category: "Support",
     question: "Where can I download my receipts, letter of enrollment, results, and attendance?",
     answer: (
       <>
@@ -265,16 +252,19 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["receipt", "receipts", "enrollment", "results", "attendance", "documents", "download"],
   },
   {
+    category: "Support",
     question: "How will I receive my assignment results?",
     answer: <>You will receive an email for each assignment. If you opt in, you will also receive Telegram notifications.</>,
     keywords: ["assignment", "results", "telegram", "email", "notifications"],
   },
   {
+    category: "Support",
     question: "Do I get weekly progress summaries?",
     answer: <>Yes. We send weekly summaries that include your average score and learning streaks.</>,
     keywords: ["weekly", "summary", "progress", "streak", "score"],
   },
   {
+    category: "Support",
     question: "What if I have payment or access issues?",
     answer: (
       <>
@@ -289,27 +279,41 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     keywords: ["payment", "access", "issues", "problem", "failed", "support"],
   },
   {
-    question: "Where can I see upcoming classes and start dates?",
+    category: "Schedule",
+    question: "Where can I see class schedules and start dates?",
     answer: (
       <>
-        Upcoming classes, start dates, and seats are listed in Falowen under{" "}
-        <span className="font-semibold">Upcoming Classes</span>. You can also browse the public class schedule at{" "}
-        <span className="font-semibold">www.learngermanghana.com/classes</span>.
+        View the latest cohorts, start dates, and seats on the{" "}
+        <a className="font-semibold hover:underline" href={CLASS_SCHEDULE_URL}>
+          class schedule
+        </a>
+        .
       </>
     ),
     keywords: ["upcoming", "class", "classes", "start date", "start dates", "schedule", "cohort", "seats"],
   },
   {
+    category: "Classes & Format",
     question: "How long is each class level?",
     answer: <>Each level runs for about 10 weeks (roughly 3 months).</>,
     keywords: ["how long", "duration", "weeks", "months", "length", "class length", "course length"],
   },
   {
+    category: "Classes & Format",
     question: "Do classes meet online or in person?",
     answer: (
       <>
-        A1–B1 classes are hybrid, so you can join in person or online. B2–C1 is self-paced with AI support and no
-        physical classes.
+        <div className="space-y-2">
+          <div className="font-semibold">Class formats by level:</div>
+          <ul className="list-disc space-y-1 pl-5">
+            <li>
+              <span className="font-semibold">A1–B1:</span> Hybrid (join in person in Awoshie or online via Zoom).
+            </li>
+            <li>
+              <span className="font-semibold">B2–C1:</span> Self-paced with AI support (no physical classes).
+            </li>
+          </ul>
+        </div>
       </>
     ),
     keywords: ["online", "in person", "in-person", "hybrid", "self-paced", "format", "meet", "class format"],
