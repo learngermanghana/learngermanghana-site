@@ -31,17 +31,3 @@ export function findFaqAnswer(userMessage: string) {
 
   return best.score >= 1 ? best.entry : null;
 }
-
-export function openHumanChat() {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  const tawkApi = (window as Window & { Tawk_API?: { showWidget?: () => void; maximize?: () => void } }).Tawk_API;
-  if (tawkApi?.showWidget) {
-    tawkApi.showWidget();
-  }
-  if (tawkApi?.maximize) {
-    tawkApi.maximize();
-  }
-}

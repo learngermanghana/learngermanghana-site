@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
 import { findFaqAnswer } from "@/lib/faqBot";
-import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
+import { LINKS, WHATSAPP_LINK } from "@/lib/site";
 
 const defaultPrompts = [
   "How do I enroll?",
@@ -153,11 +153,11 @@ export function FAQChatBot() {
           </form>
 
           <div className="text-xs text-neutral-500">
-            Still stuck? Email{" "}
-            <a className="font-semibold hover:underline" href={`mailto:${SITE.email}`}>
-              {SITE.email}
-            </a>{" "}
-            for help.
+            Still have questions? Reach out on{" "}
+            <a className="font-semibold hover:underline" href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
+              WhatsApp
+            </a>
+            .
           </div>
         </div>
       </section>
