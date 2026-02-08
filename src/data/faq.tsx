@@ -22,7 +22,29 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         <div className="mt-2">Online and physical classes cost the same.</div>
       </>
     ),
-    keywords: ["fees", "fee", "pricing", "tuition", "cost", "ghana", "ghs", "cedis", "a1", "a2", "b1", "b2", "c1"],
+    keywords: [
+      "fees",
+      "fee",
+      "a1 fee",
+      "pricing",
+      "price",
+      "price pls",
+      "tuition",
+      "charges",
+      "cost",
+      "cost pls",
+      "how much",
+      "ghana",
+      "ghs",
+      "cedis",
+      "2800",
+      "3000",
+      "a1",
+      "a2",
+      "b1",
+      "b2",
+      "c1",
+    ],
   },
   {
     question: "How can students pay?",
@@ -47,7 +69,18 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         <span className="font-semibold">www.learngermanghana.com/classes</span>.
       </>
     ),
-    keywords: ["intake", "start date", "cohort", "next class", "schedule", "upcoming"],
+    keywords: [
+      "intake",
+      "start date",
+      "when are you starting",
+      "when start",
+      "next batch",
+      "feb 17",
+      "cohort",
+      "next class",
+      "schedule",
+      "upcoming",
+    ],
   },
   {
     question: "What are your class days and hours per week?",
@@ -70,7 +103,20 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         <span className="font-semibold">Zoom</span>, and A1–B1 classes are hybrid.
       </>
     ),
-    keywords: ["location", "accra", "awoshie", "online", "zoom", "hybrid", "in-person", "in person"],
+    keywords: [
+      "location",
+      "where are you",
+      "direction",
+      "map",
+      "awoshie location",
+      "accra",
+      "awoshie",
+      "online",
+      "zoom",
+      "hybrid",
+      "in-person",
+      "in person",
+    ],
   },
   {
     question: "How do I register?",
@@ -80,7 +126,18 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         <span className="font-semibold">Upcoming Classes</span>, choose your class, and pay to get access.
       </>
     ),
-    keywords: ["register", "registration", "sign up", "enroll", "falowen", "account"],
+    keywords: [
+      "register",
+      "registration",
+      "sign up",
+      "sign-up",
+      "join",
+      "admission",
+      "create account",
+      "enroll",
+      "falowen",
+      "account",
+    ],
   },
   {
     question: "Do you give certificates and prepare students for exams?",
@@ -123,7 +180,19 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         automatic access and the school will contact you in the app.
       </>
     ),
-    keywords: ["enroll", "enrol", "signup", "sign up", "register", "falowen", "access"],
+    keywords: [
+      "enroll",
+      "enrol",
+      "signup",
+      "sign up",
+      "sign-up",
+      "join",
+      "admission",
+      "create account",
+      "register",
+      "falowen",
+      "access",
+    ],
   },
   {
     question: "Do online, in-person, self-learning, or recorded lectures cost the same?",

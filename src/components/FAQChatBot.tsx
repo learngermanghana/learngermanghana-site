@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
-import { FAQ_ENTRIES } from "@/data/faq";
+import { findFaqAnswer, openHumanChat } from "@/lib/faqBot";
 import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
 
 const defaultPrompts = [
@@ -18,25 +18,6 @@ type BotMessage = {
   role: "user" | "bot";
   content: React.ReactNode;
 };
-
-function normalizeText(value: string) {
-  return value.trim().toLowerCase();
-}
-
-function findBestAnswer(query: string) {
-  const normalized = normalizeText(query);
-  if (!normalized) {
-    return null;
-  }
-
-  const scored = FAQ_ENTRIES.map((entry) => {
-    const matches = entry.keywords.filter((keyword) => normalized.includes(keyword)).length;
-    return { entry, score: matches };
-  }).filter((item) => item.score > 0);
-
-  scored.sort((a, b) => b.score - a.score);
-  return scored[0]?.entry ?? null;
-}
 
 export function FAQChatBot() {
   const [message, setMessage] = useState("");
@@ -57,15 +38,26 @@ export function FAQChatBot() {
       return;
     }
 
-    const answer = findBestAnswer(trimmed);
+    const answer = findFaqAnswer(trimmed);
     const nextHistory: BotMessage[] = [
       ...history,
       { role: "user", content: trimmed },
       {
         role: "bot",
         content:
-          answer?.answer ??
-          "I’m not sure yet. Try asking about enrollment, schedules, certificates, payments, or results.",
+          answer?.answer ?? (
+            <>
+              <div>
+                Sorry — I didn’t catch that. Try: <b>fees</b>, <b>intake</b>, <b>location</b>, <b>online</b>, or{" "}
+                <b>register</b>.
+              </div>
+              <div className="mt-2">
+                <button type="button" onClick={openHumanChat} className="font-semibold underline">
+                  Talk to a human
+                </button>
+              </div>
+            </>
+          ),
       },
     ];
 
