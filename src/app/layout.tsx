@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/lib/site";
+import { ChatWidget } from "@/components/ChatWidget";
 
 const baseUrl = new URL(`https://${SITE.primaryDomain}`);
 
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-[70vh]">{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );
