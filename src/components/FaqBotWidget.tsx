@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { FAQ_ENTRIES } from "@/data/faq";
+import { WHATSAPP_LINK } from "@/lib/site";
 
 type Msg = { from: "user" | "bot"; text?: string; node?: React.ReactNode };
 
@@ -62,18 +63,14 @@ export default function FaqBotWidget() {
             <>
               Sorry, I didn’t catch that. Try: <b>fees</b>, <b>intake</b>, <b>location</b>, <b>online</b>, <b>register</b>.
               <div className="mt-2">
-                <button
-                  className="rounded-lg px-3 py-2 ring-1 ring-black/10 hover:underline"
-                  onClick={() => {
-                    // Open Tawk (human support)
-                    // @ts-ignore
-                    window?.Tawk_API?.showWidget?.();
-                    // @ts-ignore
-                    window?.Tawk_API?.maximize?.();
-                  }}
+                <a
+                  className="inline-flex rounded-lg px-3 py-2 ring-1 ring-black/10 hover:underline"
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  Talk to a human
-                </button>
+                  Chat on WhatsApp
+                </a>
               </div>
             </>
           ),
