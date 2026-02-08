@@ -1,0 +1,177 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { Container } from "@/components/Container";
+import { FAQ_ENTRIES } from "@/data/faq";
+import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
+
+const defaultPrompts = [
+  "How do I enroll?",
+  "Do all learning modes cost the same?",
+  "Can I start at B2?",
+  "Where are my receipts?",
+];
+
+type BotMessage = {
+  role: "user" | "bot";
+  content: React.ReactNode;
+};
+
+function normalizeText(value: string) {
+  return value.trim().toLowerCase();
+}
+
+function findBestAnswer(query: string) {
+  const normalized = normalizeText(query);
+  if (!normalized) {
+    return null;
+  }
+
+  const scored = FAQ_ENTRIES.map((entry) => {
+    const matches = entry.keywords.filter((keyword) => normalized.includes(keyword)).length;
+    return { entry, score: matches };
+  }).filter((item) => item.score > 0);
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored[0]?.entry ?? null;
+}
+
+export function FAQChatBot() {
+  const [message, setMessage] = useState("");
+  const [history, setHistory] = useState<BotMessage[]>([]);
+
+  const suggestions = useMemo(
+    () =>
+      defaultPrompts.filter(
+        (prompt) =>
+          !history.some((item) => item.role === "user" && typeof item.content === "string" && item.content === prompt),
+      ),
+    [history],
+  );
+
+  const handleSubmit = (input: string) => {
+    const trimmed = input.trim();
+    if (!trimmed) {
+      return;
+    }
+
+    const answer = findBestAnswer(trimmed);
+    const nextHistory: BotMessage[] = [
+      ...history,
+      { role: "user", content: trimmed },
+      {
+        role: "bot",
+        content:
+          answer?.answer ??
+          "I’m not sure yet. Try asking about enrollment, schedules, certificates, payments, or results.",
+      },
+    ];
+
+    setHistory(nextHistory);
+    setMessage("");
+  };
+
+  return (
+    <Container>
+      <section className="my-8 rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-lg font-semibold text-neutral-900">Quick Answers Bot</h2>
+          <p className="text-sm text-neutral-600">
+            Ask a quick question about enrollment, class formats, payments, or certificates. For full support, visit{" "}
+            <a
+              className="font-semibold text-brand-950 hover:underline"
+              href={LINKS.falowen}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Falowen
+            </a>{" "}
+            or chat on{" "}
+            <a
+              className="font-semibold text-brand-950 hover:underline"
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp
+            </a>
+            .
+          </p>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-3">
+          <div className="rounded-2xl bg-neutral-50 p-4 text-sm text-neutral-700">
+            {history.length === 0 ? (
+              <div>
+                Hi! I’m here to help with quick questions. Try one of the prompts below or type your own.
+              </div>
+            ) : (
+              <ul className="space-y-3">
+                {history.map((item, index) => (
+                  <li
+                    key={`${item.role}-${index}`}
+                    className={item.role === "user" ? "text-neutral-900" : "text-neutral-700"}
+                  >
+                    <span className="block text-xs uppercase tracking-wide text-neutral-500">
+                      {item.role === "user" ? "You" : "Bot"}
+                    </span>
+                    <span className="block">{item.content}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {suggestions.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {suggestions.map((prompt) => (
+                <button
+                  key={prompt}
+                  type="button"
+                  onClick={() => handleSubmit(prompt)}
+                  className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-semibold text-neutral-700 hover:bg-neutral-50"
+                >
+                  {prompt}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <form
+            className="flex flex-col gap-2 sm:flex-row"
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleSubmit(message);
+            }}
+          >
+            <label className="sr-only" htmlFor="faq-chat-input">
+              Ask a question
+            </label>
+            <input
+              id="faq-chat-input"
+              type="text"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              placeholder="Type your question..."
+              className="flex-1 rounded-2xl border border-black/10 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-950/20"
+            />
+            <button
+              type="submit"
+              className="rounded-2xl bg-brand-950 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-900"
+            >
+              Ask
+            </button>
+          </form>
+
+          <div className="text-xs text-neutral-500">
+            Still stuck? Email{" "}
+            <a className="font-semibold hover:underline" href={`mailto:${SITE.email}`}>
+              {SITE.email}
+            </a>{" "}
+            for help.
+          </div>
+        </div>
+      </section>
+    </Container>
+  );
+}
