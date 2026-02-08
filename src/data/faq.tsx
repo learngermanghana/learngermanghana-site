@@ -8,6 +8,112 @@ export type FAQEntry = {
 
 export const FAQ_ENTRIES: FAQEntry[] = [
   {
+    question: "How much are your fees?",
+    answer: (
+      <>
+        <div className="space-y-1">
+          <div>
+            • A1: <span className="font-semibold">2,800 GHS</span>
+          </div>
+          <div>
+            • A2–C1: <span className="font-semibold">3,000 GHS</span>
+          </div>
+        </div>
+        <div className="mt-2">Online and physical classes cost the same.</div>
+      </>
+    ),
+    keywords: ["fees", "fee", "pricing", "tuition", "cost", "ghana", "ghs", "cedis", "a1", "a2", "b1", "b2", "c1"],
+  },
+  {
+    question: "How can students pay?",
+    answer: (
+      <>
+        Pay inside your Falowen account after choosing a class in{" "}
+        <span className="font-semibold">Upcoming Classes</span>. If you need help with payment, contact{" "}
+        <a className="font-semibold hover:underline" href={`mailto:${SITE.email}`}>
+          {SITE.email}
+        </a>{" "}
+        or chat on WhatsApp.
+      </>
+    ),
+    keywords: ["payment", "pay", "falowen", "online payment", "tuition", "installment", "bank", "mobile money"],
+  },
+  {
+    question: "When is the next intake or start date?",
+    answer: (
+      <>
+        The next listed start date is <span className="font-semibold">February 17, 2026</span> for A1. For the latest
+        cohorts and seats, check Falowen under <span className="font-semibold">Upcoming Classes</span> or visit{" "}
+        <span className="font-semibold">www.learngermanghana.com/classes</span>.
+      </>
+    ),
+    keywords: ["intake", "start date", "cohort", "next class", "schedule", "upcoming"],
+  },
+  {
+    question: "What are your class days and hours per week?",
+    answer: (
+      <>
+        Meeting days depend on the cohort. Current schedules include weekday sessions (Mon–Wed and Thu–Fri) and weekend
+        options (Sat–Sun for French A1). Each live class is{" "}
+        <span className="font-semibold">1 hour</span>, typically{" "}
+        <span className="font-semibold">2–3 sessions per week</span>. See the live schedule at{" "}
+        <span className="font-semibold">www.learngermanghana.com/classes</span>.
+      </>
+    ),
+    keywords: ["class days", "weekdays", "weekends", "hours", "per week", "schedule", "times"],
+  },
+  {
+    question: "Where are your physical classes and do you offer online classes?",
+    answer: (
+      <>
+        Physical classes are in <span className="font-semibold">Awoshie (Accra)</span>. Yes, we offer online classes via{" "}
+        <span className="font-semibold">Zoom</span>, and A1–B1 classes are hybrid.
+      </>
+    ),
+    keywords: ["location", "accra", "awoshie", "online", "zoom", "hybrid", "in-person", "in person"],
+  },
+  {
+    question: "How do I register?",
+    answer: (
+      <>
+        No registration form is needed. Go to <span className="font-semibold">www.falowen.app</span>, sign up, open{" "}
+        <span className="font-semibold">Upcoming Classes</span>, choose your class, and pay to get access.
+      </>
+    ),
+    keywords: ["register", "registration", "sign up", "enroll", "falowen", "account"],
+  },
+  {
+    question: "Do you give certificates and prepare students for exams?",
+    answer: (
+      <>
+        Yes, we issue certificates of completion after you finish the course. We also prepare students for{" "}
+        <span className="font-semibold">Goethe</span> exams and French exams from{" "}
+        <span className="font-semibold">Alliance Française</span>.
+      </>
+    ),
+    keywords: ["certificate", "goethe", "exam", "exams", "alliance francaise", "french exams", "preparation"],
+  },
+  {
+    question: "Can absolute beginners join and do you place students by level test?",
+    answer: (
+      <>
+        Yes, absolute beginners can start at A1. If you are unsure about your level, we confirm the right class inside{" "}
+        <span className="font-semibold">Falowen</span> before you pay.
+      </>
+    ),
+    keywords: ["beginner", "absolute beginner", "level test", "placement", "a1", "start"],
+  },
+  {
+    question: "Do you help with German study visa, Ausbildung, or embassy interview preparation?",
+    answer: (
+      <>
+        We focus on language classes and exam preparation. If you need visa, Ausbildung, or embassy interview guidance,
+        please contact us to discuss your situation.
+      </>
+    ),
+    keywords: ["visa", "ausbildung", "embassy", "interview", "support", "help"],
+  },
+  {
     question: "How do I enroll and get access to Falowen?",
     answer: (
       <>
