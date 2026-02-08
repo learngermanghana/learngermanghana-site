@@ -2,6 +2,7 @@
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import FaqBotWidget from "@/components/FaqBotWidget";
 import { SITE } from "@/lib/site";
 import { ChatWidget } from "@/components/ChatWidget";
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-[70vh]">{children}</main>
         <Footer />
+        <FaqBotWidget />
         <ChatWidget />
       </body>
     </html>

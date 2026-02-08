@@ -9,6 +9,10 @@ export function ChatWidget() {
     <Script
       id="tawk-widget"
       strategy="afterInteractive"
+      onLoad={() => {
+        // @ts-ignore
+        window?.Tawk_API?.hideWidget?.();
+      }}
     >
       {`var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
