@@ -94,6 +94,15 @@ export default async function HomePage() {
                   <p className="mt-2 text-sm text-white/85">
                     Take the Falowen placement test to find the right class for you.
                   </p>
+                  <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-white/10">
+                    <Image
+                      src="https://raw.githubusercontent.com/learngermanghana/falowenexamtrainer/main/photos/pexels-lagosfoodbank-9090820.jpg"
+                      alt="Learner taking a placement test"
+                      width={640}
+                      height={360}
+                      className="h-auto w-full object-cover"
+                    />
+                  </div>
                   <a
                     href="https://www.falowen.app/placement-test"
                     target="_blank"
