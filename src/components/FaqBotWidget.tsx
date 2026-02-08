@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { FAQ_ENTRIES } from "@/data/faq";
-import { WHATSAPP_LINK } from "@/lib/site";
+import { SOCIAL_LINKS, WHATSAPP_LINK } from "@/lib/site";
 
 type Msg = { from: "user" | "bot"; text?: string; node?: React.ReactNode };
 
@@ -71,6 +71,21 @@ export default function FaqBotWidget() {
                 >
                   Chat on WhatsApp
                 </a>
+              </div>
+              <div className="mt-2 text-sm text-neutral-600">
+                Follow us on{" "}
+                <a className="font-semibold hover:underline" href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer">
+                  Instagram
+                </a>
+                ,{" "}
+                <a className="font-semibold hover:underline" href={SOCIAL_LINKS.youtube} target="_blank" rel="noreferrer">
+                  YouTube
+                </a>
+                , and{" "}
+                <a className="font-semibold hover:underline" href={SOCIAL_LINKS.tiktok} target="_blank" rel="noreferrer">
+                  TikTok
+                </a>
+                .
               </div>
             </>
           ),
