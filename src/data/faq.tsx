@@ -174,6 +174,18 @@ export const FAQ_ENTRIES: FAQEntry[] = [
   },
   {
     category: "Exams & Certificates",
+    question: "Do I need to write exams for each stage?",
+    answer: (
+      <>
+        No. You do not have to write exams at every stage. We focus on building your skills through each level, and you
+        only sit the official exam when you are ready for the target level (for example, B1 or B2). Earlier exams are
+        optional.
+      </>
+    ),
+    keywords: ["exams", "exam", "each stage", "every stage", "must write exam", "a1 exam", "a2 exam", "b1 exam", "b2 exam"],
+  },
+  {
+    category: "Exams & Certificates",
     question: "Where can I see Goethe exam prices and how do I register?",
     answer: (
       <>
