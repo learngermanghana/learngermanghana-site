@@ -29,8 +29,8 @@ function getIntentDetails(intent?: string) {
       return {
         label: "Register",
         description: "Share your details so we can guide your registration and class choice.",
-        next: LINKS.register,
-        nextLabel: "Continue to registration",
+        next: WHATSAPP_LINK,
+        nextLabel: "Chat on WhatsApp",
       };
   }
 }
@@ -179,7 +179,7 @@ export default function LeadCapturePage({
             <ul className="mt-4 space-y-3">
               <li>• Our team reviews your details and confirms the right level.</li>
               <li>• We share class schedules, start dates, and payment steps.</li>
-              <li>• You receive the direct link to register on Falowen.</li>
+              <li>• We continue your registration with you on WhatsApp.</li>
             </ul>
 
             <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">

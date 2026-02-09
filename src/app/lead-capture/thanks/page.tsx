@@ -28,9 +28,9 @@ function getThanksCopy(intent?: string) {
     default:
       return {
         title: "Thanks! We have received your details.",
-        subtitle: "Use the link below to continue your registration on Falowen.",
-        actionLabel: "Continue to registration",
-        fallback: LINKS.register,
+        subtitle: "Use the link below to continue your registration with us on WhatsApp.",
+        actionLabel: "Chat on WhatsApp",
+        fallback: WHATSAPP_LINK,
       };
   }
 }
