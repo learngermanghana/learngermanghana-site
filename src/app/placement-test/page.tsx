@@ -1,8 +1,7 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { WHATSAPP_LINK } from "@/lib/site";
-
-const placementLink = "https://www.falowen.app/placement-test";
+import Link from "next/link";
+import { CTA, LINKS } from "@/lib/site";
 
 export default function PlacementTestPage() {
   return (
@@ -24,13 +23,20 @@ export default function PlacementTestPage() {
                 <li>• Start the right class with confidence and a clear learning plan.</li>
               </ul>
 
-              <a
-                href={placementLink}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/lead-capture?intent=placement-test&source=placement-page"
                 className="mt-6 inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
               >
-                Start placement test
+                Share details &amp; start test
+              </Link>
+
+              <a
+                href={LINKS.placementTest}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex text-sm font-semibold text-brand-950 hover:underline"
+              >
+                Already submitted? Go to the test →
               </a>
             </div>
 
@@ -46,14 +52,12 @@ export default function PlacementTestPage() {
                 If you prefer guidance, chat with our team and we will help you choose the right class.
               </div>
 
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href={CTA.help.href}
                 className="mt-4 inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-50"
               >
-                WhatsApp for help
-              </a>
+                Talk to us
+              </Link>
             </div>
           </div>
         </section>

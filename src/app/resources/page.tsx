@@ -1,8 +1,7 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
+import Link from "next/link";
 import { CTA, LINKS } from "@/lib/site";
-
-const placementLink = "https://www.falowen.app/placement-test";
 
 export default function ResourcesPage() {
   return (
@@ -20,14 +19,12 @@ export default function ResourcesPage() {
               <p className="mt-3 text-sm text-neutral-700">
                 Find your level and get a recommended learning path in minutes.
               </p>
-              <a
-                href={placementLink}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/lead-capture?intent=placement-test&source=resources"
                 className="mt-4 inline-flex text-sm font-semibold text-brand-950 hover:underline"
               >
                 Take the placement test →
-              </a>
+              </Link>
             </div>
 
             <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
