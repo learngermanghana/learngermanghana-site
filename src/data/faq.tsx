@@ -136,6 +136,19 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     ],
   },
   {
+    category: "Classes & Format",
+    question: "Do you have a branch in Kumasi?",
+    answer: (
+      <>
+        We currently operate in <span className="font-semibold">Awoshie (Accra)</span>, but we also support remote
+        learning. We built the <span className="font-semibold">Falowen</span> app to help you study online with
+        recorded lectures that work the same way as in-person classes. You can check it out at{" "}
+        <span className="font-semibold">www.falowen.app</span>.
+      </>
+    ),
+    keywords: ["kumasi", "branch", "location", "accra", "awoshie", "remote", "online", "falowen", "recorded lectures"],
+  },
+  {
     category: "Enrollment",
     question: "How do I enroll and get access to Falowen?",
     answer: (
