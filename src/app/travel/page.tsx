@@ -3,7 +3,6 @@
 import { FormEvent, useMemo, useState } from "react";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { SITE } from "@/lib/site";
 
 type FormData = {
   fullName: string;
@@ -46,7 +45,7 @@ export default function TravelPage() {
     return lines.join("\n");
   }, [form]);
 
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${SITE.phoneIntl}&text=${encodeURIComponent(
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=4917620721491&text=${encodeURIComponent(
     whatsappMessage
   )}`;
 
