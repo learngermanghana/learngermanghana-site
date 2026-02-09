@@ -32,9 +32,9 @@ export const WHATSAPP_LINK =
 
 // ✅ Add CTA export back (used across pages)
 export const CTA = {
-  primary: { label: "Register / Contract", href: "/lead-capture?intent=register" },
+  primary: { label: "Register / Contract", href: LINKS.register },
   secondary: { label: "Go to Falowen (Sign up)", href: LINKS.falowen },
-  help: { label: "Talk to us", href: "/lead-capture?intent=talk-to-us" },
+  help: { label: "Talk to us", href: "/contact" },
   blog: { label: "Blog", href: LINKS.blog },
 };
 
