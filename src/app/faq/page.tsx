@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { LINKS, WHATSAPP_LINK } from "@/lib/site";
+import Link from "next/link";
+import { CTA, LINKS } from "@/lib/site";
 import { FAQ_ENTRIES } from "@/data/faq";
 
 function FAQItem({ q, a }: { q: string; a: React.ReactNode }) {
@@ -90,7 +91,7 @@ export default function FAQPage() {
 
         <div className="mt-10">
           <p className="text-sm text-neutral-700">
-            Still need help? Reach out via email or WhatsApp and we will reply as soon as possible.
+            Still need help? Share your details and we will reply as soon as possible.
           </p>
         </div>
 
@@ -103,14 +104,12 @@ export default function FAQPage() {
           >
             Enroll on Falowen
           </a>
-          <a
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href={CTA.help.href}
             className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-6 py-3 text-sm font-semibold hover:bg-neutral-50"
           >
-            Chat on WhatsApp
-          </a>
+            Talk to us
+          </Link>
         </div>
       </section>
     </Container>

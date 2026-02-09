@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { RandomReviews } from "@/components/RandomReviews";
-import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
+import { CTA, LINKS, SITE } from "@/lib/site";
 import { upcomingClasses, reviews } from "@/data/content";
 import { getBlogPosts } from "@/lib/blog";
 import { formatDatePretty } from "@/lib/date";
@@ -103,21 +103,17 @@ export default async function HomePage() {
                       className="h-auto w-full object-cover"
                     />
                   </div>
-                  <a
-                    href="https://www.falowen.app/placement-test"
-                    target="_blank"
-                    rel="noreferrer"
+                  <Link
+                    href="/lead-capture?intent=placement-test&source=home-hero"
                     className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
                   >
                     Start placement test →
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
                   <a
-                    href="https://register.falowen.app"
-                    target="_blank"
-                    rel="noreferrer"
+                    href={CTA.primary.href}
                     className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
                   >
                     Register / Contract
@@ -131,12 +127,10 @@ export default async function HomePage() {
                   </Link>
 
                   <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={CTA.help.href}
                     className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/15"
                   >
-                    WhatsApp help
+                    Talk to us
                   </a>
                 </div>
 
@@ -157,16 +151,14 @@ export default async function HomePage() {
                 <div className="mt-6 rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
                   <div className="text-sm font-semibold text-white">Need help?</div>
                   <div className="mt-1 text-sm text-white/85">
-                    If you have any questions, chat our team on WhatsApp.
+                    If you have any questions, share your details and we will reach out.
                   </div>
                   <div className="mt-3">
                     <a
-                      href={WHATSAPP_LINK}
-                      target="_blank"
-                      rel="noreferrer"
+                      href={CTA.help.href}
                       className="inline-flex items-center justify-center rounded-2xl bg-black/40 px-4 py-2 text-sm font-semibold text-white hover:bg-black/55 ring-1 ring-white/15"
                     >
-                      Chat on WhatsApp
+                      Talk to us
                     </a>
                   </div>
                 </div>
@@ -248,16 +240,14 @@ export default async function HomePage() {
                       <div className="rounded-2xl border border-black/10 bg-white p-4">
                         <div className="text-sm font-semibold">Need help?</div>
                         <div className="mt-2 text-sm text-neutral-700">
-                          Chat our team on WhatsApp for support.
+                          Share your details and our team will reach out with guidance.
                         </div>
-                        <a
-                          href={WHATSAPP_LINK}
-                          target="_blank"
-                          rel="noreferrer"
+                        <Link
+                          href={CTA.help.href}
                           className="mt-3 inline-flex text-sm font-semibold text-brand-800 hover:underline"
                         >
-                          WhatsApp support →
-                        </a>
+                          Talk to us →
+                        </Link>
                       </div>
                     </div>
 
