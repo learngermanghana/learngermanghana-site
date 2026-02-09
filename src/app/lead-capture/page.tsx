@@ -1,35 +1,11 @@
-﻿"use client";
-
-import { FormEvent, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { LINKS, SITE } from "@/lib/site";
+import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
 
 type LeadCaptureSearchParams = {
   intent?: string;
   next?: string;
   source?: string;
-};
-
-type LeadCaptureForm = {
-  name: string;
-  phone: string;
-  email: string;
-  levelInterest: string;
-  preferredMode: string;
-  preferredStart: string;
-  notes: string;
-};
-
-const initialForm: LeadCaptureForm = {
-  name: "",
-  phone: "",
-  email: "",
-  levelInterest: "",
-  preferredMode: "",
-  preferredStart: "",
-  notes: "",
 };
 
 function getIntentDetails(intent?: string) {
@@ -45,7 +21,7 @@ function getIntentDetails(intent?: string) {
       return {
         label: "Talk to us",
         description: "Share your details and we will reach out with the best next step.",
-        next: `https://api.whatsapp.com/send?phone=${SITE.phoneIntl}`,
+        next: WHATSAPP_LINK,
         nextLabel: "Chat on WhatsApp",
       };
     case "register":
@@ -64,39 +40,11 @@ export default function LeadCapturePage({
 }: {
   searchParams?: LeadCaptureSearchParams;
 }) {
-  const router = useRouter();
-  const [form, setForm] = useState<LeadCaptureForm>(initialForm);
   const intentDetails = getIntentDetails(searchParams?.intent);
   const nextLink = searchParams?.next ?? intentDetails.next;
   const nextUrl = `${LINKS.mainWebsite}/lead-capture/thanks?intent=${
     searchParams?.intent ?? "register"
   }&next=${encodeURIComponent(nextLink)}`;
-
-  const whatsappMessage = useMemo(() => {
-    const lines = [
-      `*Lead Capture · ${intentDetails.label}*`,
-      `Name: ${form.name || "-"}`,
-      `Phone: ${form.phone || "-"}`,
-      `Email: ${form.email || "-"}`,
-      `Level interest: ${form.levelInterest || "-"}`,
-      `Preferred mode: ${form.preferredMode || "-"}`,
-      `Preferred start: ${form.preferredStart || "-"}`,
-      `Notes: ${form.notes || "-"}`,
-      `Source: ${searchParams?.source ?? "website"}`,
-    ];
-
-    return lines.join("\n");
-  }, [form, intentDetails.label, searchParams?.source]);
-
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${SITE.phoneIntl}&text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    router.push(nextUrl);
-  }
 
   return (
     <Container>
@@ -108,16 +56,24 @@ export default function LeadCapturePage({
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <form
-            onSubmit={handleSubmit}
+            action={`https://formsubmit.co/${SITE.email}`}
+            method="POST"
             className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm"
           >
+            <input type="hidden" name="_subject" value={`New lead: ${intentDetails.label}`} />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value={nextUrl} />
+            <input type="hidden" name="Intent" value={intentDetails.label} />
+            {searchParams?.source ? (
+              <input type="hidden" name="Source" value={searchParams.source} />
+            ) : null}
+
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="text-sm font-medium text-neutral-700">
                 Full name
                 <input
+                  name="Name"
                   required
-                  value={form.name}
-                  onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
                   className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                   placeholder="Your name"
                 />
@@ -126,9 +82,8 @@ export default function LeadCapturePage({
               <label className="text-sm font-medium text-neutral-700">
                 Phone / WhatsApp
                 <input
+                  name="Phone"
                   required
-                  value={form.phone}
-                  onChange={(event) => setForm((prev) => ({ ...prev, phone: event.target.value }))}
                   className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                   placeholder="+233..."
                 />
@@ -138,9 +93,8 @@ export default function LeadCapturePage({
                 Email
                 <input
                   type="email"
+                  name="Email"
                   required
-                  value={form.email}
-                  onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
                   className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                   placeholder="you@example.com"
                 />
@@ -149,11 +103,8 @@ export default function LeadCapturePage({
               <label className="text-sm font-medium text-neutral-700">
                 Level interest
                 <select
+                  name="Level interest"
                   required
-                  value={form.levelInterest}
-                  onChange={(event) =>
-                    setForm((prev) => ({ ...prev, levelInterest: event.target.value }))
-                  }
                   className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                 >
                   <option value="">Select a level</option>
@@ -169,11 +120,8 @@ export default function LeadCapturePage({
               <label className="text-sm font-medium text-neutral-700">
                 Preferred mode
                 <select
+                  name="Preferred mode"
                   required
-                  value={form.preferredMode}
-                  onChange={(event) =>
-                    setForm((prev) => ({ ...prev, preferredMode: event.target.value }))
-                  }
                   className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                 >
                   <option value="">Select a mode</option>
@@ -188,11 +136,8 @@ export default function LeadCapturePage({
                 Preferred start date
                 <input
                   type="date"
+                  name="Preferred start"
                   required
-                  value={form.preferredStart}
-                  onChange={(event) =>
-                    setForm((prev) => ({ ...prev, preferredStart: event.target.value }))
-                  }
                   className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                 />
               </label>
@@ -201,10 +146,9 @@ export default function LeadCapturePage({
             <label className="mt-4 block text-sm font-medium text-neutral-700">
               Notes (optional)
               <textarea
+                name="Notes"
                 className="mt-2 min-h-[110px] w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
                 placeholder="Anything else you'd like us to know?"
-                value={form.notes}
-                onChange={(event) => setForm((prev) => ({ ...prev, notes: event.target.value }))}
               />
             </label>
 
@@ -226,7 +170,7 @@ export default function LeadCapturePage({
             </div>
 
             <p className="mt-4 text-xs text-neutral-500">
-              We&apos;ll send your details to WhatsApp so our team can follow up quickly.
+              We only use your details to contact you about classes and enrollment support.
             </p>
           </form>
 
