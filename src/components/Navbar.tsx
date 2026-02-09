@@ -56,15 +56,13 @@ export function Navbar() {
               })}
             </nav>
 
-            <a
+            <Link
               href={CTA.primary.href}
-              target="_blank"
-              rel="noreferrer"
               className="hidden md:inline-flex rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-900 shadow-sm"
               title="Register on Falowen"
             >
               {CTA.primary.label}
-            </a>
+            </Link>
 
             <button
               type="button"
@@ -120,15 +118,13 @@ export function Navbar() {
                   </Link>
                 );
               })}
-              <a
+              <Link
                 href={CTA.primary.href}
-                target="_blank"
-                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white shadow-sm"
                 title="Register on Falowen"
               >
                 {CTA.primary.label}
-              </a>
+              </Link>
             </div>
           </div>
         ) : null}

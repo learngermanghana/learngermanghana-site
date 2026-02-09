@@ -13,6 +13,7 @@ export const LINKS = {
   mainWebsite: "https://www.learngermanghana.com",
   falowen: "https://www.falowen.app",
   register: "https://register.falowen.app",
+  placementTest: "https://www.falowen.app/placement-test",
   blog: "https://blog.falowen.app",
 };
 
@@ -31,9 +32,9 @@ export const WHATSAPP_LINK =
 
 // ✅ Add CTA export back (used across pages)
 export const CTA = {
-  primary: { label: "Register / Contract", href: LINKS.register },
+  primary: { label: "Register / Contract", href: "/lead-capture?intent=register" },
   secondary: { label: "Go to Falowen (Sign up)", href: LINKS.falowen },
-  help: { label: "WhatsApp Support", href: WHATSAPP_LINK },
+  help: { label: "Talk to us", href: "/lead-capture?intent=talk-to-us" },
   blog: { label: "Blog", href: LINKS.blog },
 };
 

@@ -2,7 +2,7 @@ import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
 import { upcomingClasses } from "@/data/content";
 import { formatDatePretty } from "@/lib/date";
-import { CTA, WHATSAPP_LINK } from "@/lib/site";
+import { CTA } from "@/lib/site";
 
 function getTimeValue(dateStr: string) {
   if (!dateStr || dateStr === "TBA") return Number.POSITIVE_INFINITY;
@@ -73,7 +73,7 @@ export default function SchedulePage() {
             <div>
               <div className="text-base font-semibold text-neutral-900">Ready to enroll?</div>
               <p className="mt-2">
-                Register on Falowen to secure your seat. Need help choosing the best schedule? Chat with our team.
+                Register on Falowen to secure your seat. Need help choosing the best schedule? Talk with our team.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:items-end">
@@ -86,12 +86,10 @@ export default function SchedulePage() {
                 {CTA.primary.label}
               </a>
               <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noreferrer"
+                href={CTA.help.href}
                 className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-50"
               >
-                WhatsApp support
+                Talk to us
               </a>
             </div>
           </div>

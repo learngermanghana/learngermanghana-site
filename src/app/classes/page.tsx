@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
 import { classUpdates, upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { formatDatePretty } from "@/lib/date";
-import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
+import { CTA, LINKS, SITE } from "@/lib/site";
 
 function money(amount: number) {
   return `GHS ${amount.toLocaleString("en-GH")}`;
@@ -148,21 +148,17 @@ export default function ClassesPage() {
               </a>
 
               <a
-                href={LINKS.register}
-                target="_blank"
-                rel="noreferrer"
+                href={CTA.primary.href}
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-white/15 ring-1 ring-white/25"
               >
                 Register / Contract
               </a>
 
               <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noreferrer"
+                href={CTA.help.href}
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-black/25 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-black/35 ring-1 ring-white/20"
               >
-                WhatsApp help
+                Talk to us
               </a>
             </div>
           </section>
@@ -382,12 +378,10 @@ export default function ClassesPage() {
                     </a>
 
                     <a
-                      href={WHATSAPP_LINK}
-                      target="_blank"
-                      rel="noreferrer"
+                      href={CTA.help.href}
                       className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
                     >
-                      WhatsApp help
+                      Talk to us
                     </a>
                   </div>
                 </div>
