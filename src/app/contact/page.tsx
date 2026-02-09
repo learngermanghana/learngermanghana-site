@@ -1,7 +1,7 @@
 ﻿import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { CTA, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export default function ContactPage() {
   return (
@@ -20,13 +20,13 @@ export default function ContactPage() {
             </p>
             <div className="mt-4 flex flex-col sm:flex-row gap-3">
               <Link
-                href={CTA.primary.href}
+                href="/lead-capture?intent=register"
                 className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
               >
                 Submit your details
               </Link>
               <Link
-                href={CTA.help.href}
+                href="/lead-capture?intent=talk-to-us"
                 className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
               >
                 Talk to us

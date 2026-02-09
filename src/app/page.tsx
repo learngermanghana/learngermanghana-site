@@ -119,12 +119,14 @@ export default async function HomePage() {
                     Register / Contract
                   </a>
 
-                  <Link
-                    href="/classes"
+                  <a
+                    href={LINKS.register}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/40 bg-black/25 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/35"
                   >
                     How to enroll (steps)
-                  </Link>
+                  </a>
 
                   <a
                     href={CTA.help.href}
@@ -228,12 +230,12 @@ export default async function HomePage() {
                           <li>3) Choose class and pay</li>
                         </ol>
                         <a
-                          href={LINKS.falowen}
+                          href={LINKS.register}
                           target="_blank"
                           rel="noreferrer"
                           className="mt-3 inline-flex text-sm font-semibold text-brand-800 hover:underline"
                         >
-                          www.falowen.app →
+                          register.falowen.app →
                         </a>
                       </div>
 
