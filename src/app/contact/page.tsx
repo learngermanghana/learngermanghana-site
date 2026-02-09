@@ -1,7 +1,7 @@
 ﻿import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { SITE } from "@/lib/site";
+import { SITE, WHATSAPP_LINK } from "@/lib/site";
 
 export default function ContactPage() {
   return (
@@ -25,12 +25,14 @@ export default function ContactPage() {
               >
                 Submit your details
               </Link>
-              <Link
-                href="/lead-capture?intent=talk-to-us"
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
               >
                 Talk to us
-              </Link>
+              </a>
             </div>
           </div>
 
