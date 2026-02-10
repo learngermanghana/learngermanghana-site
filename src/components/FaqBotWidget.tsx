@@ -60,6 +60,36 @@ function findBestAnswer(message: string) {
   return bestScore >= 1 ? best : null;
 }
 
+function parseLevelValue(text: string) {
+  const normalized = text.trim().toLowerCase();
+  const knownLevels = ["a1", "a2", "b1", "b2", "c1", "not sure"];
+  return knownLevels.includes(normalized) ? text.trim() : null;
+}
+
+function parseContactPreference(text: string) {
+  const normalized = text.trim().toLowerCase();
+  if (normalized === "whatsapp") return "whatsapp";
+  if (normalized === "phone" || normalized === "phone call") return "phone";
+  if (normalized === "email") return "email";
+  return null;
+}
+
+function shouldTreatAsFaqInStep(step: FlowStep, text: string) {
+  const normalized = text.trim().toLowerCase();
+
+  if (step === "level" && parseLevelValue(normalized)) return false;
+  if (step === "contactPreference" && parseContactPreference(normalized)) return false;
+
+  const looksLikeQuestion =
+    normalized.includes("?") ||
+    /^(where|what|how|when|which|who|can|do|does|is|are)\b/.test(normalized) ||
+    ["price", "fee", "cost", "location", "online", "register", "schedule", "intake"].some((kw) =>
+      normalized.includes(kw),
+    );
+
+  return looksLikeQuestion;
+}
+
 function intentLabel(intent?: string) {
   switch (intent) {
     case "register":
@@ -189,7 +219,7 @@ export default function FaqBotWidget() {
 
     addUserMessage(text);
 
-    if (step !== "intent" && step !== "done") {
+    if (step !== "intent" && step !== "done" && shouldTreatAsFaqInStep(step, text)) {
       const match = findBestAnswer(text);
       if (match) {
         addBotMessage(match.answer);
@@ -228,6 +258,12 @@ export default function FaqBotWidget() {
     }
 
     if (step === "level") {
+      const parsedLevel = parseLevelValue(text);
+      if (!parsedLevel) {
+        addBotMessage("Please choose your level: A1, A2, B1, B2, C1, or Not sure.");
+        return;
+      }
+
       const nextLead = { ...lead, level: text };
       setLead(nextLead);
       setStep("start");
@@ -244,20 +280,20 @@ export default function FaqBotWidget() {
     }
 
     if (step === "contactPreference") {
-      const normalized = text.toLowerCase();
-      if (!["whatsapp", "phone", "email"].includes(normalized)) {
+      const parsedPreference = parseContactPreference(text);
+      if (!parsedPreference) {
         addBotMessage("Please choose WhatsApp, Phone call, or Email.");
         return;
       }
 
       const nextLead = {
         ...lead,
-        contactPreference: normalized as LeadState["contactPreference"],
+        contactPreference: parsedPreference,
       };
       setLead(nextLead);
       setStep("contactDetail");
       addBotMessage(
-        normalized === "email" ? "Please share your email address." : "Please share your phone/WhatsApp number.",
+        parsedPreference === "email" ? "Please share your email address." : "Please share your phone/WhatsApp number.",
       );
       return;
     }
