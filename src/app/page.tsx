@@ -131,7 +131,7 @@ export default async function HomePage() {
                   </a>
 
                   <a
-                    href={CTA.help.href}
+                    href="/lead-capture?intent=talk-to-us&source=homepage"
                     className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/15"
                   >
                     Talk to us
@@ -159,7 +159,7 @@ export default async function HomePage() {
                   </div>
                   <div className="mt-3">
                     <a
-                      href={CTA.help.href}
+                      href="/lead-capture?intent=talk-to-us&source=homepage"
                       className="inline-flex items-center justify-center rounded-2xl bg-black/40 px-4 py-2 text-sm font-semibold text-white hover:bg-black/55 ring-1 ring-white/15"
                     >
                       Talk to us
@@ -247,7 +247,7 @@ export default async function HomePage() {
                           Share your details and our team will reach out with guidance.
                         </div>
                         <Link
-                          href={CTA.help.href}
+                          href="/lead-capture?intent=talk-to-us&source=homepage"
                           className="mt-3 inline-flex text-sm font-semibold text-brand-800 hover:underline"
                         >
                           Talk to us →
