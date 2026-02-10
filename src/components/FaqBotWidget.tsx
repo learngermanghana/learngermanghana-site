@@ -193,9 +193,7 @@ export default function FaqBotWidget() {
       const match = findBestAnswer(text);
       if (match) {
         addBotMessage(match.answer);
-        if (step !== "intent") {
-          addBotMessage(promptForCurrentStep(step));
-        }
+        addBotMessage(promptForCurrentStep(step));
         return;
       }
     }
