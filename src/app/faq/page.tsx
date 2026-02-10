@@ -20,6 +20,7 @@ function FAQItem({ q, a }: { q: string; a: React.ReactNode }) {
 export default function FAQPage() {
   const [query, setQuery] = useState("");
   const normalizedQuery = query.trim().toLowerCase();
+  const quickFilters = ["pricing", "register", "schedule", "goethe", "online", "receipt"];
 
   const groupedEntries = useMemo(() => {
     const filtered = FAQ_ENTRIES.filter((entry) => {
@@ -60,14 +61,39 @@ export default function FAQPage() {
           <label className="text-sm font-semibold text-neutral-800" htmlFor="faq-search">
             Search the FAQ
           </label>
-          <input
-            id="faq-search"
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Type a keyword like pricing, Goethe, or schedule"
-            className="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-950/30"
-          />
+          <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+            <input
+              id="faq-search"
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Type a keyword like pricing, Goethe, or schedule"
+              className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-950/30"
+            />
+            {query ? (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-semibold hover:bg-neutral-50"
+              >
+                Clear
+              </button>
+            ) : null}
+          </div>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Popular:</span>
+            {quickFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => setQuery(filter)}
+                className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-semibold text-neutral-700 hover:bg-neutral-50"
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+          <p className="mt-3 text-xs text-neutral-500">{Object.values(groupedEntries).flat().length} answers found.</p>
         </div>
 
         <div className="mt-8 space-y-8">

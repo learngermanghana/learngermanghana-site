@@ -2,11 +2,13 @@
 
 import React, { useMemo, useState } from "react";
 import { FAQ_ENTRIES } from "@/data/faq";
-import { SITE, SOCIAL_LINKS } from "@/lib/site";
+import { CTA, SITE, SOCIAL_LINKS } from "@/lib/site";
 
 type Msg = { from: "user" | "bot"; text?: string; node?: React.ReactNode };
 
 type FlowStep = "intent" | "name" | "level" | "start" | "contactPreference" | "contactDetail" | "done";
+
+type BotCommand = "restart" | "faq" | "human";
 
 type LeadState = {
   intent?: string;
@@ -71,6 +73,14 @@ function parseContactPreference(text: string): LeadState["contactPreference"] | 
   if (normalized === "whatsapp") return "whatsapp";
   if (normalized === "phone" || normalized === "phone call") return "phone";
   if (normalized === "email") return "email";
+  return null;
+}
+
+function parseBotCommand(text: string): BotCommand | null {
+  const normalized = text.trim().toLowerCase();
+  if (["restart", "start over", "reset"].includes(normalized)) return "restart";
+  if (["faq", "ask question", "question"].includes(normalized)) return "faq";
+  if (["human", "agent", "talk to human", "talk to person"].includes(normalized)) return "human";
   return null;
 }
 
@@ -179,12 +189,18 @@ export default function FaqBotWidget() {
         <>
           👋 Hi! I can help you quickly and qualify your lead.
           <div className="mt-2">Let&apos;s start: what do you need today?</div>
+          <div className="mt-1 text-xs text-neutral-500">Tip: type restart anytime to start over.</div>
         </>
       ),
     },
   ]);
 
   const quick = useMemo(() => optionsForStep(step), [step]);
+
+  function resetFlow() {
+    setLead({});
+    setStep("intent");
+  }
 
   function addBotMessage(node: React.ReactNode) {
     setMsgs((m) => [...m, { from: "bot", node }]);
@@ -218,6 +234,46 @@ export default function FaqBotWidget() {
     if (!text) return;
 
     addUserMessage(text);
+
+    const command = parseBotCommand(text);
+    if (command === "restart") {
+      resetFlow();
+      addBotMessage("No problem — we have restarted. What do you need today?");
+      return;
+    }
+
+    if (command === "human") {
+      addBotMessage(
+        <>
+          You can reach a human on WhatsApp or the contact page.
+          <div className="mt-2 flex flex-wrap gap-2">
+            <a
+              className="inline-flex rounded-lg px-3 py-2 ring-1 ring-black/10 hover:underline"
+              href={buildWhatsAppUrl(lead)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Talk on WhatsApp
+            </a>
+            <a className="inline-flex rounded-lg px-3 py-2 ring-1 ring-black/10 hover:underline" href={CTA.help.href}>
+              Open contact page
+            </a>
+          </div>
+        </>,
+      );
+      return;
+    }
+
+    if (command === "faq") {
+      const match = findBestAnswer(text);
+      if (match) {
+        addBotMessage(match.answer);
+      } else {
+        addBotMessage("Try keywords like fees, schedule, Goethe, online, or register.");
+      }
+      if (step !== "done") addBotMessage(promptForCurrentStep(step));
+      return;
+    }
 
     if (step !== "intent" && step !== "done" && shouldTreatAsFaqInStep(step, text)) {
       const match = findBestAnswer(text);
@@ -323,13 +379,16 @@ export default function FaqBotWidget() {
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {!open ? (
-        <button onClick={() => setOpen(true)} className="rounded-2xl bg-black px-4 py-3 text-white shadow-lg">
+        <button onClick={() => setOpen(true)} className="rounded-2xl bg-black px-4 py-3 text-white shadow-lg" aria-label="Open lead assistant chat">
           Help Bot
         </button>
       ) : (
         <div className="w-[340px] rounded-2xl bg-white shadow-xl ring-1 ring-black/10 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 bg-neutral-50 ring-1 ring-black/5">
-            <div className="font-semibold">Lead Assistant</div>
+            <div>
+              <div className="font-semibold">Lead Assistant</div>
+              <div className="text-xs text-neutral-500">Avg. completion: ~1 min</div>
+            </div>
             <button onClick={() => setOpen(false)} className="text-sm hover:underline">
               Close
             </button>
@@ -350,6 +409,8 @@ export default function FaqBotWidget() {
               ))}
             </div>
           ) : null}
+
+          <div className="px-3 py-2 text-[11px] text-neutral-500">Use quick chips below or type: restart, faq, human (WhatsApp + contact page).</div>
 
           <div className="h-[320px] overflow-y-auto px-3 py-2 space-y-2">
             {msgs.map((m, idx) => (
