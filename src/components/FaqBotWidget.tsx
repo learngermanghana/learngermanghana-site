@@ -66,7 +66,7 @@ function parseLevelValue(text: string) {
   return knownLevels.includes(normalized) ? text.trim() : null;
 }
 
-function parseContactPreference(text: string) {
+function parseContactPreference(text: string): LeadState["contactPreference"] | null {
   const normalized = text.trim().toLowerCase();
   if (normalized === "whatsapp") return "whatsapp";
   if (normalized === "phone" || normalized === "phone call") return "phone";
