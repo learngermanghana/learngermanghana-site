@@ -104,7 +104,9 @@ export default async function HomePage() {
                     />
                   </div>
                   <Link
-                    href="/lead-capture?intent=placement-test&source=home-hero"
+                    href={LINKS.placementTest}
+                    target="_blank"
+                    rel="noreferrer"
                     className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
                   >
                     Start placement test →
