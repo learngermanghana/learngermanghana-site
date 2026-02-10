@@ -6,6 +6,7 @@ import { CTA, LINKS, WHATSAPP_LINK } from "@/lib/site";
 type LeadCaptureThanksParams = {
   intent?: string;
   next?: string;
+  wa?: string;
 };
 
 function getThanksCopy(intent?: string) {
@@ -41,7 +42,7 @@ export default function LeadCaptureThanksPage({
   searchParams?: LeadCaptureThanksParams;
 }) {
   const thanksCopy = getThanksCopy(searchParams?.intent);
-  const nextLink = searchParams?.next ?? thanksCopy.fallback;
+  const nextLink = searchParams?.wa ?? searchParams?.next ?? thanksCopy.fallback;
 
   return (
     <Container>

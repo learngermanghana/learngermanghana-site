@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
+import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { SectionTitle } from "@/components/SectionTitle";
-import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
+import { LINKS, WHATSAPP_LINK } from "@/lib/site";
 
 type LeadCaptureSearchParams = {
   intent?: string;
@@ -42,9 +43,7 @@ export default function LeadCapturePage({
 }) {
   const intentDetails = getIntentDetails(searchParams?.intent);
   const nextLink = searchParams?.next ?? intentDetails.next;
-  const nextUrl = `${LINKS.mainWebsite}/lead-capture/thanks?intent=${
-    searchParams?.intent ?? "register"
-  }&next=${encodeURIComponent(nextLink)}`;
+  const intent = searchParams?.intent ?? "register";
 
   return (
     <Container>
@@ -55,124 +54,13 @@ export default function LeadCapturePage({
         />
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <form
-            action={`https://formsubmit.co/${SITE.email}`}
-            method="POST"
-            className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm"
-          >
-            <input type="hidden" name="_subject" value={`New lead: ${intentDetails.label}`} />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value={nextUrl} />
-            <input type="hidden" name="Intent" value={intentDetails.label} />
-            {searchParams?.source ? (
-              <input type="hidden" name="Source" value={searchParams.source} />
-            ) : null}
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="text-sm font-medium text-neutral-700">
-                Full name
-                <input
-                  name="Name"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                  placeholder="Your name"
-                />
-              </label>
-
-              <label className="text-sm font-medium text-neutral-700">
-                Phone / WhatsApp
-                <input
-                  name="Phone"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                  placeholder="+233..."
-                />
-              </label>
-
-              <label className="text-sm font-medium text-neutral-700">
-                Email
-                <input
-                  type="email"
-                  name="Email"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                  placeholder="you@example.com"
-                />
-              </label>
-
-              <label className="text-sm font-medium text-neutral-700">
-                Level interest
-                <select
-                  name="Level interest"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                >
-                  <option value="">Select a level</option>
-                  <option value="A1">A1 (Beginner)</option>
-                  <option value="A2">A2</option>
-                  <option value="B1">B1</option>
-                  <option value="B2">B2</option>
-                  <option value="C1">C1</option>
-                  <option value="Not sure">Not sure</option>
-                </select>
-              </label>
-
-              <label className="text-sm font-medium text-neutral-700">
-                Preferred mode
-                <select
-                  name="Preferred mode"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                >
-                  <option value="">Select a mode</option>
-                  <option value="Online">Online</option>
-                  <option value="In-person">In-person</option>
-                  <option value="Hybrid">Hybrid (online + in-person)</option>
-                  <option value="Not sure">Not sure</option>
-                </select>
-              </label>
-
-              <label className="text-sm font-medium text-neutral-700">
-                Preferred start date
-                <input
-                  type="date"
-                  name="Preferred start"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                />
-              </label>
-            </div>
-
-            <label className="mt-4 block text-sm font-medium text-neutral-700">
-              Notes (optional)
-              <textarea
-                name="Notes"
-                className="mt-2 min-h-[110px] w-full rounded-2xl border border-black/10 px-4 py-2 text-sm"
-                placeholder="Anything else you'd like us to know?"
-              />
-            </label>
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
-              >
-                Submit and continue
-              </button>
-              <a
-                href={nextLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-black/10 px-5 py-3 text-sm font-semibold text-neutral-700 hover:bg-neutral-50"
-              >
-                {intentDetails.nextLabel}
-              </a>
-            </div>
-
-            <p className="mt-4 text-xs text-neutral-500">
-              We only use your details to contact you about classes and enrollment support.
-            </p>
-          </form>
+          <LeadCaptureForm
+            intent={intent}
+            intentLabel={intentDetails.label}
+            source={searchParams?.source}
+            defaultNextLink={nextLink}
+            nextLabel={intentDetails.nextLabel}
+          />
 
           <div className="rounded-3xl border border-black/10 bg-neutral-50 p-6 text-sm text-neutral-700 shadow-sm">
             <div className="text-base font-semibold text-neutral-900">What happens next</div>
