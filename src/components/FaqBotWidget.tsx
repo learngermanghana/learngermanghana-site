@@ -6,10 +6,11 @@ import { SITE, SOCIAL_LINKS } from "@/lib/site";
 
 type Msg = { from: "user" | "bot"; text?: string; node?: React.ReactNode };
 
-type FlowStep = "intent" | "level" | "start" | "contactPreference" | "contactDetail" | "done";
+type FlowStep = "intent" | "name" | "level" | "start" | "contactPreference" | "contactDetail" | "done";
 
 type LeadState = {
   intent?: string;
+  name?: string;
   level?: string;
   startTiming?: string;
   contactPreference?: "whatsapp" | "phone" | "email";
@@ -80,6 +81,7 @@ function buildWhatsAppUrl(lead: LeadState) {
     "I just shared my details in the website chatbot.",
     "Please follow up with me.",
     `Intent: ${intentLabel(lead.intent)}`,
+    `Name: ${lead.name ?? "Not shared"}`,
     `Level: ${lead.level ?? "Not shared"}`,
     `Start timing: ${lead.startTiming ?? "Not shared"}`,
     `Contact preference: ${lead.contactPreference ?? "Not shared"}`,
@@ -91,6 +93,7 @@ function buildWhatsAppUrl(lead: LeadState) {
 
 function promptForCurrentStep(step: FlowStep) {
   if (step === "intent") return "What do you need today? Choose: Join classes, Placement test, Exam prep, or General question.";
+  if (step === "name") return "What is your full name?";
   if (step === "level") return "What is your current level or target level?";
   if (step === "start") return "When would you like to start?";
   if (step === "contactPreference") return "How should we contact you? (WhatsApp, Phone call, or Email)";
@@ -188,10 +191,11 @@ export default function FaqBotWidget() {
 
     if (step !== "intent" && step !== "done") {
       const match = findBestAnswer(text);
-      const looksLikeQuestion = text.includes("?") || text.toLowerCase().startsWith("what") || text.toLowerCase().startsWith("how");
-      if (match && looksLikeQuestion) {
+      if (match) {
         addBotMessage(match.answer);
-        addBotMessage(promptForCurrentStep(step));
+        if (step !== "intent") {
+          addBotMessage(promptForCurrentStep(step));
+        }
         return;
       }
     }
@@ -202,9 +206,7 @@ export default function FaqBotWidget() {
         const match = findBestAnswer(text);
         if (match) {
           addBotMessage(match.answer);
-          addBotMessage(
-            "If you want us to follow up, choose one option: Join classes, Placement test, Exam prep, or General question.",
-          );
+          addBotMessage("If you want follow-up support, type: register, placement test, exam prep, or faq.");
           return;
         }
 
@@ -214,8 +216,16 @@ export default function FaqBotWidget() {
 
       const nextLead = { ...lead, intent: parsedIntent };
       setLead(nextLead);
+      setStep("name");
+      addBotMessage("Great — what is your full name?");
+      return;
+    }
+
+    if (step === "name") {
+      const nextLead = { ...lead, name: text };
+      setLead(nextLead);
       setStep("level");
-      addBotMessage("What is your current level or target level?");
+      addBotMessage("Thanks! What is your current level or target level?");
       return;
     }
 
