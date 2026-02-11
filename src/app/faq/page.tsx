@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
+import { LocationMap } from "@/components/LocationMap";
 import { SectionTitle } from "@/components/SectionTitle";
 import Link from "next/link";
 import { CTA, LINKS } from "@/lib/site";
@@ -114,6 +115,12 @@ export default function FAQPage() {
             ))
           )}
         </div>
+
+        <LocationMap
+          className="mt-10"
+          title="Need directions to our campus?"
+          caption="You can also use this map from the FAQ whenever you need quick location details."
+        />
 
         <div className="mt-10">
           <p className="text-sm text-neutral-700">
