@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/Container";
@@ -6,6 +7,27 @@ import { CTA, LINKS, SITE } from "@/lib/site";
 import { upcomingClasses, reviews } from "@/data/content";
 import { getBlogPosts } from "@/lib/blog";
 import { formatDatePretty } from "@/lib/date";
+
+
+
+export const metadata: Metadata = {
+  title: "German Classes in Ghana | Learn German & French",
+  description:
+    "Looking for a German language school in Ghana? Join hybrid and online German classes in Accra from A1 to C1, prepare for Goethe exams, and learn with guided support.",
+  keywords: [
+    "german classes in ghana",
+    "german language school in ghana",
+    "learn german in ghana",
+    "study german language",
+    "where to study german",
+    "how to get b1 level in german",
+    "how to learn german language online",
+    "goethe exam preparation ghana",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+};
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
@@ -65,12 +87,12 @@ export default async function HomePage() {
               {/* Left text */}
               <div>
                 <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.12] sm:leading-[1.05] text-white">
-                  Learn German & French the smart way —
+                  Learn German & French in Ghana the smart way —
                   <span className="text-amber-200"> class + app practice</span>.
                 </h1>
 
                 <p className="mt-4 max-w-xl text-white/85 text-sm sm:text-lg leading-7">
-                  {SITE.brand} helps you build speaking confidence, writing skills, and exam readiness.
+                  {SITE.brand} is a trusted German language school in Ghana helping you build speaking confidence, writing skills, and exam readiness.
                   Registration is done on our official portal:
                   <span className="font-semibold"> register.falowen.app</span>.
                 </p>
