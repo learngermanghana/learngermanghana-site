@@ -1,6 +1,15 @@
-﻿import { Container } from "@/components/Container";
+import Image from "next/image";
+
+import { Button } from "@/components/Button";
+import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
 import { tutors } from "@/data/content";
+
+const tutorHighlights = [
+  "Experienced tutors for beginner to upper-intermediate levels.",
+  "Exam-focused coaching with practical speaking and writing support.",
+  "Friendly guidance and clear feedback to keep your learning consistent.",
+];
 
 export default function TutorsPage() {
   return (
@@ -8,14 +17,27 @@ export default function TutorsPage() {
       <section className="py-12 sm:py-16">
         <SectionTitle title="Tutors" subtitle="Meet the team supporting your German journey." />
 
+        <div className="mb-8 rounded-3xl border border-black/10 bg-neutral-50 p-6 sm:p-8">
+          <h2 className="text-xl font-semibold tracking-tight text-neutral-900">Why students enjoy learning with our tutors</h2>
+          <ul className="mt-4 grid gap-3 text-sm text-neutral-700 sm:grid-cols-3">
+            {tutorHighlights.map((highlight) => (
+              <li key={highlight} className="rounded-2xl border border-black/10 bg-white p-4 leading-6">
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {tutors.map((t) => (
-            <div key={t.name} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+            <article key={t.name} className="flex h-full flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
               {t.photo ? (
                 <div className="mb-4 overflow-hidden rounded-2xl bg-neutral-100">
-                  <img
+                  <Image
                     src={t.photo}
                     alt={`${t.name} portrait`}
+                    width={600}
+                    height={480}
                     className="h-60 w-full object-cover"
                     loading="lazy"
                   />
@@ -23,14 +45,31 @@ export default function TutorsPage() {
               ) : null}
               <div className="text-lg font-semibold">{t.name}</div>
               <div className="text-sm text-neutral-600">{t.role}</div>
-              <p className="mt-3 text-sm text-neutral-700 leading-6">{t.bio}</p>
+              <p className="mt-3 text-sm leading-6 text-neutral-700">{t.bio}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {t.specialties.map((s) => (
-                  <span key={s} className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs text-neutral-700">{s}</span>
+                  <span key={s} className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs text-neutral-700">
+                    {s}
+                  </span>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+
+        <div className="mt-10 rounded-3xl border border-black/10 bg-white p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight text-neutral-900">Ready to start learning?</h2>
+            <p className="mt-2 text-sm text-neutral-600">
+              Contact us for class placement and choose a tutor path that fits your goals and schedule.
+            </p>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
+            <Button href="/contact">Talk to the team</Button>
+            <Button href="/schedule" variant="outline">
+              View class schedule
+            </Button>
+          </div>
         </div>
       </section>
     </Container>
