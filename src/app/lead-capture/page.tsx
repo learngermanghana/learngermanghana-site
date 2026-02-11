@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { SectionTitle } from "@/components/SectionTitle";
 import { LINKS, WHATSAPP_LINK } from "@/lib/site";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 type LeadCaptureSearchParams = {
   intent?: string;

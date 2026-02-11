@@ -9,10 +9,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/lead-capture", "/lead-capture/thanks"],
       },
       {
         userAgent: "Googlebot",
         allow: "/",
+        disallow: ["/lead-capture", "/lead-capture/thanks"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
