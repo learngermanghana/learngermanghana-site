@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.brand}`,
   },
   description:
-    "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+    "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
   alternates: {
     canonical: "/",
   },
@@ -22,9 +22,10 @@ export const metadata: Metadata = {
     type: "website",
     url: baseUrl,
     siteName: SITE.brand,
+    locale: "en_GH",
     title: `${SITE.brand} | Learn German & French`,
     description:
-      "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+      "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
     images: [
       {
         url: new URL("/hero/hero.jpg", baseUrl),
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: `${SITE.brand} | Learn German & French`,
     description:
-      "Language school in Ghana offering German and French A1–C1. A1–B1 hybrid online/in-person with daily options or recorded lectures. B2–C1 self-paced with AI, no physical classes. Register via Falowen.",
+      "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
     images: [new URL("/hero/hero.jpg", baseUrl)],
   },
   robots: {
@@ -52,6 +53,18 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Learn German",
+    "Learn German language",
+    "Learn German language in Ghana",
+    "German classes in Ghana",
+    "German language school in Ghana",
+    "German school in Accra",
+    "How to learn German language",
+    "How to learn German language online",
+    "Study German language",
+    "Where to study German",
+    "How to get B1 level in German",
+    "Goethe exam preparation Ghana",
+    "Goethe institute alternative Ghana",
     "Learn French",
     "German classes Ghana",
     "French classes Ghana",
@@ -77,11 +90,54 @@ export const metadata: Metadata = {
     "C1 French",
     "Falowen registration",
   ],
+  category: "education",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "LanguageSchool",
+    name: SITE.brand,
+    url: baseUrl.toString(),
+    email: `mailto:${SITE.email}`,
+    telephone: `+${SITE.phoneIntl}`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: SITE.address,
+      addressLocality: "Accra",
+      addressCountry: "GH",
+    },
+    areaServed: ["Ghana", "Accra"],
+    availableLanguage: ["English", "German", "French"],
+    sameAs: [
+      "https://www.instagram.com/lleaghana/",
+      "https://www.youtube.com/@LLEAGhana",
+      "https://www.tiktok.com/@lleaghana",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.brand,
+    url: baseUrl.toString(),
+    inLanguage: "en",
+    description:
+      "German and French language school in Ghana with online and in-person options for A1 to C1 learners.",
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="min-h-screen bg-neutral-50 text-neutral-900 antialiased">
         <Navbar />
         <main className="min-h-[70vh]">{children}</main>
