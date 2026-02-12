@@ -19,6 +19,31 @@ type BotMessage = {
   content: React.ReactNode;
 };
 
+const whatsappIntentKeywords = [
+  "price",
+  "pricing",
+  "fees",
+  "cost",
+  "location",
+  "where are you",
+  "register",
+  "registration",
+  "sign up",
+  "sign-up",
+  "enroll",
+  "next class",
+  "intake",
+  "start date",
+  "schedule",
+];
+
+function shouldShowWhatsAppTeamPrompt(keywords: string[]) {
+  return keywords.some((keyword) => {
+    const normalized = keyword.toLowerCase().trim();
+    return whatsappIntentKeywords.includes(normalized);
+  });
+}
+
 export function FAQChatBot() {
   const [message, setMessage] = useState("");
   const [history, setHistory] = useState<BotMessage[]>([]);
@@ -44,15 +69,27 @@ export function FAQChatBot() {
       { role: "user", content: trimmed },
       {
         role: "bot",
-        content:
-          answer?.answer ?? (
-            <>
-              <div>
-                Automated reply: no match found. Try keywords like <b>fees</b>, <b>intake</b>, <b>location</b>,{" "}
-                <b>online</b>, or <b>register</b>.
+        content: answer ? (
+          <>
+            {answer.answer}
+            {shouldShowWhatsAppTeamPrompt(answer.keywords) && (
+              <div className="mt-2">
+                Need direct help from our team? Chat on{" "}
+                <a className="font-semibold hover:underline" href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
+                  WhatsApp
+                </a>
+                .
               </div>
-            </>
-          ),
+            )}
+          </>
+        ) : (
+          <>
+            <div>
+              Automated reply: no match found. Try keywords like <b>fees</b>, <b>intake</b>, <b>location</b>, <b>online</b>,
+              or <b>register</b>.
+            </div>
+          </>
+        ),
       },
     ];
 
