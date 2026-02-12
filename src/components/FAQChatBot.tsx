@@ -28,6 +28,8 @@ const whatsappIntentKeywords = [
   "where are you",
   "register",
   "registration",
+  "sign up",
+  "sign-up",
   "enroll",
   "next class",
   "intake",
