@@ -309,6 +309,24 @@ export default async function HomePage() {
 
       {/* CONTENT SECTIONS */}
       <Container>
+        <section className="py-10 sm:py-14">
+          <div className="rounded-3xl border border-black/10 bg-white p-4 sm:p-6 shadow-sm">
+            <h2 className="text-2xl sm:text-3xl font-semibold">Inside our classroom</h2>
+            <p className="mt-2 max-w-3xl text-sm sm:text-base text-neutral-700">
+              A look at our students actively learning together in class.
+            </p>
+            <div className="mt-4 overflow-hidden rounded-2xl ring-1 ring-black/10">
+              <Image
+                src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/2025-07-02.jpg"
+                alt="Classroom session with students learning"
+                width={1600}
+                height={900}
+                className="h-auto w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Reviews */}
         <section className="pb-12 sm:pb-16">
           <div className="flex items-end justify-between gap-4">
