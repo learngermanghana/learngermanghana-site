@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
 import { findFaqAnswer } from "@/lib/faqBot";
-import { LINKS, WHATSAPP_LINK } from "@/lib/site";
+import { LINKS, SITE, WHATSAPP_LINK } from "@/lib/site";
 
 const defaultPrompts = [
   "How do I enroll?",
@@ -121,6 +121,7 @@ export function FAQChatBot() {
             >
               WhatsApp
             </a>
+            . Call now: <a className="font-semibold text-brand-950 hover:underline" href="tel:+233205706589">+{SITE.phoneIntl}</a>
             .
           </p>
         </div>
@@ -194,7 +195,7 @@ export function FAQChatBot() {
             <a className="font-semibold hover:underline" href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
-            .
+            , or call now: <a className="font-semibold hover:underline" href="tel:+233205706589">+{SITE.phoneIntl}</a>.
           </div>
         </div>
       </section>

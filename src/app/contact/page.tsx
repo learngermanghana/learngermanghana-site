@@ -48,6 +48,10 @@ export default function ContactPage() {
                 <span className="text-neutral-500">WhatsApp:</span> +{SITE.phoneIntl}
               </div>
               <div>
+                <span className="text-neutral-500">Call now:</span>{" "}
+                <a href="tel:+233205706589" className="font-semibold hover:underline">+233205706589</a>
+              </div>
+              <div>
                 <span className="text-neutral-500">Location:</span> {SITE.location}
               </div>
             </div>
