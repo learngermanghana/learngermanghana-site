@@ -53,6 +53,25 @@ export default function ClassesPage() {
   const [selectedLevel, setSelectedLevel] = useState("All");
   const [selectedFormat, setSelectedFormat] = useState("All");
   const [shareStatus, setShareStatus] = useState("");
+  const [sharedClassId, setSharedClassId] = useState("");
+
+  const shareContent = async ({ title, text, url }: { title: string; text: string; url: string }) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+        return "Thanks! Your share has been sent.";
+      } catch (error) {
+        return "Share canceled. You can copy the link instead.";
+      }
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(url);
+      return "Link copied. Share it with family or friends.";
+    }
+
+    return "Copy this link: " + url;
+  };
 
   const languages = useMemo(
     () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => item.language)))],
@@ -83,30 +102,26 @@ export default function ClassesPage() {
 
   const handleShare = async () => {
     const url = window.location.href;
-    const data = {
+    const message = await shareContent({
       title: "Learn Language Education Academy classes",
       text: "See upcoming classes, schedules, and enrollment details.",
       url,
-    };
+    });
 
-    if (navigator.share) {
-      try {
-        await navigator.share(data);
-        setShareStatus("Thanks! Your share has been sent.");
-        return;
-      } catch (error) {
-        setShareStatus("Share canceled. You can copy the link instead.");
-        return;
-      }
-    }
+    setSharedClassId("");
+    setShareStatus(message);
+  };
 
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(url);
-      setShareStatus("Link copied. Share it with family or friends.");
-      return;
-    }
+  const handleClassShare = async (classInfo: (typeof upcomingClasses)[number]) => {
+    const classUrl = `${window.location.origin}/classes#${classInfo.id}`;
+    const message = await shareContent({
+      title: `${classInfo.title} • Learn Language Education Academy`,
+      text: `${classInfo.language} ${classInfo.level} class starts ${formatDatePretty(classInfo.startDate)} at ${classInfo.location}.`,
+      url: classUrl,
+    });
 
-    setShareStatus("Copy this link: " + url);
+    setSharedClassId(classInfo.id);
+    setShareStatus(message);
   };
 
   return (
@@ -287,7 +302,7 @@ export default function ClassesPage() {
               const daysUntilStart = getDaysUntilStart(c.startDate);
 
               return (
-                <div key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+                <div id={c.id} key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs font-semibold text-neutral-800">
                       {c.language}
@@ -389,7 +404,19 @@ export default function ClassesPage() {
                     >
                       Talk to us
                     </a>
+
+                    <button
+                      type="button"
+                      onClick={() => handleClassShare(c)}
+                      className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+                    >
+                      Share this class
+                    </button>
                   </div>
+
+                  {sharedClassId === c.id && shareStatus ? (
+                    <div className="mt-3 text-xs text-neutral-500">{shareStatus}</div>
+                  ) : null}
                 </div>
               );
             })}
