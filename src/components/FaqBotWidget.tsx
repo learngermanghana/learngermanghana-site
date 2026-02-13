@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { FAQ_ENTRIES } from "@/data/faq";
-import { CTA, SOCIAL_LINKS, WHATSAPP_LINK } from "@/lib/site";
+import { CTA, SITE, SOCIAL_LINKS, WHATSAPP_LINK } from "@/lib/site";
 
 type Msg = { from: "user" | "bot"; text?: string; node?: React.ReactNode };
 
@@ -51,6 +51,9 @@ export default function FaqBotWidget() {
         <>
           👋 Hi! I can help with quick FAQs.
           <div className="mt-2">Ask a question about fees, schedule, location, online classes, or registration.</div>
+          <div className="mt-1 text-xs">
+            Call now: <a className="font-semibold hover:underline" href="tel:+233205706589">+{SITE.phoneIntl}</a>
+          </div>
           <div className="mt-1 text-xs text-neutral-500">Tip: type restart anytime to clear the chat.</div>
         </>
       ),
@@ -67,6 +70,9 @@ export default function FaqBotWidget() {
           <>
             👋 Hi! I can help with quick FAQs.
             <div className="mt-2">Ask a question about fees, schedule, location, online classes, or registration.</div>
+          <div className="mt-1 text-xs">
+            Call now: <a className="font-semibold hover:underline" href="tel:+233205706589">+{SITE.phoneIntl}</a>
+          </div>
             <div className="mt-1 text-xs text-neutral-500">Tip: type restart anytime to clear the chat.</div>
           </>
         ),

@@ -6,7 +6,7 @@ import { RandomReviews } from "@/components/RandomReviews";
 import { CTA, LINKS, SITE } from "@/lib/site";
 import { upcomingClasses, reviews } from "@/data/content";
 import { getBlogPosts } from "@/lib/blog";
-import { formatDatePretty } from "@/lib/date";
+import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 
 
 
@@ -60,6 +60,7 @@ export default async function HomePage() {
 
   const nextClass = dated.length ? dated[0].c : upcomingClasses[0];
   const isTBA = nextClass.startDate === "TBA";
+  const daysUntilNextClass = getDaysUntilStart(nextClass.startDate);
 
   return (
     <div>
@@ -166,6 +167,13 @@ export default async function HomePage() {
                     <div className="mt-1 font-semibold text-white">
                       {formatDatePretty(nextClass.startDate)}
                     </div>
+                    {daysUntilNextClass !== null ? (
+                      <div className="mt-1 text-xs text-amber-100">
+                        {daysUntilNextClass <= 0
+                          ? "Class starts today"
+                          : `${daysUntilNextClass} day${daysUntilNextClass === 1 ? "" : "s"} remaining`}
+                      </div>
+                    ) : null}
                   </div>
                   <div className="rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
                     <div className="text-xs text-white/70">Schedule</div>
@@ -178,6 +186,9 @@ export default async function HomePage() {
                   <div className="text-sm font-semibold text-white">Need help?</div>
                   <div className="mt-1 text-sm text-white/85">
                     If you have any questions, share your details and we will reach out.
+                  </div>
+                  <div className="mt-2 text-sm text-white/90">
+                    Call us now: <a href="tel:+233205706589" className="font-semibold underline underline-offset-2">+233205706589</a>
                   </div>
                   <div className="mt-3">
                     <a
@@ -220,6 +231,13 @@ export default async function HomePage() {
                           <span className="font-semibold">Starts:</span>{" "}
                           {formatDatePretty(nextClass.startDate)}
                         </div>
+                        {daysUntilNextClass !== null ? (
+                          <div className="mt-1 text-xs font-semibold text-amber-700">
+                            {daysUntilNextClass <= 0
+                              ? "Starts today"
+                              : `${daysUntilNextClass} day${daysUntilNextClass === 1 ? "" : "s"} remaining`}
+                          </div>
+                        ) : null}
                       </div>
 
                       {isTBA ? (
@@ -267,6 +285,9 @@ export default async function HomePage() {
                         <div className="text-sm font-semibold">Need help?</div>
                         <div className="mt-2 text-sm text-neutral-700">
                           Share your details and our team will reach out with guidance.
+                        </div>
+                        <div className="mt-2 text-sm text-neutral-700">
+                          Call us now: <a href="tel:+233205706589" className="font-semibold hover:underline">+233205706589</a>
                         </div>
                         <Link
                           href="/lead-capture?intent=talk-to-us&source=homepage"

@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { classUpdates, upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
-import { formatDatePretty } from "@/lib/date";
+import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { CTA, LINKS, SITE } from "@/lib/site";
 
 function money(amount: number) {
@@ -284,8 +284,7 @@ export default function ClassesPage() {
               const formatLabel = getFormatLabel(c.format);
               const isAlwaysOpen = c.startDate === "Always open";
               const effectiveTuition = c.tuitionFee ?? tuition;
-              const examFeeLabel = c.language === "German" ? "Goethe exam fee" : "Exam fee";
-              const examFeeDisplay = examFee ? money(examFee) : c.language === "German" ? "Check Goethe" : "Check exam";
+              const daysUntilStart = getDaysUntilStart(c.startDate);
 
               return (
                 <div key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
@@ -322,6 +321,13 @@ export default function ClassesPage() {
                   <div className="mt-2 text-sm text-neutral-700">
                     <span className="font-semibold">Starts:</span> {formatDatePretty(c.startDate)}
                   </div>
+                  {daysUntilStart !== null ? (
+                    <div className="mt-1 text-xs font-semibold text-amber-700">
+                      {daysUntilStart <= 0
+                        ? "Starts today"
+                        : `${daysUntilStart} day${daysUntilStart === 1 ? "" : "s"} remaining`}
+                    </div>
+                  ) : null}
 
                   <div className="mt-2 text-sm text-neutral-700">
                     <span className="font-semibold">Location:</span> {c.location}
