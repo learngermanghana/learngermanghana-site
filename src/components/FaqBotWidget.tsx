@@ -36,6 +36,7 @@ function parseBotCommand(text: string): BotCommand | null {
 const FAQ_QUICK_OPTIONS = [
   { value: "How do I enroll?", label: "How do I enroll?" },
   { value: "How much are the fees?", label: "Fees" },
+  { value: "How much are exam fees for each level?", label: "Exams fee" },
   { value: "When do classes start?", label: "Start dates" },
   { value: "Can I learn online?", label: "Online options" },
 ];
@@ -50,7 +51,7 @@ export default function FaqBotWidget() {
       node: (
         <>
           👋 Hi! I can help with quick FAQs.
-          <div className="mt-2">Ask a question about fees, schedule, location, online classes, or registration.</div>
+          <div className="mt-2">Ask about fees, exam costs, schedule, location, online classes, or registration.</div>
           <div className="mt-1 text-xs">
             Call now: <a className="font-semibold hover:underline" href="tel:+233205706589">+{SITE.phoneIntl}</a>
           </div>
@@ -69,7 +70,7 @@ export default function FaqBotWidget() {
         node: (
           <>
             👋 Hi! I can help with quick FAQs.
-            <div className="mt-2">Ask a question about fees, schedule, location, online classes, or registration.</div>
+            <div className="mt-2">Ask about fees, exam costs, schedule, location, online classes, or registration.</div>
           <div className="mt-1 text-xs">
             Call now: <a className="font-semibold hover:underline" href="tel:+233205706589">+{SITE.phoneIntl}</a>
           </div>
@@ -109,7 +110,7 @@ export default function FaqBotWidget() {
     addBotMessage(
       <>
         I can still answer quick FAQs.
-        <div className="mt-2">Try keywords like fees, intake, location, online, or register.</div>
+        <div className="mt-2">Try keywords like fees, exam fee, intake, location, online, or register.</div>
         <div className="mt-2 flex flex-wrap gap-2">
           <a className="inline-flex rounded-lg px-3 py-2 ring-1 ring-black/10 hover:underline" href={CTA.help.href}>
             Open contact page

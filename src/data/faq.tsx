@@ -199,6 +199,37 @@ export const FAQ_ENTRIES: FAQEntry[] = [
   },
   {
     category: "Exams & Certificates",
+    question: "How much are registration and exam fees?",
+    answer: (
+      <>
+        There is no separate school registration fee. Tuition is paid per class level.
+        <div className="mt-2">Official exam fees are separate from tuition and paid directly to the exam provider.</div>
+        <div className="mt-2">
+          For the latest exam fee by level (A1, A2, B1, B2, C1) and registration steps, please check the{" "}
+          <a className="font-semibold hover:underline" href={CLASS_SCHEDULE_URL}>
+            class schedule
+          </a>
+          .
+        </div>
+      </>
+    ),
+    keywords: [
+      "registration fee",
+      "exam fee",
+      "exam fees",
+      "registration and exam",
+      "how much exam",
+      "goethe exam",
+      "goethe fees",
+      "a1 exam fee",
+      "a2 exam fee",
+      "b1 exam fee",
+      "b2 exam fee",
+      "c1 exam fee",
+    ],
+  },
+  {
+    category: "Exams & Certificates",
     question: "Where can I see Goethe exam prices and how do I register?",
     answer: (
       <>
@@ -206,7 +237,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         <a className="font-semibold hover:underline" href={CLASS_SCHEDULE_URL}>
           class schedule
         </a>
-        . Goethe exam prices are listed there. After you complete your class, you register directly with{" "}
+        . Goethe exam prices are listed there by level. After you complete your class, you register directly with{" "}
         <span className="font-semibold">Goethe-Institut</span> for the exam.
       </>
     ),
