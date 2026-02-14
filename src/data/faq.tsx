@@ -320,7 +320,26 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         </div>
       </>
     ),
-    keywords: ["price", "pricing", "fees", "cost", "same", "online", "in-person", "recorded", "self-learning"],
+    keywords: [
+      "price",
+      "pricing",
+      "fees",
+      "cost",
+      "same",
+      "online",
+      "in-person",
+      "recorded",
+      "self-learning",
+      "contract",
+      "contract term",
+      "what's the contract",
+      "whats the contract",
+      "6 months",
+      "6 month",
+      "installment",
+      "full payment",
+      "access period",
+    ],
   },
   {
     category: "Enrollment",
