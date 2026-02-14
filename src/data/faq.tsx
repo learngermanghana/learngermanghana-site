@@ -303,16 +303,43 @@ export const FAQ_ENTRIES: FAQEntry[] = [
             • Class duration: <span className="font-semibold">10 weeks (~3 months)</span>
           </div>
           <div>
-            • Contract access: <span className="font-semibold">6 months</span> total Falowen access from enrollment
+            • Contract term: <span className="font-semibold">6 months</span> from enrollment
           </div>
           <div>
-            • After 6 months: Extend at <span className="font-semibold">1,000 GHS/month</span> or enroll in a new 10-week
-            class
+            • Platform access: Your 10-week class ends first, but your contract keeps Falowen open during the full
+            6-month term
+          </div>
+          <div>
+            • Payment effect: <span className="font-semibold">Full payment</span> gives 6-month Falowen access,
+            while <span className="font-semibold">installment payment</span> gives 1-month access at a time
+          </div>
+          <div>
+            • After 6 months: Extend at <span className="font-semibold">1,000 GHS/month</span> or enroll in a new
+            10-week class
           </div>
         </div>
       </>
     ),
-    keywords: ["price", "pricing", "fees", "cost", "same", "online", "in-person", "recorded", "self-learning"],
+    keywords: [
+      "price",
+      "pricing",
+      "fees",
+      "cost",
+      "same",
+      "online",
+      "in-person",
+      "recorded",
+      "self-learning",
+      "contract",
+      "contract term",
+      "what's the contract",
+      "whats the contract",
+      "6 months",
+      "6 month",
+      "installment",
+      "full payment",
+      "access period",
+    ],
   },
   {
     category: "Enrollment",
