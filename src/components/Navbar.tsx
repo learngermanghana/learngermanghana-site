@@ -9,7 +9,7 @@ import { SITE, CTA } from "@/lib/site";
 const nav = [
   { href: "/", label: "Home" },
   { href: "/classes", label: "Classes" },
-  { href: "/tutors", label: "Tutors" },
+  { href: "/tutors", label: "Team" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/travel", label: "Travel" },

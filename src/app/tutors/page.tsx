@@ -15,10 +15,10 @@ export default function TutorsPage() {
   return (
     <Container>
       <section className="py-12 sm:py-16">
-        <SectionTitle title="Tutors" subtitle="Meet the team supporting your German journey." />
+        <SectionTitle title="Team" subtitle="Meet the team supporting your German journey." />
 
         <div className="mb-8 rounded-3xl border border-black/10 bg-neutral-50 p-6 sm:p-8">
-          <h2 className="text-xl font-semibold tracking-tight text-neutral-900">Why students enjoy learning with our tutors</h2>
+          <h2 className="text-xl font-semibold tracking-tight text-neutral-900">Why students enjoy learning with our team</h2>
           <ul className="mt-4 grid gap-3 text-sm text-neutral-700 sm:grid-cols-3">
             {tutorHighlights.map((highlight) => (
               <li key={highlight} className="rounded-2xl border border-black/10 bg-white p-4 leading-6">
@@ -61,7 +61,7 @@ export default function TutorsPage() {
           <div>
             <h2 className="text-xl font-semibold tracking-tight text-neutral-900">Ready to start learning?</h2>
             <p className="mt-2 text-sm text-neutral-600">
-              Contact us for class placement and choose a tutor path that fits your goals and schedule.
+              Contact us for class placement and choose a learning path that fits your goals and schedule.
             </p>
           </div>
           <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
