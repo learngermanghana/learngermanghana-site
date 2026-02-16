@@ -223,6 +223,14 @@ export const tutors: Tutor[] = [
     bio:
       "I’m a multilingual German tutor focused on practical, engaging lessons that build confidence step-by-step. My goal is to help students speak naturally, improve pronunciation, and stay consistent with supportive guidance throughout the learning journey.",
   },
+  {
+    name: "Kentel Appiah Dankwa",
+    role: "Social Media Manager • System Administrator",
+    specialties: ["Social media strategy", "Community management", "System administration", "Falowen app support"],
+    photo: "https://raw.githubusercontent.com/learngermanghana/falowenexamtrainer/main/photos/WhatsApp%20Image%202026-02-16%20at%2019.05.22.jpeg",
+    bio:
+      "Kentel helps our students stay connected through clear social media communication and active community management. As our Social Media Manager and System Administrator, he also supports the Falowen app experience by helping keep key systems stable, sharing important learner updates, and making sure students can smoothly access the tools they need.",
+  },
 ];
 
 export type Review = {
