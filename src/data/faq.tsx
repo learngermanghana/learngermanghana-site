@@ -343,7 +343,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
   },
   {
     category: "Enrollment",
-    question: "Can I enroll directly in B2, and do I pay for each level?",
+    question: "Please, I would like to make enquiries about learning German B2.",
     answer: (
       <>
         <div className="space-y-3">
@@ -377,7 +377,22 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         </div>
       </>
     ),
-    keywords: ["b2", "level", "levels", "pay", "per level", "path", "a1", "a2", "b1"],
+    keywords: [
+      "b2",
+      "learn german b2",
+      "enquiry",
+      "enquiries",
+      "inquiry",
+      "inquiries",
+      "level",
+      "levels",
+      "pay",
+      "per level",
+      "path",
+      "a1",
+      "a2",
+      "b1",
+    ],
   },
   {
     category: "Enrollment",
