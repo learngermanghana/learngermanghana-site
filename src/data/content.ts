@@ -103,14 +103,14 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "A1-dortmund-2026-02-25",
+    id: "A1-dortmund-2026-03-04",
     title: "A1 Dortmund Klasse - Hybrid Class 2026",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
-    startDate: "2026-02-25",
+    startDate: "2026-03-04",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
-    duration: "3 months",
+    duration: "04 March 2026 – 28 April 2026",
     scheduleSummary: "3x per week",
     meetingDays: [
       { day: "Monday", time: "6:00 pm – 7:00 pm" },
