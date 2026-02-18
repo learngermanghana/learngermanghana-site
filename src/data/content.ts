@@ -214,6 +214,15 @@ export const tutors: Tutor[] = [
     bio:
       "Kentel helps our students stay connected through clear social media communication and active community management. As our Social Media Manager and System Administrator, he also supports the Falowen app experience by helping keep key systems stable, sharing important learner updates, and making sure students can smoothly access the tools they need.",
   },
+  {
+    name: "Hana",
+    role: "Consulting Agency Partner • Global Mobility Specialist & Education Advisor (Germany)",
+    specialties: ["Global mobility guidance", "Education advising", "Travel planning support", "Germany-based consulting"],
+    photo:
+      "https://raw.githubusercontent.com/learngermanghana/mygermanypath/main/public/images/WhatsApp%20Image%202026-01-29%20at%2019.52.04.jpeg",
+    bio:
+      "Hana works with our team as a consulting agency partner. Based in Germany, she supports students and families with global mobility guidance, education pathways, and practical travel planning support.",
+  },
 ];
 
 export type Review = {
