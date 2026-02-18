@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import { Button } from "@/components/Button";
@@ -10,6 +11,30 @@ const tutorHighlights = [
   "Exam-focused coaching with practical speaking and writing support.",
   "Friendly guidance and clear feedback to keep your learning consistent.",
 ];
+
+
+export const metadata: Metadata = {
+  title: "Our Team | German Tutors & Advisors | Learn German Ghana",
+  description:
+    "Meet our German tutors and consulting partners, including Hana in Germany for global mobility and education advising support.",
+  keywords: [
+    "German tutors Ghana",
+    "learn German team",
+    "education advisor Germany",
+    "global mobility specialist",
+    "Goethe exam preparation tutors",
+  ],
+  alternates: {
+    canonical: "/tutors",
+  },
+  openGraph: {
+    title: "Meet the Learn German Ghana Team",
+    description:
+      "Discover the tutors and advisors supporting your German learning, exam preparation, and Germany pathway planning.",
+    url: "/tutors",
+    type: "website",
+  },
+};
 
 export default function TutorsPage() {
   return (
