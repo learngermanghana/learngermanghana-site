@@ -125,7 +125,7 @@ export const upcomingClasses: ClassItem[] = [
     language: "French",
     level: "A1",
     location: "Awoshie - Accra",
-    startDate: "2026-03-07",
+    startDate: "2026-04-07",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "14 weeks (28 chapters, 2 per week)",
     scheduleSummary: "2x per week",
