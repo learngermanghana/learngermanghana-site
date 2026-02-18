@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useMemo, useState } from "react";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -62,6 +63,26 @@ export default function TravelPage() {
             title="Visa Assessment & Booking"
             subtitle="Are you applying for Ausbildung, a tourist visa, or university admission? Complete this Visa Assessment / Booking Form and send it directly to us on WhatsApp so we can understand your plans, review your timeline, and guide you on the next steps."
           />
+
+          <div className="mx-auto mb-6 grid max-w-3xl gap-4 rounded-3xl border border-black/10 bg-white p-5 shadow-sm sm:grid-cols-[180px,1fr] sm:items-center sm:p-6">
+            <div className="overflow-hidden rounded-2xl bg-neutral-100">
+              <Image
+                src="https://raw.githubusercontent.com/learngermanghana/mygermanypath/main/public/images/WhatsApp%20Image%202026-01-29%20at%2019.52.04.jpeg"
+                alt="Hana, education and travel expert based in Germany"
+                width={500}
+                height={500}
+                className="h-48 w-full object-cover sm:h-44"
+              />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold tracking-tight text-neutral-900">Meet Hana</h2>
+              <p className="mt-2 text-sm leading-6 text-neutral-700">
+                Hello, I am Hana, an education and travel expert based in Germany. Are you interested in studying,
+                relocating, or traveling with the right support? Fill the form and we will review your plan and guide
+                you on the next steps.
+              </p>
+            </div>
+          </div>
 
           <div className="mx-auto max-w-3xl rounded-3xl border border-black/10 bg-white p-6 shadow-sm sm:p-8">
             <div className="mb-6 rounded-2xl border border-emerald-100 bg-emerald-50/70 px-4 py-3 text-sm text-neutral-700">
