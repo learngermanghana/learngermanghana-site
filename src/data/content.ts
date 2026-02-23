@@ -96,9 +96,9 @@ export const upcomingClasses: ClassItem[] = [
     duration: "04 March 2026 – 28 April 2026",
     scheduleSummary: "3x per week",
     meetingDays: [
-      { day: "Monday", time: "6:00 pm – 7:00 pm" },
-      { day: "Tuesday", time: "6:00 pm – 7:00 pm" },
-      { day: "Wednesday", time: "6:00 pm – 7:00 pm" },
+      { day: "Monday", time: "7:00 pm – 8:00 pm" },
+      { day: "Tuesday", time: "7:00 pm – 8:00 pm" },
+      { day: "Wednesday", time: "7:00 pm – 8:00 pm" },
     ],
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
