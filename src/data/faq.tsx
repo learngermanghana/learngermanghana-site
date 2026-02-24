@@ -179,11 +179,23 @@ export const FAQ_ENTRIES: FAQEntry[] = [
         Yes. We issue a <span className="font-semibold">Certificate of Completion</span> when you finish the course and
         submit required assignments. We also prepare students for{" "}
         <span className="font-semibold">Goethe-Institut</span> exams and French exams from{" "}
-        <span className="font-semibold">Alliance Française</span>. The completion certificate is not a Goethe
-        certificate and does not replace official exam requirements.
+        <span className="font-semibold">Alliance Française</span>. The course includes targeted practice in official
+        exam format, including mock exam-style tasks, and is designed to prepare you for both Goethe exams and daily
+        life communication in German. The completion certificate is not a Goethe certificate and does not replace
+        official exam requirements.
       </>
     ),
-    keywords: ["certificate", "goethe", "exam", "exams", "alliance francaise", "french exams", "preparation"],
+    keywords: [
+      "certificate",
+      "goethe",
+      "exam",
+      "exams",
+      "mock exam",
+      "exam format",
+      "alliance francaise",
+      "french exams",
+      "preparation",
+    ],
   },
   {
     category: "Exams & Certificates",
