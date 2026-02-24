@@ -104,7 +104,7 @@ export default function ClassesPage() {
     const url = window.location.href;
     const message = await shareContent({
       title: "Learn Language Education Academy classes",
-      text: "See upcoming classes, schedules, and enrollment details.",
+      text: "Here is the brochure for the next class. It is designed to answer majority of questions. Feel free to contact us if you don't understand anything.",
       url,
     });
 
