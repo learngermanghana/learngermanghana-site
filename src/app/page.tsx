@@ -119,47 +119,6 @@ export default async function HomePage() {
                   </ul>
                 </div>
 
-                <div className="mt-4 max-w-xl rounded-3xl bg-white/10 ring-1 ring-white/20 p-4">
-                  <div className="text-sm font-semibold text-white">Location is never a problem</div>
-                  <p className="mt-2 text-sm text-white/85">
-                    Our hybrid class format gives you full flexibility. On any day, you can join in
-                    person, join online, or learn later with the recorded lecture on Falowen.
-                  </p>
-                  <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-white/10">
-                    <Image
-                      src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/pexels-julia-m-cameron-4143792.jpg"
-                      alt="Student learning online from home with hybrid class flexibility"
-                      width={640}
-                      height={360}
-                      className="h-auto w-full object-cover"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-4 max-w-xl rounded-3xl bg-white/10 ring-1 ring-white/20 p-4">
-                  <div className="text-sm font-semibold text-white">Not sure your level?</div>
-                  <p className="mt-2 text-sm text-white/85">
-                    Take the Falowen placement test to find the right class for you.
-                  </p>
-                  <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-white/10">
-                    <Image
-                      src="https://raw.githubusercontent.com/learngermanghana/falowenexamtrainer/main/photos/pexels-lagosfoodbank-9090820.jpg"
-                      alt="Learner taking a placement test"
-                      width={640}
-                      height={360}
-                      className="h-auto w-full object-cover"
-                    />
-                  </div>
-                  <Link
-                    href={LINKS.placementTest}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
-                  >
-                    Start placement test →
-                  </Link>
-                </div>
-
                 <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
                   <a
                     href={CTA.primary.href}
@@ -202,6 +161,21 @@ export default async function HomePage() {
                   <div className="rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
                     <div className="text-xs text-white/70">Schedule</div>
                     <div className="mt-1 font-semibold text-white">{nextClass.scheduleSummary}</div>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-3 max-w-xl sm:grid-cols-3">
+                  <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+                    <div className="text-xs text-white/70">Join your way</div>
+                    <div className="mt-1 text-sm font-semibold text-white">In class or online</div>
+                  </div>
+                  <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+                    <div className="text-xs text-white/70">When life gets busy</div>
+                    <div className="mt-1 text-sm font-semibold text-white">Watch recordings later</div>
+                  </div>
+                  <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+                    <div className="text-xs text-white/70">Track your level</div>
+                    <div className="mt-1 text-sm font-semibold text-white">Placement + guided support</div>
                   </div>
                 </div>
 
@@ -326,6 +300,32 @@ export default async function HomePage() {
                     <div className="mt-3 text-xs text-neutral-500">
                       Bonus: Free exam preparation + access to Falowen App
                     </div>
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                  <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
+                    <h3 className="text-sm font-semibold">Location is never a problem</h3>
+                    <p className="mt-2 text-sm text-white/85">
+                      Learn from anywhere in Ghana. Decide each day whether to attend in class,
+                      join live online, or catch up with recorded lectures on Falowen.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
+                    <h3 className="text-sm font-semibold">Not sure your level?</h3>
+                    <p className="mt-2 text-sm text-white/85">
+                      Take our placement test so we can recommend the class that matches your
+                      current level and goals.
+                    </p>
+                    <Link
+                      href={LINKS.placementTest}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
+                    >
+                      Start placement test →
+                    </Link>
                   </div>
                 </div>
               </div>
