@@ -11,11 +11,15 @@ import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 
 
 export const metadata: Metadata = {
-  title: "German Classes in Ghana | Learn German & French",
+  title: "Hybrid German Classes in Ghana | Learn German & French Online or In Person",
   description:
-    "Looking for a German language school in Ghana? Join hybrid and online German classes in Accra from A1 to C1, prepare for Goethe exams, and learn with guided support.",
+    "Location is not a problem—join hybrid German classes in Ghana and choose each day to attend in person, online, or catch up with recorded lectures on Falowen. Prepare for Goethe exams from A1 to C1 with guided support.",
   keywords: [
     "german classes in ghana",
+    "hybrid german classes in ghana",
+    "online german classes in accra",
+    "recorded german lectures",
+    "falowen german classes",
     "german language school in ghana",
     "learn german in ghana",
     "study german language",
@@ -103,13 +107,31 @@ export default async function HomePage() {
                   <ul className="mt-2 space-y-2 text-sm text-white/85">
                     <li>
                       <span className="font-semibold text-white">A1–B1:</span> Hybrid (online + in-person)
-                      with daily options, or use recorded lectures for self-learning.
+                      with daily options. Decide each day whether to attend in class, online, or use
+                      recorded Falowen lectures when your schedule is tight.
                     </li>
                     <li>
                       <span className="font-semibold text-white">B2–C1:</span> Self-paced with AI
                       integration, no physical classes — students learn independently.
                     </li>
                   </ul>
+                </div>
+
+                <div className="mt-4 max-w-xl rounded-3xl bg-white/10 ring-1 ring-white/20 p-4">
+                  <div className="text-sm font-semibold text-white">Location is never a problem</div>
+                  <p className="mt-2 text-sm text-white/85">
+                    Our hybrid class format gives you full flexibility. On any day, you can join in
+                    person, join online, or learn later with the recorded lecture on Falowen.
+                  </p>
+                  <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-white/10">
+                    <Image
+                      src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/pexels-julia-m-cameron-4143792.jpg"
+                      alt="Student learning online from home with hybrid class flexibility"
+                      width={640}
+                      height={360}
+                      className="h-auto w-full object-cover"
+                    />
+                  </div>
                 </div>
 
                 <div className="mt-4 max-w-xl rounded-3xl bg-white/10 ring-1 ring-white/20 p-4">
