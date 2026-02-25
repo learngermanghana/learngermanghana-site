@@ -225,25 +225,8 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* Right: hero image + upcoming class card */}
+              {/* Right: upcoming class card */}
               <div className="flex flex-col gap-6">
-                <div className="relative overflow-hidden rounded-[28px] ring-1 ring-white/20 shadow-2xl">
-                  <Image
-                    src="/hero/hero.jpg"
-                    alt="Learn Language Education Academy class"
-                    width={1200}
-                    height={900}
-                    priority
-                    className="h-[260px] sm:h-[420px] w-full object-cover"
-                  />
-                  {/* Darken image bottom more so card doesn't “fight” */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
-
-                  <div className="absolute left-5 top-5 rounded-full bg-black/45 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/20">
-                    Upcoming class • {nextClass.language} • {nextClass.level}
-                  </div>
-                </div>
-
                 {/* Floating info card */}
                 <div className="rounded-[24px] bg-white text-neutral-900 shadow-xl ring-1 ring-black/5">
                   <div className="p-5">
