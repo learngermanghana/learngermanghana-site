@@ -4,9 +4,10 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { RandomReviews } from "@/components/RandomReviews";
 import { CTA, LINKS, SITE } from "@/lib/site";
-import { upcomingClasses, reviews } from "@/data/content";
+import { upcomingClasses } from "@/data/content";
 import { getBlogPosts } from "@/lib/blog";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
+import { getReviews } from "@/lib/reviews";
 
 
 
@@ -51,6 +52,7 @@ function toTime(startDate: string) {
 
 export default async function HomePage() {
   const posts = await getBlogPosts(4);
+  const reviews = await getReviews();
 
   // Pick earliest upcoming class (non-TBA, not in the past). If all are TBA, fallback to first.
   const today = new Date();

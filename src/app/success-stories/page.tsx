@@ -1,9 +1,11 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { reviews } from "@/data/content";
 import { WHATSAPP_LINK } from "@/lib/site";
+import { getRandomizedReviews } from "@/lib/reviews";
 
-export default function SuccessStoriesPage() {
+export default async function SuccessStoriesPage() {
+  const reviews = await getRandomizedReviews();
+
   return (
     <div className="bg-neutral-50">
       <Container>
