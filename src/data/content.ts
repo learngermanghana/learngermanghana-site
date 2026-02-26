@@ -218,8 +218,7 @@ export const tutors: Tutor[] = [
     name: "Hana",
     role: "Consulting Agency Partner • Global Mobility Specialist & Education Advisor (Germany)",
     specialties: ["Global mobility guidance", "Education advising", "Travel planning support", "Germany-based consulting"],
-    photo:
-      "https://raw.githubusercontent.com/learngermanghana/mygermanypath/main/public/images/WhatsApp%20Image%202026-01-29%20at%2019.52.04.jpeg",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/2025-07-02.jpg",
     bio:
       "Hana works with our team as a consulting agency partner. Based in Germany, she supports students and families with global mobility guidance, education pathways, and practical travel planning support.",
   },
