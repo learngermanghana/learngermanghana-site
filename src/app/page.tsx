@@ -345,7 +345,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-4 overflow-hidden rounded-2xl ring-1 ring-black/10">
               <Image
-                src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/2025-07-02.jpg"
+                src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/hana.jpeg"
                 alt="Classroom session with students learning"
                 width={1600}
                 height={900}
