@@ -307,7 +307,7 @@ export default async function HomePage() {
                   <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
                     <h3 className="text-sm font-semibold">Location is never a problem</h3>
                     <p className="mt-2 text-sm text-white/85">
-                      Learn from anywhere in Ghana. Decide each day whether to attend in class,
+                      Learn from anywhere. Decide each day whether to attend in class,
                       join live online, or catch up with recorded lectures on Falowen.
                     </p>
                   </div>
