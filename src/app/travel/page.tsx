@@ -67,7 +67,7 @@ export default function TravelPage() {
           <div className="mx-auto mb-6 grid max-w-3xl gap-4 rounded-3xl border border-black/10 bg-white p-5 shadow-sm sm:grid-cols-[180px,1fr] sm:items-center sm:p-6">
             <div className="overflow-hidden rounded-2xl bg-neutral-100">
               <Image
-                src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/2025-07-02.jpg"
+                src="https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/hana.jpeg"
                 alt="Hana, education and travel expert based in Germany"
                 width={500}
                 height={500}
