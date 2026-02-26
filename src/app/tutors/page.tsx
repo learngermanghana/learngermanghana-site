@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
@@ -63,7 +64,7 @@ export default function TutorsPage() {
                     alt={`${t.name} portrait`}
                     width={600}
                     height={480}
-                    className="h-60 w-full object-cover"
+                    className={`h-60 w-full ${t.name === "Hana" ? "object-contain bg-neutral-50 p-2" : "object-cover"}`}
                     loading="lazy"
                   />
                 </div>
@@ -78,6 +79,14 @@ export default function TutorsPage() {
                   </span>
                 ))}
               </div>
+              {t.name === "Hana" ? (
+                <Link
+                  href="/travel"
+                  className="mt-5 inline-flex w-fit items-center rounded-xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-900"
+                >
+                  Book appointment now
+                </Link>
+              ) : null}
             </article>
           ))}
         </div>
