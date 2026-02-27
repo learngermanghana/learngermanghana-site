@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
+import { SEORelatedLinks } from "@/components/SEORelatedLinks";
 import { WHATSAPP_LINK } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Travel & Visa Checklist for Germany",
+  description:
+    "Use this travel and visa preparation checklist to organize documents, timelines, and language requirements.",
+  path: "/travel-checklist",
+});
 
 const checklist = [
   {
@@ -78,6 +88,8 @@ export default function TravelChecklistPage() {
               </a>
             </div>
           </div>
+
+          <SEORelatedLinks />
         </section>
       </Container>
     </div>

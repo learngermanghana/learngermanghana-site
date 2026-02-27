@@ -8,6 +8,32 @@ import { SectionTitle } from "@/components/SectionTitle";
 import Link from "next/link";
 import { CTA, LINKS } from "@/lib/site";
 import { FAQ_ENTRIES } from "@/data/faq";
+import { SEORelatedLinks } from "@/components/SEORelatedLinks";
+
+
+
+const FAQ_SCHEMA_ENTRIES = [
+  {
+    question: "How much are your fees?",
+    answer: "A1 classes are 2,800 GHS and A2 to C1 classes are 3,000 GHS. Tuition covers classes only.",
+  },
+  {
+    question: "How can students pay?",
+    answer: "Students pay inside their Falowen account after selecting a class.",
+  },
+  {
+    question: "When is the next intake or start date?",
+    answer: "Start dates vary by cohort. Check the class schedule for current intake dates.",
+  },
+  {
+    question: "Where are your physical classes and do you offer online classes?",
+    answer: "Physical classes are in Awoshie, Accra. We also offer Zoom classes and hybrid options.",
+  },
+  {
+    question: "How do I enroll and get access to Falowen?",
+    answer: "Sign up at falowen.app, choose a class, and complete payment to unlock access.",
+  },
+];
 
 function FAQItem({ q, a }: { q: string; a: React.ReactNode }) {
   return (
@@ -22,6 +48,19 @@ export default function FAQPage() {
   const [query, setQuery] = useState("");
   const normalizedQuery = query.trim().toLowerCase();
   const quickFilters = ["pricing", "register", "schedule", "goethe", "online", "receipt"];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_SCHEMA_ENTRIES.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   const groupedEntries = useMemo(() => {
     const filtered = FAQ_ENTRIES.filter((entry) => {
@@ -144,6 +183,9 @@ export default function FAQPage() {
             Talk to us
           </Link>
         </div>
+
+        <SEORelatedLinks />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </section>
     </Container>
   );

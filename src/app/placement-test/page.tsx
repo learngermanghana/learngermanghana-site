@@ -1,9 +1,27 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
+import { SEORelatedLinks } from "@/components/SEORelatedLinks";
 import Link from "next/link";
-import { CTA, LINKS } from "@/lib/site";
+import { CTA, LINKS, SITE } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "German Placement Test in Ghana",
+  description:
+    "Take our quick German placement assessment to find your CEFR level and choose the right class format.",
+  path: "/placement-test",
+});
 
 export default function PlacementTestPage() {
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "German Placement Test in Ghana",
+    description: "Find your CEFR level and class pathway with our placement assessment.",
+    url: `https://${SITE.primaryDomain}/placement-test`,
+  };
+
   return (
     <div className="bg-neutral-50">
       <Container>
@@ -60,8 +78,11 @@ export default function PlacementTestPage() {
               </Link>
             </div>
           </div>
+
+          <SEORelatedLinks />
         </section>
       </Container>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
     </div>
   );
 }

@@ -1,9 +1,34 @@
-﻿import Image from "next/image";
+﻿import type { Metadata } from "next";
+import Image from "next/image";
 import { getBlogPosts } from "@/lib/blog";
-import { LINKS } from "@/lib/site";
+import { LINKS, SITE } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
+import { SEORelatedLinks } from "@/components/SEORelatedLinks";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "German Learning Blog & Guides",
+  description:
+    "Read the latest language learning tips, student stories, and exam guidance from our partner blog.",
+  path: "/blog",
+});
 
 export default async function BlogPage() {
   const posts = await getBlogPosts(12);
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: posts.slice(0, 5).map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Article",
+        headline: post.title,
+        url: post.link,
+        description: post.excerpt,
+      },
+    })),
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -61,6 +86,20 @@ export default async function BlogPage() {
           ))}
         </div>
       )}
+
+      <SEORelatedLinks />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: `${SITE.brand} Blog Roundup`,
+            url: `https://${SITE.primaryDomain}/blog`,
+          }),
+        }}
+      />
     </div>
   );
 }
