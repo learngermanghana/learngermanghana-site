@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
+import { SEORelatedLinks } from "@/components/SEORelatedLinks";
 import Link from "next/link";
 import { CTA, LINKS } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "German Learning Tools & Resources",
+  description:
+    "Explore placement tools, exam prep resources, and practice support to improve your German learning path.",
+  path: "/resources",
+});
 
 export default function ResourcesPage() {
   return (
@@ -69,6 +79,8 @@ export default function ResourcesPage() {
               {CTA.primary.label}
             </a>
           </div>
+
+          <SEORelatedLinks />
         </section>
       </Container>
     </div>
