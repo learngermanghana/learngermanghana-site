@@ -12,6 +12,32 @@ function money(amount: number) {
   return `GHS ${amount.toLocaleString("en-GH")}`;
 }
 
+function buildClassShareText(
+  classInfo: (typeof upcomingClasses)[number],
+  effectiveTuition?: number,
+  examFee?: number
+) {
+  const meetingDays = classInfo.meetingDays.map((item) => `${item.day} ${item.time}`).join("; ");
+  const includedItems = classInfo.bonus.slice(0, 3).join(", ");
+  const tuitionText = effectiveTuition ? money(effectiveTuition) : "Check in Falowen";
+  const goetheFeeText = classInfo.language === "German"
+    ? ` | Goethe exam fee: ${examFee ? money(examFee) : "Check Goethe"}`
+    : "";
+
+  return [
+    `${classInfo.title}`,
+    `${classInfo.language} ${classInfo.level} • ${classInfo.format}`,
+    `Start: ${formatDatePretty(classInfo.startDate)} | Location: ${classInfo.location}`,
+    `Duration: ${classInfo.duration} | Tuition: ${tuitionText}${goetheFeeText}`,
+    `Schedule: ${meetingDays}`,
+    includedItems ? `Included: ${includedItems}` : "",
+    `Enroll: ${LINKS.falowen}`,
+    `Support: ${CTA.help.href}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
 function Step({
   n,
   title,
@@ -114,9 +140,12 @@ export default function ClassesPage() {
 
   const handleClassShare = async (classInfo: (typeof upcomingClasses)[number]) => {
     const classUrl = `${window.location.origin}/classes#${classInfo.id}`;
+    const tuition = tuitionFeesGHS[classInfo.level];
+    const effectiveTuition = classInfo.tuitionFee ?? tuition;
+    const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
     const message = await shareContent({
       title: `${classInfo.title} • Learn Language Education Academy`,
-      text: `${classInfo.language} ${classInfo.level} class starts ${formatDatePretty(classInfo.startDate)} at ${classInfo.location}.`,
+      text: buildClassShareText(classInfo, effectiveTuition, examFee),
       url: classUrl,
     });
 
