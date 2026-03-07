@@ -173,13 +173,13 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "b1-german-accra-2026-03-12",
-    title: "German B1 Hybrid Class - March 2026 Intake",
+    title: "German B1 Hybrid Class - May 2026 Intake",
     language: "German",
     level: "B1",
     location: "Awoshie - Accra",
-    startDate: "2026-03-12",
+    startDate: "2026-05-14",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
-    duration: "3 months",
+    duration: "14 May 2026 – 31 July 2026",
     scheduleSummary: "2x per week",
     meetingDays: [
       { day: "Thursday", time: "7:30 pm – 9:00 pm" },
