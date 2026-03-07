@@ -145,6 +145,14 @@ export default async function ClassDetailPage({ params }: Props) {
             >
               Enroll inside Falowen
             </a>
+            <a
+              href="https://register.falowen.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+            >
+              Payment agreement / contract
+            </a>
             <Link
               href="/classes"
               className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
