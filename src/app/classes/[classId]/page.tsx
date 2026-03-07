@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -14,7 +15,7 @@ type Props = {
 };
 
 const baseUrl = `https://${SITE.primaryDomain}`;
-const classImage = `${baseUrl}/hero/hero.jpg`;
+const classImage = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80";
 
 export function generateStaticParams() {
   return upcomingClasses.map((classItem) => ({ classId: classItem.id }));
@@ -103,6 +104,17 @@ export default async function ClassDetailPage({ params }: Props) {
           <p className="text-xs font-semibold uppercase text-neutral-500">Class details</p>
           <h1 className="mt-2 text-2xl font-semibold text-neutral-900">{classInfo.title}</h1>
           <p className="mt-2 text-sm text-neutral-700">{classInfo.language} {classInfo.level} • {classInfo.format}</p>
+
+          <div className="mt-6 overflow-hidden rounded-2xl border border-black/10">
+            <Image
+              src={classImage}
+              alt="Students in a language-learning class"
+              width={1600}
+              height={900}
+              className="h-52 w-full object-cover sm:h-64"
+              priority
+            />
+          </div>
 
           <div className="mt-6 grid gap-3 text-sm text-neutral-700">
             <p><span className="font-semibold">Start date:</span> {formatDatePretty(classInfo.startDate)}</p>
