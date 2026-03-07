@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "i1.wp.com", pathname: "/**" },
       { protocol: "https", hostname: "i2.wp.com", pathname: "/**" },
       { protocol: "https", hostname: "secure.gravatar.com", pathname: "/**" },
+      { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
     ],
   },
 };
