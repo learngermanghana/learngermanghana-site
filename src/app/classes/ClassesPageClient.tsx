@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { classUpdates, upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { getClassPath, getNextIntake } from "@/lib/classes";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { CTA, LINKS, SITE } from "@/lib/site";
 
@@ -80,6 +81,7 @@ export default function ClassesPage() {
   const [selectedFormat, setSelectedFormat] = useState("All");
   const [shareStatus, setShareStatus] = useState("");
   const [sharedClassId, setSharedClassId] = useState("");
+  const nextIntake = useMemo(() => getNextIntake(), []);
 
   const shareContent = async ({ title, text, url }: { title: string; text: string; url: string }) => {
     if (navigator.share) {
@@ -139,7 +141,7 @@ export default function ClassesPage() {
   };
 
   const handleClassShare = async (classInfo: (typeof upcomingClasses)[number]) => {
-    const classUrl = `${window.location.origin}/classes#${classInfo.id}`;
+    const classUrl = `${window.location.origin}${getClassPath(classInfo.id)}`;
     const tuition = tuitionFeesGHS[classInfo.level];
     const effectiveTuition = classInfo.tuitionFee ?? tuition;
     const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
@@ -219,6 +221,22 @@ export default function ClassesPage() {
             Tuition covers classes only. Exam fees are paid directly to the exam provider when you are ready to sit
             the exam.
           </p>
+
+          {nextIntake ? (
+            <div className="mt-6 rounded-3xl border border-amber-200 bg-amber-50/70 p-5 shadow-sm">
+              <div className="text-xs font-semibold uppercase text-amber-800">Next intake</div>
+              <div className="mt-2 text-lg font-semibold text-neutral-900">{nextIntake.title}</div>
+              <p className="mt-2 text-sm text-neutral-800">
+                {nextIntake.language} {nextIntake.level} starts <span className="font-semibold">{formatDatePretty(nextIntake.startDate)}</span> at <span className="font-semibold">{nextIntake.location}</span>.
+              </p>
+              <a
+                href={getClassPath(nextIntake.id)}
+                className="mt-4 inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 hover:bg-neutral-50"
+              >
+                View class details
+              </a>
+            </div>
+          ) : null}
 
           <div className="mt-6 rounded-3xl border border-black/10 bg-white p-5 shadow-sm">
             <div className="text-sm font-semibold text-neutral-900">Class updates</div>
@@ -418,6 +436,13 @@ export default function ClassesPage() {
                   </div>
 
                   <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href={getClassPath(c.id)}
+                      className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+                    >
+                      Class details
+                    </a>
+
                     <a
                       href={LINKS.falowen}
                       target="_blank"

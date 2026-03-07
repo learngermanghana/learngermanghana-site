@@ -86,8 +86,8 @@ export type ClassItem = {
 
 export const upcomingClasses: ClassItem[] = [
   {
-    id: "A1-koln-2026-04-15",
-    title: "A1 Koln Klasse - Hybrid Class 2026",
+    id: "a1-german-accra-2026-04-15",
+    title: "German A1 Hybrid Class - April 2026 Intake",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
@@ -104,8 +104,8 @@ export const upcomingClasses: ClassItem[] = [
     tuitionFee: 2800,
   },
   {
-    id: "A1-dortmund-2026-03-04",
-    title: "A1 Dortmund Klasse - Hybrid Class 2026",
+    id: "a1-german-accra-2026-03-04",
+    title: "German A1 Hybrid Class - March 2026 Intake",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
@@ -121,8 +121,8 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "A1-paris-2026-tba",
-    title: "A1 Paris Class – Hybrid Class 2026",
+    id: "a1-french-accra-2026-04-07",
+    title: "French A1 Hybrid Class - April 2026 Intake",
     language: "French",
     level: "A1",
     location: "Awoshie - Accra",
@@ -137,8 +137,8 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "A2-stuttgart-2026-02-20",
-    title: "A2 Stuttgart Klasse (Class name) – Hybrid Class 2026",
+    id: "a2-german-accra-2026-02-20",
+    title: "German A2 Hybrid Class - February 2026 Intake",
     language: "German",
     level: "A2",
     location: "Awoshie - Accra",
@@ -154,8 +154,8 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "B1-stuttgart-2026-03-12",
-    title: "B1 Stuttgart Klasse (Class name) – Hybrid Class 2026",
+    id: "b1-german-accra-2026-03-12",
+    title: "German B1 Hybrid Class - March 2026 Intake",
     language: "German",
     level: "B1",
     location: "Awoshie - Accra",
@@ -170,7 +170,7 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["Free exam preparation", "Access to the Falowen App"],
   },
   {
-    id: "B2-self-learning-2026",
+    id: "b2-german-online-self-learning-2026",
     title: "B2 Self-Learning (Falowen App) – AI + Email Tutor Support",
     language: "German",
     level: "B2",
@@ -184,7 +184,7 @@ export const upcomingClasses: ClassItem[] = [
     bonus: ["AI assistant in Falowen", "Email tutor support when needed", "Structured self-study plan"],
   },
   {
-    id: "C1-self-learning-2026",
+    id: "c1-german-online-self-learning-2026",
     title: "C1 Self-Learning (Falowen App) – AI + Email Tutor Support",
     language: "German",
     level: "C1",

@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { upcomingClasses } from "@/data/content";
+import { getClassPath } from "@/lib/classes";
 import { SITE } from "@/lib/site";
 
 const baseUrl = `https://${SITE.primaryDomain}`;
@@ -30,11 +32,20 @@ const staticRoutes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-
-  return staticRoutes.map((route) => ({
-    url: `${baseUrl}/${route.path}`.replace(/\/$/, ""),
+  const classRoutes = upcomingClasses.map((item) => ({
+    url: `${baseUrl}${getClassPath(item.id)}`,
     lastModified: now,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
   }));
+
+  return [
+    ...staticRoutes.map((route) => ({
+      url: `${baseUrl}/${route.path}`.replace(/\/$/, ""),
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...classRoutes,
+  ];
 }
