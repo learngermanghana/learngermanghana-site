@@ -2,7 +2,7 @@
   name: "Learn Language Education Academy",
   brand: "Learn Language Education Academy",
   phoneIntl: "233205706589",
-  email: "learngermanghana@gmail.com",
+  email: "info@falowen.app",
   instagram: "learngermanghana",
   location: "Awoshie, Accra",
   address: "Kwamisa Street GA 5808547, Awoshie, Accra",
