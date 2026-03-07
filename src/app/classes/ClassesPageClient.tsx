@@ -143,7 +143,7 @@ export default function ClassesPage() {
   const handleClassShare = async (classInfo: (typeof upcomingClasses)[number]) => {
     const classUrl = `${window.location.origin}${getClassPath(classInfo.id)}`;
     const tuition = tuitionFeesGHS[classInfo.level];
-    const effectiveTuition = classInfo.tuitionFee ?? tuition;
+    const effectiveTuition = classInfo.tuitionFee ?? tuition ?? undefined;
     const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
     const message = await shareContent({
       title: `${classInfo.title} • Learn Language Education Academy`,
