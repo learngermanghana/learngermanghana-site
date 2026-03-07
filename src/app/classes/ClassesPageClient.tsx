@@ -4,7 +4,7 @@
 import { useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
-import { classUpdates, upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { getClassPath, getNextIntake } from "@/lib/classes";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { CTA, LINKS, SITE } from "@/lib/site";
@@ -76,9 +76,6 @@ function getFormatLabel(format: string) {
 }
 
 export default function ClassesPage() {
-  const [selectedLanguage, setSelectedLanguage] = useState("All");
-  const [selectedLevel, setSelectedLevel] = useState("All");
-  const [selectedFormat, setSelectedFormat] = useState("All");
   const [shareStatus, setShareStatus] = useState("");
   const [sharedClassId, setSharedClassId] = useState("");
   const nextIntake = useMemo(() => getNextIntake(), []);
@@ -101,44 +98,7 @@ export default function ClassesPage() {
     return "Copy this link: " + url;
   };
 
-  const languages = useMemo(
-    () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => item.language)))],
-    []
-  );
-
-  const levels = useMemo(
-    () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => item.level)))],
-    []
-  );
-
-  const formats = useMemo(
-    () => ["All", ...Array.from(new Set(upcomingClasses.map((item) => getFormatLabel(item.format))))],
-    []
-  );
-
-  const filteredClasses = useMemo(
-    () =>
-      upcomingClasses.filter((item) => {
-        const languageMatch = selectedLanguage === "All" || item.language === selectedLanguage;
-        const levelMatch = selectedLevel === "All" || item.level === selectedLevel;
-        const formatMatch = selectedFormat === "All" || getFormatLabel(item.format) === selectedFormat;
-
-        return languageMatch && levelMatch && formatMatch;
-      }),
-    [selectedLanguage, selectedLevel, selectedFormat]
-  );
-
-  const handleShare = async () => {
-    const url = window.location.href;
-    const message = await shareContent({
-      title: "Learn Language Education Academy classes",
-      text: "Here is the brochure for the next class. It is designed to answer majority of questions. Feel free to contact us if you don't understand anything.",
-      url,
-    });
-
-    setSharedClassId("");
-    setShareStatus(message);
-  };
+  const filteredClasses = upcomingClasses;
 
   const handleClassShare = async (classInfo: (typeof upcomingClasses)[number]) => {
     const classUrl = `${window.location.origin}${getClassPath(classInfo.id)}`;
@@ -237,107 +197,6 @@ export default function ClassesPage() {
               </a>
             </div>
           ) : null}
-
-          <div className="mt-6 rounded-3xl border border-black/10 bg-white p-5 shadow-sm">
-            <div className="text-sm font-semibold text-neutral-900">Class updates</div>
-            <p className="mt-1 text-sm text-neutral-700">
-              Quick reminders on what is new or changing this term.
-            </p>
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {classUpdates.map((update) => (
-                <div key={update.title} className="rounded-2xl border border-black/10 bg-neutral-50 p-4">
-                  <div className="text-xs font-semibold uppercase text-neutral-500">{update.tag}</div>
-                  <div className="mt-2 text-sm font-semibold text-neutral-900">{update.title}</div>
-                  <p className="mt-2 text-sm text-neutral-700">{update.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-col gap-4">
-            <div>
-              <div className="text-xs font-semibold uppercase text-neutral-500">Browse by language</div>
-              <div className="mt-2 flex flex-wrap gap-2" role="tablist" aria-label="Class languages">
-                {languages.map((language) => {
-                  const isActive = selectedLanguage === language;
-                  return (
-                    <button
-                      key={language}
-                      type="button"
-                      role="tab"
-                      aria-selected={isActive}
-                      onClick={() => setSelectedLanguage(language)}
-                      className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                        isActive
-                          ? "border-brand-900 bg-brand-950 text-white shadow-sm"
-                          : "border-black/10 bg-white text-neutral-700 hover:bg-neutral-50"
-                      }`}
-                    >
-                      {language}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div className="text-sm font-semibold text-neutral-900">Filter classes</div>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
-                  Level
-                  <select
-                    value={selectedLevel}
-                    onChange={(event) => setSelectedLevel(event.target.value)}
-                    className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-                  >
-                    {levels.map((level) => (
-                      <option key={level} value={level}>
-                        {level}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="flex flex-col gap-1 text-xs font-semibold uppercase text-neutral-500">
-                  Format
-                  <select
-                    value={selectedFormat}
-                    onChange={(event) => setSelectedFormat(event.target.value)}
-                    className="rounded-2xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-                  >
-                    {formats.map((format) => (
-                      <option key={format} value={format}>
-                        {format}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="mt-6 rounded-3xl border border-emerald-100/80 bg-gradient-to-br from-white via-white to-emerald-50 p-5 shadow-sm">
-            <div className="text-sm font-semibold text-neutral-900">Download &amp; share</div>
-            <p className="mt-2 text-sm text-neutral-700">
-              Send class information to family or clients in one tap, or open the printable brochure.
-            </p>
-            <div className="mt-4 flex flex-col sm:flex-row gap-3">
-              <a
-                href="/classes/brochure"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold shadow-sm transition hover:bg-neutral-50"
-              >
-                Open brochure
-              </a>
-              <button
-                type="button"
-                onClick={handleShare}
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold shadow-sm transition hover:bg-neutral-50"
-              >
-                Share this page
-              </button>
-            </div>
-            {shareStatus ? <div className="mt-3 text-xs text-neutral-500">{shareStatus}</div> : null}
-          </div>
 
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {filteredClasses.map((c) => {
@@ -475,12 +334,6 @@ export default function ClassesPage() {
               );
             })}
           </div>
-
-          {filteredClasses.length === 0 ? (
-            <div className="mt-6 rounded-3xl border border-dashed border-black/10 bg-white p-6 text-sm text-neutral-700">
-              No classes match this filter right now. Try another level or format to see available options.
-            </div>
-          ) : null}
 
           <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
             <div className="text-lg font-semibold text-neutral-900">How enrollment works</div>

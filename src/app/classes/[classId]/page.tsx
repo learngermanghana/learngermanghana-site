@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -14,7 +15,7 @@ type Props = {
 };
 
 const baseUrl = `https://${SITE.primaryDomain}`;
-const classImage = `${baseUrl}/hero/hero.jpg`;
+const classImage = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80";
 
 export function generateStaticParams() {
   return upcomingClasses.map((classItem) => ({ classId: classItem.id }));
@@ -104,6 +105,17 @@ export default async function ClassDetailPage({ params }: Props) {
           <h1 className="mt-2 text-2xl font-semibold text-neutral-900">{classInfo.title}</h1>
           <p className="mt-2 text-sm text-neutral-700">{classInfo.language} {classInfo.level} • {classInfo.format}</p>
 
+          <div className="mt-6 overflow-hidden rounded-2xl border border-black/10">
+            <Image
+              src={classImage}
+              alt="Students in a language-learning class"
+              width={1600}
+              height={900}
+              className="h-52 w-full object-cover sm:h-64"
+              priority
+            />
+          </div>
+
           <div className="mt-6 grid gap-3 text-sm text-neutral-700">
             <p><span className="font-semibold">Start date:</span> {formatDatePretty(classInfo.startDate)}</p>
             <p><span className="font-semibold">Location:</span> {classInfo.location}</p>
@@ -132,6 +144,14 @@ export default async function ClassDetailPage({ params }: Props) {
               className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
             >
               Enroll inside Falowen
+            </a>
+            <a
+              href="https://register.falowen.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+            >
+              Payment agreement / contract
             </a>
             <Link
               href="/classes"
