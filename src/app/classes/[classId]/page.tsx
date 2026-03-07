@@ -10,7 +10,7 @@ import { formatDatePretty } from "@/lib/date";
 import { SITE } from "@/lib/site";
 
 type Props = {
-  params: { classId: string };
+  params: Promise<{ classId: string }>;
 };
 
 const baseUrl = `https://${SITE.primaryDomain}`;
@@ -21,7 +21,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { classId } = params;
+  const { classId } = await params;
   const classInfo = getClassById(classId);
 
   if (!classInfo) {
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ClassDetailPage({ params }: Props) {
-  const { classId } = params;
+  const { classId } = await params;
   const classInfo = getClassById(classId);
 
   if (!classInfo) {
