@@ -71,6 +71,9 @@ export default async function ClassDetailPage({ params }: Props) {
 
   const tuition = classInfo.tuitionFee ?? tuitionFeesGHS[classInfo.level];
   const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
+  const agreementDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "long" }).format(new Date());
+  const firstInstallment = tuition ? Math.ceil(tuition / 2) : undefined;
+  const remainingBalance = tuition && firstInstallment ? tuition - firstInstallment : undefined;
 
   const classSchema = {
     "@context": "https://schema.org",
@@ -159,6 +162,78 @@ export default async function ClassDetailPage({ params }: Props) {
             >
               Back to classes
             </Link>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-black/10 bg-neutral-50 p-5">
+            <h2 className="text-base font-semibold text-neutral-900">Payment Agreement</h2>
+            <p className="mt-2 text-sm text-neutral-700">
+              This Payment Agreement is entered into on <span className="font-semibold">{agreementDate}</span> for
+              <span className="font-semibold"> {classInfo.title}</span> students of Learn Language Education Academy and
+              Felix Asadu (&ldquo;Teacher&rdquo;).
+            </p>
+
+            <h3 className="mt-4 text-sm font-semibold text-neutral-900">Terms of Payment</h3>
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-neutral-700">
+              <li>
+                <span className="font-semibold">Payment Amount:</span> The student agrees to pay a total of
+                <span className="font-semibold"> {tuition ? `GHS ${tuition.toLocaleString("en-GH")}` : "the listed class fee in Falowen"}</span>.
+                The fee is the same regardless of learning mode (online, in person, self-learning, or recorded lectures).
+              </li>
+              <li>
+                <span className="font-semibold">Payment Schedule:</span> Payment may be made in full or in two installments:
+                first installment of <span className="font-semibold">{firstInstallment ? `GHS ${firstInstallment.toLocaleString("en-GH")}` : "as shown in Falowen"}</span>,
+                and the remaining balance of <span className="font-semibold">{remainingBalance ? `GHS ${remainingBalance.toLocaleString("en-GH")}` : "as shown in Falowen"}</span>
+                due one month after the first payment.
+              </li>
+              <li>
+                <span className="font-semibold">Learning Mode &amp; Attendance Rights:</span> For each scheduled class session,
+                the student may join in person, online, or via recorded lecture, and is responsible for choosing and
+                attending in their preferred way each time.
+              </li>
+              <li>
+                <span className="font-semibold">Class Duration &amp; Contract Term:</span> Each class runs for 10 weeks
+                (~3 months). The Service provides a 6-month contract period from enrollment, during which the student
+                has access to Falowen, even after the 10-week class ends.
+              </li>
+              <li>
+                <span className="font-semibold">Post-Contract Access:</span> After 6 months, continued access requires either
+                an extension at <span className="font-semibold">1,000 GHS per month</span> or enrollment in a new 10-week class
+                at the then-current fee.
+              </li>
+              <li>
+                <span className="font-semibold">Attendance:</span> Attendance is recorded for each session in My Results &amp; Resources.
+              </li>
+              <li>
+                <span className="font-semibold">Certification:</span> Certificates are issued upon successful completion and
+                assignment submission. This is a Certificate of Completion (not a Goethe-Institut certificate).
+                Where official language certification is required, the student must sit the exam at Goethe-Institut
+                (or another recognized provider).
+              </li>
+              <li>
+                <span className="font-semibold">Late Payments:</span> Late payment may lead to revoked access to learning
+                platforms. No refund will be made.
+              </li>
+              <li>
+                <span className="font-semibold">Refunds:</span> Once payment is confirmed and access is granted, no refunds
+                will be provided (except where required by law).
+              </li>
+            </ul>
+
+            <h3 className="mt-4 text-sm font-semibold text-neutral-900">How to Pay</h3>
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-neutral-700">
+              <li>Primary method: Pay inside your Falowen account after choosing a class under Upcoming Classes.</li>
+              <li>Support: If you have payment issues, contact {SITE.email} or use WhatsApp support on this page.</li>
+            </ul>
+
+            <h3 className="mt-4 text-sm font-semibold text-neutral-900">Class Level &amp; Start Date</h3>
+            <p className="mt-2 text-sm text-neutral-700">
+              Fees and dates vary by level and cohort. Confirm your level and start date in Falowen under Upcoming
+              Classes before paying.
+            </p>
+
+            <p className="mt-3 text-sm font-medium text-neutral-800">
+              By making any payment, you acknowledge and agree to the terms of this Payment Agreement.
+            </p>
           </div>
         </div>
       </section>
