@@ -90,7 +90,7 @@ export const upcomingClasses: ClassItem[] = [
     title: "German A1 Bonn Class - April 2026 Intake",
     language: "German",
     level: "A1",
-    location: "Bonn",
+    location: "Awoshie - Accra",
     startDate: "2026-04-02",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "02 April 2026 – 27 May 2026",
