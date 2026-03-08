@@ -73,7 +73,7 @@ export default async function ClassDetailPage({ params }: Props) {
   const tuition = classInfo.tuitionFee ?? tuitionFeesGHS[classInfo.level];
   const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
   const agreementDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "long" }).format(new Date());
-  const firstInstallment = tuition ? Math.ceil(tuition / 2) : undefined;
+  const firstInstallment = tuition ? Math.min(tuition, Math.max(2000, Math.ceil(tuition / 2))) : undefined;
   const remainingBalance = tuition && firstInstallment ? tuition - firstInstallment : undefined;
   const generatedSchedule = buildClassSchedule(classInfo);
 
@@ -234,7 +234,7 @@ export default async function ClassDetailPage({ params }: Props) {
                 <span className="font-semibold">Payment Schedule:</span> Payment may be made in full or in two installments:
                 first installment of <span className="font-semibold">{firstInstallment ? `GHS ${firstInstallment.toLocaleString("en-GH")}` : "as shown in Falowen"}</span>,
                 and the remaining balance of <span className="font-semibold">{remainingBalance ? `GHS ${remainingBalance.toLocaleString("en-GH")}` : "as shown in Falowen"}</span>
-                due one month after the first payment.
+                due one month after the first payment (minimum first installment is <span className="font-semibold">GHS 2,000</span>).
               </li>
               <li>
                 <span className="font-semibold">Learning Mode &amp; Attendance Rights:</span> For each scheduled class session,
