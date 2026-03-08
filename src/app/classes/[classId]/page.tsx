@@ -150,35 +150,23 @@ export default async function ClassDetailPage({ params }: Props) {
             {generatedSchedule ? (
               <>
                 <p className="mt-2 text-xs text-neutral-600">
-                  Built from the level dictionary ({classInfo.language} {classInfo.level}) using class start date, end date, and meeting days.
-                </p>
-                <p className="mt-2 text-xs font-medium text-neutral-700">
-                  {generatedSchedule.totalMeetingsBetweenDates} total meetings • {generatedSchedule.coveredAssignments} planned topics • {generatedSchedule.revisionSessions} revision/mock sessions
+                  Built from the level dictionary ({classInfo.level}) using class start date, end date, and meeting days.
                 </p>
                 <ul className="mt-3 max-h-80 space-y-2 overflow-auto pr-1 text-sm text-neutral-700">
-                  {generatedSchedule.sessions.map((session, index) => (
-                    <li key={`${session.date}-${index}`} className="rounded-xl border border-black/10 bg-white px-3 py-2">
+                  {generatedSchedule.sessions.map((session) => (
+                    <li key={`${session.date}-${session.assignment.assignment_id}`} className="rounded-xl border border-black/10 bg-white px-3 py-2">
                       <div className="font-medium text-neutral-900">{formatDatePretty(session.date)} • {session.day} • {session.time}</div>
-                      {session.kind === "lesson" ? (
-                        <ul className="mt-1 space-y-1">
-                          {session.assignments.map((assignment) => (
-                            <li key={assignment.assignment_id}>
-                              <div className="text-xs text-neutral-700">{assignment.assignment_id} (Chapter {assignment.chapter})</div>
-                              <div className="text-xs text-neutral-600">{assignment.de}</div>
-                              <div className="text-xs text-neutral-500">{assignment.en}</div>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <div className="mt-1 text-xs text-neutral-600">{session.note}</div>
-                      )}
+                      <div className="text-xs text-neutral-700">{session.assignment.assignment_id} (Chapter {session.assignment.chapter})</div>
+                      <div className="text-xs text-neutral-600">{session.assignment.de}</div>
+                      <div className="text-xs text-neutral-500">{session.assignment.en}</div>
                     </li>
                   ))}
                 </ul>
                 <p className="mt-3 text-xs text-neutral-600">
+                  Showing {generatedSchedule.coveredAssignments} topics across {generatedSchedule.totalMeetingsBetweenDates} meeting dates.
                   {generatedSchedule.remainingAssignments > 0
-                    ? `${generatedSchedule.remainingAssignments} more dictionary topics can continue in the next cohort.`
-                    : "All dictionary topics for this track are planned in this date range."}
+                    ? ` ${generatedSchedule.remainingAssignments} more dictionary topics can continue in the next cohort.`
+                    : " All topics in this level dictionary are covered in this date range."}
                 </p>
               </>
             ) : (
