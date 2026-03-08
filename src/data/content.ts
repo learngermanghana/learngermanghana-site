@@ -66,6 +66,8 @@ export const classUpdates: ClassUpdate[] = [
   },
 ];
 
+export type ClassPacingStrategy = "onePerSession" | "twoPerSession" | "revisionEvery4";
+
 export type ClassItem = {
   id: string;
   title: string;
