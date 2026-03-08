@@ -1,0 +1,68 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+
+import { buildClassSchedule } from "@/lib/classSchedule";
+import type { ClassItem } from "@/data/content";
+
+const baseClass: ClassItem = {
+  id: "test-class",
+  title: "Test Class",
+  language: "German",
+  level: "A1",
+  location: "Accra",
+  startDate: "2026-04-01",
+  endDate: "2026-04-14",
+  format: "Hybrid",
+  duration: "2 weeks",
+  scheduleSummary: "3x per week",
+  meetingDays: [
+    { day: "Mon", time: "10:00" },
+    { day: "Tuesday", time: "10:00" },
+    { day: "WEDNESDAY", time: "10:00" },
+  ],
+  bonus: [],
+};
+
+test("buildClassSchedule creates sessions for normalized meeting-day labels", () => {
+  const result = buildClassSchedule(baseClass);
+  assert.ok(result);
+  assert.equal(result.totalMeetingsBetweenDates > 0, true);
+});
+
+test("buildClassSchedule returns null when endDate is missing", () => {
+  const result = buildClassSchedule({ ...baseClass, endDate: undefined });
+  assert.equal(result, null);
+});
+
+test("buildClassSchedule returns null for unsupported language/level track", () => {
+  const result = buildClassSchedule({ ...baseClass, language: "French" });
+  assert.equal(result, null);
+});
+
+test("buildClassSchedule generates overflow revision sessions after assignments finish", () => {
+  const result = buildClassSchedule({
+    ...baseClass,
+    startDate: "2026-01-01",
+    endDate: "2026-06-30",
+    meetingDays: [{ day: "Monday", time: "10:00" }, { day: "Tuesday", time: "10:00" }, { day: "Wednesday", time: "10:00" }],
+    pacingStrategy: "twoPerSession",
+  });
+
+  assert.ok(result);
+  assert.equal(result.revisionSessions > 0, true);
+});
+
+test("buildClassSchedule supports duplicate weekly meeting entries", () => {
+  const result = buildClassSchedule({
+    ...baseClass,
+    meetingDays: [
+      { day: "Monday", time: "10:00" },
+      { day: "Monday", time: "18:00" },
+      { day: "Tuesday", time: "10:00" },
+    ],
+  });
+
+  assert.ok(result);
+  const mondaySessions = result.sessions.filter((session) => session.day.toLowerCase().startsWith("mon"));
+  assert.equal(mondaySessions.length > 0, true);
+});

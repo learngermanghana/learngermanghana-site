@@ -66,6 +66,8 @@ export const classUpdates: ClassUpdate[] = [
   },
 ];
 
+export type ClassPacingStrategy = "onePerSession" | "twoPerSession" | "revisionEvery4";
+
 export type ClassItem = {
   id: string;
   title: string;
@@ -73,6 +75,8 @@ export type ClassItem = {
   level: ClassLevel;
   location: string;
   startDate: string; // ISO date or "TBA"
+  endDate?: string;
+  pacingStrategy?: ClassPacingStrategy;
   format: string;
   duration: string;
   scheduleSummary: string;
@@ -92,6 +96,8 @@ export const upcomingClasses: ClassItem[] = [
     level: "A1",
     location: "Awoshie - Accra",
     startDate: "2026-04-02",
+    endDate: "2026-05-27",
+    pacingStrategy: "revisionEvery4",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "02 April 2026 – 27 May 2026",
     scheduleSummary: "3x per week",
@@ -110,6 +116,8 @@ export const upcomingClasses: ClassItem[] = [
     level: "A1",
     location: "Awoshie - Accra",
     startDate: "2026-04-15",
+    endDate: "2026-06-10",
+    pacingStrategy: "twoPerSession",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "15 April 2026 – 10 June 2026",
     scheduleSummary: "3x per week",
@@ -128,6 +136,8 @@ export const upcomingClasses: ClassItem[] = [
     level: "A1",
     location: "Awoshie - Accra",
     startDate: "2026-03-04",
+    endDate: "2026-04-28",
+    pacingStrategy: "onePerSession",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "04 March 2026 – 28 April 2026",
     scheduleSummary: "3x per week",
@@ -145,6 +155,7 @@ export const upcomingClasses: ClassItem[] = [
     level: "A1",
     location: "Awoshie - Accra",
     startDate: "2026-04-07",
+    endDate: "2026-07-14",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "14 weeks (28 chapters, 2 per week)",
     scheduleSummary: "2x per week",
@@ -161,6 +172,8 @@ export const upcomingClasses: ClassItem[] = [
     level: "A2",
     location: "Awoshie - Accra",
     startDate: "2026-02-20",
+    endDate: "2026-05-20",
+    pacingStrategy: "revisionEvery4",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "3 months",
     scheduleSummary: "3x per week",
@@ -178,6 +191,8 @@ export const upcomingClasses: ClassItem[] = [
     level: "B1",
     location: "Awoshie - Accra",
     startDate: "2026-05-14",
+    endDate: "2026-07-31",
+    pacingStrategy: "onePerSession",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
     duration: "14 May 2026 – 31 July 2026",
     scheduleSummary: "2x per week",

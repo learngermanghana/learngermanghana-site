@@ -7,6 +7,7 @@ import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { getClassById, getClassPath, isScheduledClass } from "@/lib/classes";
+import { buildClassSchedule } from "@/lib/classSchedule";
 import { formatDatePretty } from "@/lib/date";
 import { CTA, SITE } from "@/lib/site";
 
@@ -74,6 +75,7 @@ export default async function ClassDetailPage({ params }: Props) {
   const agreementDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "long" }).format(new Date());
   const firstInstallment = tuition ? Math.ceil(tuition / 2) : undefined;
   const remainingBalance = tuition && firstInstallment ? tuition - firstInstallment : undefined;
+  const generatedSchedule = buildClassSchedule(classInfo);
 
   const classUrl = `${baseUrl}${getClassPath(classInfo.id)}`;
   const shareText = `${classInfo.title} - ${classUrl}`;
@@ -141,6 +143,49 @@ export default async function ClassDetailPage({ params }: Props) {
                 <li key={item.day}>{item.day}: {item.time}</li>
               ))}
             </ul>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-black/10 bg-neutral-50 p-4">
+            <p className="text-sm font-semibold text-neutral-900">Auto class schedule by level</p>
+            {generatedSchedule ? (
+              <>
+                <p className="mt-2 text-xs text-neutral-600">
+                  Built from the level dictionary ({classInfo.language} {classInfo.level}) using class start date, end date, and meeting days.
+                </p>
+                <p className="mt-2 text-xs font-medium text-neutral-700">
+                  {generatedSchedule.totalMeetingsBetweenDates} total meetings • {generatedSchedule.coveredAssignments} planned topics • {generatedSchedule.revisionSessions} revision/mock sessions
+                </p>
+                <ul className="mt-3 max-h-80 space-y-2 overflow-auto pr-1 text-sm text-neutral-700">
+                  {generatedSchedule.sessions.map((session, index) => (
+                    <li key={`${session.date}-${index}`} className="rounded-xl border border-black/10 bg-white px-3 py-2">
+                      <div className="font-medium text-neutral-900">{formatDatePretty(session.date)} • {session.day} • {session.time}</div>
+                      {session.kind === "lesson" ? (
+                        <ul className="mt-1 space-y-1">
+                          {session.assignments.map((assignment) => (
+                            <li key={assignment.assignment_id}>
+                              <div className="text-xs text-neutral-700">{assignment.assignment_id} (Chapter {assignment.chapter})</div>
+                              <div className="text-xs text-neutral-600">{assignment.de}</div>
+                              <div className="text-xs text-neutral-500">{assignment.en}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <div className="mt-1 text-xs text-neutral-600">{session.note}</div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-xs text-neutral-600">
+                  {generatedSchedule.remainingAssignments > 0
+                    ? `${generatedSchedule.remainingAssignments} more dictionary topics can continue in the next cohort.`
+                    : "All dictionary topics for this track are planned in this date range."}
+                </p>
+              </>
+            ) : (
+              <p className="mt-2 text-xs text-neutral-600">
+                This class does not yet have enough data to auto-build day-by-day topics.
+              </p>
+            )}
           </div>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
