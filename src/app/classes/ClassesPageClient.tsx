@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { Container } from "@/components/Container";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
@@ -11,32 +11,6 @@ import { CTA, LINKS, SITE } from "@/lib/site";
 
 function money(amount: number) {
   return `GHS ${amount.toLocaleString("en-GH")}`;
-}
-
-function buildClassShareText(
-  classInfo: (typeof upcomingClasses)[number],
-  effectiveTuition?: number,
-  examFee?: number
-) {
-  const meetingDays = classInfo.meetingDays.map((item) => `${item.day} ${item.time}`).join("; ");
-  const includedItems = classInfo.bonus.slice(0, 3).join(", ");
-  const tuitionText = effectiveTuition ? money(effectiveTuition) : "Check in Falowen";
-  const goetheFeeText = classInfo.language === "German"
-    ? ` | Goethe exam fee: ${examFee ? money(examFee) : "Check Goethe"}`
-    : "";
-
-  return [
-    `${classInfo.title}`,
-    `${classInfo.language} ${classInfo.level} • ${classInfo.format}`,
-    `Start: ${formatDatePretty(classInfo.startDate)} | Location: ${classInfo.location}`,
-    `Duration: ${classInfo.duration} | Tuition: ${tuitionText}${goetheFeeText}`,
-    `Schedule: ${meetingDays}`,
-    includedItems ? `Included: ${includedItems}` : "",
-    `Enroll: ${LINKS.falowen}`,
-    `Support: ${CTA.help.href}`,
-  ]
-    .filter(Boolean)
-    .join("\n");
 }
 
 function Step({
@@ -76,44 +50,9 @@ function getFormatLabel(format: string) {
 }
 
 export default function ClassesPage() {
-  const [shareStatus, setShareStatus] = useState("");
-  const [sharedClassId, setSharedClassId] = useState("");
   const nextIntake = useMemo(() => getNextIntake(), []);
 
-  const shareContent = async ({ title, text, url }: { title: string; text: string; url: string }) => {
-    if (navigator.share) {
-      try {
-        await navigator.share({ title, text, url });
-        return "Thanks! Your share has been sent.";
-      } catch (error) {
-        return "Share canceled. You can copy the link instead.";
-      }
-    }
-
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(url);
-      return "Link copied. Share it with family or friends.";
-    }
-
-    return "Copy this link: " + url;
-  };
-
   const filteredClasses = upcomingClasses;
-
-  const handleClassShare = async (classInfo: (typeof upcomingClasses)[number]) => {
-    const classUrl = `${window.location.origin}${getClassPath(classInfo.id)}`;
-    const tuition = tuitionFeesGHS[classInfo.level];
-    const effectiveTuition = classInfo.tuitionFee ?? tuition ?? undefined;
-    const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
-    const message = await shareContent({
-      title: `${classInfo.title} • Learn Language Education Academy`,
-      text: buildClassShareText(classInfo, effectiveTuition, examFee),
-      url: classUrl,
-    });
-
-    setSharedClassId(classInfo.id);
-    setShareStatus(message);
-  };
 
   return (
     <div className="bg-neutral-50">
@@ -294,42 +233,14 @@ export default function ClassesPage() {
                     </ul>
                   </div>
 
-                  <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                  <div className="mt-5">
                     <a
                       href={getClassPath(c.id)}
                       className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
                     >
                       Class details
                     </a>
-
-                    <a
-                      href={LINKS.falowen}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
-                    >
-                      Enroll inside Falowen
-                    </a>
-
-                    <a
-                      href={CTA.help.href}
-                      className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
-                    >
-                      Talk to us
-                    </a>
-
-                    <button
-                      type="button"
-                      onClick={() => handleClassShare(c)}
-                      className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
-                    >
-                      Share this class
-                    </button>
                   </div>
-
-                  {sharedClassId === c.id && shareStatus ? (
-                    <div className="mt-3 text-xs text-neutral-500">{shareStatus}</div>
-                  ) : null}
                 </div>
               );
             })}

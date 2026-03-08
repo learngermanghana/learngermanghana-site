@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { getClassById, getClassPath, isScheduledClass } from "@/lib/classes";
 import { formatDatePretty } from "@/lib/date";
-import { SITE } from "@/lib/site";
+import { CTA, SITE } from "@/lib/site";
 
 type Props = {
   params: Promise<{ classId: string }>;
@@ -74,6 +74,10 @@ export default async function ClassDetailPage({ params }: Props) {
   const agreementDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "long" }).format(new Date());
   const firstInstallment = tuition ? Math.ceil(tuition / 2) : undefined;
   const remainingBalance = tuition && firstInstallment ? tuition - firstInstallment : undefined;
+
+  const classUrl = `${baseUrl}${getClassPath(classInfo.id)}`;
+  const shareText = `${classInfo.title} - ${classUrl}`;
+  const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
 
   const classSchema = {
     "@context": "https://schema.org",
@@ -155,6 +159,20 @@ export default async function ClassDetailPage({ params }: Props) {
               className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
             >
               Payment agreement / contract
+            </a>
+            <a
+              href={CTA.help.href}
+              className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+            >
+              Talk to us
+            </a>
+            <a
+              href={whatsappShareUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
+            >
+              Share this page
             </a>
             <Link
               href="/classes"
