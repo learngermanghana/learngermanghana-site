@@ -49,6 +49,30 @@ function getFormatLabel(format: string) {
   return "Other";
 }
 
+function getClassHeaderTheme(language: string, formatLabel: string) {
+  if (formatLabel === "Self-learning") {
+    return {
+      icon: "💻",
+      label: "Digital learning track",
+      panelClass: "border-violet-200 bg-gradient-to-r from-violet-100 via-fuchsia-50 to-white",
+    };
+  }
+
+  if (language === "French") {
+    return {
+      icon: "🇫🇷",
+      label: "French class stream",
+      panelClass: "border-sky-200 bg-gradient-to-r from-sky-100 via-white to-rose-100",
+    };
+  }
+
+  return {
+    icon: "🇩🇪",
+    label: "German class stream",
+    panelClass: "border-amber-200 bg-gradient-to-r from-amber-100 via-white to-neutral-100",
+  };
+}
+
 export default function ClassesPage() {
   const nextIntake = useMemo(() => getNextIntake(), []);
 
@@ -149,9 +173,20 @@ export default function ClassesPage() {
               const isAlwaysOpen = c.startDate === "Always open";
               const effectiveTuition = c.tuitionFee ?? tuition;
               const daysUntilStart = getDaysUntilStart(c.startDate);
+              const headerTheme = getClassHeaderTheme(c.language, formatLabel);
 
               return (
                 <div id={c.id} key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+                  <div className={`mb-4 flex items-center justify-between rounded-2xl border px-4 py-3 ${headerTheme.panelClass}`}>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-neutral-900">
+                      <span aria-hidden="true" className="text-lg leading-none">{headerTheme.icon}</span>
+                      <span>{headerTheme.label}</span>
+                    </div>
+                    <span className="rounded-full border border-black/10 bg-white/80 px-3 py-1 text-xs font-medium text-neutral-700">
+                      {formatLabel}
+                    </span>
+                  </div>
+
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs font-semibold text-neutral-800">
                       {c.language}
