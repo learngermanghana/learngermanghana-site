@@ -132,10 +132,10 @@ export const upcomingClasses: ClassItem[] = [
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
-    startDate: "2026-03-04",
+    startDate: "2026-03-09",
     endDate: "2026-04-28",
     format: "Hybrid: come to class or join online. Decide each day or watch the recordings.",
-    duration: "04 March 2026 – 28 April 2026",
+    duration: "09 March 2026 – 28 April 2026",
     scheduleSummary: "3x per week",
     meetingDays: [
       { day: "Monday", time: "7:00 pm – 8:00 pm" },
