@@ -137,7 +137,11 @@ export default function ClassesPage() {
             </div>
           ) : null}
 
-          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          <div className="mt-4 rounded-2xl border border-black/10 bg-white/70 p-4 text-sm text-neutral-700">
+            New here? Open each class detail page to quickly review the schedule, fees, and enrollment steps one by one.
+          </div>
+
+          <div className="mt-6 grid gap-4">
             {filteredClasses.map((c) => {
               const tuition = tuitionFeesGHS[c.level];
               const examFee = c.examFee ?? goetheExamFeesGHS[c.level];
@@ -238,7 +242,7 @@ export default function ClassesPage() {
                       href={getClassPath(c.id)}
                       className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
                     >
-                      Class details
+                      Open class details
                     </a>
                   </div>
                 </div>
