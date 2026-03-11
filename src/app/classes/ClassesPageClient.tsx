@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
@@ -76,11 +76,42 @@ function getClassHeaderTheme(language: string, formatLabel: string) {
 
 export default function ClassesPage() {
   const nextIntake = useMemo(() => getNextIntake(), []);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const filteredClasses = upcomingClasses;
 
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (maxScroll <= 0) {
+        setScrollProgress(100);
+        return;
+      }
+
+      const progress = Math.min((scrollTop / maxScroll) * 100, 100);
+      setScrollProgress(progress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
+  }, []);
+
   return (
     <div className="bg-neutral-50">
+      <div className="fixed inset-x-0 top-0 z-50 h-1 bg-black/10" aria-hidden="true">
+        <div
+          className="h-full bg-amber-500 transition-[width] duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
       <Container>
         <section className="py-8 pb-14 sm:py-10 sm:pb-20">
           <div className="flex items-end justify-between gap-4">
