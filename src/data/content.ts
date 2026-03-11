@@ -71,6 +71,7 @@ export type ClassPacingStrategy = "onePerSession" | "twoPerSession" | "revisionE
 export type ClassItem = {
   id: string;
   title: string;
+  photo?: string;
   language: "German" | "French";
   level: ClassLevel;
   location: string;
@@ -91,6 +92,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "a1-german-bonn-2026-04-02",
     title: "German A1 Bonn Class - April 2026 Intake",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-keira-burton-6147219.jpg",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
@@ -109,7 +111,8 @@ export const upcomingClasses: ClassItem[] = [
   },
   {
     id: "a1-german-accra-2026-04-15",
-    title: "German A1 Hybrid Class - April 2026 Intake",
+    title: "A1 Munich Klasse 3",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-cottonbro-6209589.jpg",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
@@ -129,6 +132,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "a1-german-accra-2026-03-04",
     title: "German A1 Hybrid Class - March 2026 Intake",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-norma-mortenson-8457612.jpg",
     language: "German",
     level: "A1",
     location: "Awoshie - Accra",
@@ -147,6 +151,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "a1-french-accra-2026-04-07",
     title: "French A1 Hybrid Class - April 2026 Intake",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-kampus-5940828.jpg",
     language: "French",
     level: "A1",
     location: "Awoshie - Accra",
@@ -164,6 +169,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "a2-german-accra-2026-02-20",
     title: "German A2 Hybrid Class - February 2026 Intake",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-katerina-holmes-5905554.jpg",
     language: "German",
     level: "A2",
     location: "Awoshie - Accra",
@@ -182,6 +188,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "b1-german-accra-2026-03-12",
     title: "German B1 Hybrid Class - May 2026 Intake",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-keira-burton-6147369.jpg",
     language: "German",
     level: "B1",
     location: "Awoshie - Accra",
@@ -199,6 +206,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "b2-german-online-self-learning-2026",
     title: "B2 Self-Learning (Falowen App) – AI + Email Tutor Support",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-keira-burton-6147219.jpg",
     language: "German",
     level: "B2",
     location: "Online",
@@ -213,6 +221,7 @@ export const upcomingClasses: ClassItem[] = [
   {
     id: "c1-german-online-self-learning-2026",
     title: "C1 Self-Learning (Falowen App) – AI + Email Tutor Support",
+    photo: "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-cottonbro-6209589.jpg",
     language: "German",
     level: "C1",
     location: "Online",
