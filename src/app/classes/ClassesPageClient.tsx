@@ -1,6 +1,7 @@
 
 "use client";
 
+import Image from "next/image";
 import { useMemo } from "react";
 
 import { Container } from "@/components/Container";
@@ -112,7 +113,7 @@ export default function ClassesPage() {
           </div>
 
           <div className="mt-6 grid gap-4">
-            {filteredClasses.map((c) => {
+            {filteredClasses.map((c, index) => {
               const tuition = tuitionFeesGHS[c.level];
               const examFee = c.examFee ?? goetheExamFeesGHS[c.level];
               const formatLabel = getFormatLabel(c.format);
@@ -122,7 +123,22 @@ export default function ClassesPage() {
               const headerTheme = getClassHeaderTheme(c.language, formatLabel);
 
               return (
-                <div id={c.id} key={c.id} className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+                <div id={c.id} key={c.id} className="rounded-3xl border-2 border-black/10 bg-white p-6 shadow-sm">
+                  <div className="mb-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                    <span>Class {index + 1}</span>
+                    <span>{c.level}</span>
+                  </div>
+
+                  <div className="mb-4 overflow-hidden rounded-2xl border border-black/10 bg-neutral-100">
+                    <Image
+                      src={c.photo ?? "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/classes/pexels-keira-burton-6147219.jpg"}
+                      alt={`${c.title} class preview`}
+                      width={1200}
+                      height={675}
+                      className="h-44 w-full object-cover"
+                    />
+                  </div>
+
                   <div className={`mb-4 flex items-center justify-between rounded-2xl border px-4 py-3 ${headerTheme.panelClass}`}>
                     <div className="flex items-center gap-2 text-sm font-semibold text-neutral-900">
                       <span aria-hidden="true" className="text-lg leading-none">{headerTheme.icon}</span>
