@@ -7,7 +7,7 @@ import { Container } from "@/components/Container";
 import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { getClassPath, getNextIntake } from "@/lib/classes";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
-import { CTA, LINKS, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 function money(amount: number) {
   return `GHS ${amount.toLocaleString("en-GH")}`;
@@ -80,62 +80,8 @@ export default function ClassesPage() {
 
   return (
     <div className="bg-neutral-50">
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-950" />
-        <div className="absolute -left-40 -top-40 h-80 w-80 rounded-full bg-amber-300/20 blur-3xl" />
-        <div className="absolute -right-40 top-10 h-80 w-80 rounded-full bg-emerald-300/15 blur-3xl" />
-        <div className="absolute inset-0 bg-black/35 sm:bg-black/25" />
-
-        <Container>
-          <section className="relative py-8 sm:py-10 text-slate-100">
-            <div className="inline-flex items-center gap-2 rounded-full bg-black/35 px-4 py-2 text-xs text-slate-100/90 ring-1 ring-white/15">
-              <span className="h-2 w-2 rounded-full bg-amber-300" />
-              Enrollment • Contract • Support
-            </div>
-
-            <h1 className="mt-5 text-2xl sm:text-4xl font-semibold text-white drop-shadow">
-              Upcoming Classes & Enrollment
-            </h1>
-
-            <p className="mt-2 text-sm sm:text-base text-white/95 leading-7 drop-shadow max-w-3xl">
-              <span className="font-semibold">Register inside Falowen.</span> Everything happens inside the Falowen
-              app. You will see class dates, tuition, and Goethe exam fees before you pay.
-            </p>
-
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs text-white/90 ring-1 ring-white/15">
-              <span className="font-semibold">Location:</span> Awoshie - Accra
-            </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a
-                href={LINKS.falowen}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-900 hover:bg-amber-200 shadow-md ring-1 ring-black/10"
-              >
-                Go to Falowen (Sign up)
-              </a>
-
-              <a
-                href={CTA.primary.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-white/15 ring-1 ring-white/25"
-              >
-                Register / Contract
-              </a>
-
-              <a
-                href={CTA.help.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-black/25 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-black/35 ring-1 ring-white/20"
-              >
-                Talk to us
-              </a>
-            </div>
-          </section>
-        </Container>
-      </div>
-
       <Container>
-        <section className="pb-14 sm:pb-20 pt-8">
+        <section className="py-8 pb-14 sm:py-10 sm:pb-20">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900">Upcoming Classes</h2>
           </div>
