@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
-import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { internalClassInstances } from "@/data/classesCatalog";
 import { getClassById, getClassPath, isScheduledClass } from "@/lib/classes";
 import { buildClassSchedule } from "@/lib/classSchedule";
 import { formatDatePretty } from "@/lib/date";
@@ -19,7 +20,7 @@ const baseUrl = `https://${SITE.primaryDomain}`;
 const classImage = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80";
 
 export function generateStaticParams() {
-  return upcomingClasses.map((classItem) => ({ classId: classItem.id }));
+  return internalClassInstances.map((classItem) => ({ classId: classItem.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

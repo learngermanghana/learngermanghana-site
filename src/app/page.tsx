@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { RandomReviews } from "@/components/RandomReviews";
 import { CTA, LINKS, SITE } from "@/lib/site";
-import { upcomingClasses } from "@/data/content";
+import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getBlogPosts } from "@/lib/blog";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { getReviews } from "@/lib/reviews";

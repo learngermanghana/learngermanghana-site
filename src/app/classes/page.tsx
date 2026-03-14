@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 import { JsonLd } from "@/components/JsonLd";
-import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { getClassPath, getNextIntake, getUpcomingClassesSorted, isScheduledClass } from "@/lib/classes";
 import { formatDatePretty } from "@/lib/date";
 import { SITE } from "@/lib/site";
 
 import ClassesPageClient from "./ClassesPageClient";
 
-const classesTitle = "German & French Classes in Ghana";
+const classesTitle = "German Classes in Ghana";
 const baseUrl = `https://${SITE.primaryDomain}`;
 const classesImage = `${baseUrl}/hero/hero.jpg`;
 

@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { BrochurePrintButton } from "@/components/BrochurePrintButton";
-import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { formatDatePretty } from "@/lib/date";
 import { SITE, WHATSAPP_LINK } from "@/lib/site";
 

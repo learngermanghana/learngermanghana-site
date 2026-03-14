@@ -1,4 +1,5 @@
-import { upcomingClasses, type ClassItem } from "@/data/content";
+import { internalClassInstances, publicUpcomingClasses, toClassItem } from "@/data/classesCatalog";
+import type { ClassItem } from "@/data/content";
 
 export function isScheduledClass(item: ClassItem): boolean {
   if (!item.startDate || item.startDate === "TBA" || item.startDate === "Always open") {
@@ -17,7 +18,7 @@ function getDateValue(item: ClassItem): number {
 }
 
 export function getUpcomingClassesSorted(): ClassItem[] {
-  return [...upcomingClasses].sort((a, b) => getDateValue(a) - getDateValue(b));
+  return [...publicUpcomingClasses].sort((a, b) => getDateValue(a) - getDateValue(b));
 }
 
 export function getNextIntake(referenceDate = new Date()): ClassItem | null {
@@ -36,7 +37,7 @@ export function getNextIntake(referenceDate = new Date()): ClassItem | null {
 }
 
 export function getClassById(classId: string): ClassItem | undefined {
-  return upcomingClasses.find((item) => item.id === classId);
+  return internalClassInstances.map(toClassItem).find((item) => item.id === classId);
 }
 
 export function getClassPath(classId: string): string {

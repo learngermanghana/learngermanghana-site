@@ -5,7 +5,8 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
-import { upcomingClasses, tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
+import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getClassPath, getNextIntake } from "@/lib/classes";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { SITE } from "@/lib/site";

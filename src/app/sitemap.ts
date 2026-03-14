@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { upcomingClasses } from "@/data/content";
+import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getClassPath } from "@/lib/classes";
 import { SITE } from "@/lib/site";
 

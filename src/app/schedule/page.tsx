@@ -1,6 +1,6 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
-import { upcomingClasses } from "@/data/content";
+import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { formatDatePretty } from "@/lib/date";
 import { CTA } from "@/lib/site";
 
@@ -19,7 +19,7 @@ export default function SchedulePage() {
         <section className="py-12 sm:py-16">
           <SectionTitle
             title="Class Schedule"
-            subtitle="Browse upcoming German and French classes with start dates, weekly schedules, and learning formats."
+            subtitle="Browse upcoming German classes with start dates, weekly schedules, and learning formats."
           />
 
           <div className="grid gap-4 lg:grid-cols-2">

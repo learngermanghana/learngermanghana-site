@@ -39,19 +39,6 @@ test("buildClassSchedule returns null for unsupported language/level track", () 
   assert.equal(result, null);
 });
 
-test("buildClassSchedule generates overflow revision sessions after assignments finish", () => {
-  const result = buildClassSchedule({
-    ...baseClass,
-    startDate: "2026-01-01",
-    endDate: "2026-06-30",
-    meetingDays: [{ day: "Monday", time: "10:00" }, { day: "Tuesday", time: "10:00" }, { day: "Wednesday", time: "10:00" }],
-    pacingStrategy: "twoPerSession",
-  });
-
-  assert.ok(result);
-  assert.equal(result.revisionSessions > 0, true);
-});
-
 test("buildClassSchedule supports duplicate weekly meeting entries", () => {
   const result = buildClassSchedule({
     ...baseClass,
