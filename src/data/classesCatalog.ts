@@ -1,9 +1,11 @@
 import type { ClassItem, ClassLevel } from "@/data/content";
 import {
+  addDays,
   calculatePublicVisibleUntil,
   formatIsoDate,
   generateMeetingDates,
-  nextOccurrenceAfter,
+  nextOccurrenceOnOrAfter,
+  parseIsoDate,
   pickCityName,
   summarizeDuration,
   toDisplayTime,
@@ -292,7 +294,9 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
     if (!lastInstance) continue;
 
     for (let cycle = 0; cycle < forwardCycles; cycle += 1) {
-      const nextStart = nextOccurrenceAfter(lastInstance.endDate ?? lastInstance.startDate, template.meetingSlots[0].weekday);
+      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 21));
+      const anchorDate = lastInstance.endDate && lastInstance.endDate > minGapStart ? lastInstance.endDate : minGapStart;
+      const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.meetingSlots[0].weekday);
       const cityName = pickCityName({
         cityPool: template.cityPool,
         usedCities: allInstances
@@ -375,5 +379,5 @@ export function toClassItem(instance: ClassInstance): ClassItem {
 const allClassInstances = generateClassInstances();
 
 export const internalClassInstances = allClassInstances;
-export const publicClassInstances = selectPublicClassInstances(allClassInstances);
+export const publicClassInstances = selectPublicClassInstances(allClassInstances, "2026-04-01");
 export const publicUpcomingClasses: ClassItem[] = publicClassInstances.map(toClassItem);
