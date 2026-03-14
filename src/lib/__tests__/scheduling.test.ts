@@ -2,24 +2,33 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { classTemplates, generateClassInstances, selectPublicClassInstances } from "@/data/classesCatalog";
-import { calculatePublicVisibleUntil, generateMeetingDates, nextOccurrenceAfter, pickCityName } from "@/lib/scheduling";
+import { addDays, calculatePublicVisibleUntil, formatIsoDate, generateMeetingDates, nextOccurrenceOnOrAfter, parseIsoDate, pickCityName } from "@/lib/scheduling";
 
-test("A1 soft-start creates only two meetings in first week with orientation labels", () => {
+test("A1 soft-start uses final two first-week meetings and resumes full pattern in week 2", () => {
   const meetings = generateMeetingDates({
-    startDate: "2026-04-15",
+    startDate: "2026-04-16",
     slots: [
-      { weekday: "Monday", startTime: "11:00", endTime: "12:00" },
-      { weekday: "Tuesday", startTime: "11:00", endTime: "12:00" },
-      { weekday: "Wednesday", startTime: "14:00", endTime: "15:00" },
+      { weekday: "Thursday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Friday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Saturday", startTime: "08:00", endTime: "09:00" },
     ],
     totalSessions: 8,
     onboardingMode: "a1_soft_start",
   });
 
-  const firstWeek = meetings.filter((item) => item.date >= "2026-04-15" && item.date <= "2026-04-21");
+  const firstWeek = meetings.filter((item) => item.date >= "2026-04-16" && item.date <= "2026-04-22");
   assert.equal(firstWeek.length, 2);
-  assert.equal(firstWeek[0]?.label, "Orientation");
-  assert.equal(firstWeek[1]?.label, "Lesson 1");
+  assert.deepEqual(
+    firstWeek.map((item) => ({ weekday: item.weekday, label: item.label })),
+    [
+      { weekday: "Friday", label: "Orientation" },
+      { weekday: "Saturday", label: "Lesson 1" },
+    ],
+  );
+
+  const weekTwo = meetings.filter((item) => item.date >= "2026-04-23" && item.date <= "2026-04-29");
+  assert.deepEqual(weekTwo.map((item) => item.weekday), ["Thursday", "Friday", "Saturday"]);
+  assert.deepEqual(weekTwo.map((item) => item.label), ["Lesson", "Lesson", "Lesson"]);
 });
 
 test("public visibility ends 7 days after start", () => {
@@ -55,7 +64,7 @@ test("public page selection returns 2 A1, 1 A2, 1 B1, and always-open B2/C1", ()
   assert.equal(counts.C1, 1);
 });
 
-test("next class starts on first configured weekday after previous class ends", () => {
+test("next class respects 21-day minimum spacing and starts on first configured weekday", () => {
   const a2Template = classTemplates.find((item) => item.id === "a2-evening-mon-tue-wed");
   assert.ok(a2Template);
   const instances = generateClassInstances("2026-04-01", 1)
@@ -64,6 +73,13 @@ test("next class starts on first configured weekday after previous class ends", 
 
   const previous = instances[instances.length - 2];
   const next = instances[instances.length - 1];
-  const expectedStart = nextOccurrenceAfter(previous.endDate!, a2Template.meetingSlots[0].weekday);
+  const minGapStart = formatIsoDate(addDays(parseIsoDate(previous.startDate), 21));
+  const anchorDate = previous.endDate && previous.endDate > minGapStart ? previous.endDate : minGapStart;
+  const expectedStart = nextOccurrenceOnOrAfter(anchorDate, a2Template.meetingSlots[0].weekday);
+
   assert.equal(next.startDate, expectedStart);
+
+  const previousStart = new Date(`${previous.startDate}T00:00:00Z`).getTime();
+  const nextStart = new Date(`${next.startDate}T00:00:00Z`).getTime();
+  assert.ok(nextStart - previousStart >= 21 * 24 * 60 * 60 * 1000);
 });
