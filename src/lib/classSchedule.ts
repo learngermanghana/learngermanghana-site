@@ -2,13 +2,23 @@ import type { ClassItem } from "@/data/content";
 import { classCurriculumByLevel, type CurriculumAssignment } from "@/data/classCurriculum";
 
 const dayMap: Record<string, number> = {
-  Sunday: 0,
-  Monday: 1,
-  Tuesday: 2,
-  Wednesday: 3,
-  Thursday: 4,
-  Friday: 5,
-  Saturday: 6,
+  sunday: 0,
+  sun: 0,
+  monday: 1,
+  mon: 1,
+  tuesday: 2,
+  tue: 2,
+  tues: 2,
+  wednesday: 3,
+  wed: 3,
+  thursday: 4,
+  thu: 4,
+  thur: 4,
+  thurs: 4,
+  friday: 5,
+  fri: 5,
+  saturday: 6,
+  sat: 6,
 };
 
 export type GeneratedScheduleItem = {
@@ -29,6 +39,10 @@ function formatDateIso(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
 
+function normalizeDay(day: string): string {
+  return day.trim().toLowerCase();
+}
+
 function getMeetingDatesBetweenRange(classInfo: ClassItem): { date: string; day: string; time: string }[] {
   if (!classInfo.startDate || !classInfo.endDate || classInfo.startDate === "TBA" || classInfo.endDate === "TBA") {
     return [];
@@ -45,7 +59,7 @@ function getMeetingDatesBetweenRange(classInfo: ClassItem): { date: string; day:
   end.setHours(0, 0, 0, 0);
 
   const meetings = classInfo.meetingDays
-    .map((meeting) => ({ ...meeting, dayIndex: dayMap[meeting.day] }))
+    .map((meeting) => ({ ...meeting, dayIndex: dayMap[normalizeDay(meeting.day)] }))
     .filter((meeting) => meeting.dayIndex !== undefined);
 
   const dates: { date: string; day: string; time: string }[] = [];
