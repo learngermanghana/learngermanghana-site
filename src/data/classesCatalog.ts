@@ -294,7 +294,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
     if (!lastInstance) continue;
 
     for (let cycle = 0; cycle < forwardCycles; cycle += 1) {
-      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 21));
+      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 25));
       const anchorDate = lastInstance.endDate && lastInstance.endDate > minGapStart ? lastInstance.endDate : minGapStart;
       const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.meetingSlots[0].weekday);
       const cityName = pickCityName({

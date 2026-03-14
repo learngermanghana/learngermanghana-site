@@ -64,7 +64,7 @@ test("public page selection returns 2 A1, 1 A2, 1 B1, and always-open B2/C1", ()
   assert.equal(counts.C1, 1);
 });
 
-test("next class respects 21-day minimum spacing and starts on first configured weekday", () => {
+test("next class respects 25-day minimum spacing and starts on first configured weekday", () => {
   const a2Template = classTemplates.find((item) => item.id === "a2-evening-mon-tue-wed");
   assert.ok(a2Template);
   const instances = generateClassInstances("2026-04-01", 1)
@@ -73,7 +73,7 @@ test("next class respects 21-day minimum spacing and starts on first configured 
 
   const previous = instances[instances.length - 2];
   const next = instances[instances.length - 1];
-  const minGapStart = formatIsoDate(addDays(parseIsoDate(previous.startDate), 21));
+  const minGapStart = formatIsoDate(addDays(parseIsoDate(previous.startDate), 25));
   const anchorDate = previous.endDate && previous.endDate > minGapStart ? previous.endDate : minGapStart;
   const expectedStart = nextOccurrenceOnOrAfter(anchorDate, a2Template.meetingSlots[0].weekday);
 
@@ -81,5 +81,5 @@ test("next class respects 21-day minimum spacing and starts on first configured 
 
   const previousStart = new Date(`${previous.startDate}T00:00:00Z`).getTime();
   const nextStart = new Date(`${next.startDate}T00:00:00Z`).getTime();
-  assert.ok(nextStart - previousStart >= 21 * 24 * 60 * 60 * 1000);
+  assert.ok(nextStart - previousStart >= 25 * 24 * 60 * 60 * 1000);
 });
