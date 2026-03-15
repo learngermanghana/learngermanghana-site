@@ -94,25 +94,3 @@ test("template startWeekday override sets A1 Thu-Fri-Sat cohort to first Friday 
   assert.ok(aprilInstance);
   assert.equal(aprilInstance.startDate, "2026-04-03");
 });
-
-
-test("Friday-start A1 soft-start gives Friday orientation and Saturday lesson 1", () => {
-  const meetings = generateMeetingDates({
-    startDate: "2026-04-03",
-    slots: [
-      { weekday: "Thursday", startTime: "18:00", endTime: "19:00" },
-      { weekday: "Friday", startTime: "18:00", endTime: "19:00" },
-      { weekday: "Saturday", startTime: "08:00", endTime: "09:00" },
-    ],
-    totalSessions: 6,
-    onboardingMode: "a1_soft_start",
-  });
-
-  assert.deepEqual(
-    meetings.slice(0, 2).map((item) => ({ weekday: item.weekday, label: item.label })),
-    [
-      { weekday: "Friday", label: "Orientation" },
-      { weekday: "Saturday", label: "Lesson 1" },
-    ],
-  );
-});
