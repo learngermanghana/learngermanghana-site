@@ -349,20 +349,18 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
 
   const pickByLevel = (level: ClassLevel, count: number) => livePublic.filter((item) => item.level === level).slice(0, count);
   const pickA1Priority = (count: number) => {
-    const a1CurrentOrUpcoming = liveCurrentOrUpcoming.filter((item) => item.level === "A1");
-    const a1Upcoming = livePublic.filter((item) => item.level === "A1");
+    const a1Classes = livePublic.filter((item) => item.level === "A1");
+    if (!a1Classes.length) return [];
 
-    if (!a1CurrentOrUpcoming.length && !a1Upcoming.length) return [];
-
-    const anchorMonth = a1Upcoming[0]?.startDate.slice(0, 7) ?? a1CurrentOrUpcoming[0].startDate.slice(0, 7);
-    const sameMonthClasses = a1CurrentOrUpcoming.filter((item) => item.startDate.slice(0, 7) === anchorMonth);
+    const earliestMonth = a1Classes[0].startDate.slice(0, 7);
+    const sameMonthClasses = a1Classes.filter((item) => item.startDate.slice(0, 7) === earliestMonth);
 
     if (sameMonthClasses.length >= count) {
       return sameMonthClasses.slice(0, count);
     }
 
     const alreadySelectedIds = new Set(sameMonthClasses.map((item) => item.id));
-    const remaining = a1Upcoming.filter((item) => !alreadySelectedIds.has(item.id));
+    const remaining = a1Classes.filter((item) => !alreadySelectedIds.has(item.id));
 
     return [...sameMonthClasses, ...remaining].slice(0, count);
   };
