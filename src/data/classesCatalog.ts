@@ -342,10 +342,33 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
     .filter((item) => item.publicVisibleUntil >= referenceDate)
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
 
+  const liveCurrentOrUpcoming = instances
+    .filter((item) => item.deliveryMode === "live")
+    .filter((item) => (item.endDate ?? item.startDate) >= referenceDate)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+
   const pickByLevel = (level: ClassLevel, count: number) => livePublic.filter((item) => item.level === level).slice(0, count);
+  const pickA1Priority = (count: number) => {
+    const a1CurrentOrUpcoming = liveCurrentOrUpcoming.filter((item) => item.level === "A1");
+    const a1Upcoming = livePublic.filter((item) => item.level === "A1");
+
+    if (!a1CurrentOrUpcoming.length && !a1Upcoming.length) return [];
+
+    const anchorMonth = a1Upcoming[0]?.startDate.slice(0, 7) ?? a1CurrentOrUpcoming[0].startDate.slice(0, 7);
+    const sameMonthClasses = a1CurrentOrUpcoming.filter((item) => item.startDate.slice(0, 7) === anchorMonth);
+
+    if (sameMonthClasses.length >= count) {
+      return sameMonthClasses.slice(0, count);
+    }
+
+    const alreadySelectedIds = new Set(sameMonthClasses.map((item) => item.id));
+    const remaining = a1Upcoming.filter((item) => !alreadySelectedIds.has(item.id));
+
+    return [...sameMonthClasses, ...remaining].slice(0, count);
+  };
 
   const selectedLive = [
-    ...pickByLevel("A1", 2),
+    ...pickA1Priority(2),
     ...pickByLevel("A2", 1),
     ...pickByLevel("B1", 1),
   ];

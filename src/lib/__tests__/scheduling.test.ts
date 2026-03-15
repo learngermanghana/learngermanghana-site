@@ -94,3 +94,24 @@ test("template startWeekday override sets A1 Thu-Fri-Sat cohort to first Friday 
   assert.ok(aprilInstance);
   assert.equal(aprilInstance.startDate, "2026-04-03");
 });
+
+test("public A1 selection prioritizes earliest month cohorts before later months", () => {
+  const instances = generateClassInstances("2026-04-01", 2);
+  const selected = selectPublicClassInstances(instances, "2026-04-01");
+  const a1Starts = selected
+    .filter((item) => item.level === "A1")
+    .map((item) => item.startDate);
+
+  assert.deepEqual(a1Starts, ["2026-04-03", "2026-04-28"]);
+});
+
+test("public A1 selection keeps both April cohorts visible mid-month before showing May", () => {
+  const instances = generateClassInstances("2026-04-01", 2);
+  const selected = selectPublicClassInstances(instances, "2026-04-15");
+  const a1Starts = selected
+    .filter((item) => item.level === "A1")
+    .map((item) => item.startDate);
+
+  assert.deepEqual(a1Starts, ["2026-04-03", "2026-04-28"]);
+});
+
