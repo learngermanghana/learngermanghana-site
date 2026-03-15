@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { classTemplates, generateClassInstances, selectPublicClassInstances } from "@/data/classesCatalog";
 import { addDays, calculatePublicVisibleUntil, formatIsoDate, generateMeetingDates, nextOccurrenceOnOrAfter, parseIsoDate, pickCityName } from "@/lib/scheduling";
 
-test("A1 soft-start uses final two first-week meetings and resumes full pattern in week 2", () => {
+test("A1 soft-start uses first two first-week meetings and resumes full pattern in week 2", () => {
   const meetings = generateMeetingDates({
     startDate: "2026-04-16",
     slots: [
@@ -21,8 +21,8 @@ test("A1 soft-start uses final two first-week meetings and resumes full pattern 
   assert.deepEqual(
     firstWeek.map((item) => ({ weekday: item.weekday, label: item.label })),
     [
-      { weekday: "Friday", label: "Orientation" },
-      { weekday: "Saturday", label: "Lesson 1" },
+      { weekday: "Thursday", label: "Orientation" },
+      { weekday: "Friday", label: "Lesson 1" },
     ],
   );
 

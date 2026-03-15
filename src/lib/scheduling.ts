@@ -102,7 +102,7 @@ export function generateMeetingDates(options: {
             probe = addDays(probe, 1);
           }
 
-          return firstWeekCandidates.slice(-2);
+          return firstWeekCandidates.slice(0, 2);
         })()
       : [];
 
