@@ -211,8 +211,9 @@ export default function ClassesPage() {
 
                   <div className="mt-3 text-lg font-semibold text-neutral-900">{c.title}</div>
 
-                  <div className="mt-2 text-sm text-neutral-700">
-                    <span className="font-semibold">Starts:</span> {formatDatePretty(c.startDate)}
+                  <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-amber-800">Start date</div>
+                    <div className="text-base font-semibold text-neutral-900">{formatDatePretty(c.startDate)}</div>
                   </div>
                   {daysUntilStart !== null ? (
                     <div className="mt-1 text-xs font-semibold text-amber-700">
@@ -221,6 +222,18 @@ export default function ClassesPage() {
                         : `${daysUntilStart} day${daysUntilStart === 1 ? "" : "s"} remaining`}
                     </div>
                   ) : null}
+
+                  <div className="mt-3 rounded-2xl border border-black/10 bg-neutral-50 p-4">
+                    <div className="text-sm font-semibold text-neutral-900">Meeting days</div>
+                    <ul className="mt-2 space-y-1 text-sm text-neutral-700">
+                      {c.meetingDays.map((m) => (
+                        <li key={m.day} className="flex items-center justify-between gap-4">
+                          <span className="font-medium">{m.day}</span>
+                          <span className="text-neutral-600">{m.time}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
                   <div className="mt-2 text-sm text-neutral-700">
                     <span className="font-semibold">Location:</span> {c.location}
@@ -253,18 +266,6 @@ export default function ClassesPage() {
                       </p>
                     </div>
                   ) : null}
-
-                  <div className="mt-4 rounded-2xl border border-black/10 bg-neutral-50 p-4">
-                    <div className="text-sm font-semibold text-neutral-900">Meeting days</div>
-                    <ul className="mt-2 space-y-1 text-sm text-neutral-700">
-                      {c.meetingDays.map((m) => (
-                        <li key={m.day} className="flex items-center justify-between gap-4">
-                          <span className="font-medium">{m.day}</span>
-                          <span className="text-neutral-600">{m.time}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
 
                   <div className="mt-5">
                     <a
