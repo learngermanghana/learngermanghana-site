@@ -85,11 +85,15 @@ export function buildClassSchedule(classInfo: ClassItem): GeneratedClassSchedule
   const meetingDates = getMeetingDatesBetweenRange(classInfo);
   if (!meetingDates.length) return null;
 
+  const assignmentStartIndex = classInfo.level === "A1" ? 1 : 0;
+  const teachableMeetingDates = meetingDates.slice(assignmentStartIndex);
+  if (!teachableMeetingDates.length) return null;
+
   const assignments = Object.values(levelDictionary);
-  const sessionCount = Math.min(meetingDates.length, assignments.length);
+  const sessionCount = Math.min(teachableMeetingDates.length, assignments.length);
 
   const sessions = Array.from({ length: sessionCount }, (_, index) => ({
-    ...meetingDates[index],
+    ...teachableMeetingDates[index],
     assignment: assignments[index],
   }));
 

@@ -53,3 +53,25 @@ test("buildClassSchedule supports duplicate weekly meeting entries", () => {
   const mondaySessions = result.sessions.filter((session) => session.day.toLowerCase().startsWith("mon"));
   assert.equal(mondaySessions.length > 0, true);
 });
+
+
+test("buildClassSchedule starts A1 curriculum on the first lesson after orientation", () => {
+  const result = buildClassSchedule({
+    ...baseClass,
+    startDate: "2026-04-03",
+    endDate: "2026-04-12",
+    meetingDays: [
+      { day: "Friday", time: "6:00 pm – 7:00 pm" },
+      { day: "Saturday", time: "8:00 am – 9:00 am" },
+      { day: "Thursday", time: "6:00 pm – 7:00 pm" },
+    ],
+  });
+
+  assert.ok(result);
+  assert.equal(result.sessions[0]?.date, "2026-04-04");
+  assert.equal(result.sessions[0]?.day, "Saturday");
+  assert.equal(result.sessions[0]?.assignment.assignment_id, "A1-0.1");
+  assert.equal(result.sessions[0]?.assignment.chapter, "0.1");
+  assert.equal(result.sessions[0]?.assignment.de, "Begrüßungen und Wohlbefinden");
+  assert.equal(result.sessions[0]?.assignment.en, "Greetings and Asking About Well-being");
+});
