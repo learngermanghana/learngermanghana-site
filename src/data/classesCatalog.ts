@@ -343,9 +343,25 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
 
   const pickByLevel = (level: ClassLevel, count: number) => livePublic.filter((item) => item.level === level).slice(0, count);
+  const pickA1Priority = (count: number) => {
+    const a1Classes = livePublic.filter((item) => item.level === "A1");
+    if (!a1Classes.length) return [];
+
+    const earliestMonth = a1Classes[0].startDate.slice(0, 7);
+    const sameMonthClasses = a1Classes.filter((item) => item.startDate.slice(0, 7) === earliestMonth);
+
+    if (sameMonthClasses.length >= count) {
+      return sameMonthClasses.slice(0, count);
+    }
+
+    const alreadySelectedIds = new Set(sameMonthClasses.map((item) => item.id));
+    const remaining = a1Classes.filter((item) => !alreadySelectedIds.has(item.id));
+
+    return [...sameMonthClasses, ...remaining].slice(0, count);
+  };
 
   const selectedLive = [
-    ...pickByLevel("A1", 2),
+    ...pickA1Priority(2),
     ...pickByLevel("A2", 1),
     ...pickByLevel("B1", 1),
   ];
