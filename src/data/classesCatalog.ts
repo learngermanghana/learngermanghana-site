@@ -342,6 +342,11 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
     .filter((item) => item.publicVisibleUntil >= referenceDate)
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
 
+  const liveCurrentOrUpcoming = instances
+    .filter((item) => item.deliveryMode === "live")
+    .filter((item) => (item.endDate ?? item.startDate) >= referenceDate)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+
   const pickByLevel = (level: ClassLevel, count: number) => livePublic.filter((item) => item.level === level).slice(0, count);
   const pickA1Priority = (count: number) => {
     const a1Classes = livePublic.filter((item) => item.level === "A1");
