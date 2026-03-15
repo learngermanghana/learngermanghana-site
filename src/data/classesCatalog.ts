@@ -11,6 +11,7 @@ import {
   toDisplayTime,
   type MeetingDate,
   type MeetingSlot,
+  type Weekday,
 } from "@/lib/scheduling";
 
 export type DeliveryMode = "live" | "self-learning";
@@ -28,6 +29,7 @@ export type ClassTemplate = {
   onboardingMode: OnboardingMode;
   defaultLocation: string;
   photo?: string;
+  startWeekday?: Weekday;
 };
 
 export type ClassInstance = {
@@ -113,6 +115,7 @@ export const classTemplates: ClassTemplate[] = [
     cityPool: ["Hamburg", "Berlin", "Köln", "Stuttgart", "Dortmund", "Freiburg", "Heidelberg"],
     active: true,
     onboardingMode: "a1_soft_start",
+    startWeekday: "Friday",
     defaultLocation: DEFAULT_LOCATION,
     photo: photoByLevel.A1,
   },
@@ -201,7 +204,7 @@ const historicalSeeds: SeedInstance[] = [
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-02-18", cityName: "Berlin" },
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-01-30", cityName: "Hamburg" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
-  { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-15", cityName: "Köln" },
+  { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
   { templateId: "a2-evening-mon-tue-wed", startDate: "2026-03-02", cityName: "Stuttgart" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
@@ -296,7 +299,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
     for (let cycle = 0; cycle < forwardCycles; cycle += 1) {
       const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 25));
       const anchorDate = lastInstance.endDate && lastInstance.endDate > minGapStart ? lastInstance.endDate : minGapStart;
-      const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.meetingSlots[0].weekday);
+      const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.startWeekday ?? template.meetingSlots[0].weekday);
       const cityName = pickCityName({
         cityPool: template.cityPool,
         usedCities: allInstances

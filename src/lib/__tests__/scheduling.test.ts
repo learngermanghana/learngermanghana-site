@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { classTemplates, generateClassInstances, selectPublicClassInstances } from "@/data/classesCatalog";
 import { addDays, calculatePublicVisibleUntil, formatIsoDate, generateMeetingDates, nextOccurrenceOnOrAfter, parseIsoDate, pickCityName } from "@/lib/scheduling";
 
-test("A1 soft-start uses final two first-week meetings and resumes full pattern in week 2", () => {
+test("A1 soft-start uses first two first-week meetings and resumes full pattern in week 2", () => {
   const meetings = generateMeetingDates({
     startDate: "2026-04-16",
     slots: [
@@ -21,8 +21,8 @@ test("A1 soft-start uses final two first-week meetings and resumes full pattern 
   assert.deepEqual(
     firstWeek.map((item) => ({ weekday: item.weekday, label: item.label })),
     [
-      { weekday: "Friday", label: "Orientation" },
-      { weekday: "Saturday", label: "Lesson 1" },
+      { weekday: "Thursday", label: "Orientation" },
+      { weekday: "Friday", label: "Lesson 1" },
     ],
   );
 
@@ -82,4 +82,37 @@ test("next class respects 25-day minimum spacing and starts on first configured 
   const previousStart = new Date(`${previous.startDate}T00:00:00Z`).getTime();
   const nextStart = new Date(`${next.startDate}T00:00:00Z`).getTime();
   assert.ok(nextStart - previousStart >= 25 * 24 * 60 * 60 * 1000);
+});
+
+
+test("template startWeekday override sets A1 Thu-Fri-Sat cohort to first Friday in April 2026", () => {
+  const instances = generateClassInstances("2026-04-01", 2)
+    .filter((item) => item.templateId === "a1-evening-thu-fri-sat" && item.deliveryMode === "live")
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+
+  const aprilInstance = instances.find((item) => item.startDate.startsWith("2026-04"));
+  assert.ok(aprilInstance);
+  assert.equal(aprilInstance.startDate, "2026-04-03");
+});
+
+
+test("Friday-start A1 soft-start gives Friday orientation and Saturday lesson 1", () => {
+  const meetings = generateMeetingDates({
+    startDate: "2026-04-03",
+    slots: [
+      { weekday: "Thursday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Friday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Saturday", startTime: "08:00", endTime: "09:00" },
+    ],
+    totalSessions: 6,
+    onboardingMode: "a1_soft_start",
+  });
+
+  assert.deepEqual(
+    meetings.slice(0, 2).map((item) => ({ weekday: item.weekday, label: item.label })),
+    [
+      { weekday: "Friday", label: "Orientation" },
+      { weekday: "Saturday", label: "Lesson 1" },
+    ],
+  );
 });
