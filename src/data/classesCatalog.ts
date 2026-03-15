@@ -11,6 +11,7 @@ import {
   toDisplayTime,
   type MeetingDate,
   type MeetingSlot,
+  type Weekday,
 } from "@/lib/scheduling";
 
 export type DeliveryMode = "live" | "self-learning";
@@ -28,6 +29,7 @@ export type ClassTemplate = {
   onboardingMode: OnboardingMode;
   defaultLocation: string;
   photo?: string;
+  startWeekday?: Weekday;
 };
 
 export type ClassInstance = {
@@ -113,6 +115,7 @@ export const classTemplates: ClassTemplate[] = [
     cityPool: ["Hamburg", "Berlin", "Köln", "Stuttgart", "Dortmund", "Freiburg", "Heidelberg"],
     active: true,
     onboardingMode: "a1_soft_start",
+    startWeekday: "Friday",
     defaultLocation: DEFAULT_LOCATION,
     photo: photoByLevel.A1,
   },
@@ -296,7 +299,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
     for (let cycle = 0; cycle < forwardCycles; cycle += 1) {
       const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 25));
       const anchorDate = lastInstance.endDate && lastInstance.endDate > minGapStart ? lastInstance.endDate : minGapStart;
-      const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.meetingSlots[0].weekday);
+      const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.startWeekday ?? template.meetingSlots[0].weekday);
       const cityName = pickCityName({
         cityPool: template.cityPool,
         usedCities: allInstances

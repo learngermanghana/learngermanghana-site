@@ -83,3 +83,14 @@ test("next class respects 25-day minimum spacing and starts on first configured 
   const nextStart = new Date(`${next.startDate}T00:00:00Z`).getTime();
   assert.ok(nextStart - previousStart >= 25 * 24 * 60 * 60 * 1000);
 });
+
+
+test("template startWeekday override sets A1 Thu-Fri-Sat cohort to first Friday in April 2026", () => {
+  const instances = generateClassInstances("2026-04-01", 2)
+    .filter((item) => item.templateId === "a1-evening-thu-fri-sat" && item.deliveryMode === "live")
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+
+  const aprilInstance = instances.find((item) => item.startDate.startsWith("2026-04"));
+  assert.ok(aprilInstance);
+  assert.equal(aprilInstance.startDate, "2026-04-03");
+});
