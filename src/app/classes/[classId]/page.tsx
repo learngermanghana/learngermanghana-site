@@ -147,11 +147,11 @@ export default async function ClassDetailPage({ params }: Props) {
           </div>
 
           <div className="mt-6 rounded-2xl border border-black/10 bg-neutral-50 p-4">
-            <p className="text-sm font-semibold text-neutral-900">Lesson plan by level</p>
+            <p className="text-sm font-semibold text-neutral-900">Your lesson plan</p>
             {generatedSchedule ? (
               <>
                 <p className="mt-2 text-xs text-neutral-600">
-                  Generated from the level lesson dictionary ({classInfo.level}) using the class start date, end date, and meeting days.
+                  A date-by-date guide to the topics you'll cover in this class.
                 </p>
                 <ul className="mt-3 max-h-80 space-y-2 overflow-auto pr-1 text-sm text-neutral-700">
                   {generatedSchedule.sessions.map((session) => (
