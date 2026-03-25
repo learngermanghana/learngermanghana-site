@@ -54,6 +54,15 @@ Workflow file: `.github/workflows/linkedin-class-updates.yml`
 
 ### Optional configuration
 
+### LinkedIn OAuth redirect URL
+
+A callback page is available at:
+
+- `https://learngermanghana.com/auth/linkedin/callback`
+- `http://localhost:3000/auth/linkedin/callback` (for local testing)
+
+Use one or both in your LinkedIn app's authorized redirect URLs, matching exactly.
+
 - Secret: `OPENAI_MODEL` (default: `gpt-4o-mini`)
 - Repository variable: `SITE_URL` (default: `https://learngermanghana.com`)
 - Repository variable: `REGISTER_URL` (default: `https://falowen.com`)
