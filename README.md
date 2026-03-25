@@ -36,6 +36,30 @@ NEXT_PUBLIC_CHAT_WIDGET_SRC="https://embed.tawk.to/your-property-id/your-widget-
 
 The script is injected globally via the RootLayout (`src/app/layout.tsx`). Remove the environment variable to disable the widget.
 
+## AI LinkedIn auto-post for class updates
+
+This repo includes a GitHub Actions workflow that can automatically publish a LinkedIn post when class data changes in:
+
+- `src/data/content.ts`
+- `src/data/classesCatalog.ts`
+- `src/lib/classes.ts`
+
+Workflow file: `.github/workflows/linkedin-class-updates.yml`
+
+### Required GitHub secrets
+
+- `OPENAI_API_KEY`
+- `LINKEDIN_ACCESS_TOKEN`
+- `LINKEDIN_AUTHOR_URN` (for example `urn:li:person:xxxx` or `urn:li:organization:xxxx`)
+
+### Optional configuration
+
+- Secret: `OPENAI_MODEL` (default: `gpt-4o-mini`)
+- Repository variable: `SITE_URL` (default: `https://learngermanghana.com`)
+- Repository variable: `REGISTER_URL` (default: `https://falowen.com`)
+
+The agent reads the git diff for class-related files, uses OpenAI to draft one LinkedIn-ready post, then publishes it using LinkedIn's UGC Posts API.
+
 ## Deployment
 
 Deploy using the standard Next.js build commands (for example on Vercel or another Node hosting provider).
