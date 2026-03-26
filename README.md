@@ -65,27 +65,9 @@ If needed, you can scope them as environment secrets instead (for example `produ
 A callback page is available at:
 
 - `https://learngermanghana.com/auth/linkedin/callback`
-- `https://www.learngermanghana.com/auth/linkedin/callback` (only if `www` is live)
 - `http://localhost:3000/auth/linkedin/callback` (for local testing)
 
 Use one or both in your LinkedIn app's authorized redirect URLs, matching exactly.
-
-### LinkedIn OAuth troubleshooting (401 + callback 404)
-
-If LinkedIn returns `401 Unauthorized` while exchanging the authorization code:
-
-- Confirm `redirect_uri` is an exact character-for-character match with the URL configured in the LinkedIn app.
-- Ensure the `code` is fresh and used only once (LinkedIn codes are short-lived and single-use).
-- Ensure `client_id` and `client_secret` belong to the same LinkedIn app where the redirect URL was added.
-- Send token exchange requests as `application/x-www-form-urlencoded`.
-
-If you get a callback `404`:
-
-- Verify you are using the exact deployed hostname (`learngermanghana.com` vs `www.learngermanghana.com`).
-- Verify the latest deployment includes `src/app/auth/linkedin/callback/page.tsx`.
-- Check both callback URLs above are registered in LinkedIn if both hostnames are active.
-
-Security note: never share your LinkedIn `client_secret` publicly; rotate it immediately in the LinkedIn Developer Portal if exposed.
 
 - Secret: `OPENAI_MODEL` (default: `gpt-4o-mini`)
 - Repository variable: `SITE_URL` (default: `https://learngermanghana.com`)
