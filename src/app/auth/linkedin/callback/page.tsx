@@ -20,26 +20,14 @@ type CallbackPageProps = {
 export default async function LinkedInCallbackPage({ searchParams }: CallbackPageProps) {
   const params = (await searchParams) ?? {};
   const hasCode = Boolean(params.code);
-  const callbackHosts = [
-    "https://learngermanghana.com/auth/linkedin/callback",
-    "https://www.learngermanghana.com/auth/linkedin/callback",
-  ];
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-16 text-neutral-900">
       <h1 className="text-2xl font-bold">LinkedIn OAuth callback received</h1>
-      <p className="mt-3 text-sm text-neutral-700">This page is used as the LinkedIn redirect URL.</p>
-      <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-neutral-700">
-        {callbackHosts.map((host) => (
-          <li key={host}>
-            <span className="rounded bg-neutral-100 px-2 py-1 font-mono text-xs">{host}</span>
-          </li>
-        ))}
-      </ul>
       <p className="mt-3 text-sm text-neutral-700">
-        Register the exact hostname you use during OAuth. If your login starts on <span className="font-mono text-xs">www</span>, make sure the
-        <span className="mx-1 rounded bg-neutral-100 px-2 py-1 font-mono text-xs">www</span>
-        callback is also allowed in your LinkedIn app settings.
+        This page is used as the LinkedIn redirect URL. Keep it configured in your LinkedIn app as
+        <span className="mx-1 rounded bg-neutral-100 px-2 py-1 font-mono text-xs">https://learngermanghana.com/auth/linkedin/callback</span>
+        (and your localhost variant for development).
       </p>
 
       {params.error ? (
