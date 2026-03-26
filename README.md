@@ -75,6 +75,30 @@ Use one or both in your LinkedIn app's authorized redirect URLs, matching exactl
 
 The agent reads the git diff for class-related files, uses OpenAI to draft one LinkedIn-ready post, then publishes it using LinkedIn's UGC Posts API.
 
+## AI Instagram auto-post for class updates
+
+This repo also includes an Instagram workflow for the same class-data changes.
+
+Workflow file: `.github/workflows/instagram-class-updates.yml`
+
+### Required GitHub secrets (Actions)
+
+- `OPENAI_API_KEY`
+- `INSTAGRAM_ACCESS_TOKEN` (Meta Graph API token with Instagram publish permissions)
+- `INSTAGRAM_IG_USER_ID` (Instagram Business account ID)
+
+### Required GitHub variables
+
+- `INSTAGRAM_IMAGE_URL` (public image URL used for feed post media)
+
+### Optional configuration
+
+- Secret: `OPENAI_MODEL` (default: `gpt-4o-mini`)
+- Repository variable: `SITE_URL` (default: `https://learngermanghana.com`)
+- Repository variable: `REGISTER_URL` (default: `https://falowen.com`)
+
+The Instagram agent reads the same class-file diff, generates a caption with OpenAI, creates an Instagram media container, then publishes it.
+
 ## Deployment
 
 Deploy using the standard Next.js build commands (for example on Vercel or another Node hosting provider).
