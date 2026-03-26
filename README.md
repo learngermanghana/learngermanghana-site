@@ -52,6 +52,12 @@ Workflow file: `.github/workflows/linkedin-class-updates.yml`
 - `LINKEDIN_ACCESS_TOKEN`
 - `LINKEDIN_AUTHOR_URN` (for example `urn:li:person:xxxx` or `urn:li:organization:xxxx`)
 
+Save these in **GitHub Actions secrets** (not Codespaces / not Dependabot) when using the workflow in `.github/workflows/linkedin-class-updates.yml`.
+
+Quick path: **GitHub repo → Settings → Secrets and variables → Actions → New repository secret**.
+
+If needed, you can scope them as environment secrets instead (for example `production`) and reference that environment from the workflow.
+
 ### Optional configuration
 
 ### LinkedIn OAuth redirect URL
