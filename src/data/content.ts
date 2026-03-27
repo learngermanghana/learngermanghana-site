@@ -210,7 +210,7 @@ export const upcomingClasses: ClassItem[] = [
     language: "German",
     level: "B2",
     location: "Online",
-    startDate: "TBA",
+    startDate: "Always open",
     format:
       "Self-learning with AI assistant + tutor support by email when needed. Students should be ready to use AI tools and the Falowen schedule. No in-person classes.",
     duration: "6 months contract access",
@@ -225,7 +225,7 @@ export const upcomingClasses: ClassItem[] = [
     language: "German",
     level: "C1",
     location: "Online",
-    startDate: "TBA",
+    startDate: "Always open",
     format:
       "Self-learning with AI assistant + tutor support by email when needed. Students should be ready to use AI tools and the Falowen schedule. No in-person classes.",
     duration: "6 months contract access",
