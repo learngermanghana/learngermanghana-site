@@ -45,6 +45,7 @@ This repo includes a GitHub Actions workflow that can automatically publish a Li
 - `src/lib/classes.ts`
 
 Workflow file: `.github/workflows/linkedin-class-updates.yml`
+Trigger: pushes to `main` or `master` when class data files change, or manual `workflow_dispatch`.
 
 ### Required GitHub secrets
 
@@ -80,6 +81,7 @@ The agent reads the git diff for class-related files, uses OpenAI to draft one L
 This repo also includes an Instagram workflow for the same class-data changes.
 
 Workflow file: `.github/workflows/instagram-class-updates.yml`
+Trigger: pushes to `main` or `master` when class data files change, or manual `workflow_dispatch`.
 
 ### Required GitHub secrets (Actions)
 
