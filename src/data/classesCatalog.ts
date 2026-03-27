@@ -142,9 +142,9 @@ export const classTemplates: ClassTemplate[] = [
     level: "A2",
     deliveryMode: "live",
     meetingSlots: [
-      { weekday: "Thursday", startTime: "17:30", endTime: "19:00" },
-      { weekday: "Friday", startTime: "17:30", endTime: "19:00" },
-      { weekday: "Saturday", startTime: "17:30", endTime: "19:00" },
+      { weekday: "Wednesday", startTime: "11:00", endTime: "12:00" },
+      { weekday: "Thursday", startTime: "11:00", endTime: "12:00" },
+      { weekday: "Friday", startTime: "11:00", endTime: "12:00" },
     ],
     totalSessions: 28,
     cityPool: ["Freiburg", "Stuttgart", "Heidelberg", "Berlin", "Hamburg", "Köln"],
