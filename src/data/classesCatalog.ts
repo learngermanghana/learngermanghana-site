@@ -142,14 +142,14 @@ export const classTemplates: ClassTemplate[] = [
     level: "A2",
     deliveryMode: "live",
     meetingSlots: [
-      { weekday: "Monday", startTime: "17:30", endTime: "19:00" },
-      { weekday: "Tuesday", startTime: "17:30", endTime: "19:00" },
-      { weekday: "Wednesday", startTime: "17:30", endTime: "19:00" },
+      { weekday: "Thursday", startTime: "17:30", endTime: "19:00" },
+      { weekday: "Friday", startTime: "17:30", endTime: "19:00" },
+      { weekday: "Saturday", startTime: "17:30", endTime: "19:00" },
     ],
-    totalSessions: 27,
+    totalSessions: 28,
     cityPool: ["Freiburg", "Stuttgart", "Heidelberg", "Berlin", "Hamburg", "Köln"],
     active: true,
-    onboardingMode: "normal",
+    onboardingMode: "a1_soft_start",
     defaultLocation: DEFAULT_LOCATION,
     photo: photoByLevel.A2,
   },
@@ -206,7 +206,7 @@ const historicalSeeds: SeedInstance[] = [
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-04-03", cityName: "Leipzig" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
-  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-03-02", cityName: "Stuttgart" },
+  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-04-23", cityName: "Freiburg" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
 
