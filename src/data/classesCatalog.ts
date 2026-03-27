@@ -265,7 +265,7 @@ function createSelfLearningInstance(template: ClassTemplate): ClassInstance {
     level: template.level,
     name: `${template.level} Self-Learning`,
     location: template.defaultLocation,
-    startDate: "TBA",
+    startDate: "Always open",
     meetingSlots: [],
     meetingDates: [],
     publicVisibleUntil: "Always open",
@@ -330,8 +330,10 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
   });
 
   return [...liveWithStatus, ...selfLearning].sort((a, b) => {
-    if (a.startDate === "TBA") return 1;
-    if (b.startDate === "TBA") return -1;
+    const aUnscheduled = a.startDate === "TBA" || a.startDate === "Always open";
+    const bUnscheduled = b.startDate === "TBA" || b.startDate === "Always open";
+    if (aUnscheduled && !bUnscheduled) return 1;
+    if (bUnscheduled && !aUnscheduled) return -1;
     return a.startDate.localeCompare(b.startDate);
   });
 }
