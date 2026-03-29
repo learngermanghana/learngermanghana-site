@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { RandomReviews } from "@/components/RandomReviews";
+import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
 import { CTA, LINKS, SITE } from "@/lib/site";
 import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getBlogPosts } from "@/lib/blog";
@@ -142,6 +143,8 @@ export default async function HomePage() {
                   >
                     Talk to us
                   </a>
+
+                  <YouTubeSubscribeButton className="w-full sm:w-auto border-red-300 px-7 py-3.5" />
                 </div>
 
                 <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">

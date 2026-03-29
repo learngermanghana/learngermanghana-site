@@ -15,6 +15,7 @@ export const LINKS = {
   register: "https://register.falowen.app",
   placementTest: "https://www.falowen.app/placement-test",
   blog: "https://blog.falowen.app",
+  youtubeSubscribe: "https://www.youtube.com/@LLEAGhana?sub_confirmation=1",
 };
 
 export const SOCIAL_LINKS = {

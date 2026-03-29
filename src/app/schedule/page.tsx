@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
+import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
 import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { formatDatePretty } from "@/lib/date";
 import { CTA } from "@/lib/site";
@@ -91,6 +92,7 @@ export default function SchedulePage() {
               >
                 Talk to us
               </a>
+              <YouTubeSubscribeButton />
             </div>
           </div>
         </section>
