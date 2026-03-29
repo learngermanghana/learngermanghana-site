@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
+import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
 import { courses, feeNotes, goetheExamFeesGHS, goetheExamLinks, tuitionFeesGHS } from "@/data/content";
 import { CTA } from "@/lib/site";
 
@@ -92,6 +93,7 @@ export default function PricingPage() {
                 >
                   Talk to us
                 </a>
+                <YouTubeSubscribeButton />
               </div>
             </div>
           </div>

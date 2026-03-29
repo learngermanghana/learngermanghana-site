@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 import { Container } from "@/components/Container";
+import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
 import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getClassPath, getNextIntake } from "@/lib/classes";
@@ -143,6 +144,8 @@ export default function ClassesPage() {
           <div className="mt-4 rounded-2xl border border-black/10 bg-white/70 p-4 text-sm text-neutral-700">
             New here? Open each class detail page to quickly review the schedule, fees, and enrollment steps one by one.
           </div>
+
+          <YouTubeSubscribeButton className="mt-4 w-full sm:w-auto" />
 
           <div className="mt-6 grid gap-4">
             {filteredClasses.map((c, index) => {
