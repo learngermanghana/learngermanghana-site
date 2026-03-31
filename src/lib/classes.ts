@@ -43,3 +43,14 @@ export function getClassById(classId: string): ClassItem | undefined {
 export function getClassPath(classId: string): string {
   return `/classes/${classId}`;
 }
+
+export function getDurationWithProgramWeeks(item: ClassItem): string {
+  const tenWeekLevels = new Set(["A1", "A2", "B1"]);
+  const shouldShowTenWeeks = item.language === "German" && tenWeekLevels.has(item.level);
+
+  if (!shouldShowTenWeeks) {
+    return item.duration;
+  }
+
+  return `${item.duration} • 10 weeks`;
+}

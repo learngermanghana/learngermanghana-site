@@ -8,7 +8,7 @@ import { Container } from "@/components/Container";
 import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
 import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
-import { getClassPath, getNextIntake } from "@/lib/classes";
+import { getClassPath, getDurationWithProgramWeeks, getNextIntake } from "@/lib/classes";
 import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { SITE } from "@/lib/site";
 
@@ -195,7 +195,7 @@ export default function ClassesPage() {
                       {formatLabel}
                     </span>
                     <span className="rounded-full border border-black/10 bg-neutral-50 px-3 py-1 text-xs text-neutral-700">
-                      {c.duration}
+                      {getDurationWithProgramWeeks(c)}
                     </span>
                     {isAlwaysOpen ? (
                       <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">

@@ -7,7 +7,7 @@ import { Container } from "@/components/Container";
 import { JsonLd } from "@/components/JsonLd";
 import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
 import { internalClassInstances } from "@/data/classesCatalog";
-import { getClassById, getClassPath, isScheduledClass } from "@/lib/classes";
+import { getClassById, getClassPath, getDurationWithProgramWeeks, isScheduledClass } from "@/lib/classes";
 import { buildClassSchedule } from "@/lib/classSchedule";
 import { formatDatePretty } from "@/lib/date";
 import { CTA, SITE } from "@/lib/site";
@@ -129,7 +129,7 @@ export default async function ClassDetailPage({ params }: Props) {
           <div className="mt-6 grid gap-3 text-sm text-neutral-700">
             <p><span className="font-semibold">Start date:</span> {formatDatePretty(classInfo.startDate)}</p>
             <p><span className="font-semibold">Location:</span> {classInfo.location}</p>
-            <p><span className="font-semibold">Duration:</span> {classInfo.duration}</p>
+            <p><span className="font-semibold">Duration:</span> {getDurationWithProgramWeeks(classInfo)}</p>
             <p><span className="font-semibold">Schedule:</span> {classInfo.scheduleSummary}</p>
             <p><span className="font-semibold">Tuition:</span> {tuition ? `GHS ${tuition.toLocaleString("en-GH")}` : "Check in Falowen"}</p>
             {classInfo.language === "German" ? (
