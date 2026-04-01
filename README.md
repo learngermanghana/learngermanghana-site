@@ -72,7 +72,7 @@ Use one or both in your LinkedIn app's authorized redirect URLs, matching exactl
 
 - Secret: `OPENAI_MODEL` (default: `gpt-4o-mini`)
 - Repository variable: `SITE_URL` (default: `https://learngermanghana.com`)
-- Repository variable: `REGISTER_URL` (default: `https://falowen.com`)
+- Repository variable: `REGISTER_URL` (default: `https://www.falowen.app`)
 
 The agent reads the git diff for class-related files, uses OpenAI to draft one LinkedIn-ready post, then publishes it using LinkedIn's UGC Posts API.
 
