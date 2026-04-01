@@ -21,7 +21,7 @@ if (changedFiles.length === 0 || diffText.length === 0) {
 }
 
 const siteUrl = process.env.SITE_URL || "https://learngermanghana.com";
-const registerUrl = process.env.REGISTER_URL || "https://falowen.com";
+const registerUrl = process.env.REGISTER_URL || "https://www.falowen.app";
 const openAiModel = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
 const prompt = [
