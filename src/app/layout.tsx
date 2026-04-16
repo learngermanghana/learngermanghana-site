@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     default: `${SITE.brand} | Learn German & French`,
     template: `%s | ${SITE.brand}`,
   },
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
   description:
     "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
   openGraph: {

@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -29,9 +30,14 @@ export function Navbar() {
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-brand-950 text-white shadow-sm">
-              🇩🇪
-            </span>
+            <Image
+              src="/logo.svg"
+              alt={`${SITE.brand} logo`}
+              width={40}
+              height={40}
+              priority
+              className="h-10 w-10 rounded-2xl shadow-sm"
+            />
             <div className="leading-tight">
               <div className="font-semibold tracking-tight">{SITE.brand}</div>
               <div className="text-xs text-neutral-600">Learn Language Education Academy</div>
