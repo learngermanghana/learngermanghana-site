@@ -406,5 +406,5 @@ export function toClassItem(instance: ClassInstance): ClassItem {
 const allClassInstances = generateClassInstances();
 
 export const internalClassInstances = allClassInstances;
-export const publicClassInstances = selectPublicClassInstances(allClassInstances, "2026-04-01");
+export const publicClassInstances = selectPublicClassInstances(allClassInstances);
 export const publicUpcomingClasses: ClassItem[] = publicClassInstances.map(toClassItem);
