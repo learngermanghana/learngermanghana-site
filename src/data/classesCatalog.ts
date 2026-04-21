@@ -54,6 +54,9 @@ export type ClassInstance = {
   bonus: string[];
 };
 
+const MIN_COHORT_START_GAP_DAYS = 25;
+const MIN_A1_PUBLIC_INTERVAL_DAYS = 25;
+const DAY_MS = 24 * 60 * 60 * 1000;
 const DEFAULT_LOCATION = "Awoshie, Ghana";
 const LIVE_FORMAT = "Hybrid: come to class or join online. Decide each day or watch the recordings.";
 const LIVE_BONUS = ["Free exam preparation", "Access to the Falowen App"];
@@ -298,7 +301,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
     if (!lastInstance) continue;
 
     for (let cycle = 0; cycle < forwardCycles; cycle += 1) {
-      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 25));
+      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), MIN_COHORT_START_GAP_DAYS));
       const anchorDate = lastInstance.endDate && lastInstance.endDate > minGapStart ? lastInstance.endDate : minGapStart;
       const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.startWeekday ?? template.meetingSlots[0].weekday);
       const cityName = pickCityName({
@@ -355,17 +358,25 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
     const a1Classes = livePublic.filter((item) => item.level === "A1");
     if (!a1Classes.length) return [];
 
-    const earliestMonth = a1Classes[0].startDate.slice(0, 7);
-    const sameMonthClasses = a1Classes.filter((item) => item.startDate.slice(0, 7) === earliestMonth);
+    const selected: ClassInstance[] = [];
+    for (const candidate of a1Classes) {
+      if (!selected.length) {
+        selected.push(candidate);
+        if (selected.length >= count) break;
+        continue;
+      }
 
-    if (sameMonthClasses.length >= count) {
-      return sameMonthClasses.slice(0, count);
+      const previous = selected[selected.length - 1];
+      const previousStart = parseIsoDate(previous.startDate).getTime();
+      const candidateStart = parseIsoDate(candidate.startDate).getTime();
+      const gapDays = Math.floor((candidateStart - previousStart) / DAY_MS);
+
+      if (gapDays < MIN_A1_PUBLIC_INTERVAL_DAYS) continue;
+      selected.push(candidate);
+      if (selected.length >= count) break;
     }
 
-    const alreadySelectedIds = new Set(sameMonthClasses.map((item) => item.id));
-    const remaining = a1Classes.filter((item) => !alreadySelectedIds.has(item.id));
-
-    return [...sameMonthClasses, ...remaining].slice(0, count);
+    return selected;
   };
 
   const selectedLive = [

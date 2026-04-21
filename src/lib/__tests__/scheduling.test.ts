@@ -105,3 +105,16 @@ test("public A1 selection prioritizes earliest month cohorts before later months
   assert.deepEqual(a1Starts, ["2026-04-03", "2026-04-28"]);
 });
 
+test("public A1 selection keeps at least 25-day spacing between displayed start dates", () => {
+  const instances = generateClassInstances("2026-04-29", 2);
+  const selected = selectPublicClassInstances(instances, "2026-04-29");
+  const a1Starts = selected
+    .filter((item) => item.level === "A1")
+    .map((item) => item.startDate)
+    .sort((a, b) => a.localeCompare(b));
+
+  assert.equal(a1Starts.length, 2);
+  const first = new Date(`${a1Starts[0]}T00:00:00Z`).getTime();
+  const second = new Date(`${a1Starts[1]}T00:00:00Z`).getTime();
+  assert.ok(second - first >= 25 * 24 * 60 * 60 * 1000);
+});
