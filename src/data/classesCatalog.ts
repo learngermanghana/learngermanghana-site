@@ -208,7 +208,7 @@ const historicalSeeds: SeedInstance[] = [
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-01-30", cityName: "Hamburg" },
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-04-03", cityName: "Leipzig" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
-  { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
+  { templateId: "a1-day-mon-tue-wed", startDate: "2026-05-05", cityName: "Köln" },
   { templateId: "a2-evening-mon-tue-wed", startDate: "2026-05-07", cityName: "Freiburg" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
