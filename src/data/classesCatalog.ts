@@ -93,9 +93,9 @@ export const classTemplates: ClassTemplate[] = [
     level: "A1",
     deliveryMode: "live",
     meetingSlots: [
-      { weekday: "Monday", startTime: "11:00", endTime: "12:00" },
-      { weekday: "Tuesday", startTime: "11:00", endTime: "12:00" },
-      { weekday: "Wednesday", startTime: "14:00", endTime: "15:00" },
+      { weekday: "Monday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Tuesday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Wednesday", startTime: "18:00", endTime: "19:00" },
     ],
     totalSessions: 24,
     cityPool: ["Köln", "Berlin", "Hamburg", "Stuttgart", "Dortmund", "Freiburg", "Heidelberg"],
@@ -208,7 +208,7 @@ const historicalSeeds: SeedInstance[] = [
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-01-30", cityName: "Hamburg" },
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-04-03", cityName: "Leipzig" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
-  { templateId: "a1-evening-mon-tue-wed", startDate: "2026-05-11", cityName: "Köln" },
+  { templateId: "a1-day-mon-tue-wed", startDate: "2026-05-11", cityName: "Köln" },
   { templateId: "a2-evening-mon-tue-wed", startDate: "2026-05-07", cityName: "Freiburg" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
