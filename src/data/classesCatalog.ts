@@ -346,7 +346,7 @@ export function generateClassInstances(referenceDate = formatIsoDate(new Date())
 export function selectPublicClassInstances(instances: ClassInstance[], referenceDate = formatIsoDate(new Date())): ClassInstance[] {
   const livePublic = instances
     .filter((item) => item.deliveryMode === "live")
-    .filter((item) => item.startDate >= referenceDate)
+    .filter((item) => item.startDate > referenceDate)
     .filter((item) => item.publicVisibleUntil >= referenceDate)
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
 
