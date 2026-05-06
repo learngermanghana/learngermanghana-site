@@ -213,7 +213,7 @@ const historicalSeeds: SeedInstance[] = [
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
 
-function toClassId(level: string, cityName: string, startDate: string): string {
+function toClassId(templateId: string, level: string, cityName: string, startDate: string): string {
   const citySlug = cityName
     .toLowerCase()
     .normalize("NFD")
@@ -221,7 +221,9 @@ function toClassId(level: string, cityName: string, startDate: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-  return `${level.toLowerCase()}-german-${citySlug}-${startDate}`;
+    const templateSlug = templateId.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  return `${level.toLowerCase()}-german-${templateSlug}-${citySlug}-${startDate}`;
 }
 
 function toClassName(level: ClassLevel, cityName: string): string {
@@ -238,7 +240,7 @@ function createLiveInstance(template: ClassTemplate, startDate: string, cityName
   const endDate = meetingDates.at(-1)?.date;
 
   return {
-    id: toClassId(template.level, cityName, startDate),
+    id: toClassId(template.id, template.level, cityName, startDate),
     templateId: template.id,
     language: template.language,
     level: template.level,
