@@ -373,7 +373,7 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
       const candidateStart = parseIsoDate(candidate.startDate).getTime();
       const gapDays = Math.floor((candidateStart - previousStart) / DAY_MS);
 
-      if (gapDays < MIN_A1_PUBLIC_INTERVAL_DAYS && candidate.templateId === previous.templateId) continue;
+      if (gapDays < MIN_A1_PUBLIC_INTERVAL_DAYS) continue;
       selected.push(candidate);
       if (selected.length >= count) break;
     }
