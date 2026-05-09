@@ -207,7 +207,7 @@ const seedCohorts: SeedInstance[] = [
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-05-11", cityName: "Accra" },
-  { templateId: "a2-day-wed-thu-fri", startDate: "2026-04-23", cityName: "Freiburg" },
+  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-04-23", cityName: "Freiburg" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
 
