@@ -90,30 +90,6 @@ export function generateMeetingDates(options: {
   const firstWeekSoftStartSlots =
     onboardingMode === "a1_soft_start"
       ? (() => {
-          const mondaySlot = sortedSlots.find((slot) => slot.weekday === "Monday");
-
-          if (mondaySlot) {
-            const orientationDate = nextOccurrenceAfter(startDate, "Monday");
-            const orientation = { date: orientationDate, slot: mondaySlot };
-
-            let lessonCursor = addDays(parseIsoDate(orientationDate), 1);
-            let lesson1: { date: string; slot: MeetingSlot } | null = null;
-            const lessonSearchEnd = addDays(lessonCursor, 13);
-
-            while (!lesson1 && lessonCursor <= lessonSearchEnd) {
-              const lessonDay = lessonCursor.getUTCDay();
-              for (const slot of sortedSlots) {
-                if (slot.weekday === "Monday") continue;
-                if (weekdayIndex[slot.weekday] !== lessonDay) continue;
-                lesson1 = { date: formatIsoDate(lessonCursor), slot };
-                break;
-              }
-              lessonCursor = addDays(lessonCursor, 1);
-            }
-
-            return lesson1 ? [orientation, lesson1] : [orientation];
-          }
-
           const firstWeekCandidates: Array<{ date: string; slot: MeetingSlot }> = [];
           let probe = firstWeekStart;
 
