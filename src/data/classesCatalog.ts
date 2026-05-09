@@ -137,7 +137,7 @@ export const classTemplates: ClassTemplate[] = [
     photo: photoByLevel.A1,
   },
   {
-    id: "a2-evening-mon-tue-wed",
+    id: "a2-day-wed-thu-fri",
     language: "German",
     level: "A2",
     deliveryMode: "live",
@@ -199,7 +199,7 @@ export const classTemplates: ClassTemplate[] = [
 
 type SeedInstance = { templateId: string; startDate: string; cityName: string };
 
-const historicalSeeds: SeedInstance[] = [
+const seedCohorts: SeedInstance[] = [
   { templateId: "a1-day-wed-thu-fri", startDate: "2026-01-14", cityName: "Stuttgart" },
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-02-18", cityName: "Berlin" },
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-01-30", cityName: "Hamburg" },
@@ -284,7 +284,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
   const allInstances: ClassInstance[] = [];
   const liveTemplates = classTemplates.filter((template) => template.active && template.deliveryMode === "live");
 
-  for (const seed of historicalSeeds) {
+  for (const seed of seedCohorts) {
     const template = liveTemplates.find((item) => item.id === seed.templateId);
     if (!template) continue;
     allInstances.push(createLiveInstance(template, seed.startDate, seed.cityName, "ended"));
@@ -407,5 +407,5 @@ export function toClassItem(instance: ClassInstance): ClassItem {
 const allClassInstances = generateClassInstances();
 
 export const internalClassInstances = allClassInstances;
-export const publicClassInstances = selectPublicClassInstances(allClassInstances, "2026-04-01");
+export const publicClassInstances = selectPublicClassInstances(allClassInstances, formatIsoDate(new Date()));
 export const publicUpcomingClasses: ClassItem[] = publicClassInstances.map(toClassItem);
