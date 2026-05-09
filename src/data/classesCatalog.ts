@@ -54,9 +54,6 @@ export type ClassInstance = {
   bonus: string[];
 };
 
-const MIN_COHORT_START_GAP_DAYS = 25;
-const MIN_A1_PUBLIC_INTERVAL_DAYS = 25;
-const DAY_MS = 24 * 60 * 60 * 1000;
 const DEFAULT_LOCATION = "Awoshie, Ghana";
 const LIVE_FORMAT = "Hybrid: come to class or join online. Decide each day or watch the recordings.";
 const LIVE_BONUS = ["Free exam preparation", "Access to the Falowen App"];
@@ -93,9 +90,9 @@ export const classTemplates: ClassTemplate[] = [
     level: "A1",
     deliveryMode: "live",
     meetingSlots: [
-      { weekday: "Monday", startTime: "18:00", endTime: "19:00" },
-      { weekday: "Tuesday", startTime: "18:00", endTime: "19:00" },
-      { weekday: "Wednesday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Monday", startTime: "11:00", endTime: "12:00" },
+      { weekday: "Tuesday", startTime: "11:00", endTime: "12:00" },
+      { weekday: "Wednesday", startTime: "14:00", endTime: "15:00" },
     ],
     totalSessions: 24,
     cityPool: ["Köln", "Berlin", "Hamburg", "Stuttgart", "Dortmund", "Freiburg", "Heidelberg"],
@@ -112,7 +109,7 @@ export const classTemplates: ClassTemplate[] = [
     meetingSlots: [
       { weekday: "Thursday", startTime: "18:00", endTime: "19:00" },
       { weekday: "Friday", startTime: "18:00", endTime: "19:00" },
-      { weekday: "Saturday", startTime: "18:00", endTime: "19:00" },
+      { weekday: "Saturday", startTime: "08:00", endTime: "09:00" },
     ],
     totalSessions: 24,
     cityPool: ["Hamburg", "Berlin", "Köln", "Stuttgart", "Dortmund", "Freiburg", "Heidelberg"],
@@ -208,12 +205,12 @@ const historicalSeeds: SeedInstance[] = [
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-01-30", cityName: "Hamburg" },
   { templateId: "a1-evening-thu-fri-sat", startDate: "2026-04-03", cityName: "Leipzig" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
-  { templateId: "a1-evening-thu-fri-sat", startDate: "2025-06-06", cityName: "Heidelberg" },
-  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-05-07", cityName: "Freiburg" },
+  { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
+  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-04-23", cityName: "Freiburg" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
 
-function toClassId(templateId: string, level: string, cityName: string, startDate: string): string {
+function toClassId(level: string, cityName: string, startDate: string): string {
   const citySlug = cityName
     .toLowerCase()
     .normalize("NFD")
@@ -221,9 +218,7 @@ function toClassId(templateId: string, level: string, cityName: string, startDat
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-    const templateSlug = templateId.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-
-  return `${level.toLowerCase()}-german-${templateSlug}-${citySlug}-${startDate}`;
+  return `${level.toLowerCase()}-german-${citySlug}-${startDate}`;
 }
 
 function toClassName(level: ClassLevel, cityName: string): string {
@@ -240,7 +235,7 @@ function createLiveInstance(template: ClassTemplate, startDate: string, cityName
   const endDate = meetingDates.at(-1)?.date;
 
   return {
-    id: toClassId(template.id, template.level, cityName, startDate),
+    id: toClassId(template.level, cityName, startDate),
     templateId: template.id,
     language: template.language,
     level: template.level,
@@ -284,7 +279,7 @@ function createSelfLearningInstance(template: ClassTemplate): ClassInstance {
   };
 }
 
-export function generateClassInstances(referenceDate = formatIsoDate(new Date()), forwardCycles = 2): ClassInstance[] {
+export function generateClassInstances(referenceDate = "2026-04-01", forwardCycles = 2): ClassInstance[] {
   const allInstances: ClassInstance[] = [];
   const liveTemplates = classTemplates.filter((template) => template.active && template.deliveryMode === "live");
 
@@ -303,7 +298,7 @@ export function generateClassInstances(referenceDate = formatIsoDate(new Date())
     if (!lastInstance) continue;
 
     for (let cycle = 0; cycle < forwardCycles; cycle += 1) {
-      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), MIN_COHORT_START_GAP_DAYS));
+      const minGapStart = formatIsoDate(addDays(parseIsoDate(lastInstance.startDate), 25));
       const anchorDate = lastInstance.endDate && lastInstance.endDate > minGapStart ? lastInstance.endDate : minGapStart;
       const nextStart = nextOccurrenceOnOrAfter(anchorDate, template.startWeekday ?? template.meetingSlots[0].weekday);
       const cityName = pickCityName({
@@ -346,7 +341,7 @@ export function generateClassInstances(referenceDate = formatIsoDate(new Date())
 export function selectPublicClassInstances(instances: ClassInstance[], referenceDate = formatIsoDate(new Date())): ClassInstance[] {
   const livePublic = instances
     .filter((item) => item.deliveryMode === "live")
-    .filter((item) => item.startDate > referenceDate)
+    .filter((item) => item.startDate >= referenceDate)
     .filter((item) => item.publicVisibleUntil >= referenceDate)
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
 
@@ -360,25 +355,17 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
     const a1Classes = livePublic.filter((item) => item.level === "A1");
     if (!a1Classes.length) return [];
 
-    const selected: ClassInstance[] = [];
-    for (const candidate of a1Classes) {
-      if (!selected.length) {
-        selected.push(candidate);
-        if (selected.length >= count) break;
-        continue;
-      }
+    const earliestMonth = a1Classes[0].startDate.slice(0, 7);
+    const sameMonthClasses = a1Classes.filter((item) => item.startDate.slice(0, 7) === earliestMonth);
 
-      const previous = selected[selected.length - 1];
-      const previousStart = parseIsoDate(previous.startDate).getTime();
-      const candidateStart = parseIsoDate(candidate.startDate).getTime();
-      const gapDays = Math.floor((candidateStart - previousStart) / DAY_MS);
-
-      if (gapDays < MIN_A1_PUBLIC_INTERVAL_DAYS) continue;
-      selected.push(candidate);
-      if (selected.length >= count) break;
+    if (sameMonthClasses.length >= count) {
+      return sameMonthClasses.slice(0, count);
     }
 
-    return selected;
+    const alreadySelectedIds = new Set(sameMonthClasses.map((item) => item.id));
+    const remaining = a1Classes.filter((item) => !alreadySelectedIds.has(item.id));
+
+    return [...sameMonthClasses, ...remaining].slice(0, count);
   };
 
   const selectedLive = [
@@ -419,5 +406,5 @@ export function toClassItem(instance: ClassInstance): ClassItem {
 const allClassInstances = generateClassInstances();
 
 export const internalClassInstances = allClassInstances;
-export const publicClassInstances = selectPublicClassInstances(allClassInstances);
+export const publicClassInstances = selectPublicClassInstances(allClassInstances, "2026-04-01");
 export const publicUpcomingClasses: ClassItem[] = publicClassInstances.map(toClassItem);
