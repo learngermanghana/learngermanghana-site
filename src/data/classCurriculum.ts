@@ -1,6 +1,6 @@
 import type { ClassLevel } from "@/data/content";
 
-export type CurriculumAssignment = {
+export type ClassCurriculumAssignment = {
   assignment_id: string;
   chapter: string;
   de: string;
@@ -8,7 +8,7 @@ export type CurriculumAssignment = {
 };
 
 
-type LevelCurriculum = Record<string, CurriculumAssignment>;
+type LevelCurriculum = Record<string, ClassCurriculumAssignment>;
 
 export const classCurriculumByLevel: Partial<Record<ClassLevel, LevelCurriculum>> = {
   A1: {
