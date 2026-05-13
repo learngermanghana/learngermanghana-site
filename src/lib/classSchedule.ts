@@ -1,5 +1,5 @@
 import type { ClassItem } from "@/data/content";
-import { classCurriculumByLevel, type CurriculumAssignment } from "@/data/classCurriculum";
+import { classCurriculumByLevel, type ClassCurriculumAssignment } from "@/data/classCurriculum";
 
 const dayMap: Record<string, number> = {
   sunday: 0,
@@ -25,7 +25,7 @@ export type GeneratedScheduleItem = {
   date: string;
   day: string;
   time: string;
-  assignment: CurriculumAssignment;
+  assignment: ClassCurriculumAssignment;
 };
 
 export type GeneratedClassSchedule = {
