@@ -207,9 +207,14 @@ const seedCohorts: SeedInstance[] = [
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-03-09", cityName: "Dortmund" },
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-05-11", cityName: "Bremen" },
+  { templateId: "a1-day-mon-tue-wed", startDate: "2026-06-09", cityName: "Hamburg" },
   { templateId: "a2-evening-mon-tue-wed", startDate: "2026-04-23", cityName: "Freiburg" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
 ];
+
+const hiddenGeneratedClassIds = new Set<string>([
+  "a1-german-hamburg-2026-05-29",
+]);
 
 function toClassId(level: string, cityName: string, startDate: string): string {
   const citySlug = cityName
@@ -330,7 +335,9 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
     return { ...instance, status: "public" as const };
   });
 
-  return [...liveWithStatus, ...selfLearning].sort((a, b) => {
+  const visibleLiveInstances = liveWithStatus.filter((instance) => !hiddenGeneratedClassIds.has(instance.id));
+
+  return [...visibleLiveInstances, ...selfLearning].sort((a, b) => {
     const aUnscheduled = a.startDate === "TBA" || a.startDate === "Always open";
     const bUnscheduled = b.startDate === "TBA" || b.startDate === "Always open";
     if (aUnscheduled && !bUnscheduled) return 1;
