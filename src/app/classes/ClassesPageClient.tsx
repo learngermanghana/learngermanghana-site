@@ -272,9 +272,7 @@ export default function ClassesPage() {
 
                   <div className="mt-5">
                     <a
-                      href={c.level === "B2" || c.level === "C1" ? getClassPath(c.id) : "https://www.falowen.app/learn-german-ghana/falowen-guide"}
-                      target={c.level === "B2" || c.level === "C1" ? undefined : "_blank"}
-                      rel={c.level === "B2" || c.level === "C1" ? undefined : "noreferrer"}
+                      href={getClassPath(c.id)}
                       className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
                     >
                       Open class details
