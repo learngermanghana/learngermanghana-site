@@ -209,7 +209,7 @@ const seedCohorts: SeedInstance[] = [
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-05-11", cityName: "Bremen" },
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-06-09", cityName: "Hamburg" },
   { templateId: "a2-evening-mon-tue-wed", startDate: "2026-04-23", cityName: "Freiburg" },
-  { templateId: "b1-evening-thu-fri", startDate: "2026-03-12", cityName: "Stuttgart" },
+  { templateId: "b1-evening-thu-fri", startDate: "2026-07-03", cityName: "Stuttgart" },
 ];
 
 const hiddenGeneratedClassIds = new Set<string>([
@@ -351,11 +351,6 @@ export function selectPublicClassInstances(instances: ClassInstance[], reference
     .filter((item) => item.deliveryMode === "live")
     .filter((item) => item.startDate >= referenceDate)
     .filter((item) => item.publicVisibleUntil >= referenceDate)
-    .sort((a, b) => a.startDate.localeCompare(b.startDate));
-
-  const liveCurrentOrUpcoming = instances
-    .filter((item) => item.deliveryMode === "live")
-    .filter((item) => (item.endDate ?? item.startDate) >= referenceDate)
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
 
   const pickByLevel = (level: ClassLevel, count: number) => livePublic.filter((item) => item.level === level).slice(0, count);
