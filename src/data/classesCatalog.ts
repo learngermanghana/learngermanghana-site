@@ -30,6 +30,7 @@ export type ClassTemplate = {
   defaultLocation: string;
   photo?: string;
   startWeekday?: Weekday;
+  holidayDates?: string[];
 };
 
 export type ClassInstance = {
@@ -154,6 +155,24 @@ export const classTemplates: ClassTemplate[] = [
     photo: photoByLevel.A2,
   },
   {
+    id: "a2-evening-mon-tue-wed",
+    language: "German",
+    level: "A2",
+    deliveryMode: "live",
+    meetingSlots: [
+      { weekday: "Monday", startTime: "19:00", endTime: "20:30" },
+      { weekday: "Tuesday", startTime: "19:00", endTime: "20:30" },
+      { weekday: "Wednesday", startTime: "19:00", endTime: "20:30" },
+    ],
+    totalSessions: 29,
+    cityPool: ["Munich", "Freiburg", "Stuttgart", "Heidelberg", "Berlin", "Hamburg", "Köln"],
+    active: true,
+    onboardingMode: "normal",
+    defaultLocation: DEFAULT_LOCATION,
+    photo: photoByLevel.A2,
+    holidayDates: ["2026-09-21"],
+  },
+  {
     id: "b1-evening-thu-fri",
     language: "German",
     level: "B1",
@@ -197,7 +216,7 @@ export const classTemplates: ClassTemplate[] = [
   },
 ];
 
-type SeedInstance = { templateId: string; startDate: string; cityName: string };
+type SeedInstance = { templateId: string; startDate: string; cityName: string; status?: ClassInstance["status"] };
 
 const seedCohorts: SeedInstance[] = [
   { templateId: "a1-day-wed-thu-fri", startDate: "2026-01-14", cityName: "Stuttgart" },
@@ -208,7 +227,8 @@ const seedCohorts: SeedInstance[] = [
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-04-28", cityName: "Köln" },
   { templateId: "a1-evening-mon-tue-wed", startDate: "2026-05-11", cityName: "Bremen" },
   { templateId: "a1-day-mon-tue-wed", startDate: "2026-06-09", cityName: "Hamburg" },
-  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-04-23", cityName: "Freiburg" },
+  { templateId: "a2-day-wed-thu-fri", startDate: "2026-05-08", cityName: "Freiburg" },
+  { templateId: "a2-evening-mon-tue-wed", startDate: "2026-08-04", cityName: "Munich", status: "public" },
   { templateId: "b1-evening-thu-fri", startDate: "2026-07-03", cityName: "Stuttgart" },
 ];
 
@@ -237,6 +257,7 @@ function createLiveInstance(template: ClassTemplate, startDate: string, cityName
     slots: template.meetingSlots,
     totalSessions: template.totalSessions,
     onboardingMode: template.onboardingMode,
+    holidayDates: template.holidayDates,
   });
   const endDate = meetingDates.at(-1)?.date;
 
@@ -292,7 +313,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
   for (const seed of seedCohorts) {
     const template = liveTemplates.find((item) => item.id === seed.templateId);
     if (!template) continue;
-    allInstances.push(createLiveInstance(template, seed.startDate, seed.cityName, "ended"));
+    allInstances.push(createLiveInstance(template, seed.startDate, seed.cityName, seed.status || "ended"));
   }
 
   for (const template of liveTemplates) {
@@ -329,6 +350,7 @@ export function generateClassInstances(referenceDate = "2026-04-01", forwardCycl
   const now = new Date(`${referenceDate}T00:00:00Z`).toISOString().slice(0, 10);
   const liveWithStatus = allInstances.map((instance) => {
     if (instance.deliveryMode !== "live") return instance;
+    if (instance.status === "public") return instance;
     if (instance.endDate && instance.endDate < now) return { ...instance, status: "ended" as const };
     if (instance.publicVisibleUntil < now) return { ...instance, status: "hidden" as const };
     if (instance.startDate > now) return { ...instance, status: "public" as const };
