@@ -79,10 +79,12 @@ export function generateMeetingDates(options: {
   slots: MeetingSlot[];
   totalSessions: number;
   onboardingMode: "normal" | "a1_soft_start";
+  holidayDates?: string[];
 }): MeetingDate[] {
-  const { startDate, slots, totalSessions, onboardingMode } = options;
+  const { startDate, slots, totalSessions, onboardingMode, holidayDates = [] } = options;
   if (!isValidIsoDate(startDate) || totalSessions <= 0 || slots.length === 0) return [];
 
+  const holidays = new Set(holidayDates.filter(isValidIsoDate));
   const sortedSlots = toSortedSlots(slots);
   const firstWeekStart = parseIsoDate(startDate);
   const firstWeekEnd = addDays(firstWeekStart, 6);
@@ -94,10 +96,16 @@ export function generateMeetingDates(options: {
           let probe = firstWeekStart;
 
           while (probe <= firstWeekEnd) {
+            const probeDate = formatIsoDate(probe);
+            if (holidays.has(probeDate)) {
+              probe = addDays(probe, 1);
+              continue;
+            }
+
             const probeDay = probe.getUTCDay();
             for (const slot of sortedSlots) {
               if (weekdayIndex[slot.weekday] !== probeDay) continue;
-              firstWeekCandidates.push({ date: formatIsoDate(probe), slot });
+              firstWeekCandidates.push({ date: probeDate, slot });
             }
             probe = addDays(probe, 1);
           }
@@ -113,13 +121,19 @@ export function generateMeetingDates(options: {
   let cursor = firstWeekStart;
 
   while (output.length < totalSessions) {
+    const cursorDate = formatIsoDate(cursor);
+    if (holidays.has(cursorDate)) {
+      cursor = addDays(cursor, 1);
+      continue;
+    }
+
     const day = cursor.getUTCDay();
 
     for (const slot of sortedSlots) {
       if (weekdayIndex[slot.weekday] !== day) continue;
 
       if (onboardingMode === "a1_soft_start" && cursor >= firstWeekStart && cursor <= firstWeekEnd) {
-        const key = `${formatIsoDate(cursor)}|${slot.weekday}|${slot.startTime}|${slot.endTime}`;
+        const key = `${cursorDate}|${slot.weekday}|${slot.startTime}|${slot.endTime}`;
         if (!firstWeekSoftStartKeys.has(key)) {
           continue;
         }
@@ -127,7 +141,7 @@ export function generateMeetingDates(options: {
         const label: SessionLabel = firstWeekSoftStartCount === 0 ? "Orientation" : "Lesson 1";
         firstWeekSoftStartCount += 1;
         output.push({
-          date: formatIsoDate(cursor),
+          date: cursorDate,
           weekday: slot.weekday,
           startTime: slot.startTime,
           endTime: slot.endTime,
@@ -138,7 +152,7 @@ export function generateMeetingDates(options: {
       }
 
       output.push({
-        date: formatIsoDate(cursor),
+        date: cursorDate,
         weekday: slot.weekday,
         startTime: slot.startTime,
         endTime: slot.endTime,
