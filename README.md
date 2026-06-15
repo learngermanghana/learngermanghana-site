@@ -104,3 +104,14 @@ The Instagram agent reads the same class-file diff, generates a caption with Ope
 ## Deployment
 
 Deploy using the standard Next.js build commands (for example on Vercel or another Node hosting provider).
+
+## Sedifex-managed homepage hero
+
+The homepage loads active `home_hero` slides from Sedifex and automatically renders multiple slides as a carousel. If the integration is unavailable, not configured, or returns no slides, the existing local homepage hero is shown.
+
+Configure these server-side environment variables in the deployment environment (do not expose the integration key as a `NEXT_PUBLIC_` variable):
+
+```bash
+SEDIFEX_STORE_ID="YOUR_STORE_ID"
+SEDIFEX_WEBSITE_INTEGRATION_KEY="YOUR_WEBSITE_INTEGRATION_KEY"
+```

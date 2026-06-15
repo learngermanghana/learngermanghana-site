@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { RandomReviews } from "@/components/RandomReviews";
 import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
+import { HeroSlides } from "@/components/HeroSlides";
+import { getSedifexHeroSlides } from "@/lib/sedifexHero";
 import { CTA, LINKS, SITE } from "@/lib/site";
 import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getBlogPosts } from "@/lib/blog";
@@ -54,6 +56,7 @@ function toTime(startDate: string) {
 export default async function HomePage() {
   const posts = await getBlogPosts(4);
   const reviews = await getReviews();
+  const heroSlides = await getSedifexHeroSlides();
 
   // Pick earliest upcoming class (non-TBA, not in the past). If all are TBA, fallback to first.
   const today = new Date();
@@ -71,6 +74,8 @@ export default async function HomePage() {
 
   return (
     <div>
+      {heroSlides.length > 0 ? <HeroSlides slides={heroSlides} /> : (
+      <>
       {/* HERO BAND */}
       <section className="relative overflow-hidden">
         {/* Background gradient */}
@@ -337,6 +342,8 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+      </>
+      )}
 
       {/* CONTENT SECTIONS */}
       <Container>
