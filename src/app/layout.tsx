@@ -1,10 +1,12 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import FaqBotWidget from "@/components/FaqBotWidget";
+import { HomepageSedifexHero } from "@/components/HomepageSedifexHero";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
+import { getHomepageHeroSlides } from "@/lib/sedifexHero";
 
 const baseUrl = new URL(`https://${SITE.primaryDomain}`);
 
@@ -57,7 +59,13 @@ export const metadata: Metadata = {
   category: "education",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const heroSlides = await getHomepageHeroSlides();
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -109,7 +117,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8991390842894141"
           crossOrigin="anonymous"
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11200479914" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11200479914"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
@@ -124,7 +135,10 @@ gtag('config', 'AW-11200479914');`,
       </head>
       <body className="min-h-screen bg-neutral-50 text-neutral-900 antialiased">
         <Navbar />
-        <main className="min-h-[70vh]">{children}</main>
+        <main className="min-h-[70vh]">
+          <HomepageSedifexHero slides={heroSlides} />
+          {children}
+        </main>
         <Footer />
         <FaqBotWidget />
       </body>
