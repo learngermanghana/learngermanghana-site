@@ -272,11 +272,7 @@ export const FAQ_ENTRIES: FAQEntry[] = [
     answer: (
       <>
         We focus on language classes and exam preparation. For visa, Ausbildung, or embassy interview guidance, please
-        visit our{" "}
-        <a className="font-semibold hover:underline" href="/travel">
-          travel page
-        </a>{" "}
-        for the latest support options.
+        contact our support team for the latest support options.
       </>
     ),
     keywords: ["visa", "ausbildung", "embassy", "interview", "support", "help"],

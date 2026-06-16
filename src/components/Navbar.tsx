@@ -11,9 +11,9 @@ const nav = [
   { href: "/", label: "Home" },
   { href: "https://www.falowen.app/classes", label: "Classes" },
   { href: "/tutors", label: "Team" },
+  { href: "/free-lessons", label: "Free Lessons" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
-  { href: "/travel", label: "Travel" },
   { href: "/contact", label: "Contact" },
 ];
 

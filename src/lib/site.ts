@@ -14,7 +14,7 @@ export const LINKS = {
   falowen: "https://www.falowen.app",
   register: "https://register.falowen.app",
   placementTest: "https://www.falowen.app/placement-test",
-  blog: "https://blog.falowen.app",
+  blog: "https://blog.falowen.app/how-to-ask-simple-questions-in-german/",
   youtubeSubscribe: "https://www.youtube.com/@LLEAGhana?sub_confirmation=1",
 };
 

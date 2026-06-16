@@ -19,7 +19,7 @@ const staticRoutes = [
   { path: "falowen", changeFrequency: "monthly", priority: 0.7 },
   { path: "reviews", changeFrequency: "monthly", priority: 0.65 },
   { path: "tutors", changeFrequency: "monthly", priority: 0.65 },
-  { path: "travel", changeFrequency: "monthly", priority: 0.6 },
+  { path: "free-lessons", changeFrequency: "monthly", priority: 0.6 },
   { path: "travel-checklist", changeFrequency: "monthly", priority: 0.6 },
   { path: "faq", changeFrequency: "monthly", priority: 0.6 },
   { path: "contact", changeFrequency: "monthly", priority: 0.6 },

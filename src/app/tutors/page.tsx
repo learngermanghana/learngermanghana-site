@@ -81,7 +81,7 @@ export default function TutorsPage() {
               </div>
               {t.name === "Hana" ? (
                 <Link
-                  href="/travel"
+                  href="/contact"
                   className="mt-5 inline-flex w-fit items-center rounded-xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-900"
                 >
                   Book appointment now
