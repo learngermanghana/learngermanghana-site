@@ -1,6 +1,5 @@
-import { redirect } from "next/navigation";
-import { LINKS } from "@/lib/site";
+import { permanentRedirect } from "next/navigation";
 
 export default function BlogPage() {
-  redirect(LINKS.blog);
+  permanentRedirect("https://blog.falowen.app/");
 }

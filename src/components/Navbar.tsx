@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -7,12 +7,18 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
 import { SITE, CTA } from "@/lib/site";
 
-const nav = [
+type NavItem = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
+const nav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "https://www.falowen.app/classes", label: "Classes" },
+  { href: "https://www.falowen.app/classes", label: "Classes", external: true },
   { href: "/tutors", label: "Team" },
-  { href: "/free-lessons", label: "Free Lessons" },
-  { href: "/blog", label: "Blog" },
+  { href: "https://www.youtube.com/@LLEAGhana", label: "Free Lessons", external: true },
+  { href: "https://blog.falowen.app/", label: "Blog", external: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -47,11 +53,13 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <nav className="hidden md:flex items-center gap-5 text-sm">
               {nav.map((n) => {
-                const active = pathname === n.href;
+                const active = !n.external && pathname === n.href;
                 return (
                   <Link
                     key={n.href}
                     href={n.href}
+                    target={n.external ? "_blank" : undefined}
+                    rel={n.external ? "noreferrer" : undefined}
                     className={`hover:text-neutral-900 ${
                       active ? "text-neutral-900 font-semibold" : "text-neutral-700"
                     }`}
@@ -109,11 +117,13 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-3">
               {nav.map((n) => {
-                const active = pathname === n.href;
+                const active = !n.external && pathname === n.href;
                 return (
                   <Link
                     key={n.href}
                     href={n.href}
+                    target={n.external ? "_blank" : undefined}
+                    rel={n.external ? "noreferrer" : undefined}
                     className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
                       active
                         ? "bg-neutral-900 text-white"
