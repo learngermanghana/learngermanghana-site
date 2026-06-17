@@ -1,4 +1,4 @@
-﻿import type { NextConfig } from "next";
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
 
       // GitHub raw (Falowen blog photos)
       { protocol: "https", hostname: "raw.githubusercontent.com", pathname: "/**" },
+
+      // YouTube lesson thumbnails
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/**" },
+      { protocol: "https", hostname: "img.youtube.com", pathname: "/**" },
 
       // Imgur images
       { protocol: "https", hostname: "i.imgur.com", pathname: "/**" },
