@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/Container";
+import { FalowenExperience } from "@/components/FalowenExperience";
+import { HeroSlides } from "@/components/HeroSlides";
+import { LatestFreeLessons } from "@/components/LatestFreeLessons";
 import { RandomReviews } from "@/components/RandomReviews";
 import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
-import { HeroSlides } from "@/components/HeroSlides";
-import { getSedifexHeroSlides } from "@/lib/sedifexHero";
-import { CTA, LINKS, SITE } from "@/lib/site";
-import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getBlogPosts } from "@/lib/blog";
-import { formatDatePretty, getDaysUntilStart } from "@/lib/date";
 import { getReviews } from "@/lib/reviews";
-
-
+import { getSedifexHeroSlides } from "@/lib/sedifexHero";
+import { LINKS, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Hybrid German Classes in Ghana | Learn German & French Online or In Person",
@@ -46,11 +44,114 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
-function toTime(startDate: string) {
-  if (!startDate || startDate === "TBA") return Number.POSITIVE_INFINITY;
-  const d = new Date(startDate);
-  const t = d.getTime();
-  return Number.isFinite(t) ? t : Number.POSITIVE_INFINITY;
+function FallbackHero() {
+  return (
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-950" />
+      <div className="absolute -left-40 -top-40 h-80 w-80 rounded-full bg-amber-300/20 blur-3xl sm:h-96 sm:w-96" />
+      <div className="absolute -right-40 top-10 h-80 w-80 rounded-full bg-emerald-300/15 blur-3xl sm:h-96 sm:w-96" />
+      <div className="absolute inset-0 bg-black/45 sm:bg-black/35" />
+
+      <Container>
+        <div className="relative py-12 text-white sm:py-20">
+          <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
+            <Badge>Language School • Ghana</Badge>
+            <Badge>A1–C1 Programs</Badge>
+            <Badge>Powered by Falowen</Badge>
+          </div>
+
+          <div className="mt-6 grid gap-8 sm:mt-8 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h1 className="text-3xl font-semibold leading-[1.12] text-white sm:text-6xl sm:leading-[1.05]">
+                Learn German & French in Ghana the smart way —
+                <span className="text-amber-200"> class + app practice</span>.
+              </h1>
+
+              <p className="mt-4 max-w-xl text-sm leading-7 text-white/85 sm:text-lg">
+                {SITE.brand} combines guided classes with Falowen so you can keep learning,
+                practising and tracking your progress between lessons.
+              </p>
+
+              <div className="mt-5 max-w-xl rounded-3xl bg-black/25 p-4 ring-1 ring-white/15">
+                <div className="text-sm font-semibold text-white">Levels & study modes</div>
+                <ul className="mt-2 space-y-2 text-sm text-white/85">
+                  <li>
+                    <span className="font-semibold text-white">A1–B1:</span> Hybrid learning with
+                    online and in-person attendance options.
+                  </li>
+                  <li>
+                    <span className="font-semibold text-white">B2–C1:</span> Flexible self-paced
+                    learning supported by Falowen tools and guided practice.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+                <a
+                  href="https://www.falowen.app/classes"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg ring-1 ring-black/10 hover:bg-amber-200 sm:w-auto"
+                >
+                  View German Classes
+                </a>
+
+                <a
+                  href={LINKS.falowen}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-2xl border border-white/40 bg-black/25 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/35 sm:w-auto"
+                >
+                  Explore Falowen
+                </a>
+
+                <YouTubeSubscribeButton className="w-full border-red-300 px-7 py-3.5 sm:w-auto" />
+              </div>
+
+              <div className="mt-6 grid max-w-xl gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+                  <div className="text-xs text-white/70">Join your way</div>
+                  <div className="mt-1 text-sm font-semibold text-white">In class or online</div>
+                </div>
+                <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+                  <div className="text-xs text-white/70">Keep progressing</div>
+                  <div className="mt-1 text-sm font-semibold text-white">Learn with Falowen</div>
+                </div>
+                <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+                  <div className="text-xs text-white/70">Find your level</div>
+                  <div className="mt-1 text-sm font-semibold text-white">Placement guidance</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
+                <h2 className="text-sm font-semibold">Location is never a problem</h2>
+                <p className="mt-2 text-sm text-white/85">
+                  Learn from anywhere and choose the study mode that works best for your schedule.
+                </p>
+              </div>
+
+              <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
+                <h2 className="text-sm font-semibold">Not sure of your level?</h2>
+                <p className="mt-2 text-sm text-white/85">
+                  Take our placement test and receive a recommendation based on your current skills.
+                </p>
+                <Link
+                  href={LINKS.placementTest}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
+                >
+                  Start placement test →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
 }
 
 export default async function HomePage() {
@@ -58,299 +159,15 @@ export default async function HomePage() {
   const reviews = await getReviews();
   const heroSlides = await getSedifexHeroSlides();
 
-  // Pick earliest upcoming class (non-TBA, not in the past). If all are TBA, fallback to first.
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const dated = upcomingClasses
-    .filter((c) => c.startDate !== "TBA")
-    .map((c) => ({ c, t: toTime(c.startDate) }))
-    .filter(({ t }) => t !== Number.POSITIVE_INFINITY && t >= today.getTime())
-    .sort((a, b) => a.t - b.t);
-
-  const nextClass = dated.length ? dated[0].c : upcomingClasses[0];
-  const isTBA = nextClass.startDate === "TBA";
-  const daysUntilNextClass = getDaysUntilStart(nextClass.startDate);
-
   return (
     <div>
-      {heroSlides.length > 0 ? <HeroSlides slides={heroSlides} /> : (
-      <>
-      {/* HERO BAND */}
-      <section className="relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-emerald-950" />
+      {heroSlides.length > 0 ? <HeroSlides slides={heroSlides} /> : <FallbackHero />}
 
-        {/* Glow blobs */}
-        <div className="absolute -left-40 -top-40 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-amber-300/20 blur-3xl" />
-        <div className="absolute -right-40 top-10 h-80 w-80 sm:h-96 sm:w-96 rounded-full bg-emerald-300/15 blur-3xl" />
-
-        {/* IMPORTANT: darker overlay on mobile so text isn't washed out */}
-        <div className="absolute inset-0 bg-black/45 sm:bg-black/35" />
-
-        <Container>
-          <div className="relative py-12 sm:py-20 text-white">
-            <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-              <Badge>Language School • Ghana</Badge>
-              <Badge>A1–C1 Programs</Badge>
-              <Badge>Powered by Falowen</Badge>
-            </div>
-
-            <div className="mt-6 sm:mt-8 grid gap-8 lg:grid-cols-2 lg:items-center">
-              {/* Left text */}
-              <div>
-                <h1 className="text-3xl sm:text-6xl font-semibold leading-[1.12] sm:leading-[1.05] text-white">
-                  Learn German & French in Ghana the smart way —
-                  <span className="text-amber-200"> class + app practice</span>.
-                </h1>
-
-                <p className="mt-4 max-w-xl text-white/85 text-sm sm:text-lg leading-7">
-                  {SITE.brand} is a trusted German language school in Ghana helping you build speaking confidence, writing skills, and exam readiness.
-                  Registration is done on our official portal:
-                  <span className="font-semibold"> register.falowen.app</span>.
-                </p>
-
-                <div className="mt-5 max-w-xl rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
-                  <div className="text-sm font-semibold text-white">Levels & study modes</div>
-                  <ul className="mt-2 space-y-2 text-sm text-white/85">
-                    <li>
-                      <span className="font-semibold text-white">A1–B1:</span> Hybrid (online + in-person)
-                      with daily options. Decide each day whether to attend in class, online, or use
-                      recorded Falowen lectures when your schedule is tight.
-                    </li>
-                    <li>
-                      <span className="font-semibold text-white">B2–C1:</span> Self-paced with AI
-                      integration, no physical classes — students learn independently.
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3">
-                  <a
-                    href={CTA.primary.href}
-                    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl bg-amber-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg hover:bg-amber-200 ring-1 ring-black/10"
-                  >
-                    Register / Contract
-                  </a>
-
-                  <a
-                    href={LINKS.register}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/40 bg-black/25 px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-black/35"
-                  >
-                    How to enroll (steps)
-                  </a>
-
-                  <a
-                    href="/lead-capture?intent=talk-to-us&source=homepage"
-                    className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/15"
-                  >
-                    Talk to us
-                  </a>
-
-                  <YouTubeSubscribeButton className="w-full sm:w-auto border-red-300 px-7 py-3.5" />
-                </div>
-
-                <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
-                  <div className="rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
-                    <div className="text-xs text-white/70">Next start date</div>
-                    <div className="mt-1 font-semibold text-white">
-                      {formatDatePretty(nextClass.startDate)}
-                    </div>
-                    {daysUntilNextClass !== null ? (
-                      <div className="mt-1 text-xs text-amber-100">
-                        {daysUntilNextClass <= 0
-                          ? "Class starts today"
-                          : `${daysUntilNextClass} day${daysUntilNextClass === 1 ? "" : "s"} remaining`}
-                      </div>
-                    ) : null}
-                  </div>
-                  <div className="rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
-                    <div className="text-xs text-white/70">Schedule</div>
-                    <div className="mt-1 font-semibold text-white">{nextClass.scheduleSummary}</div>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid gap-3 max-w-xl sm:grid-cols-3">
-                  <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-                    <div className="text-xs text-white/70">Join your way</div>
-                    <div className="mt-1 text-sm font-semibold text-white">In class or online</div>
-                  </div>
-                  <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-                    <div className="text-xs text-white/70">When life gets busy</div>
-                    <div className="mt-1 text-sm font-semibold text-white">Watch recordings later</div>
-                  </div>
-                  <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-                    <div className="text-xs text-white/70">Track your level</div>
-                    <div className="mt-1 text-sm font-semibold text-white">Placement + guided support</div>
-                  </div>
-                </div>
-
-                {/* Quick help */}
-                <div className="mt-6 rounded-3xl bg-black/25 ring-1 ring-white/15 p-4">
-                  <div className="text-sm font-semibold text-white">Need help?</div>
-                  <div className="mt-1 text-sm text-white/85">
-                    If you have any questions, share your details and we will reach out.
-                  </div>
-                  <div className="mt-2 text-sm text-white/90">
-                    Call us now: <a href="tel:+233205706589" className="font-semibold underline underline-offset-2">+233205706589</a>
-                  </div>
-                  <div className="mt-3">
-                    <a
-                      href="/lead-capture?intent=talk-to-us&source=homepage"
-                      className="inline-flex items-center justify-center rounded-2xl bg-black/40 px-4 py-2 text-sm font-semibold text-white hover:bg-black/55 ring-1 ring-white/15"
-                    >
-                      Talk to us
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: upcoming class card */}
-              <div className="flex flex-col gap-6">
-                {/* Floating info card */}
-                <div className="rounded-[24px] bg-white text-neutral-900 shadow-xl ring-1 ring-black/5">
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="text-sm text-neutral-600">Next class</div>
-                        <div className="mt-1 text-xl font-semibold">{nextClass.title}</div>
-                        <div className="mt-2 text-sm text-neutral-700">
-                          <span className="font-semibold">Starts:</span>{" "}
-                          {formatDatePretty(nextClass.startDate)}
-                        </div>
-                        {daysUntilNextClass !== null ? (
-                          <div className="mt-1 text-xs font-semibold text-amber-700">
-                            {daysUntilNextClass <= 0
-                              ? "Starts today"
-                              : `${daysUntilNextClass} day${daysUntilNextClass === 1 ? "" : "s"} remaining`}
-                          </div>
-                        ) : null}
-                      </div>
-
-                      {isTBA ? (
-                        <span className="shrink-0 rounded-full bg-amber-200 px-3 py-1 text-xs font-semibold text-neutral-900 ring-1 ring-black/10">
-                          TBA
-                        </span>
-                      ) : (
-                        <span className="shrink-0 rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900 ring-1 ring-black/10">
-                          Upcoming
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="mt-3 rounded-2xl bg-neutral-50 p-4 ring-1 ring-black/5">
-                      <div className="font-semibold">Meeting days</div>
-                      <ul className="mt-2 space-y-1 text-sm text-neutral-700">
-                        {nextClass.meetingDays.map((m) => (
-                          <li key={m.day} className="flex items-center justify-between">
-                            <span className="font-medium">{m.day}</span>
-                            <span className="text-neutral-600">{m.time}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-black/10 bg-white p-4">
-                        <div className="text-sm font-semibold">How to enroll</div>
-                        <ol className="mt-2 space-y-1 text-sm text-neutral-700">
-                          <li>1) Go to Falowen and Sign up</li>
-                          <li>2) Open Upcoming Classes</li>
-                          <li>3) Choose class and pay</li>
-                        </ol>
-                        <a
-                          href={LINKS.register}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-3 inline-flex text-sm font-semibold text-brand-800 hover:underline"
-                        >
-                          register.falowen.app →
-                        </a>
-                      </div>
-
-                      <div className="rounded-2xl border border-black/10 bg-white p-4">
-                        <div className="text-sm font-semibold">Need help?</div>
-                        <div className="mt-2 text-sm text-neutral-700">
-                          Share your details and our team will reach out with guidance.
-                        </div>
-                        <div className="mt-2 text-sm text-neutral-700">
-                          Call us now: <a href="tel:+233205706589" className="font-semibold hover:underline">+233205706589</a>
-                        </div>
-                        <Link
-                          href="/lead-capture?intent=talk-to-us&source=homepage"
-                          className="mt-3 inline-flex text-sm font-semibold text-brand-800 hover:underline"
-                        >
-                          Talk to us →
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                      <a
-                        href={LINKS.falowen}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900 w-full sm:w-auto"
-                      >
-                        Go to Falowen (Sign up)
-                      </a>
-
-                      <Link
-                        href="/classes"
-                        className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50 w-full sm:w-auto"
-                      >
-                        View more classes
-                      </Link>
-                    </div>
-
-                    <div className="mt-3 text-xs text-neutral-500">
-                      Bonus: Free exam preparation + access to Falowen App
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
-                    <h3 className="text-sm font-semibold">Location is never a problem</h3>
-                    <p className="mt-2 text-sm text-white/85">
-                      Learn from anywhere. Decide each day whether to attend in class,
-                      join live online, or catch up with recorded lectures on Falowen.
-                    </p>
-                  </div>
-
-                  <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/20">
-                    <h3 className="text-sm font-semibold">Not sure your level?</h3>
-                    <p className="mt-2 text-sm text-white/85">
-                      Take our placement test so we can recommend the class that matches your
-                      current level and goals.
-                    </p>
-                    <Link
-                      href={LINKS.placementTest}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-3 inline-flex text-sm font-semibold text-amber-200 hover:underline"
-                    >
-                      Start placement test →
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              {/* end right */}
-            </div>
-          </div>
-        </Container>
-      </section>
-      </>
-      )}
-
-      {/* CONTENT SECTIONS */}
       <Container>
         <section className="py-10 sm:py-14">
-          <div className="rounded-3xl border border-black/10 bg-white p-4 sm:p-6 shadow-sm">
-            <h2 className="text-2xl sm:text-3xl font-semibold">Inside our classroom</h2>
-            <p className="mt-2 max-w-3xl text-sm sm:text-base text-neutral-700">
+          <div className="rounded-3xl border border-black/10 bg-white p-4 shadow-sm sm:p-6">
+            <h2 className="text-2xl font-semibold sm:text-3xl">Inside our classroom</h2>
+            <p className="mt-2 max-w-3xl text-sm text-neutral-700 sm:text-base">
               A look at our students actively learning together in class.
             </p>
             <div className="mt-4 overflow-hidden rounded-2xl ring-1 ring-black/10">
@@ -365,10 +182,13 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Reviews */}
+        <LatestFreeLessons />
+
+        <FalowenExperience />
+
         <section className="pb-12 sm:pb-16">
           <div className="flex items-end justify-between gap-4">
-            <h2 className="text-2xl sm:text-3xl font-semibold">What our students say</h2>
+            <h2 className="text-2xl font-semibold sm:text-3xl">What our students say</h2>
             <Link className="text-sm font-semibold text-brand-800 hover:underline" href="/reviews">
               All reviews →
             </Link>
@@ -378,26 +198,32 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Blog */}
         <section className="pb-14 sm:pb-20">
           <div className="flex items-end justify-between gap-4">
-            <h2 className="text-2xl sm:text-3xl font-semibold">Latest blog posts</h2>
-            <Link className="text-sm font-semibold text-brand-800 hover:underline" href="/blog">
+            <h2 className="text-2xl font-semibold sm:text-3xl">Latest blog posts</h2>
+            <a
+              className="text-sm font-semibold text-brand-800 hover:underline"
+              href="https://blog.falowen.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
               All posts →
-            </Link>
+            </a>
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {posts.map((p, idx) => (
+            {posts.map((post, index) => (
               <a
-                key={idx}
-                href={p.link}
+                key={index}
+                href={post.link}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm hover:bg-neutral-50"
               >
-                <div className="font-semibold">{p.title}</div>
-                {p.excerpt ? <div className="mt-2 text-sm text-neutral-700">{p.excerpt}…</div> : null}
+                <div className="font-semibold">{post.title}</div>
+                {post.excerpt ? (
+                  <div className="mt-2 text-sm text-neutral-700">{post.excerpt}…</div>
+                ) : null}
                 <div className="mt-4 text-sm font-semibold text-brand-800">Read →</div>
               </a>
             ))}
