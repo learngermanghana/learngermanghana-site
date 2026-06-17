@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
-import { SITE, CTA } from "@/lib/site";
+import { SITE, CTA, LINKS } from "@/lib/site";
 
 type NavItem = {
   href: string;
@@ -17,7 +17,7 @@ const nav: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "https://www.falowen.app/classes", label: "Classes", external: true },
   { href: "/tutors", label: "Team" },
-  { href: "https://www.youtube.com/@LLEAGhana", label: "Free Lessons", external: true },
+  { href: LINKS.youtubeSubscribe, label: "Free Lessons", external: true },
   { href: "https://blog.falowen.app/", label: "Blog", external: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
