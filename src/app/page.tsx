@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { FalowenExperience } from "@/components/FalowenExperience";
 import { HeroSlides } from "@/components/HeroSlides";
+import { LatestFreeLessons } from "@/components/LatestFreeLessons";
 import { RandomReviews } from "@/components/RandomReviews";
 import { YouTubeSubscribeButton } from "@/components/YouTubeSubscribeButton";
 import { getBlogPosts } from "@/lib/blog";
@@ -179,6 +181,10 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        <LatestFreeLessons />
+
+        <FalowenExperience />
 
         <section className="pb-12 sm:pb-16">
           <div className="flex items-end justify-between gap-4">
