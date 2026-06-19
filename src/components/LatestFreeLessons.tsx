@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { YouTubeLessonThumbnail } from "@/components/YouTubeLessonThumbnail";
 import { LINKS } from "@/lib/site";
 import { getLatestYouTubeLessons } from "@/lib/youtube";
 
@@ -88,12 +88,10 @@ export async function LatestFreeLessons() {
                 className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative aspect-video overflow-hidden bg-neutral-900">
-                  <Image
-                    src={lesson.thumbnail}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                  <YouTubeLessonThumbnail
+                    videoId={lesson.id}
+                    title={lesson.title}
+                    thumbnail={lesson.thumbnail}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
                   <span className="absolute bottom-3 left-3 inline-flex h-11 w-11 items-center justify-center rounded-full bg-red-600 text-white shadow-lg">
