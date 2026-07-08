@@ -4,8 +4,16 @@ export const courses: { level: ClassLevel; title: string; desc: string }[] = [
   { level: "A1", title: "A1 (Beginner)", desc: "Start from basics: greetings, daily life, simple conversations." },
   { level: "A2", title: "A2 (Elementary)", desc: "Build confidence: shopping, travel, work, short letters." },
   { level: "B1", title: "B1 (Intermediate)", desc: "Speak more freely: opinions, stories, exams preparation." },
-  { level: "B2", title: "B2 (Upper-Intermediate)", desc: "Advanced conversation, writing, and exam readiness." },
-  { level: "C1", title: "C1 (Advanced)", desc: "High-level fluency for academic, professional, and exam success." },
+  {
+    level: "B2",
+    title: "B2 (Advanced, Independent & Exam-Focused)",
+    desc: "For learners who already understand German and want exam preparation with more independence. B2/C1 is for serious learners who already know German and want to pass exams or work/study in Germany.",
+  },
+  {
+    level: "C1",
+    title: "C1 (Advanced, Independent & Exam-Focused)",
+    desc: "For learners who already understand German and want exam preparation with full independence. B2/C1 is for serious learners who already know German and want to pass exams or work/study in Germany.",
+  },
 ];
 
 export const tuitionFeesGHS: Record<ClassLevel, number | null> = {
