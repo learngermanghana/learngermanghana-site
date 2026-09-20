@@ -8,6 +8,7 @@ export type YouTubeLesson = {
 
 const CHANNEL_HANDLE_URL = "https://www.youtube.com/@LLEAGhana/videos";
 const CHANNEL_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
+const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID;
 
 function decodeXml(value: string) {
   return value
@@ -45,23 +46,27 @@ function resolveChannelId(html: string) {
 
 export async function getLatestYouTubeLessons(limit = 6): Promise<YouTubeLesson[]> {
   try {
-    const channelResponse = await fetch(CHANNEL_HANDLE_URL, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; LearnLanguageEducationAcademy/1.0; +https://www.learngermanghana.com)",
-      },
-      next: { revalidate: 60 * 60 },
-    });
+    let channelId = CHANNEL_ID;
 
-    if (!channelResponse.ok) return [];
+    // YOUTUBE_CHANNEL_ID skips this relatively large HTML request in production.
+    // Keep a cached fallback so local and existing deployments continue to work.
+    if (!channelId) {
+      const channelResponse = await fetch(CHANNEL_HANDLE_URL, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (compatible; LearnLanguageEducationAcademy/1.0; +https://www.learngermanghana.com)",
+        },
+        next: { revalidate: 86400 },
+      });
 
-    const channelHtml = await channelResponse.text();
-    const channelId = resolveChannelId(channelHtml);
+      if (!channelResponse.ok) return [];
+      channelId = resolveChannelId(await channelResponse.text()) ?? undefined;
+    }
 
     if (!channelId) return [];
 
     const feedResponse = await fetch(`${CHANNEL_FEED_URL}${channelId}`, {
-      next: { revalidate: 30 * 60 },
+      next: { revalidate: 21600 },
     });
 
     if (!feedResponse.ok) return [];

@@ -121,6 +121,7 @@ export default async function ClassDetailPage({ params }: Props) {
               alt="Students in a language-learning class"
               width={1600}
               height={900}
+              sizes="(min-width: 1024px) 768px, calc(100vw - 88px)"
               className="h-52 w-full object-cover sm:h-64"
               priority
             />

@@ -64,6 +64,7 @@ export default function TutorsPage() {
                     alt={`${t.name} portrait`}
                     width={600}
                     height={480}
+                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, calc(100vw - 88px)"
                     className={`h-60 w-full ${t.name === "Hana" ? "object-contain bg-neutral-50 p-2" : "object-cover"}`}
                     loading="lazy"
                   />

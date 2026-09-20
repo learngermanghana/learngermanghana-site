@@ -170,6 +170,7 @@ export default function ClassesPage() {
                       alt={`${c.title} class preview`}
                       width={1200}
                       height={675}
+                      sizes="(min-width: 1024px) 768px, calc(100vw - 88px)"
                       className="h-44 w-full object-cover"
                     />
                   </div>
