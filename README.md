@@ -105,6 +105,22 @@ The Instagram agent reads the same class-file diff, generates a caption with Ope
 
 Deploy using the standard Next.js build commands (for example on Vercel or another Node hosting provider).
 
+### Keeping hosting usage low
+
+External homepage content is cached for six hours so routine page views do not
+poll third-party services. Set the YouTube channel ID in the deployment to skip
+the additional request that would otherwise be needed to discover it from the
+channel page:
+
+```bash
+YOUTUBE_CHANNEL_ID="UC..."
+```
+
+When this variable is absent, the site retains a backwards-compatible lookup
+that is cached for 24 hours. Permanent photography should be resized before it
+is published. Images served by an external CDN can use `unoptimized` when they
+are already web-ready, avoiding a Vercel Image Optimization transformation.
+
 ## Sedifex-managed homepage hero
 
 The homepage loads active `home_hero` slides from Sedifex and automatically renders multiple slides as a carousel. If the integration is unavailable, not configured, or returns no slides, the existing local homepage hero is shown.

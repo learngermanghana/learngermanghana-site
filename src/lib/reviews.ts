@@ -87,7 +87,7 @@ function parseReviewsFromCsv(csvText: string): Review[] {
 export async function getReviews(): Promise<Review[]> {
   try {
     const response = await fetch(SHEET_CSV_URL, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 21600 },
     });
 
     if (!response.ok) {

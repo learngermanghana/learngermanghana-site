@@ -3,6 +3,8 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { RandomReviews } from "@/components/RandomReviews";
 import { getReviews } from "@/lib/reviews";
 
+export const revalidate = 21600;
+
 export default async function ReviewsPage() {
   const reviews = await getReviews();
 

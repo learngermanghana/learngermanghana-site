@@ -12,6 +12,8 @@ import { getReviews } from "@/lib/reviews";
 import { getSedifexHeroSlides } from "@/lib/sedifexHero";
 import { LINKS, SITE } from "@/lib/site";
 
+export const revalidate = 21600;
+
 export const metadata: Metadata = {
   title: "Hybrid German Classes in Ghana | Learn German & French Online or In Person",
   description:
@@ -176,6 +178,8 @@ export default async function HomePage() {
                 alt="Classroom session with students learning"
                 width={1600}
                 height={900}
+                sizes="(min-width: 1280px) 1152px, (min-width: 640px) calc(100vw - 96px), calc(100vw - 48px)"
+                unoptimized
                 className="h-auto w-full object-cover"
               />
             </div>

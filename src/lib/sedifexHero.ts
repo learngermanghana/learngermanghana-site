@@ -34,7 +34,9 @@ export async function getSedifexHeroSlides(): Promise<HeroSlide[]> {
         "X-Sedifex-Contract-Version": "2026-04-13",
         Accept: "application/json",
       },
-      next: { revalidate: 300 },
+      // Hero campaigns rarely need minute-level polling. Six-hour caching keeps
+      // the homepage fresh without spending serverless usage on frequent checks.
+      next: { revalidate: 21600 },
     });
     if (!response.ok) return [];
     const data = (await response.json()) as { ok?: boolean; slides?: HeroSlide[] };

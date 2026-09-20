@@ -41,28 +41,11 @@ function pickLink(entry: any): string {
   return "";
 }
 
-async function fetchImageFromPost(url: string): Promise<string | null> {
-  try {
-    const res = await fetch(url, { next: { revalidate: 3600 } });
-    if (!res.ok) return null;
-    const html = await res.text();
-
-    // Prefer og:image / twitter:image
-    const og = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)?.[1];
-    if (og) return og;
-
-    const tw = html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i)?.[1];
-    if (tw) return tw;
-
-    return firstImageFromHtml(html);
-  } catch {
-    return null;
-  }
-}
-
 export async function getBlogPosts(limit = 12): Promise<BlogPost[]> {
   try {
-    const res = await fetch(BLOG_RSS_URL, { next: { revalidate: 900 } });
+    // Blog cards do not render images, so the feed is the only resource needed.
+    // A long cache avoids repeatedly invoking the deployment to poll content.
+    const res = await fetch(BLOG_RSS_URL, { next: { revalidate: 21600 } });
     if (!res.ok) return [];
     const xml = await res.text();
 
@@ -107,13 +90,6 @@ export async function getBlogPosts(limit = 12): Promise<BlogPost[]> {
       .filter((p) => p.link.startsWith("http"))
       .filter((p) => !p.link.endsWith(".xml"))
       .slice(0, limit);
-
-    // Enrich missing images by fetching post page (kept small limit)
-    for (let i = 0; i < posts.length; i++) {
-      if (!posts[i].image) {
-        posts[i].image = await fetchImageFromPost(posts[i].link);
-      }
-    }
 
     return posts;
   } catch {
