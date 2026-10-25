@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { FalowenExperience } from "@/components/FalowenExperience";
+import { EcosystemPaths } from "@/components/EcosystemPaths";
 import { HeroSlides } from "@/components/HeroSlides";
 import { LatestFreeLessons } from "@/components/LatestFreeLessons";
 import { RandomReviews } from "@/components/RandomReviews";
@@ -15,9 +16,9 @@ import { LINKS, SITE } from "@/lib/site";
 export const revalidate = 21600;
 
 export const metadata: Metadata = {
-  title: "Hybrid German Classes in Ghana | Learn German & French Online or In Person",
+  title: "Learn German in Ghana | Classes, Falowen Books & Goethe-Style Exam Practice",
   description:
-    "Location is not a problem—join hybrid German classes in Ghana and choose each day to attend in person, online, or catch up with recorded lectures on Falowen. Prepare for Goethe exams from A1 to C1 with guided support.",
+    "Learn German with Learn Language Education Academy in Accra or online. Explore live classes, Falowen German course books, Goethe-style exam practice and self-paced learning.",
   keywords: [
     "german classes in ghana",
     "hybrid german classes in ghana",
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
     "how to get b1 level in german",
     "how to learn german language online",
     "goethe exam preparation ghana",
+    "falowen german books",
+    "goethe mock exams online",
+    "learn german at your own pace",
   ],
   alternates: {
     canonical: "/",
@@ -166,6 +170,7 @@ export default async function HomePage() {
       {heroSlides.length > 0 ? <HeroSlides slides={heroSlides} /> : <FallbackHero />}
 
       <Container>
+        <EcosystemPaths />
         <section className="py-10 sm:py-14">
           <div className="rounded-3xl border border-black/10 bg-white p-4 shadow-sm sm:p-6">
             <h2 className="text-2xl font-semibold sm:text-3xl">Inside our classroom</h2>
