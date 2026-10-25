@@ -102,6 +102,7 @@ export default function TutorsPage() {
           </div>
           <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
             <Button href="/contact">Talk to the team</Button>
+            <Button href="/schedule" variant="outline">View class schedule</Button>
             <a href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-emerald-700 px-4 py-2 text-sm font-semibold text-emerald-900 transition hover:bg-emerald-50">
               How Falowen works ↗
             </a>
