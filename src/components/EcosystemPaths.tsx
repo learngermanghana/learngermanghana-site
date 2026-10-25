@@ -14,16 +14,6 @@ const paths = [
   },
   {
     number: "02",
-    category: "EXAM PREPARATION",
-    title: "Take a Goethe Sample Test",
-    description: "Preparing for a Goethe exam? Try Goethe-style sample questions in Lesen, Hören, Schreiben and Sprechen.",
-    href: LINKS.exams,
-    action: "Take a Sample Test",
-    tone: "blue",
-    visual: "exams",
-  },
-  {
-    number: "03",
     category: "STUDY MATERIALS",
     title: "Buy German Books",
     description: "Shop German course books and study guides from Falowen. Choose a digital edition or an available printed copy.",
@@ -31,6 +21,16 @@ const paths = [
     action: "Buy German Books",
     tone: "sand",
     visual: "books",
+  },
+  {
+    number: "03",
+    category: "EXAM PREPARATION",
+    title: "Take a Goethe Sample Test",
+    description: "Preparing for a Goethe exam? Try Goethe-style sample questions in Lesen, Hören, Schreiben and Sprechen.",
+    href: LINKS.exams,
+    action: "Take a Sample Test",
+    tone: "blue",
+    visual: "exams",
   },
   {
     number: "04",
