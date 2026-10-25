@@ -20,13 +20,12 @@ const nav: NavItem[] = [
   { href: LINKS.books, label: "German Books", external: true, featured: true, eventLabel: "books" },
   { href: LINKS.exams, label: "Goethe Sample Tests", external: true, featured: true, eventLabel: "goethe_sample_tests" },
   { href: LINKS.placementTest, label: "Placement Test", external: true, featured: true, eventLabel: "placement_test" },
-  { href: "/tutors", label: "Team" },
+  { href: LINKS.visitorGuide, label: "Team", external: true, eventLabel: "visitor_guide" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const mobileExtras: NavItem[] = [
-  { href: LINKS.visitorGuide, label: "Falowen Guide", external: true, eventLabel: "visitor_guide" },
   { href: "/about", label: "About the Academy" },
-  { href: "/contact", label: "Contact Us" },
 ];
 
 export function Navbar() {
