@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { HeroSlide } from "@/lib/sedifexHero";
 
-export function HeroSlides({ slides }: { slides: HeroSlide[] }) {
+export function HeroSlides({ slides, compact = false }: { slides: HeroSlide[]; compact?: boolean }) {
   const [active, setActive] = useState(0);
   useEffect(() => {
     if (slides.length < 2) return;
@@ -12,12 +12,13 @@ export function HeroSlides({ slides }: { slides: HeroSlide[] }) {
   }, [slides.length]);
 
   const slide = slides[active];
+  const Heading = compact ? "h3" : "h1";
   const alignment = slide.layout === "center_text" ? "items-center text-center" : slide.layout === "right_text" ? "items-end text-right" : "items-start text-left";
   const text = slide.textColor === "dark" ? "text-neutral-950" : "text-white";
   const overlay = slide.overlayStyle === "none" ? "" : slide.overlayStyle === "solid" ? "bg-black/55" : "bg-gradient-to-r from-black/80 via-black/45 to-black/10";
 
   return (
-    <section className={`relative isolate min-h-[560px] overflow-hidden ${text}`} aria-roledescription="carousel" aria-label="Homepage highlights">
+    <section className={`relative isolate overflow-hidden rounded-3xl ${compact ? "min-h-[270px] sm:min-h-[330px]" : "min-h-[560px]"} ${text}`} aria-roledescription="carousel" aria-label="Homepage highlights">
       {slides.map((item, index) => (
         <picture key={item.id} className={`absolute inset-0 -z-20 transition-opacity duration-700 ${index === active ? "opacity-100" : "opacity-0"}`}>
           {item.mobileImageUrl ? <source media="(max-width: 639px)" srcSet={item.mobileImageUrl} /> : null}
@@ -25,10 +26,10 @@ export function HeroSlides({ slides }: { slides: HeroSlide[] }) {
         </picture>
       ))}
       <div className={`absolute inset-0 -z-10 ${overlay}`} />
-      <div className={`mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:px-10 ${alignment}`}>
+      <div className={`mx-auto flex max-w-7xl flex-col justify-center px-5 sm:px-8 lg:px-10 ${compact ? "min-h-[270px] py-10 sm:min-h-[330px] sm:py-12" : "min-h-[560px] py-20"} ${alignment}`}>
         <div className="max-w-3xl" aria-live="polite">
           {slide.eyebrow ? <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em]" style={{ color: slide.accent }}>{slide.eyebrow}</p> : null}
-          <h1 className="text-4xl font-semibold leading-tight sm:text-6xl">{slide.title}</h1>
+          <Heading className={`font-semibold leading-tight ${compact ? "text-2xl sm:text-4xl" : "text-4xl sm:text-6xl"}`}>{slide.title}</Heading>
           {slide.subtitle ? <p className="mt-5 max-w-2xl text-base leading-7 opacity-90 sm:text-xl">{slide.subtitle}</p> : null}
           <div className={`mt-8 flex flex-wrap gap-3 ${slide.layout === "center_text" ? "justify-center" : slide.layout === "right_text" ? "justify-end" : ""}`}>
             {slide.ctaLabel && slide.ctaHref ? <a href={slide.ctaHref} className="rounded-2xl px-6 py-3 font-semibold text-neutral-950 shadow-lg" style={{ backgroundColor: slide.accent || "#fcd34d" }}>{slide.ctaLabel}</a> : null}
