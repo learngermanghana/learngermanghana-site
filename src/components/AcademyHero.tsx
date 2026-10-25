@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { LINKS } from "@/lib/site";
 
 const PHOTO = "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/2025-07-02.jpg";
@@ -57,9 +58,17 @@ function Visual({ theme }: { theme: (typeof slides)[number]["theme"] }) {
   if (theme === "course") {
     return (
       <div className="relative h-full min-h-[185px] w-full overflow-hidden bg-[#d5e9fa]">
-        <div role="img" aria-label="Real Learn Language Education Academy classroom"
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "linear-gradient(90deg, rgba(234,244,255,.18), transparent 55%), url('" + PHOTO + "')" }} />
+        {/* A softly filled backdrop avoids empty bands while the foreground photo is fully visible. */}
+        <div className="absolute -inset-4 bg-cover bg-center opacity-40 blur-xl" aria-hidden="true" style={{ backgroundImage: `url("${PHOTO}")` }} />
+        <Image
+          src={PHOTO}
+          alt="Students learning together in the academy classroom"
+          fill
+          unoptimized
+          priority
+          sizes="(max-width: 639px) 100vw, (max-width: 1279px) 48vw, 550px"
+          className="object-contain object-center"
+        />
         <div className="absolute bottom-3 right-3 rounded-xl border border-white/80 bg-white/90 px-3 py-2 text-[11px] font-bold text-[#234161] shadow-lg">
           Real people. Real support.
         </div>
@@ -99,12 +108,15 @@ function Visual({ theme }: { theme: (typeof slides)[number]["theme"] }) {
     );
   }
   return (
-    <div className="flex h-full min-h-[185px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#e5d7fb] to-[#faf7ff] p-4" aria-hidden="true">
-      <div className="relative w-[175px] rotate-[-8deg] rounded-l-sm rounded-r-xl border-l-[10px] border-[#0c285a] bg-gradient-to-br from-[#05438e] to-[#126cbe] p-5 text-white shadow-[14px_15px_0_#163a6b,22px_28px_38px_#4a39704a] sm:h-[262px] sm:w-[195px]">
-        <p className="text-[22px] font-extrabold tracking-tight">Falowen</p>
-        <p className="mt-3 text-[11px] font-bold tracking-[0.12em]">DEUTSCH LERNEN</p>
-        <div className="mt-5 text-right text-[85px] font-black leading-none text-[#ffd387]">A1</div>
-        <p className="mt-3 text-[10px] font-semibold tracking-wide text-white/80">COURSE & WORKBOOK</p>
+    <div className="relative grid h-full min-h-[210px] w-full place-items-center overflow-hidden bg-gradient-to-br from-[#e5d7fb] to-[#faf7ff] px-6 pb-9 pt-4 sm:min-h-[300px] sm:px-8 sm:py-8" aria-hidden="true">
+      {/* Keep the full book cover, spine and shadow inside the visible slide at every breakpoint. */}
+      <div className="relative flex h-[152px] w-[122px] -rotate-3 flex-col justify-between rounded-l-sm rounded-r-xl border-l-[7px] border-[#0c285a] bg-gradient-to-br from-[#05438e] to-[#126cbe] px-3.5 py-3 text-white shadow-[8px_10px_0_#163a6b,12px_14px_24px_#4a397040] sm:h-[242px] sm:w-[186px] sm:-rotate-6 sm:border-l-[10px] sm:px-5 sm:py-5 sm:shadow-[12px_14px_0_#163a6b,18px_22px_32px_#4a397040]">
+        <div>
+          <p className="text-[16px] font-extrabold tracking-tight sm:text-[22px]">Falowen</p>
+          <p className="mt-1.5 text-[8px] font-bold tracking-[0.08em] sm:mt-3 sm:text-[11px] sm:tracking-[0.12em]">DEUTSCH LERNEN</p>
+        </div>
+        <div className="text-right text-[52px] font-black leading-none text-[#ffd387] sm:text-[80px]">A1</div>
+        <p className="text-[7px] font-semibold tracking-wide text-white/85 sm:text-[10px]">COURSE &amp; WORKBOOK</p>
       </div>
     </div>
   );
