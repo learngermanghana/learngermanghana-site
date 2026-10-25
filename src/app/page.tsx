@@ -16,9 +16,9 @@ import { LINKS, SITE } from "@/lib/site";
 export const revalidate = 21600;
 
 export const metadata: Metadata = {
-  title: "Learn German in Ghana | Classes, Falowen Books & Goethe-Style Exam Practice",
+  title: "Learn German in Ghana | Live Classes, German Books & Goethe Sample Tests",
   description:
-    "Learn German with Learn Language Education Academy in Accra or online. Explore live classes, Falowen German course books, Goethe-style exam practice and self-paced learning.",
+    "Learn German with Learn Language Education Academy in Accra or online. Explore live German classes, buy German course books, take Goethe-style sample tests or find your level with the free placement test.",
   keywords: [
     "german classes in ghana",
     "hybrid german classes in ghana",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "goethe exam preparation ghana",
     "falowen german books",
     "goethe mock exams online",
-    "learn german at your own pace",
+    "free german placement test",
   ],
   alternates: {
     canonical: "/",
