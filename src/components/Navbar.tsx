@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Container } from "@/components/Container";
 import { SITE, CTA, LINKS } from "@/lib/site";
 
 type NavItem = {
