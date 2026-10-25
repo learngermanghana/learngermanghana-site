@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   description:
-    "Learn German with Learn Language Education Academy in Ghana: live classes, Falowen German books, Goethe-style mock exams and self-paced learning with tutor and AI support.",
+    "Learn German in Accra or online with Learn Language Education Academy. Join live classes, buy Falowen German books, practise Goethe-style sample tests, or take a free placement test.",
   openGraph: {
     type: "website",
     url: baseUrl,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     locale: "en_GH",
     title: `${SITE.brand} | Learn German & French`,
     description:
-      "Learn German with Learn Language Education Academy in Ghana: live classes, Falowen German books, Goethe-style mock exams and self-paced learning with tutor and AI support.",
+      "Learn German in Accra or online with Learn Language Education Academy. Join live classes, buy German books, practise Goethe-style sample tests, or take a free placement test.",
     images: [
       {
         url: new URL("/hero/hero.jpg", baseUrl),
@@ -60,11 +60,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "EducationalOrganization",
     name: SITE.brand,
     url: baseUrl.toString(),
+    description: "German and French language academy offering tutor-led learning in Awoshie, Accra and online.",
     email: SITE.email,
     telephone: `+${SITE.phoneIntl}`,
+    areaServed: { "@type": "Country", name: "Ghana" },
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address,
