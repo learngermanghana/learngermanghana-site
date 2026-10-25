@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { LINKS } from "@/lib/site";
 
 const PHOTO = "https://raw.githubusercontent.com/learngermanghana/learngermanghana-site/master/photos/2025-07-02.jpg";
@@ -57,9 +58,17 @@ function Visual({ theme }: { theme: (typeof slides)[number]["theme"] }) {
   if (theme === "course") {
     return (
       <div className="relative h-full min-h-[185px] w-full overflow-hidden bg-[#d5e9fa]">
-        <div role="img" aria-label="Real Learn Language Education Academy classroom"
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "linear-gradient(90deg, rgba(234,244,255,.18), transparent 55%), url('" + PHOTO + "')" }} />
+        {/* A softly filled backdrop avoids empty bands while the foreground photo is fully visible. */}
+        <div className="absolute -inset-4 bg-cover bg-center opacity-40 blur-xl" aria-hidden="true" style={{ backgroundImage: `url("${PHOTO}")` }} />
+        <Image
+          src={PHOTO}
+          alt="Students learning together in the academy classroom"
+          fill
+          unoptimized
+          priority
+          sizes="(max-width: 639px) 100vw, (max-width: 1279px) 48vw, 550px"
+          className="object-contain object-center"
+        />
         <div className="absolute bottom-3 right-3 rounded-xl border border-white/80 bg-white/90 px-3 py-2 text-[11px] font-bold text-[#234161] shadow-lg">
           Real people. Real support.
         </div>
