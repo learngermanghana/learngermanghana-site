@@ -16,7 +16,7 @@ type NavItem = {
 
 const nav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: LINKS.classes, label: "Live Classes", external: true, eventLabel: "classes" },
+  { href: LINKS.classes, label: "Upcoming Classes", external: true, eventLabel: "classes" },
   { href: LINKS.books, label: "German Books", external: true, featured: true, eventLabel: "books" },
   { href: LINKS.exams, label: "Goethe Sample Tests", external: true, featured: true, eventLabel: "goethe_sample_tests" },
   { href: LINKS.placementTest, label: "Placement Test", external: true, featured: true, eventLabel: "placement_test" },
