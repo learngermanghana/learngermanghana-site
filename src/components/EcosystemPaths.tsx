@@ -5,42 +5,42 @@ const paths = [
   {
     number: "01",
     category: "GUIDED LEARNING",
-    title: "Join a German class",
-    description: "Learn with a tutor online or in person, practise between lessons and revisit recorded teaching.",
+    title: "Join Live German Classes",
+    description: "Join tutor-led German lessons online or in Accra, with class support and recorded lessons you can replay.",
     href: LINKS.classes,
-    action: "Explore live classes",
+    action: "View Live Classes",
     tone: "dark",
     visual: "classes",
   },
   {
     number: "02",
     category: "EXAM PREPARATION",
-    title: "Prepare for Goethe-style exams",
-    description: "Practise Lesen, Hören, Schreiben and Sprechen with sample tests, full mocks and AI-supported feedback.",
+    title: "Take a Goethe Sample Test",
+    description: "Preparing for a Goethe exam? Try Goethe-style sample questions in Lesen, Hören, Schreiben and Sprechen.",
     href: LINKS.exams,
-    action: "Explore exam practice",
+    action: "Take a Sample Test",
     tone: "blue",
     visual: "exams",
   },
   {
     number: "03",
     category: "STUDY MATERIALS",
-    title: "Get your German course books",
-    description: "Find Falowen German learning books and writing guides. Browse digital editions and available printed books.",
+    title: "Buy German Books",
+    description: "Shop German course books and study guides from Falowen. Choose a digital edition or an available printed copy.",
     href: LINKS.books,
-    action: "Browse German books",
+    action: "Buy German Books",
     tone: "sand",
     visual: "books",
   },
   {
     number: "04",
-    category: "FLEXIBLE LEARNING",
-    title: "Learn at your own pace",
-    description: "Use structured workbooks, recorded lessons, AI practice and tutor support where available inside Falowen.",
-    href: LINKS.visitorGuide,
-    action: "See how Falowen works",
+    category: "CHECK YOUR LEVEL",
+    title: "Take a Free Placement Test",
+    description: "Not sure whether to start at A1, A2 or B1? Take the free Falowen placement test to find your starting level.",
+    href: LINKS.placementTest,
+    action: "Take the Free Placement Test",
     tone: "mint",
-    visual: "self",
+    visual: "placement",
   },
 ] as const;
 
@@ -86,11 +86,16 @@ function CardVisual({ visual }: { visual: (typeof paths)[number]["visual"] }) {
   }
   return (
     <div className="flex h-32 items-center justify-center" aria-hidden="true">
-      <div className="w-48 rounded-2xl border border-emerald-100 bg-white p-3 shadow-xl">
-        <div className="flex items-center gap-2"><span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-xs font-bold text-emerald-950">F</span><span className="text-xs font-semibold text-emerald-950">Course Book</span></div>
-        <div className="mt-3 h-2 w-3/4 rounded-full bg-emerald-200" />
-        <div className="mt-2 h-2 w-full rounded-full bg-neutral-100" />
-        <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-neutral-100"><div className="h-full w-2/3 rounded-full bg-emerald-500" /></div>
+      <div className="w-48 -rotate-3 rounded-2xl border border-emerald-100 bg-white p-3 shadow-xl">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-[10px] font-bold tracking-wider text-emerald-950">PLACEMENT TEST</span>
+          <span className="rounded-md bg-emerald-100 px-1.5 py-1 text-[9px] font-bold text-emerald-900">FREE</span>
+        </div>
+        <div className="mt-3 text-[10px] font-semibold text-slate-700">Choose the right answer</div>
+        <div className="mt-2 flex items-center gap-2 rounded-md border border-emerald-500 bg-emerald-50 px-2 py-1.5 text-[10px] font-semibold text-emerald-900">
+          <span className="h-2.5 w-2.5 rounded-full border-[3px] border-emerald-600" /> A1 · A2 · B1
+        </div>
+        <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-neutral-100"><div className="h-full w-1/3 rounded-full bg-emerald-500" /></div>
       </div>
     </div>
   );
@@ -130,7 +135,7 @@ export function EcosystemPaths() {
         <div className="max-w-3xl">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-emerald-800">Your learning journey</p>
           <h2 id="learning-paths-heading" className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">One academy. More ways to learn German.</h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">Choose what you need today: join a class, prepare for an exam, get a course book or learn independently with Falowen.</p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">Join live classes, buy German books, try a Goethe-style sample test or check your level for free.</p>
         </div>
         <a href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
           New to Falowen? Start here <span aria-hidden="true">↗</span>
@@ -158,11 +163,11 @@ export function EcosystemPaths() {
 
       <div className="mt-6 flex flex-col gap-4 rounded-[26px] border border-slate-200 bg-white p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
         <div>
-          <h3 className="text-lg font-semibold text-slate-950">Not sure where to begin?</h3>
-          <p className="mt-1 text-sm leading-6 text-slate-600">Find your German level, or meet the tutors and team who support our learners.</p>
+          <h3 className="text-lg font-semibold text-slate-950">Meet the people behind your German learning</h3>
+          <p className="mt-1 text-sm leading-6 text-slate-600">Get to know our tutors and find out how Falowen supports students beyond the classroom.</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href={LINKS.placementTest} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-[#103d35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1e594d]">Take free placement test ↗</a>
+          <a href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-[#103d35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1e594d]">Explore Falowen ↗</a>
           <Link href="/tutors" className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">Meet our team →</Link>
         </div>
       </div>
