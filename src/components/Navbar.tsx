@@ -11,16 +11,22 @@ type NavItem = {
   label: string;
   external?: boolean;
   featured?: boolean;
+  eventLabel?: "classes" | "books" | "goethe_sample_tests" | "placement_test" | "visitor_guide";
 };
 
 const nav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: LINKS.classes, label: "Live Classes", external: true },
-  { href: LINKS.exams, label: "Goethe Sample Tests", external: true, featured: true },
-  { href: LINKS.books, label: "Buy German Books", external: true, featured: true },
-  { href: LINKS.placementTest, label: "Placement Test", external: true, featured: true },
+  { href: LINKS.classes, label: "Live Classes", external: true, eventLabel: "classes" },
+  { href: LINKS.books, label: "German Books", external: true, featured: true, eventLabel: "books" },
+  { href: LINKS.exams, label: "Goethe Sample Tests", external: true, featured: true, eventLabel: "goethe_sample_tests" },
+  { href: LINKS.placementTest, label: "Placement Test", external: true, featured: true, eventLabel: "placement_test" },
   { href: "/tutors", label: "Team" },
-  { href: LINKS.visitorGuide, label: "Falowen Guide", external: true },
+];
+
+const mobileExtras: NavItem[] = [
+  { href: LINKS.visitorGuide, label: "Falowen Guide", external: true, eventLabel: "visitor_guide" },
+  { href: "/about", label: "About the Academy" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export function Navbar() {
@@ -41,13 +47,13 @@ export function Navbar() {
               className="h-10 w-10 rounded-2xl shadow-sm"
             />
             <div className="leading-tight">
-              <div className="font-semibold tracking-tight">{SITE.brand}</div>
-              <div className="text-xs text-neutral-600">Learn Language Education Academy</div>
+              <div className="text-sm font-bold tracking-tight sm:text-base">Learn Language</div>
+              <div className="text-xs text-neutral-600">Education Academy</div>
             </div>
           </Link>
 
           <div className="flex items-center gap-3">
-            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-3 text-[13px]">
+            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-4 text-[13px]">
               {nav.map((n) => {
                 const active = !n.external && pathname === n.href;
                 return (
@@ -56,6 +62,9 @@ export function Navbar() {
                     href={n.href}
                     target={n.external ? "_blank" : undefined}
                     rel={n.external ? "noopener noreferrer" : undefined}
+                    onClick={() => {
+                      if (n.eventLabel) window.gtag?.("event", "homepage_path_click", { destination: n.eventLabel, source: "navigation" });
+                    }}
                     className={`hover:text-neutral-900 ${
                       active ? "text-neutral-900 font-semibold" : n.featured ? "text-emerald-950 font-semibold" : "text-neutral-700"
                     }`}
@@ -112,7 +121,7 @@ export function Navbar() {
             className="xl:hidden border-t border-black/10 bg-white/95 py-4"
           >
             <div className="flex flex-col gap-3">
-              {nav.map((n) => {
+              {[...nav, ...mobileExtras].map((n) => {
                 const active = !n.external && pathname === n.href;
                 return (
                   <Link
@@ -120,7 +129,10 @@ export function Navbar() {
                     href={n.href}
                     target={n.external ? "_blank" : undefined}
                     rel={n.external ? "noopener noreferrer" : undefined}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      if (n.eventLabel) window.gtag?.("event", "homepage_path_click", { destination: n.eventLabel, source: "navigation" });
+                      setIsOpen(false);
+                    }}
                     className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
                       active
                         ? "bg-neutral-900 text-white"
@@ -135,6 +147,7 @@ export function Navbar() {
               })}
               <Link
                 href={CTA.primary.href}
+                onClick={() => setIsOpen(false)}
                 className="inline-flex items-center justify-center rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white shadow-sm"
                 title="Register on Falowen"
               >
