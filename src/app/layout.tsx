@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   description:
-    "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
+    "Learn German with Learn Language Education Academy in Ghana: live classes, Falowen German books, Goethe-style mock exams and self-paced learning with tutor and AI support.",
   openGraph: {
     type: "website",
     url: baseUrl,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     locale: "en_GH",
     title: `${SITE.brand} | Learn German & French`,
     description:
-      "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
+      "Learn German with Learn Language Education Academy in Ghana: live classes, Falowen German books, Goethe-style mock exams and self-paced learning with tutor and AI support.",
     images: [
       {
         url: new URL("/hero/hero.jpg", baseUrl),
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.brand} | Learn German & French`,
     description:
-      "German and French language school in Ghana offering A1–C1 classes. Learn German in Ghana with hybrid online/in-person options (A1–B1), self-paced B2–C1 support, placement testing, and enrollment via Falowen.",
+      "Learn German with Learn Language Education Academy in Ghana: live classes, Falowen German books, Goethe-style mock exams and self-paced learning with tutor and AI support.",
     images: [new URL("/hero/hero.jpg", baseUrl)],
   },
   robots: {
