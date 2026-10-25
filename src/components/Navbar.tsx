@@ -15,10 +15,11 @@ type NavItem = {
 
 const nav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "https://www.falowen.app/classes", label: "Classes", external: true },
+  { href: LINKS.classes, label: "Classes", external: true },
+  { href: LINKS.exams, label: "Exams", external: true },
+  { href: LINKS.books, label: "Books", external: true },
+  { href: LINKS.visitorGuide, label: "Falowen Guide", external: true },
   { href: "/tutors", label: "Team" },
-  { href: LINKS.youtubeSubscribe, label: "Free Lessons", external: true },
-  { href: "https://blog.falowen.app/", label: "Blog", external: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -51,7 +52,7 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-3">
-            <nav className="hidden md:flex items-center gap-5 text-sm">
+            <nav className="hidden xl:flex items-center gap-4 text-sm">
               {nav.map((n) => {
                 const active = !n.external && pathname === n.href;
                 return (
@@ -59,7 +60,7 @@ export function Navbar() {
                     key={n.href}
                     href={n.href}
                     target={n.external ? "_blank" : undefined}
-                    rel={n.external ? "noreferrer" : undefined}
+                    rel={n.external ? "noopener noreferrer" : undefined}
                     className={`hover:text-neutral-900 ${
                       active ? "text-neutral-900 font-semibold" : "text-neutral-700"
                     }`}
@@ -72,7 +73,7 @@ export function Navbar() {
 
             <Link
               href={CTA.primary.href}
-              className="hidden md:inline-flex rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-900 shadow-sm"
+              className="hidden xl:inline-flex rounded-2xl bg-brand-950 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-900 shadow-sm"
               title="Register on Falowen"
             >
               {CTA.primary.label}
@@ -80,7 +81,7 @@ export function Navbar() {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-3 py-2 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 md:hidden"
+              className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-3 py-2 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 xl:hidden"
               aria-expanded={isOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsOpen((open) => !open)}
@@ -113,7 +114,7 @@ export function Navbar() {
         {isOpen ? (
           <div
             id="mobile-navigation"
-            className="md:hidden border-t border-black/10 bg-white/95 py-4"
+            className="xl:hidden border-t border-black/10 bg-white/95 py-4"
           >
             <div className="flex flex-col gap-3">
               {nav.map((n) => {
