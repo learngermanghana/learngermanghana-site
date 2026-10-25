@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { BrochurePrintButton } from "@/components/BrochurePrintButton";
 import { tuitionFeesGHS, goetheExamFeesGHS } from "@/data/content";
@@ -27,12 +28,12 @@ export default function ClassesBrochurePage() {
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <BrochurePrintButton />
-                <a
+                <Link
                   href="/classes"
                   className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
                 >
                   Back to classes
-                </a>
+                </Link>
               </div>
             </div>
 

@@ -152,7 +152,7 @@ export default async function ClassDetailPage({ params }: Props) {
             {generatedSchedule ? (
               <>
                 <p className="mt-2 text-xs text-neutral-600">
-                  A date-by-date guide to the topics you'll cover in this class.
+                  A date-by-date guide to the topics you&apos;ll cover in this class.
                 </p>
                 <ul className="mt-3 max-h-80 space-y-2 overflow-auto pr-1 text-sm text-neutral-700">
                   {generatedSchedule.sessions.map((session) => (

@@ -6,6 +6,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
 import { tutors } from "@/data/content";
+import { LINKS } from "@/lib/site";
 
 const tutorHighlights = [
   "Experienced tutors for beginner to upper-intermediate levels.",
@@ -101,9 +102,10 @@ export default function TutorsPage() {
           </div>
           <div className="mt-4 flex flex-wrap gap-3 sm:mt-0">
             <Button href="/contact">Talk to the team</Button>
-            <Button href="/schedule" variant="outline">
-              View class schedule
-            </Button>
+            <Button href="/schedule" variant="outline">View class schedule</Button>
+            <a href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-emerald-700 px-4 py-2 text-sm font-semibold text-emerald-900 transition hover:bg-emerald-50">
+              How Falowen works ↗
+            </a>
           </div>
         </div>
       </section>

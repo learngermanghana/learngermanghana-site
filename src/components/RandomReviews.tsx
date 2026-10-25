@@ -1,16 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { Review } from "@/data/content";
-
-function shuffle<T>(arr: T[]) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 function formatReviewType(level: string) {
   const clean = level.trim();
@@ -29,12 +20,11 @@ function formatReviewType(level: string) {
 
 export function RandomReviews({ reviews, count = 6 }: { reviews: Review[]; count?: number }) {
   const [page, setPage] = useState(0);
-  const shuffledReviews = useMemo(() => shuffle(reviews), [reviews]);
-  const total = shuffledReviews.length;
+  const total = reviews.length;
   const totalPages = Math.max(1, Math.ceil(total / count));
   const start = page * count;
   const end = start + count;
-  const picked = shuffledReviews.slice(start, end);
+  const picked = reviews.slice(start, end);
 
   function goNext() {
     setPage((current) => (current + 1) % totalPages);
@@ -47,7 +37,7 @@ export function RandomReviews({ reviews, count = 6 }: { reviews: Review[]; count
   return (
     <div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div className="text-sm text-neutral-600">100+ reviews from satisfied students</div>
+        <div className="text-sm text-neutral-600">{total} published student {total === 1 ? "review" : "reviews"}</div>
         {total > count ? (
           <div className="flex items-center gap-2">
             <button

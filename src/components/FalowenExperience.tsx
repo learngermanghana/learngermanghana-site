@@ -109,15 +109,15 @@ export function FalowenExperience() {
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
-                href={LINKS.falowen}
+                href={LINKS.visitorGuide}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-indigo-50"
               >
-                Explore Falowen
+                See how Falowen works
               </a>
               <a
-                href="https://www.falowen.app/classes"
+                href={LINKS.classes}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
