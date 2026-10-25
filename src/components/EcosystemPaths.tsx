@@ -1,14 +1,15 @@
-import Link from "next/link";
 import { LINKS } from "@/lib/site";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 
 const paths = [
   {
     number: "01",
     category: "GUIDED LEARNING",
     title: "Join Live German Classes",
-    description: "Join tutor-led German lessons online or in Accra, with class support and recorded lessons you can replay.",
+    description: "Tutor-led German lessons in Accra or online, with class recordings.",
     href: LINKS.classes,
     action: "View Live Classes",
+    eventLabel: "classes",
     tone: "dark",
     visual: "classes",
   },
@@ -16,9 +17,10 @@ const paths = [
     number: "02",
     category: "STUDY MATERIALS",
     title: "Buy German Books",
-    description: "Shop German course books and study guides from Falowen. Choose a digital edition or an available printed copy.",
+    description: "Falowen digital course books and printed-on-demand editions, where available.",
     href: LINKS.books,
     action: "Buy German Books",
+    eventLabel: "books",
     tone: "sand",
     visual: "books",
   },
@@ -26,9 +28,10 @@ const paths = [
     number: "03",
     category: "EXAM PREPARATION",
     title: "Take a Goethe Sample Test",
-    description: "Preparing for a Goethe exam? Try Goethe-style sample questions in Lesen, Hören, Schreiben and Sprechen.",
+    description: "Practise independent Goethe-style sample tests in all four exam skills.",
     href: LINKS.exams,
     action: "Take a Sample Test",
+    eventLabel: "goethe_sample_tests",
     tone: "blue",
     visual: "exams",
   },
@@ -36,9 +39,10 @@ const paths = [
     number: "04",
     category: "CHECK YOUR LEVEL",
     title: "Take a Free Placement Test",
-    description: "Not sure whether to start at A1, A2 or B1? Take the free Falowen placement test to find your starting level.",
+    description: "Find your starting level with Falowen’s free A1–B1 placement test.",
     href: LINKS.placementTest,
     action: "Take the Free Placement Test",
+    eventLabel: "placement_test",
     tone: "mint",
     visual: "placement",
   },
@@ -130,47 +134,37 @@ const tones = {
 
 export function EcosystemPaths() {
   return (
-    <section aria-labelledby="learning-paths-heading" className="py-14 sm:py-20">
-      <div className="mb-9 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+    <section aria-labelledby="learning-paths-heading" className="py-8 sm:py-12">
+      <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-emerald-800">Your learning journey</p>
-          <h2 id="learning-paths-heading" className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">One academy. More ways to learn German.</h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">Join live classes, buy German books, try a Goethe-style sample test or check your level for free.</p>
+          <h2 id="learning-paths-heading" className="mt-2 text-[27px] font-semibold tracking-tight text-slate-950 sm:text-4xl">One academy. More ways to learn German.</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">Join live classes, buy German books, try a Goethe-style sample test or check your level for free.</p>
         </div>
-        <a href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
-          New to Falowen? Start here <span aria-hidden="true">↗</span>
-        </a>
+        <TrackedExternalLink href={LINKS.visitorGuide} eventLabel="visitor_guide" eventSource="learning_paths" target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
+          New to Falowen? See the guide <span aria-hidden="true">↗</span>
+        </TrackedExternalLink>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-5 md:grid-cols-2">
         {paths.map((path) => {
           const tone = tones[path.tone];
           return (
-            <article key={path.number} className={`group grid overflow-hidden rounded-[30px] border p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg sm:grid-cols-[1fr_170px] sm:items-center sm:p-8 ${tone.wrapper}`}>
+            <article key={path.number} className={`group grid overflow-hidden rounded-2xl border p-5 shadow-sm transition duration-200 hover:shadow-lg sm:grid-cols-[1fr_170px] sm:items-center sm:rounded-[28px] sm:p-7 ${tone.wrapper}`}>
               <div className="flex h-full flex-col items-start">
                 <span className={`text-[11px] font-bold tracking-[0.18em] ${tone.category}`}>{path.number} / {path.category}</span>
-                <h3 className="mt-4 max-w-sm text-2xl font-semibold leading-tight sm:text-[28px]">{path.title}</h3>
-                <p className={`mt-3 max-w-sm text-sm leading-6 ${tone.body}`}>{path.description}</p>
-                <a href={path.href} target="_blank" rel="noopener noreferrer" className={`mt-6 inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${tone.link}`}>
+                <h3 className="mt-2 max-w-sm text-xl font-semibold leading-tight sm:mt-4 sm:text-[27px]">{path.title}</h3>
+                <p className={`mt-2 max-w-sm text-sm leading-6 ${tone.body}`}>{path.description}</p>
+                <TrackedExternalLink href={path.href} eventLabel={path.eventLabel} eventSource="learning_paths" target="_blank" rel="noopener noreferrer" className={`mt-4 inline-flex min-h-10 items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${tone.link}`}>
                   {path.action}<span aria-hidden="true">↗</span>
-                </a>
+                </TrackedExternalLink>
               </div>
-              <CardVisual visual={path.visual} />
+              <div className="hidden sm:block"><CardVisual visual={path.visual} /></div>
             </article>
           );
         })}
       </div>
 
-      <div className="mt-6 flex flex-col gap-4 rounded-[26px] border border-slate-200 bg-white p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
-        <div>
-          <h3 className="text-lg font-semibold text-slate-950">Meet the people behind your German learning</h3>
-          <p className="mt-1 text-sm leading-6 text-slate-600">Get to know our tutors and find out how Falowen supports students beyond the classroom.</p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <a href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-[#103d35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1e594d]">Explore Falowen ↗</a>
-          <Link href="/tutors" className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">Meet our team →</Link>
-        </div>
-      </div>
       <p className="mt-4 text-center text-xs text-slate-500">Falowen offers independent Goethe-style preparation and is not affiliated with or endorsed by Goethe-Institut.</p>
     </section>
   );
