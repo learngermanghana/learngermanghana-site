@@ -13,7 +13,7 @@ export function Footer() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-200">Learn Language Education Academy</p>
             <h2 className="mt-4 max-w-sm text-2xl font-semibold leading-snug">German learning, in class and beyond.</h2>
             <p className="mt-3 max-w-md text-sm leading-7 text-white/65">
-              Learn with our team in Accra or online. Continue with Falowen books, guided lessons and Goethe-style exam practice.
+              Learn with our team in Accra or online. Continue with Falowen German books, Goethe-style sample tests and free placement testing.
             </p>
             <a href={LINKS.visitorGuide} {...external} className="mt-6 inline-flex rounded-xl bg-emerald-200 px-5 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-white">
               Explore the Falowen visitor guide ↗
@@ -24,7 +24,7 @@ export function Footer() {
               <h3 className="text-sm font-semibold text-emerald-200">Learn German</h3>
               <div className="mt-4 flex flex-col gap-3 text-sm text-white/75">
                 <a href={LINKS.classes} {...external} className="hover:text-white">Live classes ↗</a>
-                <a href={LINKS.placementTest} {...external} className="hover:text-white">Placement test ↗</a>
+                <a href={LINKS.placementTest} {...external} className="hover:text-white">Free placement test ↗</a>
                 <Link href="/about" className="hover:text-white">About the academy</Link>
                 <Link href="/tutors" className="hover:text-white">Meet our team</Link>
               </div>
@@ -32,8 +32,8 @@ export function Footer() {
             <div>
               <h3 className="text-sm font-semibold text-emerald-200">Falowen tools</h3>
               <div className="mt-4 flex flex-col gap-3 text-sm text-white/75">
-                <a href={LINKS.exams} {...external} className="hover:text-white">Goethe-style exams ↗</a>
-                <a href={LINKS.books} {...external} className="hover:text-white">German books ↗</a>
+                <a href={LINKS.exams} {...external} className="hover:text-white">Goethe sample tests ↗</a>
+                <a href={LINKS.books} {...external} className="hover:text-white">Buy German books ↗</a>
                 <a href={LINKS.visitorGuide} {...external} className="hover:text-white">Visitor guide ↗</a>
                 <a href={LINKS.falowen} {...external} className="hover:text-white">Falowen learning app ↗</a>
               </div>
