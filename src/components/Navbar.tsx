@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container } from "@/components/Container";
 import { SITE, CTA, LINKS } from "@/lib/site";
 
@@ -27,10 +27,6 @@ const nav: NavItem[] = [
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/10 bg-white/80 backdrop-blur">
