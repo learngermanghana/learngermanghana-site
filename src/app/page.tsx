@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AcademyHero } from "@/components/AcademyHero";
 import { Container } from "@/components/Container";
-import { RandomReviews } from "@/components/RandomReviews";
-import { getReviews } from "@/lib/reviews";
-import { LINKS } from "@/lib/site";
 
 export const revalidate = 21600;
 export const metadata: Metadata = {
@@ -27,8 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function HomePage() {
-  const reviews = await getReviews();
+export default function HomePage() {
   return (
     <>
       <AcademyHero />
@@ -47,19 +42,6 @@ export default async function HomePage() {
             <div><h3 className="text-sm font-extrabold text-[#10254a]">Falowen learning support</h3><p className="mt-1 text-xs text-[#61718a]">AI practice with real tutor guidance</p></div>
           </div>
         </section>
-        <section className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#dceafc] bg-[#ebf5ff] px-5 py-5 sm:px-7">
-          <div><h2 className="text-lg font-extrabold tracking-tight text-[#10254a] sm:text-xl">Practise with AI. Improve with a tutor.</h2><p className="mt-1 text-xs text-[#526784] sm:text-sm">Discover how Falowen supports your learning between classes.</p></div>
-          <a href={LINKS.visitorGuide} className="text-sm font-bold text-[#0755cb] underline-offset-4 hover:underline">See how Falowen works →</a>
-        </section>
-        {reviews.length > 0 ? (
-          <section className="pb-7 pt-7 sm:pb-10" aria-labelledby="reviews-heading">
-            <div className="flex items-end justify-between gap-3">
-              <div><h2 id="reviews-heading" className="text-xl font-extrabold text-[#10254a] sm:text-2xl">What our students say</h2><p className="mt-1 text-xs text-[#61718a]">Feedback from Learn Language Education Academy students.</p></div>
-              <Link href="/reviews" className="shrink-0 text-xs font-bold text-[#0755cb] hover:underline sm:text-sm">All reviews →</Link>
-            </div>
-            <div className="mt-3"><RandomReviews reviews={reviews} count={2} /></div>
-          </section>
-        ) : null}
         <p className="pb-8 text-center text-xs text-[#6a788d]">Falowen provides independent Goethe-style exam preparation and is not affiliated with or endorsed by Goethe-Institut.</p>
       </Container>
     </>

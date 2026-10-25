@@ -26,7 +26,7 @@ export function Footer() {
                 <a href={LINKS.classes} {...external} className="hover:text-white">Live classes ↗</a>
                 <a href={LINKS.placementTest} {...external} className="hover:text-white">Free placement test ↗</a>
                 <Link href="/about" className="hover:text-white">About the academy</Link>
-                <Link href="/tutors" className="hover:text-white">Meet our team</Link>
+                <a href={LINKS.visitorGuide} {...external} className="hover:text-white">Meet our team ↗</a>
               </div>
             </div>
             <div>

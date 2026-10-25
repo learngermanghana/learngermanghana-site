@@ -7,15 +7,15 @@ import { useState } from "react";
 import { SITE, LINKS } from "@/lib/site";
 
 const navItems = [
-  { label: "German courses", href: LINKS.classes },
+  { label: "Upcoming Classes", href: LINKS.classes },
   { label: "Placement test", href: LINKS.placementTest },
   { label: "Goethe practice", href: "https://www.falowen.app/exam-practice" },
   { label: "German books", href: LINKS.books },
+  { label: "Team", href: LINKS.visitorGuide },
+  { label: "Contact", href: "/contact" },
 ];
 const mobileExtras = [
-  { label: "How Falowen works", href: LINKS.visitorGuide },
-  { label: "Our team", href: "/tutors" },
-  { label: "Contact", href: "/contact" },
+  { label: "About the academy", href: "/about" },
 ];
 
 export function Navbar() {
