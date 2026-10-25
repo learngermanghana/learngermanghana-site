@@ -1,4 +1,4 @@
-import { reviews as fallbackReviews, type Review } from "@/data/content";
+import type { Review } from "@/data/content";
 
 const SHEET_CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5Nm-MLJkw3TeOht5ROELvFumVS9X8-ke_npLoOuF3W-zrF0v9xjk_Upzv4umQCocD5xtFaMRJQh6Z/pub?output=csv";
@@ -91,15 +91,15 @@ export async function getReviews(): Promise<Review[]> {
     });
 
     if (!response.ok) {
-      return fallbackReviews;
+      return [];
     }
 
     const csvText = await response.text();
     const parsed = parseReviewsFromCsv(csvText);
 
-    return parsed.length ? parsed : fallbackReviews;
+    return parsed;
   } catch {
-    return fallbackReviews;
+    return [];
   }
 }
 
