@@ -11,17 +11,17 @@ type NavItem = {
   href: string;
   label: string;
   external?: boolean;
+  featured?: boolean;
 };
 
 const nav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: LINKS.classes, label: "Classes", external: true },
-  { href: LINKS.exams, label: "Exams", external: true },
-  { href: LINKS.books, label: "Books", external: true },
-  { href: LINKS.visitorGuide, label: "Falowen Guide", external: true },
+  { href: LINKS.classes, label: "Live Classes", external: true },
+  { href: LINKS.exams, label: "Goethe Sample Tests", external: true, featured: true },
+  { href: LINKS.books, label: "Buy German Books", external: true, featured: true },
+  { href: LINKS.placementTest, label: "Placement Test", external: true, featured: true },
   { href: "/tutors", label: "Team" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: LINKS.visitorGuide, label: "Falowen Guide", external: true },
 ];
 
 export function Navbar() {
@@ -30,8 +30,8 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/10 bg-white/80 backdrop-blur">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo.svg"
@@ -48,7 +48,7 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-3">
-            <nav className="hidden xl:flex items-center gap-4 text-sm">
+            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-3 text-[13px]">
               {nav.map((n) => {
                 const active = !n.external && pathname === n.href;
                 return (
@@ -58,7 +58,7 @@ export function Navbar() {
                     target={n.external ? "_blank" : undefined}
                     rel={n.external ? "noopener noreferrer" : undefined}
                     className={`hover:text-neutral-900 ${
-                      active ? "text-neutral-900 font-semibold" : "text-neutral-700"
+                      active ? "text-neutral-900 font-semibold" : n.featured ? "text-emerald-950 font-semibold" : "text-neutral-700"
                     }`}
                   >
                     {n.label}
@@ -120,10 +120,13 @@ export function Navbar() {
                     key={n.href}
                     href={n.href}
                     target={n.external ? "_blank" : undefined}
-                    rel={n.external ? "noreferrer" : undefined}
+                    rel={n.external ? "noopener noreferrer" : undefined}
+                    onClick={() => setIsOpen(false)}
                     className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
                       active
                         ? "bg-neutral-900 text-white"
+                        : n.featured
+                        ? "bg-emerald-50 text-emerald-950 hover:bg-emerald-100"
                         : "text-neutral-700 hover:bg-neutral-50"
                     }`}
                   >
@@ -141,7 +144,7 @@ export function Navbar() {
             </div>
           </div>
         ) : null}
-      </Container>
+      </div>
     </header>
   );
 }
