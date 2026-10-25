@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AcademyHero } from "@/components/AcademyHero";
 import { Container } from "@/components/Container";
 import { EcosystemPaths } from "@/components/EcosystemPaths";
-import { SITE } from "@/lib/site";
+import { LINKS, SITE } from "@/lib/site";
 
 export const revalidate = 21600;
 
@@ -59,8 +59,8 @@ export default function HomePage() {
                 explore class schedules and continue practising with Falowen.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link className="rounded-xl bg-emerald-950 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-900" href="/tutors">
-                  Meet Our Tutors
+                <Link className="rounded-xl bg-emerald-950 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-900" href={LINKS.visitorGuide} target="_blank" rel="noopener noreferrer">
+                  Meet Our Team
                 </Link>
                 <Link className="rounded-xl border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-50" href="/contact">
                   Find Us in Accra
