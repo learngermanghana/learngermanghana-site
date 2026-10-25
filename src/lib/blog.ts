@@ -24,6 +24,8 @@ function firstImageFromHtml(html?: string) {
   return m?.[1] ?? null;
 }
 
+// Feed entries have varying structures depending on RSS vs Atom.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function pickLink(entry: any): string {
   const link = entry?.link;
   if (!link) return "";
@@ -58,6 +60,7 @@ export async function getBlogPosts(limit = 12): Promise<BlogPost[]> {
     const data = parser.parse(xml);
 
     // Atom (Jekyll): feed.entry
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let entries: any[] = [];
     if (data?.feed?.entry) {
       entries = Array.isArray(data.feed.entry) ? data.feed.entry : [data.feed.entry];
