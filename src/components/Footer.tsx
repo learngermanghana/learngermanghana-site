@@ -34,6 +34,7 @@ export function Footer() {
               <div className="mt-4 flex flex-col gap-3 text-sm text-white/75">
                 <a href={LINKS.exams} {...external} className="hover:text-white">Goethe sample tests ↗</a>
                 <a href={LINKS.books} {...external} className="hover:text-white">Buy German books ↗</a>
+                <a href={LINKS.music} {...external} className="hover:text-white">German Music ↗</a>
                 <a href={LINKS.visitorGuide} {...external} className="hover:text-white">Visitor guide ↗</a>
                 <a href={LINKS.falowen} {...external} className="hover:text-white">Falowen learning app ↗</a>
               </div>
