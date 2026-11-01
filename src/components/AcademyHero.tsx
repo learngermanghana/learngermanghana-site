@@ -19,6 +19,15 @@ const slides = [
     theme: "course",
   },
   {
+    label: "Learn German with music",
+    title: "Listen. Sing.",
+    emphasis: "Learn German.",
+    description: "Discover German-learning songs for A1, A2 and B1. Follow the lyrics, improve your pronunciation and practise vocabulary to the rhythm.",
+    button: "Listen to German Music",
+    href: LINKS.music,
+    theme: "music",
+  },
+  {
     label: "Find your starting point",
     title: "What is your",
     emphasis: "German level?",
@@ -49,6 +58,7 @@ const slides = [
 
 const tones = {
   course: { outer: "bg-[#eaf4ff]", kicker: "text-[#075cf1]", title: "text-[#075cf1]", button: "bg-[#075cf1] hover:bg-[#0349c8]" },
+  music: { outer: "bg-[#f1ecff]", kicker: "text-[#6a44b7]", title: "text-[#6a44b7]", button: "bg-[#7050c9] hover:bg-[#573ca5]" },
   level: { outer: "bg-[#fff7e9]", kicker: "text-[#a06a28]", title: "text-[#a06a28]", button: "bg-[#98601f] hover:bg-[#7f4f19]" },
   exam: { outer: "bg-[#e9f8f2]", kicker: "text-[#0d7259]", title: "text-[#0d7259]", button: "bg-[#0d7259] hover:bg-[#095942]" },
   books: { outer: "bg-[#f4f0ff]", kicker: "text-[#7653bc]", title: "text-[#7653bc]", button: "bg-[#6950b6] hover:bg-[#58429e]" },
@@ -71,6 +81,22 @@ function Visual({ theme }: { theme: (typeof slides)[number]["theme"] }) {
         />
         <div className="absolute bottom-3 right-3 rounded-xl border border-white/80 bg-white/90 px-3 py-2 text-[11px] font-bold text-[#234161] shadow-lg">
           Real people. Real support.
+        </div>
+      </div>
+    );
+  }
+  if (theme === "music") {
+    return (
+      <div className="flex h-full min-h-[185px] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#dfd3ff] via-[#f1eafd] to-[#dce5ff] px-5 py-5 sm:px-8" aria-hidden="true">
+        <div className="w-full max-w-[300px] rounded-[22px] border border-white/20 bg-gradient-to-br from-[#241b56] to-[#6748b2] p-5 text-center text-white shadow-[0_24px_48px_#43277d45] sm:p-7">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[#d5cbff]">♫ Falowen Music</p>
+          <div className="mx-auto mt-4 grid h-[68px] w-[68px] place-items-center rounded-full border-[7px] border-[#33256d] bg-gradient-to-br from-[#a18cf4] to-[#5943af] text-4xl shadow-lg sm:h-[96px] sm:w-[96px] sm:text-5xl">♪</div>
+          <p className="mt-4 text-lg font-extrabold tracking-tight sm:text-[22px]">Deutsch mit Musik</p>
+          <p className="mt-1 text-xs font-bold text-[#dfd8ff]">A1 · A2 · B1</p>
+          <div className="mt-4 flex h-8 items-center justify-center gap-1">
+            {[9, 15, 23, 12, 28, 18, 31, 15, 24, 11, 27, 18, 12, 22, 13].map((height, index) => <span key={index} className="w-1 rounded-full bg-[#a4e1eb]" style={{ height }} />)}
+          </div>
+          <p className="mt-2 text-[10px] font-semibold tracking-wide text-[#e2d9ff]">Listen · Follow lyrics · Practise</p>
         </div>
       </div>
     );
@@ -170,7 +196,7 @@ export function AcademyHero() {
           }
         }}
       >
-        <div key={current.theme} aria-roledescription="slide" aria-label={(index + 1) + " of 4: " + current.label}
+        <div key={current.theme} aria-roledescription="slide" aria-label={(index + 1) + " of " + slides.length + ": " + current.label}
           className="grid min-h-[535px] grid-rows-[auto_minmax(180px,1fr)] sm:min-h-[455px] sm:grid-cols-[52%_48%] sm:grid-rows-1">
           <div className="flex flex-col items-start justify-center px-7 pb-9 pt-10 sm:px-14 sm:py-10">
             <p className={"text-[10px] font-extrabold uppercase tracking-[0.17em] sm:text-xs " + tone.kicker}>{current.label}</p>
