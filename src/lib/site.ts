@@ -17,6 +17,7 @@ export const LINKS = {
   classes: "https://www.falowen.app/classes",
   exams: "https://exams.falowen.app/",
   books: "https://www.falowen.app/books",
+  music: "https://music.falowen.app/",
   visitorGuide: "https://www.falowen.app/visitor-guide",
   blog: "https://blog.falowen.app/how-to-ask-simple-questions-in-german/",
   youtubeSubscribe: "https://www.youtube.com/@LLEAGhana?sub_confirmation=1",
