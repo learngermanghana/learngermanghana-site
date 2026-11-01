@@ -10,6 +10,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Upcoming Classes", href: LINKS.classes },
   { label: "German Books", href: LINKS.books },
+  { label: "German Music", href: LINKS.music },
   { label: "Goethe Sample Tests", href: LINKS.exams },
   { label: "Placement Test", href: LINKS.placementTest },
   { label: "Team", href: LINKS.visitorGuide },
@@ -42,6 +43,12 @@ export function Navbar() {
             onClick={() => setOpen((value) => !value)}
             className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xl text-[#10254a] hover:bg-[#eff5ff] xl:hidden">☰</button>
         </div>
+      </div>
+      {/* The music shortcut stays visible on phones even when the full menu is closed. */}
+      <div className="border-t border-[#e8edf5] px-3 py-1.5 sm:px-6 xl:hidden">
+        <a href={LINKS.music} className="mx-auto flex max-w-[1320px] items-center justify-center gap-2 rounded-lg bg-[#f3efff] px-3 py-2 text-xs font-extrabold text-[#5336a9] hover:bg-[#e9e1ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5336a9]">
+          <span aria-hidden="true">♫</span> German Music <span aria-hidden="true">→</span>
+        </a>
       </div>
       {open ? (
         <nav id="academy-nav-menu" aria-label="Mobile navigation" className="mx-auto max-w-[1320px] border-t border-[#e8edf5] bg-white px-4 py-3 xl:hidden">
