@@ -1,4 +1,7 @@
 import type { MetadataRoute } from "next";
+
+// Static export builds these metadata routes once instead of invoking a function.
+export const dynamic = "force-static";
 import { SITE } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
