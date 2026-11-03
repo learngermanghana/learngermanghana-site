@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { AcademyHero } from "@/components/AcademyHero";
 import { Container } from "@/components/Container";
 
-export const revalidate = 21600;
 export const metadata: Metadata = {
   title: "Learn German Online | Classes, Free Placement Test, Goethe Practice & Books",
   description: "Learn German from anywhere with Learn Language Education Academy, based in Ghana. Join live online classes, take a free A1–B1 placement test, practise Goethe-style exams and shop Falowen German books.",

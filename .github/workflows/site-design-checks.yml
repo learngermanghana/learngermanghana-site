@@ -26,3 +26,13 @@ jobs:
         run: npm run lint
       - name: Compile production website without deploying
         run: npm run build
+      - name: Confirm static export (no request-time pages)
+        run: |
+          test -f out/index.html
+          test -f out/lead-capture.html
+          test -f out/lead-capture/thanks.html
+          test -f out/classes.html
+          test -f out/blog.html
+          test -f out/free-lessons.html
+          test -f out/auth/linkedin/callback.html
+

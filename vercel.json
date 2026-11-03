@@ -5,5 +5,17 @@
       "master": true,
       "*": false
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "https://blog.falowen.app/",
+      "permanent": true
+    },
+    {
+      "source": "/free-lessons",
+      "destination": "https://www.youtube.com/@LLEAGhana?sub_confirmation=1",
+      "permanent": false
+    }
+  ]
 }
