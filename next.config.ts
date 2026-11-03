@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Marketing pages, class details and forms are published as static files.
+  // Vercel serves them via its CDN without per-visit Fluid Compute.
+  output: "export",
   images: {
+    // Static export cannot use Next's runtime image optimizer.
+    // This also avoids Vercel image-transformation requests.
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "blog.falowen.app", pathname: "/**" },
 

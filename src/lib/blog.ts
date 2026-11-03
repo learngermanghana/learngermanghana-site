@@ -47,7 +47,7 @@ export async function getBlogPosts(limit = 12): Promise<BlogPost[]> {
   try {
     // Blog cards do not render images, so the feed is the only resource needed.
     // A long cache avoids repeatedly invoking the deployment to poll content.
-    const res = await fetch(BLOG_RSS_URL, { next: { revalidate: 21600 } });
+    const res = await fetch(BLOG_RSS_URL, { cache: "force-cache" });
     if (!res.ok) return [];
     const xml = await res.text();
 

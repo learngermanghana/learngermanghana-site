@@ -56,7 +56,7 @@ export async function getLatestYouTubeLessons(limit = 6): Promise<YouTubeLesson[
           "User-Agent":
             "Mozilla/5.0 (compatible; LearnLanguageEducationAcademy/1.0; +https://www.learngermanghana.com)",
         },
-        next: { revalidate: 86400 },
+        cache: "force-cache",
       });
 
       if (!channelResponse.ok) return [];
@@ -66,7 +66,7 @@ export async function getLatestYouTubeLessons(limit = 6): Promise<YouTubeLesson[
     if (!channelId) return [];
 
     const feedResponse = await fetch(`${CHANNEL_FEED_URL}${channelId}`, {
-      next: { revalidate: 21600 },
+      cache: "force-cache",
     });
 
     if (!feedResponse.ok) return [];

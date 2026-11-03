@@ -1,4 +1,7 @@
 import type { MetadataRoute } from "next";
+
+// Static export builds these metadata routes once instead of invoking a function.
+export const dynamic = "force-static";
 import { publicUpcomingClasses as upcomingClasses } from "@/data/classesCatalog";
 import { getClassPath } from "@/lib/classes";
 import { SITE } from "@/lib/site";

@@ -19,6 +19,9 @@ type Props = {
 const baseUrl = `https://${SITE.primaryDomain}`;
 const classImage = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80";
 
+// Only published class IDs are emitted as static pages.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return internalClassInstances.map((classItem) => ({ classId: classItem.id }));
 }
@@ -73,7 +76,8 @@ export default async function ClassDetailPage({ params }: Props) {
 
   const tuition = classInfo.tuitionFee ?? tuitionFeesGHS[classInfo.level];
   const examFee = classInfo.examFee ?? goetheExamFeesGHS[classInfo.level];
-  const agreementDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "long" }).format(new Date());
+  // An export is immutable; avoid freezing a misleading agreement date at build time.
+  const agreementDate = "the date of enrollment";
   const firstInstallment = tuition ? Math.min(tuition, Math.max(2000, Math.ceil(tuition / 2))) : undefined;
   const remainingBalance = tuition && firstInstallment ? tuition - firstInstallment : undefined;
   const generatedSchedule = buildClassSchedule(classInfo);
